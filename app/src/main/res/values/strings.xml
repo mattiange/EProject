@@ -1,4 +1,25 @@
 <resources>
-    <string name="app_name">EProject</string>
+    <string name="app_name">E-Culture Tool</string>
+    <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="hello_world">Hello World</string>
+    <string name="login">Login</string>
+    <string name="registration">Registrazione</string>
+    <string name="guest">Accesso Guest</string>
+    <string name="name">Nome</string>
+    <string name="insert_name">Inserisci Nome</string>
+    <string name="surname">Cognome</string>
+    <string name="insert_surname">Inserisci Cognome</string>
+    <string name="username">Username</string>
+    <string name="insert_username">Inserisci Username</string>
+    <string name="email">E-mail</string>
+    <string name="insert_email">Inserisci E-mail</string>
+    <string name="password">Password</string>
+    <string name="insert_password">Inserisci Password</string>
+    <string name="repeat_password">Ripeti Password</string>
+    <string name="user_type">Tipo Utente</string>
+    <string name="visitatore">Visitatore</string>
+    <string name="curatore">Curatore</string>
+    <string name="confirmRegistation">Registrati</string>
+
+
 </resources>
