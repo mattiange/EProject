@@ -45,7 +45,7 @@
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/labelWelcome"
         android:layout_width="260dp"
         android:layout_height="106dp"
         android:layout_marginTop="48dp"

@@ -1,256 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fadeScrollbars="true"
-    android:isScrollContainer="true"
-    android:overScrollMode="always"
-    android:scrollIndicators="top|bottom"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
-    android:scrollbarStyle="insideOverlay"
-    android:scrollbars="vertical"
-    android:verticalScrollbarPosition="right"
-    app:layout_scrollFlags="scroll">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/registrationToolBar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/white" />
 
-    <TextView
-        android:id="@+id/labelName"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/name"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/insertName"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/scrollview"
+        app:layout_anchorGravity="center"
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <EditText
-        android:id="@+id/insertName"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="96dp"
-        android:autofillHints="@string/insert_name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="@string/insert_name"
-        android:textColor="#000000"
-        android:theme="@style/TextBoxStyle"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/labelSurname"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/surname"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/insertSurname"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/insertSurname"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:autofillHints="@string/insert_name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="@string/insert_surname"
-        android:textColor="#000000"
-        android:theme="@style/TextBoxStyle"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertName" />
-
-    <TextView
-        android:id="@+id/labelUserName"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/username"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/insertUserName"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/insertUserName"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:autofillHints="@string/insert_name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="@string/insert_username"
-        android:textColor="#000000"
-        android:theme="@style/TextBoxStyle"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertSurname" />
-
-    <TextView
-        android:id="@+id/labelEmail"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/email"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/insertEmail"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/insertEmail"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:autofillHints="@string/insert_email"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:text="@string/insert_email"
-        android:textColor="#000000"
-        android:theme="@style/TextBoxStyle"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertUserName" />
-
-    <TextView
-        android:id="@+id/labelPassword"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/password"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/insertPassword"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/insertPassword"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:autofillHints="@string/insert_password"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textColor="#000000"
-        android:theme="@style/TextBoxStyle"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertEmail"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/labelRepeatPassword"
-        android:layout_width="110dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/repeat_password"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/insertRepeatPassword"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/insertRepeatPassword"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:autofillHints="@string/insert_password"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textColor="#000000"
-        android:theme="@style/TextBoxStyle"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertPassword"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/labelUserType"
-        android:layout_width="75dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/user_type"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/groupUserTypes"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/buttonRegistrationForm"
-        android:layout_width="146dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="212dp"
-        android:onClick="confirmRegistration"
-        android:text="@string/confirmRegistation"
-        android:textColor="#FFFFFF"
-        android:visibility="visible"
-        app:iconTint="@color/blue_500"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="TextContrastCheck" />
-
-    <RadioGroup
-        android:id="@+id/groupUserTypes"
-        android:layout_width="150dp"
-        android:layout_height="96dp"
-        android:layout_marginBottom="308dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioVisitatore"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:minHeight="48dp"
-            android:onClick="onUserTypeClicked"
-            android:text="@string/visitatore"
-            android:textColorLink="#2196F3"
-            android:theme="@style/CheckRadioStyle" />
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radioCuratore"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:minHeight="48dp"
-            android:onClick="onUserTypeClicked"
-            android:text="@string/curatore"
-            android:textColorLink="#2196F3"
-            android:theme="@style/CheckRadioStyle" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/labelName"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/name"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/insertName"
+                app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/insertName"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="96dp"
+                android:autofillHints="@string/insert_name"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:text="@string/insert_name"
+                android:textColor="#000000"
+                android:theme="@style/TextBoxStyle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/labelSurname"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/surname"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/insertSurname"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/insertSurname"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="60dp"
+                android:autofillHints="@string/insert_name"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:text="@string/insert_surname"
+                android:textColor="#000000"
+                android:theme="@style/TextBoxStyle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertName" />
+
+            <TextView
+                android:id="@+id/labelUserName"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/username"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/insertUserName"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/insertUserName"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="60dp"
+                android:autofillHints="@string/insert_name"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:text="@string/insert_username"
+                android:textColor="#000000"
+                android:theme="@style/TextBoxStyle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertSurname" />
+
+            <TextView
+                android:id="@+id/labelEmail"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/email"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/insertEmail"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/insertEmail"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="60dp"
+                android:autofillHints="@string/insert_email"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:text="@string/insert_email"
+                android:textColor="#000000"
+                android:theme="@style/TextBoxStyle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertUserName" />
+
+            <TextView
+                android:id="@+id/labelPassword"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/password"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/insertPassword"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/insertPassword"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="60dp"
+                android:autofillHints="@string/insert_password"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColor="#000000"
+                android:theme="@style/TextBoxStyle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertEmail"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/labelRepeatPassword"
+                android:layout_width="110dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/repeat_password"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/insertRepeatPassword"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/insertRepeatPassword"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="60dp"
+                android:autofillHints="@string/insert_password"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColor="#000000"
+                android:theme="@style/TextBoxStyle"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertPassword"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/labelUserType"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/user_type"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/groupUserTypes"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/buttonRegistrationForm"
+                android:layout_width="146dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="212dp"
+                android:onClick="confirmRegistration"
+                android:text="@string/confirmRegistation"
+                android:textColor="#FFFFFF"
+                android:visibility="visible"
+                app:iconTint="@color/blue_500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <RadioGroup
+                android:id="@+id/groupUserTypes"
+                android:layout_width="150dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="308dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.904"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RadioButton
+                    android:id="@+id/radioVisitatore"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:minHeight="48dp"
+                    android:onClick="onUserTypeClicked"
+                    android:text="@string/visitatore"
+                    android:textColorLink="#2196F3"
+                    android:theme="@style/CheckRadioStyle" />
+
+                <RadioButton
+                    android:id="@+id/radioCuratore"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:minHeight="48dp"
+                    android:onClick="onUserTypeClicked"
+                    android:text="@string/curatore"
+                    android:textColorLink="#2196F3"
+                    android:theme="@style/CheckRadioStyle" />
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
