@@ -210,29 +210,29 @@
 
             <Button
                 android:id="@+id/buttonRegistrationForm"
-                android:layout_width="146dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="212dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="48dp"
+                android:elevation="4dp"
                 android:onClick="confirmRegistration"
                 android:text="@string/confirmRegistation"
                 android:textColor="#FFFFFF"
                 android:visibility="visible"
                 app:iconTint="@color/blue_500"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/groupUserTypes"
                 tools:ignore="TextContrastCheck" />
 
             <RadioGroup
                 android:id="@+id/groupUserTypes"
                 android:layout_width="150dp"
                 android:layout_height="96dp"
-                android:layout_marginBottom="308dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="400dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.904"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <RadioButton
                     android:id="@+id/radioVisitatore"

@@ -2,9 +2,9 @@ package com.uniba.sms.eproject;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText insertName;
-    private EditText insertSurname;
-    private EditText insertUsername;
-    private EditText insertEmail;
-    private EditText insertPassword;
-    private EditText insertRepeatPassword;
+
     private RadioGroup groupUserTypes;
     private RadioButton radioVisitatore;
     private RadioButton radioCuratore;
@@ -33,19 +28,8 @@ public class RegistrationActivity extends AppCompatActivity {
         setSupportActionBar(registrationToolBar);
 
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
 
-        insertName = findViewById(R.id.insertName);
-
-        insertSurname = findViewById(R.id.insertSurname);
-
-        insertUsername = findViewById(R.id.insertUserName);
-
-        insertEmail = findViewById(R.id.insertEmail);
-
-        insertPassword = findViewById(R.id.insertPassword);
-
-        insertRepeatPassword = findViewById(R.id.insertRepeatPassword);
+        if (ab != null) { ab.setDisplayHomeAsUpEnabled(true); }
 
         groupUserTypes = findViewById(R.id.groupUserTypes);
         radioCuratore = findViewById(R.id.radioCuratore);
@@ -77,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void confirmRegistration(View view){
 
-
+        Toast.makeText(this, "Da implementare", Toast.LENGTH_SHORT).show();
 
     }
 

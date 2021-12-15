@@ -35,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
-        <option value="Class" />
         <option value="valueResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,9 +50,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="220TSvPXa5mLzfupIZFi4AfywGv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -71,6 +68,9 @@
       <recent name="C:\Users\Lyrx\Documents\AndroidStudio\EProject\app\src\main\res\layout-xxhdpi" />
       <recent name="C:\Users\Lyrx\Documents\AndroidStudio\EProject\app\src\main\res" />
       <recent name="C:\Users\Lyrx\Documents\AndroidStudio\EProject\app\src\main\res\layout" />
+    </key>
+    <key name="android.template.-1432188098">
+      <recent name="com.uniba.sms.eproject" />
     </key>
   </component>
   <component name="RunManager">

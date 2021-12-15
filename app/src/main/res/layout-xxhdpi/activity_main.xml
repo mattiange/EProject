@@ -22,7 +22,6 @@
             android:elevation="4dp"
 
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:toolbarId="@+id/toolbar">
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -74,7 +73,7 @@
             android:backgroundTint="@color/blue_500"
             android:elevation="4dp"
             android:nestedScrollingEnabled="true"
-            android:onClick="accessAsGuest"
+            android:onClick="loginAsGuest"
             android:text="@string/guest"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
