@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
 
     android:layout_width="match_parent"
@@ -19,8 +19,17 @@
 
     <ScrollView
         android:id="@+id/scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:isScrollContainer="true"
+        android:overScrollMode="always"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbarThumbHorizontal="@color/blue_300"
+        android:scrollbarThumbVertical="@color/blue_300"
+        android:scrollbarTrackHorizontal="@color/scrollbarTrack"
+        android:scrollbarTrackVertical="@color/scrollbarTrack"
+        android:scrollbars="vertical"
         app:layout_anchor="@+id/scrollview"
         app:layout_anchorGravity="center"
         tools:ignore="SpeakableTextPresentCheck">
@@ -29,12 +38,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1149dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_begin="1075dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <TextView
                 android:id="@+id/labelName"
                 android:layout_width="75dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/name"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/insertName"
@@ -42,7 +62,7 @@
 
             <EditText
                 android:id="@+id/insertName"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/textfield_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="96dp"
@@ -62,7 +82,7 @@
                 android:layout_width="75dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/surname"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/insertSurname"
@@ -70,7 +90,7 @@
 
             <EditText
                 android:id="@+id/insertSurname"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/textfield_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="60dp"
@@ -90,7 +110,7 @@
                 android:layout_width="75dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/username"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/insertUserName"
@@ -98,7 +118,7 @@
 
             <EditText
                 android:id="@+id/insertUserName"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/textfield_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="60dp"
@@ -114,11 +134,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/insertSurname" />
 
             <TextView
+                android:id="@+id/infoUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/info_username"
+                android:textColor="@color/red_300"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertUserName" />
+
+            <TextView
                 android:id="@+id/labelEmail"
                 android:layout_width="75dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/email"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/insertEmail"
@@ -126,10 +159,10 @@
 
             <EditText
                 android:id="@+id/insertEmail"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/textfield_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="88dp"
                 android:autofillHints="@string/insert_email"
                 android:ems="10"
                 android:inputType="textEmailAddress"
@@ -146,7 +179,7 @@
                 android:layout_width="75dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/password"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/insertPassword"
@@ -154,7 +187,7 @@
 
             <EditText
                 android:id="@+id/insertPassword"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/textfield_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="60dp"
@@ -170,11 +203,24 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
+                android:id="@+id/infoPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/info_password"
+                android:textColor="@color/red_300"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertPassword" />
+
+            <TextView
                 android:id="@+id/labelRepeatPassword"
                 android:layout_width="110dp"
                 android:layout_height="18dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/repeat_password"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/insertRepeatPassword"
@@ -182,10 +228,10 @@
 
             <EditText
                 android:id="@+id/insertRepeatPassword"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/textfield_width"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="104dp"
                 android:autofillHints="@string/insert_password"
                 android:ems="10"
                 android:inputType="textPassword"
@@ -197,42 +243,42 @@
                 app:layout_constraintTop_toBottomOf="@+id/insertPassword"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/labelUserType"
-                android:layout_width="75dp"
-                android:layout_height="18dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/user_type"
-                android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@+id/groupUserTypes"
-                app:layout_constraintEnd_toEndOf="parent" />
-
             <Button
                 android:id="@+id/buttonRegistrationForm"
-                android:layout_width="0dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="48dp"
+                android:layout_marginEnd="96dp"
+                android:layout_marginBottom="60dp"
                 android:elevation="4dp"
                 android:onClick="confirmRegistration"
                 android:text="@string/confirmRegistation"
                 android:textColor="#FFFFFF"
                 android:visibility="visible"
                 app:iconTint="@color/blue_500"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/groupUserTypes"
                 tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/labelUserType"
+                android:layout_width="75dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/user_type"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/groupUserTypes"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <RadioGroup
                 android:id="@+id/groupUserTypes"
-                android:layout_width="150dp"
-                android:layout_height="96dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="400dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="60dp"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/insertRepeatPassword">
 
                 <RadioButton
                     android:id="@+id/radioVisitatore"
@@ -253,6 +299,7 @@
                     android:text="@string/curatore"
                     android:textColorLink="#2196F3"
                     android:theme="@style/CheckRadioStyle" />
+
             </RadioGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

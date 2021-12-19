@@ -11,10 +11,12 @@
     <string name="insert_surname">Inserisci Cognome</string>
     <string name="username">Username</string>
     <string name="insert_username">Inserisci Username</string>
+    <string name="info_username">NOTA: L\'Username non deve prevedere spazi.</string>
     <string name="email">E-mail</string>
     <string name="insert_email">Inserisci E-mail</string>
     <string name="password">Password</string>
     <string name="insert_password">Inserisci Password</string>
+    <string name="info_password">NOTA: La Password deve contenere almeno 6 caratteri e un carattere speciale.</string>
     <string name="repeat_password">Ripeti Password</string>
     <string name="user_type">Tipo Utente</string>
     <string name="visitatore">Visitatore</string>

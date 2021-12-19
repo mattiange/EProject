@@ -11,7 +11,7 @@
         <device id="Nexus 7 2013" />
         <device id="pixel_4a" />
         <device id="pixel_xl" />
-        <target>android-28</target>
+        <target>android-27</target>
       </config>
     </shared>
   </component>
