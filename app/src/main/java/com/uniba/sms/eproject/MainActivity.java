@@ -30,10 +30,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentRegistration);
 
     }
-
-    public void loginAsGuest(View view){
-
-        Toast.makeText(this, "Da implementare", Toast.LENGTH_SHORT).show();
-
-    }
 }

@@ -27,8 +27,6 @@
         android:scrollbarStyle="outsideInset"
         android:scrollbarThumbHorizontal="@color/blue_300"
         android:scrollbarThumbVertical="@color/blue_300"
-        android:scrollbarTrackHorizontal="@color/scrollbarTrack"
-        android:scrollbarTrackVertical="@color/scrollbarTrack"
         android:scrollbars="vertical"
         app:layout_anchor="@+id/scrollview"
         app:layout_anchorGravity="center"
@@ -39,7 +37,7 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
+                android:id="@+id/guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1149dp"

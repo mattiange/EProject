@@ -1,10 +1,10 @@
 <resources>
+
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="hello_world">Hello World</string>
     <string name="login">Login</string>
     <string name="registration">Registrazione</string>
-    <string name="guest">Accesso Guest</string>
     <string name="name">Nome</string>
     <string name="insert_name">Inserisci Nome</string>
     <string name="surname">Cognome</string>

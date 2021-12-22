@@ -37,7 +37,7 @@
             android:id="@+id/buttonLogin"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="325dp"
             android:backgroundTint="@color/blue_500"
             android:elevation="4dp"
             android:onClick="startLogin"
@@ -53,7 +53,7 @@
             android:id="@+id/buttonRegistration"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="60dp"
             android:backgroundTint="@color/blue_500"
             android:elevation="4dp"
             android:onClick="startRegistration"
@@ -63,23 +63,6 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-            tools:ignore="TextContrastCheck" />
-
-        <Button
-            android:id="@+id/buttonGuestAccess"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:backgroundTint="@color/blue_500"
-            android:elevation="4dp"
-            android:nestedScrollingEnabled="true"
-            android:onClick="loginAsGuest"
-            android:text="@string/guest"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonRegistration"
             tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
