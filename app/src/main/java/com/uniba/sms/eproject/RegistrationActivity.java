@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -62,6 +63,21 @@ public class RegistrationActivity extends AppCompatActivity {
     public void confirmRegistration(View view){
 
         Toast.makeText(this, "Da implementare", Toast.LENGTH_SHORT).show();
+
+        TextView infoUsername = findViewById(R.id.infoUserName);
+        TextView infoPassword = findViewById(R.id.infoPassword);
+
+        if(infoUsername.getVisibility() == View.GONE){
+            infoUsername.setVisibility(View.VISIBLE);
+        } else {
+            infoUsername.setVisibility(View.GONE);
+        }
+
+        if (infoPassword.getVisibility() == View.GONE){
+            infoPassword.setVisibility(View.VISIBLE);
+        } else {
+            infoPassword.setVisibility(View.GONE);
+        }
 
     }
 
