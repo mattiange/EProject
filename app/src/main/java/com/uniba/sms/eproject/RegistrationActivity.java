@@ -2,6 +2,7 @@ package com.uniba.sms.eproject;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -66,18 +67,41 @@ public class RegistrationActivity extends AppCompatActivity {
 
         TextView infoUsername = findViewById(R.id.infoUserName);
         TextView infoPassword = findViewById(R.id.infoPassword);
+        EditText insertUserName = findViewById(R.id.insertUserName);
+        EditText insertPassword = findViewById(R.id.insertPassword);
 
-        if(infoUsername.getVisibility() == View.GONE){
+        int flag_password = 0;
+        int flag_username = 0;
+
+        if ( insertUserName.getEditableText().toString().equals("") ) {
+
             infoUsername.setVisibility(View.VISIBLE);
-        } else {
-            infoUsername.setVisibility(View.GONE);
-        }
+            infoUsername.setText(R.string.null_username);
+            flag_username = 1;
 
-        if (infoPassword.getVisibility() == View.GONE){
+        } else if ( insertUserName.getEditableText().toString().contains(" ") ){
+
+            infoUsername.setVisibility(View.VISIBLE);
+            infoUsername.setText(R.string.info_username);
+            flag_username = 2;
+
+        } else { infoUsername.setVisibility(View.GONE); }
+
+
+
+        if ( insertPassword.getEditableText().toString().equals("") ) {
+
             infoPassword.setVisibility(View.VISIBLE);
-        } else {
-            infoPassword.setVisibility(View.GONE);
-        }
+            infoPassword.setText(R.string.null_password);
+            flag_password = 1;
+
+        } else if ( insertPassword.getEditableText().toString().length() < 6 ) {
+
+            infoPassword.setVisibility(View.VISIBLE);
+            infoPassword.setText(R.string.info_password);
+            flag_password = 2;
+
+        } else { infoPassword.setVisibility(View.GONE); }
 
     }
 
