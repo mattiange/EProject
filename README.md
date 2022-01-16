@@ -7,5 +7,4 @@ ESEMPIO CONFIGURAZIONE FILE `local.properties` PER SISTEMI WINDOWS:
 
 ```
 sdk.dir=C\:\\Users\\Vito\\AppData\\Local\\Android\\Sdk
-
 ```
