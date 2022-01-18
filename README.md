@@ -1,7 +1,7 @@
 # EProject
 Caso di Studio SMS A.A 21/22
 
-Ricordarsi di creaere il file `local.properties` nella directory principale del progetto, aggiungendo la seguente riga al file (per sistemi Windows):
+Ricordarsi di creare il file `local.properties` nella directory principale del progetto, aggiungendo la seguente riga al file (per sistemi Windows):
 
 ```
 sdk.dir=C\:\\Users\\Vito\\AppData\\Local\\Android\\Sdk
