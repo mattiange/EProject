@@ -2,27 +2,33 @@
 
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
-    <string name="hello_world">Hello World</string>
     <string name="login">Login</string>
     <string name="registration">Registrazione</string>
+    <string name="forgot_password">Pass. dimenticata</string>
     <string name="name">Nome</string>
     <string name="insert_name">Inserisci Nome</string>
+    <string name="info_name">Il Nome non può essere vuoto!</string>
     <string name="surname">Cognome</string>
     <string name="insert_surname">Inserisci Cognome</string>
+    <string name="info_surname">Il Cognome non può essere vuoto!</string>
     <string name="username">Username</string>
     <string name="insert_username">Inserisci Username</string>
     <string name="info_username">NOTA: L\'Username non deve prevedere spazi.</string>
     <string name="null_username">L\'Username non può essere vuoto!</string>
     <string name="email">E-mail</string>
     <string name="insert_email">Inserisci E-mail</string>
+    <string name="info_email">L\'E-mail non può essere vuota!</string>
+    <string name="not_an_email">Non hai inserito una E-mail!</string>
     <string name="password">Password</string>
     <string name="insert_password">Inserisci Password</string>
     <string name="info_password">NOTA: La Password deve contenere almeno 6 caratteri e un carattere speciale.</string>
     <string name="null_password">La Password non può essere vuota!</string>
     <string name="repeat_password">Ripeti Password</string>
+    <string name="passwords_not_equal">Le password non sono uguali!</string>
     <string name="user_type">Tipo Utente</string>
     <string name="visitatore">Visitatore</string>
     <string name="curatore">Curatore</string>
+    <string name="infouser_type">Seleziona un tipo utente.</string>
     <string name="confirmRegistation">Registrati</string>
 
 </resources>

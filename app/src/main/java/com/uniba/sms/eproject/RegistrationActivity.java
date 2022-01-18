@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,11 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class RegistrationActivity extends AppCompatActivity {
-
-
-    private RadioGroup groupUserTypes;
-    private RadioButton radioVisitatore;
-    private RadioButton radioCuratore;
 
 
     @Override
@@ -32,11 +26,6 @@ public class RegistrationActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
 
         if (ab != null) { ab.setDisplayHomeAsUpEnabled(true); }
-
-        groupUserTypes = findViewById(R.id.groupUserTypes);
-        radioCuratore = findViewById(R.id.radioCuratore);
-        radioVisitatore = findViewById(R.id.radioVisitatore);
-
 
     }
 
@@ -65,27 +54,77 @@ public class RegistrationActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Da implementare", Toast.LENGTH_SHORT).show();
 
-        TextView infoUsername = findViewById(R.id.infoUserName);
-        TextView infoPassword = findViewById(R.id.infoPassword);
-        EditText insertUserName = findViewById(R.id.insertUserName);
-        EditText insertPassword = findViewById(R.id.insertPassword);
+        EditText insertName = findViewById(R.id.insertName);
+        TextView infoName = findViewById(R.id.infoName);
 
-        int flag_password = 0;
-        int flag_username = 0;
+        EditText insertSurname = findViewById(R.id.insertSurname);
+        TextView infoSurname = findViewById(R.id.infoSurname);
+
+        EditText insertUserName = findViewById(R.id.insertUserName);
+        TextView infoUsername = findViewById(R.id.infoUserName);
+
+        EditText insertEmail = findViewById(R.id.insertEmail);
+        TextView infoEmail = findViewById(R.id.infoEmail);
+
+        EditText insertPassword = findViewById(R.id.insertPassword);
+        TextView infoPassword = findViewById(R.id.infoPassword);
+
+        EditText insertRepeatPassword = findViewById(R.id.insertRepeatPassword);
+        TextView infoRepeatPassword = findViewById(R.id.infoRepeatPassword);
+
+        RadioButton radioVisitatore = findViewById(R.id.radioVisitatore);
+        boolean checkedVisitatore = ((RadioButton) radioVisitatore).isChecked();
+
+        RadioButton radioCuratore = findViewById(R.id.radioCuratore);
+        boolean checkedCuratore = ((RadioButton) radioCuratore).isChecked();
+
+        TextView infoUserType = findViewById(R.id.infoUserType);
+
+        int flag = 0;
+
+        if ( insertName.getEditableText().toString().equals("") ) {
+
+            infoName.setVisibility(View.VISIBLE);
+            infoName.setText(R.string.info_name);
+            flag = 1;
+
+        } else { infoName.setVisibility(View.GONE); }
+
+
+
+        if ( insertSurname.getEditableText().toString().equals("") ) {
+
+            infoSurname.setVisibility(View.VISIBLE);
+            infoSurname.setText(R.string.info_surname);
+            flag = 1;
+
+        } else { infoSurname.setVisibility(View.GONE); }
+
+
 
         if ( insertUserName.getEditableText().toString().equals("") ) {
 
             infoUsername.setVisibility(View.VISIBLE);
             infoUsername.setText(R.string.null_username);
-            flag_username = 1;
+            flag = 1;
 
         } else if ( insertUserName.getEditableText().toString().contains(" ") ){
 
             infoUsername.setVisibility(View.VISIBLE);
             infoUsername.setText(R.string.info_username);
-            flag_username = 2;
+            flag = 1;
 
         } else { infoUsername.setVisibility(View.GONE); }
+
+
+
+        if ( insertEmail.getEditableText().toString().equals("") ) {
+
+            infoEmail.setVisibility(View.VISIBLE);
+            infoEmail.setText(R.string.info_email);
+            flag = 1;
+
+        } else { infoEmail.setVisibility(View.GONE); }
 
 
 
@@ -93,15 +132,34 @@ public class RegistrationActivity extends AppCompatActivity {
 
             infoPassword.setVisibility(View.VISIBLE);
             infoPassword.setText(R.string.null_password);
-            flag_password = 1;
+            flag = 1;
 
         } else if ( insertPassword.getEditableText().toString().length() < 6 ) {
 
             infoPassword.setVisibility(View.VISIBLE);
             infoPassword.setText(R.string.info_password);
-            flag_password = 2;
+            flag = 1;
 
         } else { infoPassword.setVisibility(View.GONE); }
+
+
+
+        if ( insertRepeatPassword.getEditableText().toString().equals("") || !(insertPassword.getEditableText().toString().equals( insertRepeatPassword.getEditableText().toString() ) ) ) {
+
+            infoRepeatPassword.setVisibility(View.VISIBLE);
+            infoRepeatPassword.setText(R.string.passwords_not_equal);
+            flag = 1;
+
+        } else { infoRepeatPassword.setVisibility(View.GONE); }
+
+
+        if ( !(checkedVisitatore) && !(checkedCuratore) ) {
+
+            infoUserType.setVisibility(View.VISIBLE);
+            infoUserType.setText(R.string.infouser_type);
+            flag = 1;
+
+        } else { infoUserType.setVisibility(View.GONE); }
 
     }
 
