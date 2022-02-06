@@ -30,5 +30,31 @@
     <string name="curatore">Curatore</string>
     <string name="infouser_type">Seleziona un tipo utente.</string>
     <string name="confirmRegistation">Registrati</string>
+    <string name="plus">+</string>
+
+    <!-- Menu -->
+    <string name="scan_qr_code">Scan QR Code</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Drawable menu -->
+    <string name="user_name">Nome utente</string>
+    <string name="importa_percorsi_visita">Importa percorsi di visita</string>
+    <string name="impostazioni">Impostazioni</string>
+    <string name="recensisci">Recensisci</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Home -->
+    <string name="no_visit_zone_msg_label">Non sono presenti zone di visita. Aggiungine una cliccando sul tasto "+"</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <!-- ///////////////////////////////////////////////// -->
 
 </resources>
