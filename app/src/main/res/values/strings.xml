@@ -12,7 +12,6 @@
     <string name="insert_surname">Inserisci Cognome</string>
     <string name="info_surname">Il Cognome non può essere vuoto!</string>
     <string name="username">Username</string>
-    <string name="insert_username">Inserisci Username</string>
     <string name="info_username">NOTA: L\'Username non deve prevedere spazi.</string>
     <string name="null_username">L\'Username non può essere vuoto!</string>
     <string name="email">E-mail</string>
