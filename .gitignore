@@ -1,5 +1,7 @@
-# Compiled class file
+# Compiled/binary file
 *.class
+*.bin
+*.lock
 
 # Log file
 *.log
