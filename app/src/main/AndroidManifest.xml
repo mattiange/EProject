@@ -40,6 +40,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ZonaActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".VisualizzaZonaActivity"
+            android:exported="true"
+            android:parentActivityName=".ZonaActivity" >
+        </activity>
     </application>
 
 </manifest>

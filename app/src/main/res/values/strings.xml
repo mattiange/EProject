@@ -57,4 +57,50 @@
     <string name="menu_send">Send</string>
     <!-- ///////////////////////////////////////////////// -->
 
+    <!-- Zona -->
+    <string name="zone">Zona</string>
+    <string name="info_zone">Immagine Zona</string>
+    <string name="view_zone">Visualizza Zona</string>
+    <string name="change_zone">Cambia Zona</string>
+    <string name="delete_zone">Elimina Zona</string>
+
+    <string name="zone_name">Nome Zona:</string>
+    <string name="zone_region">Regione:</string>
+    <string name="zone_provincia">Provincia:</string>
+    <string name="zone_zipcode">CAP:</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Oggetto -->
+    <string name="object">Oggetto</string>
+    <string name="info_object">Immagine Oggetto</string>
+    <string name="view_object">Visualizza Oggetto</string>
+    <string name="change_object">Cambia Oggetto</string>
+    <string name="delete_object">Elimina Oggetto</string>
+
+    <string name="object_name">Nome Oggetto:</string>
+    <string name="object_year">Anno:</string>
+    <string name="object_author">Autore:</string>
+    <string name="object_desc">Descrizione:</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Museo -->
+    <string name="museum">Museo</string>
+    <string name="info_museum">Immagine Museo</string>
+    <string name="view_museum">Visualizza Museo</string>
+    <string name="change_museum">Cambia Museo</string>
+    <string name="delete_museum">Elimina Museo</string>
+
+    <string name="museum_name">Nome Museo</string>
+    <string name="museum_phone">Numero di telefono:</string>
+    <string name="museum_address">Indirizzo:</string>
+    <string name="museum_city">Città:</string>
+    <string name="museum_region">Regione:</string>
+    <string name="museum_provincia">Provincia:</string>
+    <string name="museum_zip_code">CAP:</string>
+    <string name="museum_email">E-mail:</string>
+    <string name="museum_website">Sito Web:</string>
+    <string name="museum_hours">Orari di apertura/chiusura:</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+
 </resources>

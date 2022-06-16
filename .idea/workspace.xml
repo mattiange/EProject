@@ -28,7 +28,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\matti\.android\avd\Pixel_XL_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Lyrx\.android\avd\Pixel_API_28.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -70,19 +70,26 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android-custom-viewC:/Users/mattia/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.4.0/90635e5c864748b479ea6bdd3439b68a6eb678a9/appcompat-1.4.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED" value="Toolbar" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lyrx\Documents\GitHub\EProject\app\src\main\res\layout" />
+      <recent name="C:\Users\Lyrx\Documents\GitHub\EProject\app\src\main\res\layout-xxhdpi" />
       <recent name="D:\SMS\EProject\app\src\main\res\drawable" />
       <recent name="D:\SMS\EProject\app\src\main\res\menu" />
       <recent name="C:\Users\Lyrx\Documents\AndroidStudio\EProject\app\src\main\res\layout-xxhdpi" />
-      <recent name="C:\Users\Lyrx\Documents\AndroidStudio\EProject\app\src\main\res" />
-      <recent name="C:\Users\Lyrx\Documents\AndroidStudio\EProject\app\src\main\res\layout" />
     </key>
     <key name="android.template.-1432188098">
       <recent name="com.uniba.sms.eproject" />
+    </key>
+    <key name="android.template.-363913392">
+      <recent name="com.uniba.sms.eproject" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.uniba.sms.eproject" />
+      <recent name="com.uniba.sms.eproject.data.classes" />
     </key>
   </component>
   <component name="RunManager">
@@ -100,8 +107,7 @@
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
