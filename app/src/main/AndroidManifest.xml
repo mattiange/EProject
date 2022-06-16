@@ -50,6 +50,26 @@
             android:exported="true"
             android:parentActivityName=".ZonaActivity" >
         </activity>
+
+        <activity
+            android:name=".OggettoActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".VisualizzaOggettoActivity"
+            android:exported="true"
+            android:parentActivityName=".OggettoActivity" >
+        </activity>
+
+        <activity
+            android:name=".MuseoActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".VisualizzaMuseoActivity"
+            android:exported="true"
+            android:parentActivityName=".MuseoActivity" >
+        </activity>
     </application>
 
 </manifest>
