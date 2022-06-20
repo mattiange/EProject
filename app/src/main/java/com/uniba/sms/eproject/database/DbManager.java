@@ -81,7 +81,7 @@ public class DbManager {
      */
     @Autore(autore = "Mattia, Giandomenico")
     public HashMap<String, String> login(String username, String password){
-        String query="SELECT * FROM Utente_Registrato WHERE username = '"+username+"' AND password = '"+password+"';";
+        String query="SELECT * FROM Utente_Registrato WHERE email = '"+username+"' AND password = '"+password+"';";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
