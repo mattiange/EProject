@@ -1,5 +1,6 @@
 package com.uniba.sms.eproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,6 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.uniba.sms.eproject.database.DbManager;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,38 +34,58 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Entra nell'app tramite login
+     *
+     * @param view
+     */
     public void loginIntoApp(View view){
-
-        Toast.makeText(this, "Da implementare", Toast.LENGTH_SHORT).show();
-
         EditText insertLoginEmail = findViewById(R.id.insertLoginEmail);
         TextView infoLoginEmail = findViewById(R.id.infoLoginEmail);
 
         EditText insertLoginPassword = findViewById(R.id.insertLoginPassword);
         TextView infoLoginPassword = findViewById(R.id.infoLoginPassword);
 
-        if ( insertLoginEmail.getEditableText().toString().equals("") ) {
+        //Flag per controllare se i dati inseriti sono validi
+        boolean flag = true;
+
+        if ( insertLoginEmail.getText().toString().equals("") ) {
 
             infoLoginEmail.setVisibility(View.VISIBLE);
             infoLoginEmail.setText(R.string.info_email);
 
             Toast.makeText(this, "Login fallito, controlla i campi errati", Toast.LENGTH_SHORT).show();
+            flag = false;
+        } else {
+            infoLoginEmail.setVisibility(View.GONE);
+            flag = true;
+        }
 
-        } else { infoLoginEmail.setVisibility(View.GONE); }
 
 
 
-
-        if ( insertLoginPassword.getEditableText().toString().equals("") ) {
+        if ( insertLoginPassword.getText().toString().equals("") ) {
 
             infoLoginPassword.setVisibility(View.VISIBLE);
             infoLoginPassword.setText(R.string.null_password);
 
             Toast.makeText(this, "Login fallito, controlla i campi errati", Toast.LENGTH_SHORT).show();
 
-        } else { infoLoginPassword.setVisibility(View.GONE); }
+            flag = false;
+        } else {
+            infoLoginPassword.setVisibility(View.GONE);
+            flag = true;
+        }
 
 
+        if(flag){
+            DbManager db = new DbManager(this);
+            db.login(insertLoginEmail.getText().toString(), insertLoginPassword.getText().toString());
+
+            startActivity(new Intent(this, HomeActivity.class));
+        }else{
+            Snackbar.make((ConstraintLayout)findViewById(R.id.loginLayout), "Dati di login errati", Snackbar.LENGTH_LONG).show();
+        }
     }
 
     public void forgotPassword(View view){

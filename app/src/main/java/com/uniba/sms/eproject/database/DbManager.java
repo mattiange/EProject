@@ -57,8 +57,6 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            Toast.makeText(this.context , "inizializza() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
-
             return false;
         }
     }
