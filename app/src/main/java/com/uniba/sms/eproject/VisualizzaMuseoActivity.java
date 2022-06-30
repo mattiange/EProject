@@ -12,6 +12,14 @@ public class VisualizzaMuseoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /*
+         *
+         * ImageView img_museo = findViewById(R.id.imageViewMuseo);
+         * img_museo.setImageDrawable(findViewById(R.drawable.img));
+         *
+         */
+        setContentView(R.layout.activity_museo_view);
+
         Intent intentMuseo = this.getIntent();
 
         TextView labelMuseum = findViewById(R.id.labelViewMuseum);
@@ -43,19 +51,6 @@ public class VisualizzaMuseoActivity extends AppCompatActivity {
 
         TextView museumHours = findViewById(R.id.hours);
         museumHours.setText ( intentMuseo.getStringExtra("orario_museo") );
-
-        /*
-         *
-         * ImageView img_museo = findViewById(R.id.imageViewMuseo);
-         * img_museo.setImageDrawable(findViewById(R.drawable.img));
-         *
-         */
-
-
-        setContentView(R.layout.activity_museo_view);
-
-
-
-
+        
     }
 }

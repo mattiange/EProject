@@ -21,17 +21,16 @@ public class MuseoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        TextView labelMuseum = findViewById(R.id.labelMuseum);
-        labelMuseum.setText ( museo.getNome() );
-
         /*
          *
          * ImageView img_museo = findViewById(R.id.imageMuseo);
          * img_museo.setImageDrawable(findViewById(R.drawable.img));
          *
          */
-
         setContentView(R.layout.activity_museo);
+
+        TextView labelMuseum = findViewById(R.id.labelMuseum);
+        labelMuseum.setText ( museo.getNome() );
 
     }
 
