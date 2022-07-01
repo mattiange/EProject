@@ -1,10 +1,12 @@
-package com.uniba.sms.eproject;
+package com.uniba.sms.eproject.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.uniba.sms.eproject.R;
 
 public class VisualizzaOggettoActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.uniba.sms.eproject;
+package com.uniba.sms.eproject.activity;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.database.DbManager;
 
 import java.util.HashMap;

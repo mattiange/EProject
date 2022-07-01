@@ -12,7 +12,7 @@
         android:theme="@style/Theme.EProject" >
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true" >
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,54 +21,65 @@
             </intent-filter>-->
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".activity.MainActivity" >
         </activity>
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".activity.RegistrationActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".activity.MainActivity" >
         </activity>
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.HomeActivity"
             android:exported="true" >
         </activity>
 
         <activity
-            android:name=".ZonaActivity"
+            android:name=".activity.ZonaActivity"
             android:exported="true" >
         </activity>
         <activity
-            android:name=".VisualizzaZonaActivity"
+            android:name=".activity.VisualizzaZonaActivity"
             android:exported="true"
-            android:parentActivityName=".ZonaActivity" >
+            android:parentActivityName=".activity.ZonaActivity" >
         </activity>
 
         <activity
-            android:name=".OggettoActivity"
+            android:name=".activity.OggettoActivity"
             android:exported="true" >
         </activity>
         <activity
-            android:name=".VisualizzaOggettoActivity"
+            android:name=".activity.VisualizzaOggettoActivity"
             android:exported="true"
-            android:parentActivityName=".OggettoActivity" >
+            android:parentActivityName=".activity.OggettoActivity" >
         </activity>
 
         <activity
-            android:name=".MuseoActivity"
+            android:name=".activity.MuseoActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".activity.VisualizzaMuseoActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.MuseoActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.crud.museo.CRUDMuseoCreateActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.crud.museo.CRUDMuseoCreateActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.crud.museo.CRUDMuseoActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".VisualizzaMuseoActivity"
-            android:exported="true"
-            android:parentActivityName=".MuseoActivity" >
         </activity>
     </application>
 

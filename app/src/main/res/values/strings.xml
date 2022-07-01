@@ -102,5 +102,23 @@
     <string name="museum_hours">Orari di apertura/chiusura:</string>
     <!-- ///////////////////////////////////////////////// -->
 
+    <!-- CRUD -->
+    <string name="crud_manage_museo">Gestisci i musei</string>
+    <string name="crud_create_museo">Crea un nuovo museo</string>
+    <string name="crud_show_museo">Visualizza tutti i musei</string>
+    <string name="crud_delete_museo">Cancella museo</string>
+
+    <string name="crud_txt_nome">Nome</string>
+    <string name="crud_txt_telefono">Telefono</string>
+    <string name="crud_txt_indirizzo">Indirizzo</string>
+    <string name="crud_txt_citta">Città</string>
+    <string name="crud_txt_provincia">Prov.</string>
+    <string name="crud_txt_cap">C.A.P.</string>
+    <string name="crud_txt_regione">Regione</string>
+    <string name="crud_txt_email">Email</string>
+    <string name="crud_txt_sito">Sito</string>
+    <string name="crud_txt_orario_apertura">Orario \ndi apertura</string>
+    <string name="crud_txt_immagine">Immagine</string>
+    <!-- ///////////////////////////////////////////////// -->
 
 </resources>

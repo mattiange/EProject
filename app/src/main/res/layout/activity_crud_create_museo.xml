@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="192dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
+
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/labelMuseum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="35sp"
+                android:text="@string/crud_create_museo"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:visibility="visible" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="1dp"
+        android:fillViewport="true"
+        android:layout_marginTop="170sp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <TextView
+                android:id="@+id/txt_nome_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_nome"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_nome_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_museo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/txt_telefono_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_telefono"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nome_museo" />
+
+            <EditText
+                android:id="@+id/et_indirizzo_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_nome_museo" />
+
+            <TextView
+                android:id="@+id/txt_indirizzo_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_indirizzo"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_telefono_museo" />
+
+            <EditText
+                android:id="@+id/et_telefono_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_indirizzo_museo" />
+
+            <TextView
+                android:id="@+id/txt_citta_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_citta"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_indirizzo_museo" />
+
+            <EditText
+                android:id="@+id/et_citta_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="72dp"
+                android:layout_marginTop="4dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_citta_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_telefono_museo" />
+
+            <TextView
+                android:id="@+id/txt_provincia_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="24dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_provincia"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_citta_museo" />
+
+            <EditText
+                android:id="@+id/et_provincia_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="72dp"
+                android:layout_marginTop="8dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_provincia_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_citta_museo" />
+
+            <TextView
+                android:id="@+id/txt_cap_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="32dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_cap"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_provincia_museo" />
+
+            <EditText
+                android:id="@+id/et_cap_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="4dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_cap_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_provincia_museo" />
+
+            <TextView
+                android:id="@+id/txt_regione_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_regione"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_cap_museo" />
+
+            <EditText
+                android:id="@+id/et_regione_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="4dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_regione_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_cap_museo" />
+
+            <TextView
+                android:id="@+id/txt_email_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_email"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_regione_museo" />
+
+            <EditText
+                android:id="@+id/et_email_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="8dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_email_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_regione_museo" />
+
+            <TextView
+                android:id="@+id/txt_sito_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_sito"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_email_museo" />
+
+            <EditText
+                android:id="@+id/et_sito_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="4dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_sito_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_email_museo" />
+
+            <TextView
+                android:id="@+id/txt_orario_apertura_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_orario_apertura"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_sito_museo" />
+
+            <EditText
+                android:id="@+id/et_orario_apertura_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_orario_apertura_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_sito_museo" />
+
+            <TextView
+                android:id="@+id/txt_immagini_museo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_orario_apertura"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_orario_apertura_museo" />
+
+            <EditText
+                android:id="@+id/et_immagini_museo"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/txt_immagini_museo"
+                app:layout_constraintTop_toBottomOf="@+id/et_orario_apertura_museo" />
+
+            <Button
+                android:id="@+id/salva_museo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                tools:layout_editor_absoluteX="169dp"
+                tools:layout_editor_absoluteY="457dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="50sp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_immagini_museo" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

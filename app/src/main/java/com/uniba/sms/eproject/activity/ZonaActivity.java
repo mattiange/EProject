@@ -1,4 +1,4 @@
-package com.uniba.sms.eproject;
+package com.uniba.sms.eproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.data.classes.Zona;
 
 public class ZonaActivity extends AppCompatActivity {
