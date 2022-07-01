@@ -119,6 +119,7 @@
     <string name="crud_txt_sito">Sito</string>
     <string name="crud_txt_orario_apertura">Orario \ndi apertura</string>
     <string name="crud_txt_immagine">Immagine</string>
+    <string name="crud_txt_salva">Salva</string>
     <!-- ///////////////////////////////////////////////// -->
 
 </resources>
