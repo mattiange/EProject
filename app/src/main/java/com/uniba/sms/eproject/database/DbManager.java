@@ -105,4 +105,50 @@ public class DbManager {
 
         return utente;
     }
+
+    /**
+     * Inserisce un nuovo museo all'internod del database
+     * 
+     * @param nome
+     * @param telefono
+     * @param indirizzo
+     * @param citta
+     * @param regione
+     * @param provincia
+     * @param cap
+     * @param email
+     * @param sito_web
+     * @param orario
+     * @param immagine
+     * @return
+     */
+    public boolean inserisciMuseo(String nome, String telefono, String indirizzo, String citta,
+                                  String regione, String provincia, String cap, String email,
+                                  String sito_web, String orario, String immagine){
+        String insert1="INSERT INTO Museo (ID, Nome, Numero_Telefono, Indirizzo, Citta, " +
+                "                           Provincia, CAP, Regione, Email_contatti, Sito_Web, " +
+                "                           Orario_Apertura, Immagine_Museo) "
+                + "VALUES (NULL," +
+                "           '"+nome+"','"+
+                            telefono+"', '"+
+                            indirizzo+"', '"+
+                            citta+"', '"+
+                            provincia+"', "+
+                            cap+
+                            regione+
+                            email+"', "+
+                            sito_web+"', "+
+                            orario+"', "+
+                            immagine+"'"+
+                            ")";
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            return false;
+        }
+    }
 }
