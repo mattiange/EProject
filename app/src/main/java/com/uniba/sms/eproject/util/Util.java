@@ -21,7 +21,7 @@ public class Util {
 
         if(parts.length == 2){
             parts = parts[1].split("\\.");
-            
+
             if(parts.length>=2)
                 return true;
         }

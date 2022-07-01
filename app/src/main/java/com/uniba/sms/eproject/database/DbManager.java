@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import com.uniba.sms.eproject.annotazioni.Autore;
+import com.uniba.sms.eproject.data.classes.Museo;
 
 import java.util.HashMap;
 
@@ -15,11 +16,8 @@ public class DbManager {
     private final static String DATABASE="ProgettoSMS.db";
     private final static int VERSIONE_DATABASE=1;
 
-    private Context context;
-
     public DbManager(Context context)      {
         helper=new MyHelper(context, DATABASE,  null, VERSIONE_DATABASE);
-        this.context = context;
     }
 
     /**
@@ -108,39 +106,27 @@ public class DbManager {
 
     /**
      * Inserisce un nuovo museo all'internod del database
-     * 
-     * @param nome
-     * @param telefono
-     * @param indirizzo
-     * @param citta
-     * @param regione
-     * @param provincia
-     * @param cap
-     * @param email
-     * @param sito_web
-     * @param orario
-     * @param immagine
+     *
+     * @param m Museo da inserire
      * @return
      */
-    public boolean inserisciMuseo(String nome, String telefono, String indirizzo, String citta,
-                                  String regione, String provincia, String cap, String email,
-                                  String sito_web, String orario, String immagine){
-        String insert1="INSERT INTO Museo (ID, Nome, Numero_Telefono, Indirizzo, Citta, " +
-                "                           Provincia, CAP, Regione, Email_contatti, Sito_Web, " +
-                "                           Orario_Apertura, Immagine_Museo) "
+    public boolean inserisciMuseo(Museo m){
+        String insert1="INSERT INTO Museo (ID, Nome, Numero_Telefono, Indirizzo, Citta, Provincia, CAP, Regione, Email_contatti, Sito_Web, Orario_Apertura, Immagine_Museo) "
                 + "VALUES (NULL," +
-                "           '"+nome+"','"+
-                            telefono+"', '"+
-                            indirizzo+"', '"+
-                            citta+"', '"+
-                            provincia+"', "+
-                            cap+
-                            regione+
-                            email+"', "+
-                            sito_web+"', "+
-                            orario+"', "+
-                            immagine+"'"+
-                            ")";
+                            "'"+m.getNome()+"','"+
+                            m.getTelefono()+"', '"+
+                            m.getIndirizzo()+"', '"+
+                            m.getCitta()+"', '"+
+                            m.getProvincia()+"', '"+
+                            m.getCap()+"', '"+
+                            m.getRegione()+"', '"+
+                            m.getEmail()+"', '"+
+                            m.getSito_web()+"', '"+
+                            m.getOrario()+"', '"+
+                            m.getImmagine()+"'"+
+                            ");";
+
+        System.out.println("---->" + insert1);
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
@@ -148,6 +134,8 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
+            System.out.println( ex.getMessage() );
+
             return false;
         }
     }

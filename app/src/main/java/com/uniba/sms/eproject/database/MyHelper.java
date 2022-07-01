@@ -45,14 +45,29 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Password TEXT NOT NULL," +
                 "tipo INTEGER NOT NULL)";
 
+        String museo = "CREATE TABLE Museo (" +
+                "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "Nome TEXT NOT NULL," +
+                "Numero_Telefono TEXT," +
+                "Indirizzo TEXT," +
+                "Citta TEXT," +
+                "Provincia TEXT," +
+                "CAP TEXT," +
+                "Regione TEXT," +
+                "Email_Contatti TEXT," +
+                "Sito_Web TEXT," +
+                "Orario_Apertura TEXT," +
+                "Immagine_Museo TEXT)";
+
         try{
             db.execSQL(utente);
+            db.execSQL(museo);
         }catch(SQLException ex){
             Toast.makeText(this.context , "onCreate() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         //Eseguo la query
-        inizializza(db);
+        //inizializza(db);
     }
 
     @Override

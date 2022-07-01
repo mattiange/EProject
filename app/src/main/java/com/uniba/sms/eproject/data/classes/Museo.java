@@ -12,8 +12,9 @@ public class Museo {
     String email;
     String sito_web;
     String orario;
+    String immagine;
 
-    public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario) {
+    public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, String immagine) {
         this.nome = nome;
         this.telefono = telefono;
         this.indirizzo = indirizzo;
@@ -24,6 +25,7 @@ public class Museo {
         this.email = email;
         this.sito_web = sito_web;
         this.orario = orario;
+        this.immagine = immagine;
     }
 
     public String getNome() {
@@ -104,5 +106,13 @@ public class Museo {
 
     public void setOrario(String orario) {
         this.orario = orario;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
+    public String getImmagine() {
+        return immagine;
     }
 }

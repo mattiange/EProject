@@ -14,7 +14,7 @@ import com.uniba.sms.eproject.data.classes.Museo;
 public class MuseoActivity extends AppCompatActivity {
 
     Museo museo = new Museo("test", "+39 34044030202", "indirizzo test","città test","regione test",
-            "provincia test", "cap test", "email@test.com", "www.test.it", "Aperto dalle 9 alle 20 dal Lunedì alla Domenica.");
+            "provincia test", "cap test", "email@test.com", "www.test.it", "Aperto dalle 9 alle 20 dal Lunedì alla Domenica.", "");
 
 
     @Override
