@@ -3,11 +3,11 @@ package com.uniba.sms.eproject.data.classes;
 public class Oggetto {
 
     String nome;
-    int anno;
+    String anno;
     String autore;
     String descrizione;
 
-    public Oggetto(String nome, int anno, String autore, String descrizione) {
+    public Oggetto(String nome, String anno, String autore, String descrizione) {
 
         this.nome = nome;
         this.anno = anno;
@@ -23,11 +23,11 @@ public class Oggetto {
         this.nome = nome;
     }
 
-    public int getAnno() {
+    public String getAnno() {
         return anno;
     }
 
-    public void setAnno(int anno) {
+    public void setAnno(String anno) {
         this.anno = anno;
     }
 

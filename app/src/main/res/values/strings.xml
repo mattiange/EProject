@@ -118,6 +118,16 @@
     <string name="crud_show_museo">Visualizza tutti i musei</string>
     <string name="crud_delete_museo">Cancella museo</string>
 
+    <string name="crud_manage_oggetto">Gestisci gli oggetti</string>
+    <string name="crud_create_oggetto">Crea un nuovo oggetto</string>
+    <string name="crud_show_oggetto">Visualizza tutti gli oggetti</string>
+    <string name="crud_delete_oggetto">Cancella oggetto</string>
+
+    <string name="crud_manage_zona">Gestisci le zone</string>
+    <string name="crud_create_zona">Crea una nuova zona</string>
+    <string name="crud_show_zona">Visualizza tutte le zone</string>
+    <string name="crud_delete_zona">Cancella zona</string>
+
     <string name="crud_txt_nome">Nome</string>
     <string name="crud_txt_telefono">Telefono</string>
     <string name="crud_txt_indirizzo">Indirizzo</string>
@@ -130,6 +140,9 @@
     <string name="crud_txt_orario_apertura">Orario \ndi apertura</string>
     <string name="crud_txt_immagine">Immagine</string>
     <string name="crud_txt_salva">Salva</string>
+    <string name="crud_txt_anno">Anno</string>
+    <string name="crud_txt_autore">Autore</string>
+    <string name="crud_txt_descrizione">Descr.</string>
     <!-- ///////////////////////////////////////////////// -->
 
 </resources>

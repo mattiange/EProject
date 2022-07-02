@@ -74,9 +74,14 @@
         </activity>
 
         <activity
+            android:name=".activity.crud.museo.CRUDMuseoActivity"
+            android:exported="true" >
+        </activity>
+
+        <activity
             android:name=".activity.crud.museo.CRUDMuseoCreateActivity"
             android:exported="true"
-            android:parentActivityName=".activity.crud.museo.CRUDMuseoCreateActivity" >
+            android:parentActivityName=".activity.crud.museo.CRUDMuseoActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -85,9 +90,27 @@
         </activity>
 
         <activity
-            android:name=".activity.crud.museo.CRUDMuseoActivity"
+            android:name=".activity.crud.oggetto.CRUDOggettoActivity"
             android:exported="true" >
         </activity>
+
+        <activity
+            android:name=".activity.crud.oggetto.CRUDOggettoCreateActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.crud.oggetto.CRUDOggettoActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.crud.zona.CRUDZonaActivity"
+            android:exported="true" >
+        </activity>
+
+        <activity
+            android:name=".activity.crud.zona.CRUDZonaCreateActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.crud.zona.CRUDZonaActivity" >
+        </activity>
+
     </application>
 
 </manifest>
