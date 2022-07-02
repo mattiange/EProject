@@ -40,6 +40,13 @@
             android:name=".activity.ZonaActivity"
             android:exported="true" >
         </activity>
+
+        <activity
+            android:name=".activity.ListaPercorsiActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.HomeActivity" >
+        </activity>
+
         <activity
             android:name=".activity.VisualizzaZonaActivity"
             android:exported="true"

@@ -18,8 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.data.classes.Zona;
 import com.uniba.sms.eproject.database.DbManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
@@ -27,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListView lv=null;
     private SimpleCursorAdapter adapter=null;
     private DbManager db=null;
+    private ArrayList<Zona> zone = new ArrayList<Zona>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
