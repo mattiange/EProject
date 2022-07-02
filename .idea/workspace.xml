@@ -33,12 +33,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/MuseoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/MuseoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/crud/museo/CRUDMuseoCreateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/crud/museo/CRUDMuseoCreateActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/data/classes/Museo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/data/classes/Museo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/database/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/database/MyHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/database/MyHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_crud_create_museo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_crud_create_museo.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
