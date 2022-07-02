@@ -45,6 +45,20 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Password TEXT NOT NULL," +
                 "tipo INTEGER NOT NULL)";
 
+        String zona = "CREATE TABLE Zona (" +
+                "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "Nome TEXT NOT NULL," +
+                "Provincia TEXT," +
+                "Regione TEXT," +
+                "CAP TEXT)";
+
+        String oggetto = "CREATE TABLE Oggetto (" +
+                "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "Nome TEXT NOT NULL," +
+                "Anno TEXT," +
+                "Autore TEXT," +
+                "Descrizione TEXT)";
+
         String museo = "CREATE TABLE Museo (" +
                 "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "Nome TEXT NOT NULL," +
@@ -58,6 +72,9 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Sito_Web TEXT," +
                 "Orario_Apertura TEXT," +
                 "Immagine_Museo TEXT)";
+
+
+
 
         try{
             db.execSQL(utente);

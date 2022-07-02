@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Museo;
+import com.uniba.sms.eproject.data.classes.Oggetto;
+import com.uniba.sms.eproject.data.classes.Zona;
 
 import java.util.HashMap;
 
@@ -105,7 +107,65 @@ public class DbManager {
     }
 
     /**
-     * Inserisce un nuovo museo all'internod del database
+     * Inserisce una nuova zona all'interno del database
+     *
+     * @param z Zona da inserire
+     * @return
+     */
+    public boolean inserisciZona(Zona z){
+        String insert1="INSERT INTO Zona (ID, Nome, Provincia, Regione) "
+                + "VALUES (NULL," +
+                "'"+z.getNome()+"','"+
+                z.getProvincia()+"', '"+
+                z.getRegione()+"', '"+
+                z.getCAP()+"', '"+
+                ");";
+
+        System.out.println("---->" + insert1);
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.out.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
+     * Inserisce un nuovo oggetto all'interno del database
+     *
+     * @param o Oggetto da inserire
+     * @return
+     */
+    public boolean inserisciOggetto(Oggetto o){
+        String insert1="INSERT INTO Oggetto (ID, Nome, Anno, Autore, Descrizione) "
+                + "VALUES (NULL," +
+                "'"+o.getNome()+"','"+
+                o.getAnno()+"', '"+
+                o.getAutore()+"', '"+
+                o.getDescrizione()+"', '"+
+                ");";
+
+        System.out.println("---->" + insert1);
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.out.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
+     * Inserisce un nuovo museo all'interno del database
      *
      * @param m Museo da inserire
      * @return
@@ -139,4 +199,5 @@ public class DbManager {
             return false;
         }
     }
+
 }
