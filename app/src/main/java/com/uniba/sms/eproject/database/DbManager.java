@@ -4,11 +4,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Museo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DbManager {
@@ -138,5 +140,47 @@ public class DbManager {
 
             return false;
         }
+    }
+
+    /**
+     * Restituisce tutti i musei presenti del database in un hash map.
+     *
+     *
+     * @return Restituisce un HashMap dove la chiave è il nome della colonna della tabella Museo
+     *          mentre il valore è il valore associato a quella colonna
+     */
+    public HashMap<String, String> visualizzaMusei(){
+        String query="SELECT * FROM Museo;";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        HashMap<String, String> al = null;
+
+
+        if (c.moveToFirst()){
+            al = new HashMap<>();
+
+            do {
+
+                al.put("ID", c.getString(0));
+                al.put("Nome", c.getString(1));
+                al.put("Numero_Telefono", c.getString(2));
+                al.put("Indirizzo", c.getString(3));
+                al.put("Citta", c.getString(4));
+                al.put("Provincia", c.getString(5));
+                al.put("CAP", c.getString(6));
+                al.put("Regione", c.getString(7));
+                al.put("Email_Contatti", c.getString(8));
+                al.put("Sito_Web", c.getString(9));
+                al.put("Orario_Apertura", c.getString(10));
+                al.put("Immagine_Museo", c.getString(11));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return null;
     }
 }
