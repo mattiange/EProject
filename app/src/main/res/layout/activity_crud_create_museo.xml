@@ -296,8 +296,6 @@
                 app:layout_constraintLeft_toRightOf="@+id/txt_orario_apertura_museo"
                 app:layout_constraintTop_toBottomOf="@+id/et_sito_museo" />
 
-            t
-
             <TextView
                 android:id="@+id/txt_immagini_museo"
                 android:layout_width="wrap_content"
@@ -309,7 +307,7 @@
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_orario_apertura_museo" />
-
+t
             <EditText
                 android:id="@+id/et_immagini_museo"
                 android:layout_width="206dp"
