@@ -319,19 +319,20 @@ t
                 app:layout_constraintLeft_toRightOf="@+id/txt_immagini_museo"
                 app:layout_constraintTop_toBottomOf="@+id/et_orario_apertura_museo" />
 
+            <!-- usato solamente per creare uno spazio sottostante
+            per evitare che il pulsante di salvataggio non
+            venga visualizzato per intero -->
+
             <Button
                 android:id="@+id/salva_museo"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
-                android:layout_marginBottom="550sp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/crud_txt_salva"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_immagini_museo" />
 
-            <!-- usato solamente per creare uno spazio sottostante
-            per evitare che il pulsante di salvataggio non
-            venga visualizzato per intero -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

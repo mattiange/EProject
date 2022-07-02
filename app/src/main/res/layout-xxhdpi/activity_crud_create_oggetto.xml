@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="192dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
+
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/labelObjectCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="35sp"
+                android:text="@string/crud_create_oggetto"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:visibility="visible" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <TextView
+                android:id="@+id/txt_nome_oggetto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_nome"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_nome_oggetto"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_oggetto"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/txt_anno_oggetto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_anno"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nome_oggetto" />
+
+            <EditText
+                android:id="@+id/et_anno_oggetto"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_oggetto"
+                app:layout_constraintTop_toBottomOf="@+id/et_nome_oggetto" />
+
+            <TextView
+                android:id="@+id/txt_autore_oggetto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_autore"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_anno_oggetto" />
+
+            <EditText
+                android:id="@+id/et_autore_oggetto"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_oggetto"
+                app:layout_constraintTop_toBottomOf="@+id/et_anno_oggetto" />
+
+            <TextView
+                android:id="@+id/txt_descrizione_oggetto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="@string/crud_txt_descrizione"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_autore_oggetto" />
+
+            t
+
+            <!-- usato solamente per creare uno spazio sottostante
+            per evitare che il pulsante di salvataggio non
+            venga visualizzato per intero -->
+
+            <EditText
+                android:id="@+id/et_descrizione_oggetto"
+                android:layout_width="206dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="60dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/txt_descrizione_oggetto"
+                app:layout_constraintTop_toBottomOf="@+id/et_autore_oggetto" />
+
+            <Button
+                android:id="@+id/salva_oggetto"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="48dp"
+                android:onClick="salvaOggetto"
+                android:text="@string/crud_txt_salva"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_descrizione_oggetto" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/salva_oggetto"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

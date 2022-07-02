@@ -1,6 +1,7 @@
 package com.uniba.sms.eproject.activity.crud.museo;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ import static com.uniba.sms.eproject.util.Util.checkEmail;
 /**
  * Questa classe serve a gestire l'activity activity_crud_create_museo.
  *
- * Questa activity Gestisce l'inserimento di un nuovo museo nel DB
+ * Questa activity gestisce l'inserimento di un nuovo museo nel DB
  */
 @Autore(autore = "Mattia Leonardo Angelillo")
 public class CRUDMuseoCreateActivity extends AppCompatActivity {
@@ -29,7 +30,6 @@ public class CRUDMuseoCreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crud_create_museo);
 
         salvaBtn();
-
 
     }
 
