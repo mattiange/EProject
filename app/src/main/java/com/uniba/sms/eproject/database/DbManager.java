@@ -204,8 +204,12 @@ public class DbManager {
     }
 
     /**
+     * Seleziona tutti i musei presenti nel database
      *
-     *
+     * @return HashMap<String, String>
+     *     Restituisce un ArrayList contenenente un HashMap con i musei
+     *     L'HashMap ha una coppia chiave/valore che rispettivamente
+     *     sono il nome del campo e il suo valore
      *
      * @return
      */
