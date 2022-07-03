@@ -56,7 +56,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnCRUD_show_museo"
+            android:id="@+id/btnCRUD_show_all_musei"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"

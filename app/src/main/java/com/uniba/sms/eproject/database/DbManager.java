@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.widget.Toast;
 
 import com.uniba.sms.eproject.annotazioni.Autore;
@@ -11,6 +12,8 @@ import com.uniba.sms.eproject.data.classes.Museo;
 import com.uniba.sms.eproject.data.classes.Oggetto;
 import com.uniba.sms.eproject.data.classes.Zona;
 
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DbManager {
@@ -200,4 +203,53 @@ public class DbManager {
         }
     }
 
+    /**
+     *
+     *
+     *
+     * @return
+     */
+    public ArrayList<HashMap<String, String>> visualizzaTuttiIMusei(){
+        String query="SELECT * FROM Museo";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<HashMap<String, String>> al = null;
+
+        System.out.println("visualizzaTuttiIMusei(): ");
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                HashMap<String, String> hm = new HashMap<>();
+
+                hm.put("ID", c.getString(0));
+                hm.put("Nome", c.getString(1));
+                hm.put("Numero_Telefono", c.getString(2));
+                hm.put("Indirizzo", c.getString(3));
+                hm.put("Citta", c.getString(4));
+                hm.put("Provincia", c.getString(5));
+                hm.put("CAP", c.getString(6));
+                hm.put("Regione", c.getString(7));
+                hm.put("Email_Contatti", c.getString(8));
+                hm.put("Sito_Web", c.getString(9));
+                hm.put("Orario_Apertura", c.getString(10));
+                hm.put("Immagine_Museo", c.getString(11));
+
+                /*System.out.println("NOME: " + hm.get("Nome"));
+                System.out.println("Numero_Telefono: " + hm.get("Numero_Telefono"));
+                System.out.println("Indirizzo: " + hm.get("Indirizzo"));
+                System.out.println("Immagine: " + hm.get("Immagine_Museo"));*/
+
+                al.add(hm);
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
 }

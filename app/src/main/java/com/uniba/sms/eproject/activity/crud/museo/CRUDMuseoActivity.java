@@ -20,6 +20,7 @@ import com.uniba.sms.eproject.R;
  */
 public class CRUDMuseoActivity extends AppCompatActivity {
     Button btnCreate;
+    Button btnShowAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +28,29 @@ public class CRUDMuseoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_crud_museo);
 
-        btnCreate = findViewById(R.id.btnCRUD_create_museo);
+        btnCreate   = findViewById(R.id.btnCRUD_create_museo);
+        btnShowAll  = findViewById(R.id.btnCRUD_show_all_musei);
 
         showNewMuseoActivity();
+        showAllMuseiActivity();
     }
 
+    /**
+     * Visualizza l'activity per creare un nuovo museo
+     */
     public void showNewMuseoActivity(){
         btnCreate.setOnClickListener( p->{
             Intent intent = new Intent(CRUDMuseoActivity.this, CRUDMuseoCreateActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    /**
+     * Visualizza tutti i musei
+     */
+    public void showAllMuseiActivity(){
+        btnShowAll.setOnClickListener( p->{
+            Intent intent = new Intent(CRUDMuseoActivity.this, CRUDMuseoListaActivity.class);
             startActivity(intent);
         });
     }

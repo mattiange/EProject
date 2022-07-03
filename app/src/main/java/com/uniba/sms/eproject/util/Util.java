@@ -1,6 +1,10 @@
 package com.uniba.sms.eproject.util;
 
+import android.graphics.Bitmap;
+
 import com.uniba.sms.eproject.annotazioni.Autore;
+
+import java.io.ByteArrayOutputStream;
 
 /**
  * Classe con metodi di utility comuni
@@ -27,5 +31,18 @@ public class Util {
         }
 
         return false;
+    }
+
+    /**
+     * Converte un'immagine Bitmap in una sequenza di byte
+     *
+     * @param bitmap
+     * @return
+     */
+    @Autore(autore = "Mattia Leonardo Angelillo")
+    public static byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        return stream.toByteArray();
     }
 }

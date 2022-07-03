@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/customshape_header"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/crud_lista_museo_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="-20sp"
+        android:layout_width="150sp"
+        android:layout_height="160sp"/>
+
+
+    <TextView
+        android:id="@+id/crud_lista_museo_name"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="160sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:background="@color/white_alpha_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
