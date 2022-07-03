@@ -242,11 +242,6 @@ public class DbManager {
                 hm.put("Orario_Apertura", c.getString(10));
                 hm.put("Immagine_Museo", c.getString(11));
 
-                /*System.out.println("NOME: " + hm.get("Nome"));
-                System.out.println("Numero_Telefono: " + hm.get("Numero_Telefono"));
-                System.out.println("Indirizzo: " + hm.get("Indirizzo"));
-                System.out.println("Immagine: " + hm.get("Immagine_Museo"));*/
-
                 al.add(hm);
 
             } while(c.moveToNext());
