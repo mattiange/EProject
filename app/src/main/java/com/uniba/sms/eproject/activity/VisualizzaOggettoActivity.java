@@ -20,7 +20,7 @@ public class VisualizzaOggettoActivity extends AppCompatActivity {
         labelObject.setText ( intentOggetto.getStringExtra("nome_oggetto") );
 
         TextView year = findViewById(R.id.year);
-        year.setText(intentOggetto.getIntExtra("anno_oggetto", 0));
+        year.setText(intentOggetto.getStringExtra("anno_oggetto"));
 
         TextView author = findViewById(R.id.author);
         author.setText(intentOggetto.getStringExtra("autore_oggetto"));
