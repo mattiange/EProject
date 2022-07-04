@@ -13,8 +13,12 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Museo;
@@ -44,6 +48,19 @@ public class CRUDMuseoCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_crud_create_museo);
+
+        //Add Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ////////////////////////////////////////////////////
+
+        //Drawer menu
+        DrawerLayout dl = findViewById(R.id.drawer_layout);
+        NavigationView nv = findViewById(R.id.menulaterale);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dl, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        dl.addDrawerListener(toggle);
+        toggle.syncState();
+        ////////////////////////////////////////////////////////////////////////////////
 
         intentLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
