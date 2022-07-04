@@ -37,6 +37,20 @@ public class CRUDSingleMuseoActivity extends AppCompatActivity {
         compilaDati();
 
         goToModifica();
+
+        goToDelete();
+    }
+
+    /**
+     * Porta all'activity per cancellare
+     * il museo
+     */
+    public void goToDelete(){
+        ((Button)findViewById(R.id.btn_museo_elimina)).setOnClickListener( p->{
+            Intent intent = new Intent(CRUDSingleMuseoActivity.this, CRUDMuseoCancellaActivity.class);
+            intent.putExtra("museo", museo);
+            startActivity( intent );
+        });
     }
 
     /**

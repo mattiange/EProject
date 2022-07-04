@@ -4,6 +4,8 @@
     <!-- Button -->
     <string name="btn_modifica">Modifica</string>
     <string name="btn_elimina">Elimina</string>
+    <string name="cancella">Cancella</string>
+    <string name="annulla">Annulla</string>
     <!-- /////////////////////////////////////// -->
 
     <string name="app_name">E-Culture Tool</string>

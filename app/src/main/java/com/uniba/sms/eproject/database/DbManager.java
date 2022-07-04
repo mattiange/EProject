@@ -4,15 +4,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.widget.Toast;
 
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Museo;
 import com.uniba.sms.eproject.data.classes.Oggetto;
 import com.uniba.sms.eproject.data.classes.Zona;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -224,7 +221,28 @@ public class DbManager {
                 "Immagine_Museo = '" + m.getImmagine() + "' " +
                 "WHERE ID = " + m.getID();
 
-        System.out.println("---->" + insert1);
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.out.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
+     * Cancella un museo
+     *
+     * @param id ID del museo
+     * @return
+     */
+    public boolean eliminaMuseo(int id){
+        String insert1="DELETE FROM Museo " +
+                "WHERE ID = " + id;
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
