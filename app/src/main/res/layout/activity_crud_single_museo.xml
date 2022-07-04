@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="192dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
+
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/labelMuseum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="35sp"
+                android:text="@string/crud_single_museo"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:visibility="visible" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <Button
+               android:id="@+id/btn_museo_modifica"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/btn_modifica"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toLeftOf="parent"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"/>
+           <Button
+               android:id="@+id/btn_museo_elimina"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/btn_elimina"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toRightOf="@+id/btn_museo_modifica"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp" />
+
+           <TextView
+               android:id="@+id/nome_museo"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:text="@string/museum_name"
+               android:textSize="30sp"
+               android:textAlignment="center"
+               android:textFontWeight="@integer/material_motion_duration_long_1"
+               android:textStyle="bold"
+               android:textAllCaps="true"
+               app:layout_constraintTop_toBottomOf="@id/btn_museo_modifica"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/telefono_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:text="@string/museum_phone"
+               android:layout_marginTop="10sp"
+               app:layout_constraintTop_toBottomOf="@id/nome_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/indirizzo_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_address"
+               app:layout_constraintTop_toBottomOf="@id/telefono_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/citta_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_city"
+               app:layout_constraintTop_toBottomOf="@id/indirizzo_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/provincia_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_provincia"
+               app:layout_constraintTop_toBottomOf="@id/citta_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/cap_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_zip_code"
+               app:layout_constraintTop_toBottomOf="@id/provincia_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/regione_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_region"
+               app:layout_constraintTop_toBottomOf="@id/cap_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/email_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_email"
+               app:layout_constraintTop_toBottomOf="@id/regione_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/sito_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_website"
+               app:layout_constraintTop_toBottomOf="@id/email_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/orario_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_website"
+               app:layout_constraintTop_toBottomOf="@id/sito_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <TextView
+               android:id="@+id/immagine_museo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10sp"
+               android:layout_marginTop="10sp"
+               android:text="@string/museum_image"
+               app:layout_constraintTop_toBottomOf="@id/orario_museo"
+               app:layout_constraintLeft_toLeftOf="parent" />
+
+           <ImageView
+               android:id="@+id/img_immagine_museo"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/immagine_museo" />
+       </androidx.constraintlayout.widget.ConstraintLayout>
+   </ScrollView>
+
+</LinearLayout>

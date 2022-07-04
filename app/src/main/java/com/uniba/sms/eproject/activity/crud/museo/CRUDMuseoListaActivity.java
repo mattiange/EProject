@@ -1,6 +1,7 @@
 package com.uniba.sms.eproject.activity.crud.museo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -8,12 +9,14 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +36,7 @@ import java.util.HashMap;
 public class CRUDMuseoListaActivity extends AppCompatActivity {
     private Bitmap[] mThumbIds;
     private String[] mNames;
+    private GridView gridview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +50,22 @@ public class CRUDMuseoListaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Porta all'activity per visualizzare i dati
+     * del singolo museo selezionato
+     */
     public void gridViewClick(){
+        Context c = this;
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                HashMap<String, String> museo = ((new DbManager(c).visualizzaTuttiIMusei())).get(position);
 
+                Intent intent = new Intent(CRUDMuseoListaActivity.this, CRUDSingleMuseoActivity.class);
+                intent.putExtra("museo", museo);
+                startActivity( intent );
+            }
+        });
     }
 
     /**
@@ -55,9 +73,12 @@ public class CRUDMuseoListaActivity extends AppCompatActivity {
      */
     @Autore(autore = "Mattia Leonardo Angelillo")
     public void displayMuseiList(){
-
         DbManager db = new DbManager(this);
         ArrayList<HashMap<String, String>> musei = db.visualizzaTuttiIMusei();
+        if(musei == null) {
+            Toast.makeText(this, "Nessun museo registrato nel database", Toast.LENGTH_SHORT).show();
+            return;
+        }
         mThumbIds = new Bitmap[musei.size()];
         mNames = new String[musei.size()];
 
@@ -70,7 +91,7 @@ public class CRUDMuseoListaActivity extends AppCompatActivity {
             mNames[posizione ++] = hm.get("Nome");
         }
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new MyAdapter(this));
         gridview.setNumColumns(4);
 

@@ -2,6 +2,7 @@ package com.uniba.sms.eproject.data.classes;
 
 public class Museo {
 
+    int ID;
     String nome;
     String telefono;
     String indirizzo;
@@ -15,6 +16,10 @@ public class Museo {
     String immagine;
 
     public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, String immagine) {
+        this(0, nome, telefono, indirizzo, citta, regione, provincia, cap, email, sito_web, orario, immagine);
+    }
+    public Museo(int id, String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, String immagine) {
+        this.ID = id;
         this.nome = nome;
         this.telefono = telefono;
         this.indirizzo = indirizzo;
@@ -26,6 +31,10 @@ public class Museo {
         this.sito_web = sito_web;
         this.orario = orario;
         this.immagine = immagine;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getNome() {

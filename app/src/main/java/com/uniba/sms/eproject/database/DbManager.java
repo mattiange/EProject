@@ -204,6 +204,41 @@ public class DbManager {
     }
 
     /**
+     * Aggiorna un museo
+     *
+     * @param m Nuovi dati del museo da aggiornare
+     * @return
+     */
+    public boolean aggiornaMuseo(Museo m){
+        String insert1="UPDATE Museo SET " +
+                "Nome = '" + m.getNome() + "', "+
+                "Numero_Telefono = '" + m.getTelefono() + "', "+
+                "Indirizzo = '" + m.getIndirizzo() + "', "+
+                "Citta = '" + m.getCitta() + "', "+
+                "Provincia = '" + m.getProvincia() + "', "+
+                "CAP = '" + m.getCap() + "', "+
+                "Regione = '" + m.getRegione() + "', "+
+                "Email_Contatti = '" + m.getEmail() + "', "+
+                "Sito_Web = '" + m.getSito_web() + "', "+
+                "Orario_Apertura = '" + m.getOrario() + "', "+
+                "Immagine_Museo = '" + m.getImmagine() + "' " +
+                "WHERE ID = " + m.getID();
+
+        System.out.println("---->" + insert1);
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.out.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
      * Seleziona tutti i musei presenti nel database
      *
      * @return HashMap<String, String>

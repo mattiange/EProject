@@ -1,5 +1,11 @@
 <resources>
 
+
+    <!-- Button -->
+    <string name="btn_modifica">Modifica</string>
+    <string name="btn_elimina">Elimina</string>
+    <!-- /////////////////////////////////////// -->
+
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="login">Login</string>
@@ -95,21 +101,25 @@
     <string name="change_museum">Cambia Museo</string>
     <string name="delete_museum">Elimina Museo</string>
 
-    <string name="museum_name">Nome Museo</string>
-    <string name="museum_phone">Numero di telefono:</string>
-    <string name="museum_address">Indirizzo:</string>
-    <string name="museum_city">Città:</string>
-    <string name="museum_region">Regione:</string>
-    <string name="museum_provincia">Provincia:</string>
-    <string name="museum_zip_code">CAP:</string>
-    <string name="museum_email">E-mail:</string>
-    <string name="museum_website">Sito Web:</string>
-    <string name="museum_hours">Orari di apertura/chiusura:</string>
+    <string name="museum_name">Nome Museo: </string>
+    <string name="museum_phone">Numero di telefono: </string>
+    <string name="museum_address">Indirizzo: </string>
+    <string name="museum_city">Città: </string>
+    <string name="museum_region">Regione: </string>
+    <string name="museum_provincia">Provincia: </string>
+    <string name="museum_zip_code">C.A.P.: </string>
+    <string name="museum_email">E-mail: </string>
+    <string name="museum_website">Sito Web: </string>
+    <string name="museum_hours">Orari di apertura/chiusura: </string>
+    <string name="museum_image">Immagine: </string>
     <!-- ///////////////////////////////////////////////// -->
 
     <!-- CRUD -->
     <string name="crud_manage_museo">Gestisci i musei</string>
     <string name="crud_create_museo">Crea un nuovo museo</string>
+    <string name="crud_update_museo">Aggiorna il museo</string>
+    <string name="crud_lista_museo">Elenco di tutti i musei</string>
+    <string name="crud_single_museo">Visualizzazione museo</string>
     <string name="crud_show_museo">Visualizza tutti i musei</string>
     <string name="crud_delete_museo">Cancella museo</string>
 
