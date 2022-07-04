@@ -60,6 +60,7 @@ public class CRUDMuseoModificaActivity extends AppCompatActivity {
                     }
 
                     imageUri = result.getData().getData();//Salvo l'URI dell'immagine selezionata per il museo
+                    Toast.makeText(this, "immagine caricata correttamente", Toast.LENGTH_SHORT).show();
                     System.out.println("RES: " + result.getData().getData());
 
 
@@ -121,6 +122,16 @@ public class CRUDMuseoModificaActivity extends AppCompatActivity {
         if(db.aggiornaMuseo(museo)){
             Toast.makeText(this, "Museo aggiornato con successo", Toast.LENGTH_SHORT).show();
             clear();
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Intent intent = new Intent(CRUDMuseoModificaActivity.this, CRUDSingleMuseoActivity.class);
+            intent.putExtra("museo", this.museo);
+            startActivity(intent);
         }else{
             Toast.makeText(this, "Problema nell'aggiornamento del museo", Toast.LENGTH_SHORT).show();
         }
@@ -161,7 +172,7 @@ public class CRUDMuseoModificaActivity extends AppCompatActivity {
             }
 
             //Aggiorno il museo sul database
-            updateMuseo(new Museo(
+            Museo m = new Museo(
                     Integer.parseInt(museo.get("ID")),
                     ((TextView)findViewById(R.id.et_nome_museo)).getText().toString(),
                     ((TextView)findViewById(R.id.et_telefono_museo)).getText().toString(),
@@ -174,7 +185,24 @@ public class CRUDMuseoModificaActivity extends AppCompatActivity {
                     ((TextView)findViewById(R.id.et_sito_museo)).getText().toString(),
                     ((TextView)findViewById(R.id.et_orario_apertura_museo)).getText().toString(),
                     imageUriString
-            ));
+            );
+            museo = new HashMap<>();
+            museo.put("ID", String.valueOf(m.getID()));
+            museo.put("Nome", m.getNome());
+            museo.put("Numero_Telefono", m.getTelefono());
+            museo.put("Indirizzo", m.getIndirizzo());
+            museo.put("Citta", m.getCitta());
+            museo.put("Provincia", m.getProvincia());
+            museo.put("CAP", m.getCap());
+            museo.put("Regione", m.getRegione());
+            museo.put("Email_Contatti", m.getEmail());
+            museo.put("Sito_Web", m.getSito_web());
+            museo.put("Orario_Apertura", m.getOrario());
+            museo.put("Immagine_Museo", m.getImmagine());
+
+            updateMuseo(m);
+
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         });
     }
 
