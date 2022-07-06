@@ -18,8 +18,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.database.DbManager;
@@ -44,6 +48,22 @@ public class CRUDMuseoListaActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_crud_lista_museo);
 
+
+        //Add Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ////////////////////////////////////////////////////
+
+        //Drawer menu
+        DrawerLayout dl = findViewById(R.id.drawer_layout);
+        NavigationView nv = findViewById(R.id.menulaterale);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dl, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        dl.addDrawerListener(toggle);
+        toggle.syncState();
+        ////////////////////////////////////////////////////////////////////////////////
+
+        gridview = (GridView)findViewById(R.id.gridview);
+
         displayMuseiList();
 
         gridViewClick();
@@ -56,15 +76,12 @@ public class CRUDMuseoListaActivity extends AppCompatActivity {
      */
     public void gridViewClick(){
         Context c = this;
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                HashMap<String, String> museo = ((new DbManager(c).visualizzaTuttiIMusei())).get(position);
+        gridview.setOnItemClickListener( (p1, p2, p3, p4)->{
+            HashMap<String, String> museo = ((new DbManager(c).visualizzaTuttiIMusei())).get(p3);
 
-                Intent intent = new Intent(CRUDMuseoListaActivity.this, CRUDSingleMuseoActivity.class);
-                intent.putExtra("museo", museo);
-                startActivity( intent );
-            }
+            Intent intent = new Intent(CRUDMuseoListaActivity.this, CRUDSingleMuseoActivity.class);
+            intent.putExtra("museo", museo);
+            startActivity( intent );
         });
     }
 
