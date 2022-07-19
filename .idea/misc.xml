@@ -26,6 +26,22 @@
         <entry key="..\:/Android/EProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.5546875" />
         <entry key="..\:/Android/EProject/app/src/main/res/menu/menu.xml" value="0.5546875" />
         <entry key="..\:/SMS/EProject/app/src/main/res/layout/activity_crud_create_museo.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_crud_oggetto.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_oggetto.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_oggetto_view.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_registration.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout-xxhdpi/activity_zona.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/activity_crud_create_museo.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_crud_create_percorso.xml" value="0.37184917062952905" />
+        <entry key="app/src/main/res/layout/activity_crud_lista_museo.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/activity_crud_lista_row.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_museo.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/activity_museo_view.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/activity_percorso.xml" value="0.312194108816893" />
+        <entry key="app/src/main/res/layout/activity_percorso_view.xml" value="0.22093353271484378" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
       </map>
     </option>
   </component>
