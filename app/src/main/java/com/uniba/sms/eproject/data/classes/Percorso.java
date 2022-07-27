@@ -8,9 +8,9 @@ public class Percorso {
     int durata;
 
     /** Da Implementare**/
-    Museo museo = new Museo();
-    Zona zone = new Zona();
-    Oggetto oggetti = new Oggetto();
+    Museo museo;
+    Zona zone;
+    Oggetto oggetti;
 
 
     public Percorso(int ID, String nome, String descrizione, int durata) {

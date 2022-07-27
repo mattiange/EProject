@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.annotazioni.Autore;
 
 /**
  * Questa classe serve a gestire l'activity activity_crud_museo.
@@ -24,6 +25,7 @@ import com.uniba.sms.eproject.R;
  *     <li>Visualizzazione di tutti i musei</li>
  * </ul>
  */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class CRUDMuseoActivity extends AppCompatActivity {
     Button btnCreate;
     Button btnShowAll;

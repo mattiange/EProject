@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.annotazioni.Autore;
 
 /**
  * Questa classe serve a gestire l'activity activity_crud_oggetto.
@@ -18,6 +19,7 @@ import com.uniba.sms.eproject.R;
  *     <li>Visualizzazione di tutti gli oggetti aggiunti</li>
  * </ul>
  */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class CRUDOggettoActivity extends AppCompatActivity {
     Button btnCreate;
 
