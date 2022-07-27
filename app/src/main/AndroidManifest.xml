@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.uniba.sms.eproject" >
 
     <application
@@ -45,6 +46,12 @@
             android:name=".activity.ListaPercorsiActivity"
             android:exported="true"
             android:parentActivityName=".activity.HomeActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.PercorsoActivity"
+            android:exported="true">
+
         </activity>
 
         <activity
@@ -129,6 +136,18 @@
             android:name=".activity.crud.zona.CRUDZonaCreateActivity"
             android:exported="true"
             android:parentActivityName=".activity.crud.zona.CRUDZonaActivity" >
+        </activity>
+
+        <activity
+            android:name=".activity.crud.zona.CRUDZonaActivity"
+            android:exported="true"
+            tools:ignore="DuplicateActivity">
+        </activity>
+
+        <activity
+            android:name=".activity.crud.percorso.CRUDPercorsoCreateActivity"
+            android:exported="true"
+            android:parentActivityName=".activity.crud.percorso.CRUDPercorsoActivity" >
         </activity>
 
     </application>
