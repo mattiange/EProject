@@ -83,11 +83,6 @@
         <activity
             android:name=".activity.crud.museo.CRUDMuseoActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -130,12 +125,19 @@
         <activity
             android:name=".activity.crud.zona.CRUDZonaActivity"
             android:exported="true" >
+
         </activity>
 
         <activity
             android:name=".activity.crud.zona.CRUDZonaCreateActivity"
             android:exported="true"
             android:parentActivityName=".activity.crud.zona.CRUDZonaActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
