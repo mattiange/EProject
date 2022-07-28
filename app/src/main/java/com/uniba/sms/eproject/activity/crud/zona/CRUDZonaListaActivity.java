@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uniba.sms.eproject.R;
 
 /**
- * Questa classe serve a gestire l'activity activity_crud_zona.
+ * Questa classe serve a gestire l'activity activity_crud_lista_zona.
  *
- * Questa activity visualizza il CRUD per la gestione delle zone.
+ * Questa activity visualizza l'elenco di tutte le zone.
  * Le funzuioni che offre sono:
  * <ul>
  *     <li>Aggiunta nuova zona</li>
