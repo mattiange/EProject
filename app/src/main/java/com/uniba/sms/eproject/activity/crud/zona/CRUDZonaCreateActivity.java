@@ -24,7 +24,7 @@ public class CRUDZonaCreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_crud_create_oggetto);
+        setContentView(R.layout.activity_crud_create_zona);
 
         //salvaBtn();
 

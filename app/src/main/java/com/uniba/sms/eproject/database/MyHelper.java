@@ -78,6 +78,8 @@ public class MyHelper  extends SQLiteOpenHelper {
 
         try{
             db.execSQL(utente);
+            db.execSQL(zona);
+            db.execSQL(oggetto);
             db.execSQL(museo);
         }catch(SQLException ex){
             Toast.makeText(this.context , "onCreate() => " + ex.getMessage(), Toast.LENGTH_LONG).show();

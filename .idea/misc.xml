@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Android/EProject/app/src/main/res/drawable/customshape_header.xml" value="0.2545" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.3145833333333333" />
+        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.5546875" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_oggetto.xml" value="0.3151041666666667" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_zona.xml" value="0.3151041666666667" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_home.xml" value="0.5546875" />

@@ -113,12 +113,12 @@ public class DbManager {
      * @return
      */
     public boolean inserisciZona(Zona z){
-        String insert1="INSERT INTO Zona (ID, Nome, Provincia, Regione) "
+        String insert1="INSERT INTO Zona (ID, Nome, Provincia, Regione, CAP) "
                 + "VALUES (NULL," +
                 "'"+z.getNome()+"','"+
                 z.getProvincia()+"', '"+
                 z.getRegione()+"', '"+
-                z.getCAP()+"', '"+
+                z.getCAP()+"'"+
                 ");";
 
         System.out.println("---->" + insert1);
