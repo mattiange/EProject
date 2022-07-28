@@ -26,7 +26,7 @@ public class CRUDZonaCreateActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_crud_create_zona);
 
-        //salvaBtn();
+        salvaZona();
 
 
     }
@@ -59,13 +59,13 @@ public class CRUDZonaCreateActivity extends AppCompatActivity {
      * Click sul bottone di salvataggio
      */
     @Autore(autore = "Mattia Leonardo Angelillo")
-    public void salvaZona(View view){
-
+    public void salvaZona(){
+        (findViewById(R.id.salva_zona)).setOnClickListener(p->
             registraZona(new Zona(
                     ((TextView)findViewById(R.id.et_nome_zona)).getText().toString(),
                     ((TextView)findViewById(R.id.et_provincia_zona)).getText().toString(),
                     ((TextView)findViewById(R.id.et_regione_zona)).getText().toString(),
                     ((TextView)findViewById(R.id.et_cap_zona)).getText().toString()
-            ));
+            )));
     }
 }
