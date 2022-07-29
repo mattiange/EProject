@@ -106,14 +106,17 @@ public class DbManager {
         return utente;
     }
 
+    //////////////////////////// GESTIONE ZONE
+
     /**
      * Inserisce una nuova zona all'interno del database
      *
      * @param z Zona da inserire
      * @return
      */
+    @Autore(autore = "Mattia")
     public boolean inserisciZona(Zona z){
-        String insert1="INSERT INTO Zona (ID, Nome, Provincia, Regione, CAP) "
+        String insert1="INSERT INTO Zone (ID, Nome, Provincia, Regione, CAP) "
                 + "VALUES (NULL," +
                 "'"+z.getNome()+"','"+
                 z.getProvincia()+"', '"+
@@ -136,11 +139,56 @@ public class DbManager {
     }
 
     /**
+     * Seleziona tutte le zone presenti nel database
+     *
+     * @return HashMap<String, String>
+     *     Restituisce un ArrayList contenenente un HashMap con le zone.
+     *
+     *     L'HashMap ha una coppia chiave/valore che rispettivamente
+     *     sono il nome del campo e il suo valore
+     *
+     * @return
+     */
+    @Autore(autore = "Mattia")
+    public ArrayList<HashMap<String, String>> visualizzaTutteLeZone(){
+        String query="SELECT * FROM Zone";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<HashMap<String, String>> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                HashMap<String, String> hm = new HashMap<>();
+
+                hm.put("ID", c.getString(0));
+                hm.put("Nome", c.getString(1));
+                hm.put("Provincia", c.getString(2));
+                hm.put("Regione", c.getString(3));
+                hm.put("CAP", c.getString(4));
+
+                al.add(hm);
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
+
+    /////////////////////////////// GESTIONE OGGETTO
+
+    /**
      * Inserisce un nuovo oggetto all'interno del database
      *
      * @param o Oggetto da inserire
      * @return
      */
+    @Autore(autore = "Mattia")
     public boolean inserisciOggetto(Oggetto o){
         String insert1="INSERT INTO Oggetto (ID, Nome, Anno, Autore, Descrizione) "
                 + "VALUES (NULL," +
@@ -164,12 +212,15 @@ public class DbManager {
         }
     }
 
+    ///////////////////////////// GESTIONE MUSEO
+
     /**
      * Inserisce un nuovo museo all'interno del database
      *
      * @param m Museo da inserire
      * @return
      */
+    @Autore(autore = "Mattia")
     public boolean inserisciMuseo(Museo m){
         String insert1="INSERT INTO Museo (ID, Nome, Numero_Telefono, Indirizzo, Citta, Provincia, CAP, Regione, Email_contatti, Sito_Web, Orario_Apertura, Immagine_Museo) "
                 + "VALUES (NULL," +
@@ -206,6 +257,7 @@ public class DbManager {
      * @param m Nuovi dati del museo da aggiornare
      * @return
      */
+    @Autore(autore = "Mattia")
     public boolean aggiornaMuseo(Museo m){
         String insert1="UPDATE Museo SET " +
                 "Nome = '" + m.getNome() + "', "+
@@ -240,6 +292,7 @@ public class DbManager {
      * @param id ID del museo
      * @return
      */
+    @Autore(autore = "Mattia")
     public boolean eliminaMuseo(int id){
         String insert1="DELETE FROM Museo " +
                 "WHERE ID = " + id;
@@ -266,6 +319,7 @@ public class DbManager {
      *
      * @return
      */
+    @Autore(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTuttiIMusei(){
         String query="SELECT * FROM Museo";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -273,8 +327,6 @@ public class DbManager {
         Cursor c = db.rawQuery(query, null);
 
         ArrayList<HashMap<String, String>> al = null;
-
-        System.out.println("visualizzaTuttiIMusei(): ");
 
         if (c.moveToFirst()){
             al = new ArrayList<>();

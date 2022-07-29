@@ -45,7 +45,7 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Password TEXT NOT NULL," +
                 "tipo INTEGER NOT NULL)";
 
-        String zona = "CREATE TABLE Zona (" +
+        String zona = "CREATE TABLE Zone (" +
                 "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "Nome TEXT NOT NULL," +
                 "Provincia TEXT," +
