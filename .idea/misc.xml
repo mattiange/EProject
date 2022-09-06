@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/EProject/app/src/main/res/drawable/customshape_header.xml" value="0.2545" />
+        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_baseline_qr_code_scanner_24.xml" value="0.4255" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.3145833333333333" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.5546875" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_oggetto.xml" value="0.3151041666666667" />
@@ -32,6 +33,8 @@
         <entry key="..\:/Android/EProject/app/src/main/res/layout/navigation_view.xml" value="0.5536458333333333" />
         <entry key="..\:/Android/EProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.5546875" />
         <entry key="..\:/Android/EProject/app/src/main/res/menu/menu.xml" value="0.5546875" />
+        <entry key="..\:/Android/EProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4255" />
+        <entry key="..\:/Android/EProject/app/src/main/res/mipmap-anydpi-v26/menu_icon_signature_.xml" value="0.4255" />
         <entry key="..\:/SMS/EProject/app/src/main/res/layout/activity_crud_create_museo.xml" value="0.1" />
         <entry key="app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.182518115942029" />
         <entry key="app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.182518115942029" />

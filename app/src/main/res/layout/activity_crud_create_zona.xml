@@ -53,7 +53,7 @@
                 android:text="@string/crud_txt_nome"
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/et_nome_museo"
+                app:layout_constraintLeft_toRightOf="@+id/labelZona"
                 app:layout_constraintTop_toBottomOf="@+id/labelZona" />
 
             <EditText
