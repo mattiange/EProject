@@ -3,7 +3,6 @@ package com.uniba.sms.eproject.activity.crud.zona;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,7 +67,7 @@ public class CRUDZonaActivity extends AppCompatActivity {
      */
     public void showAllZone(){
         btnZone.setOnClickListener(p->{
-            Intent intent = new Intent(CRUDZonaActivity.this, CRUDZonaListaActivity.class);
+            Intent intent = new Intent(CRUDZonaActivity.this, CRUDZonaRegioneListaActivity.class);
             startActivity(intent);
         });
     }

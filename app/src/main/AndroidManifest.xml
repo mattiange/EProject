@@ -36,7 +36,8 @@
             android:exported="true"></activity>
         <activity
             android:name=".activity.ZonaActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+            </activity>
         <activity
             android:name=".activity.ListaPercorsiActivity"
             android:exported="true"
@@ -88,9 +89,18 @@
         <activity
             android:name=".activity.crud.zona.CRUDZonaActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.crud.zona.CRUDZonaListaActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activity.crud.zona.CRUDZonaRegioneListaActivity"
             android:exported="true"></activity>
         <activity
             android:name=".activity.crud.zona.CRUDZonaCreateActivity"
@@ -104,11 +114,6 @@
             android:name=".activity.crud.percorso.CRUDPercorsoCreateActivity"
             android:exported="true"
             android:parentActivityName=".activity.crud.percorso.CRUDPercorsoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

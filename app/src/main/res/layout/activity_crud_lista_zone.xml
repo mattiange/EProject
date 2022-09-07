@@ -35,7 +35,7 @@
                 android:id="@+id/labelZone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/crud_show_zona"
+                android:text="@string/crud_lista_zone"
                 android:textSize="35sp"
                 android:visibility="visible"
                 app:layout_constraintRight_toRightOf="parent"

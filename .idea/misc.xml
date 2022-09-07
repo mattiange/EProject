@@ -25,7 +25,8 @@
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_delete_museo.xml" value="0.26975683890577506" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_museo.xml" value="0.2717391304347826" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_row.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zona.xml" value="0.5546875" />
+        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zona.xml" value="0.22" />
+        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zonei.xml" value="0.3145833333333333" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_museo.xml" value="0.3140625" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_single_museo.xml" value="0.2717391304347826" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_update_museo.xml" value="0.27355072463768115" />

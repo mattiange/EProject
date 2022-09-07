@@ -152,6 +152,8 @@
     <string name="crud_show_oggetto">Visualizza tutti gli oggetti</string>
     <string name="crud_delete_oggetto">Cancella oggetto</string>
 
+    <string name="crud_regioni_zone">Regioni con delle zone attive</string>
+    <string name="crud_lista_zone">Elenco delle zone disponibili</string>
     <string name="crud_manage_zona">Gestisci le zone</string>
     <string name="crud_create_zona">Crea una nuova zona</string>
     <string name="crud_show_zona">Visualizza tutte le zone</string>

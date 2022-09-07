@@ -180,6 +180,38 @@ public class DbManager {
         return al;
     }
 
+    /**
+     * Recupera tutte le regioni presenti all'interno delle zone
+     *
+     * @return
+     */
+    @Autore(autore = "Mattia")
+    public ArrayList<HashMap<String, String>> visualizzaTutteLeRegioniDelleZone(){
+        String query="SELECT Regione FROM Zone GROUP BY Regione";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<HashMap<String, String>> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                HashMap<String, String> hm = new HashMap<>();
+
+                hm.put("Regione", c.getString(0));
+
+                al.add(hm);
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
+
     /////////////////////////////// GESTIONE OGGETTO
 
     /**
