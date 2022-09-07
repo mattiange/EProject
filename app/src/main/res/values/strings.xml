@@ -139,10 +139,13 @@
     <string name="crud_txt_salva">Salva</string>
     <string name="crud_txt_seleziona_immagine">Seleziona immagine</string>
 
-
     <string name="crud_txt_anno">Anno</string>
     <string name="crud_txt_autore">Autore</string>
     <string name="crud_txt_descrizione">Descr.</string>
+
+    <string name="crud_manage_percorso">Gestisci i percorsi</string>
+    <string name="crud_create_percorso">Nuovo percorso</string>
+    <string name="crud_nome_percorso">Nome percorso</string>
 
     <string name="crud_manage_oggetto">Gestisci gli oggetti</string>
     <string name="crud_create_oggetto">Crea un nuovo oggetto</string>
