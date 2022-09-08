@@ -3,9 +3,7 @@ package com.uniba.sms.eproject.activity.crud.oggetto;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +14,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.activity.generiche.ListViewActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
-import com.uniba.sms.eproject.database.DbManager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import static com.uniba.sms.eproject.Azioni.VISUALIZZA_REGIONI;
+import static com.uniba.sms.eproject.Azioni.NUOVA_ZONA;
 
 /**
  * Questa classe serve a gestire l'activity activity_crud_oggetto.
@@ -67,6 +64,8 @@ public class CRUDOggettoActivity extends AppCompatActivity {
     public void showNewOggettoActivity(){
         btnCreate.setOnClickListener( p->{
             Intent intent = new Intent(CRUDOggettoActivity.this, ListViewActivity.class);
+            intent.putExtra("azione", String.valueOf(NUOVA_ZONA));
+            intent.putExtra("funzione", String.valueOf(VISUALIZZA_REGIONI));
             startActivity(intent);
         });
     }

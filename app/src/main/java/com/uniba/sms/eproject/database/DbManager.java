@@ -222,7 +222,7 @@ public class DbManager {
     @Autore(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeProvinceDiUnaRegione(String regione){
         String query="SELECT provincia FROM Zone WHERE regione = '"+regione+"' GROUP BY provincia";
-        System.out.println( query );
+        System.out.println("QUERY: " + query);
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
