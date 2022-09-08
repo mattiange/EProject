@@ -111,7 +111,7 @@ public class ListViewActivity extends AppCompatActivity {
             Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
             intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
-            intent.putExtra("id", provincia);
+            intent.putExtra("id", (String)listView.getItemAtPosition(position));
             startActivity(intent);
         });
     }
