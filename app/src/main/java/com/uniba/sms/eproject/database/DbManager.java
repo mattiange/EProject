@@ -257,12 +257,13 @@ public class DbManager {
      */
     @Autore(autore = "Mattia")
     public boolean inserisciOggetto(Oggetto o){
-        String insert1="INSERT INTO Oggetto (ID, Nome, Anno, Autore, Descrizione) "
+        String insert1="INSERT INTO Oggetto (ID, Nome, Anno, Autore, Descrizione, id_zona) "
                 + "VALUES (NULL," +
                 "'"+o.getNome()+"','"+
                 o.getAnno()+"', '"+
                 o.getAutore()+"', '"+
                 o.getDescrizione()+"', '"+
+                o.getId_zona() + "'" +
                 ");";
 
         System.out.println("---->" + insert1);

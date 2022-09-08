@@ -2,6 +2,7 @@ package com.uniba.sms.eproject.activity.crud.oggetto;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,11 +44,30 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
         toggle.syncState();
         ////////////////////////////////////////////////////////////////////////////////
 
-        //salvaBtn();
-
         //Recupero la zona
         TextView tv = findViewById(R.id.et_zona_oggetto);
         tv.setText(getIntent().getExtras().getString("zona_id"));
+
+        //Pulsante di salvataggio
+        Button btn = findViewById(R.id.salva_oggetto);
+        btn.setOnClickListener( v->{
+            salvaOggetto();
+        });
+    }
+
+    /**
+     * Click sul bottone di salvataggio
+     */
+    @Autore(autore = "Mattia Leonardo Angelillo")
+    public void salvaOggetto(){
+
+        registraOggetto(new Oggetto(
+                ((TextView)findViewById(R.id.et_nome_oggetto)).getText().toString(),
+                ((TextView)findViewById(R.id.et_anno_oggetto)).getText().toString(),
+                ((TextView)findViewById(R.id.et_autore_oggetto)).getText().toString(),
+                ((TextView)findViewById(R.id.et_descrizione_oggetto)).getText().toString(),
+                ((TextView)findViewById(R.id.et_zona_oggetto)).getText().toString()
+        ));
     }
 
     /**
@@ -72,19 +92,5 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.et_anno_oggetto)).setText("");
         ((TextView)findViewById(R.id.et_autore_oggetto)).setText("");
         ((TextView)findViewById(R.id.et_descrizione_oggetto)).setText("");
-    }
-
-    /**
-     * Click sul bottone di salvataggio
-     */
-    @Autore(autore = "Mattia Leonardo Angelillo")
-    public void salvaOggetto(View view){
-
-            registraOggetto(new Oggetto(
-                    ((TextView)findViewById(R.id.et_nome_oggetto)).getText().toString(),
-                    ((TextView)findViewById(R.id.et_anno_oggetto)).getText().toString(),
-                    ((TextView)findViewById(R.id.et_autore_oggetto)).getText().toString(),
-                    ((TextView)findViewById(R.id.et_descrizione_oggetto)).getText().toString()
-            ));
     }
 }

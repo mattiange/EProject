@@ -6,13 +6,15 @@ public class Oggetto {
     String anno;
     String autore;
     String descrizione;
+    String id_zona;
 
-    public Oggetto(String nome, String anno, String autore, String descrizione) {
+    public Oggetto(String nome, String anno, String autore, String descrizione, String id_zona) {
 
         this.nome = nome;
         this.anno = anno;
         this.autore = autore;
         this.descrizione = descrizione;
+        this.id_zona = id_zona;
     }
 
     public String getNome() {
@@ -45,4 +47,11 @@ public class Oggetto {
 
     public void setDescrizione(String descrizione) { this.descrizione = descrizione; }
 
+    public void setId_zona(String id_zona) {
+        this.id_zona = id_zona;
+    }
+
+    public String getId_zona() {
+        return id_zona;
+    }
 }
