@@ -72,11 +72,18 @@ public class CRUDZonaProvinciaListaActivity extends AppCompatActivity {
      */
     public void gridViewClick(){
         Context c = this;
-        gridview.setOnItemClickListener( (p1, p2, p3, p4)->{
-            //HashMap<String, String> museo = ((new DbManager(c).visualizzaTuttiIMusei())).get(p3);
+        gridview.setOnItemClickListener( (p1, p2, position, p4)->{
+
+            HashMap<String, String> zone = ((new DbManager(c).visualizzaTutteLeZoneByProvincia(
+                    (String) (gridview.getItemAtPosition(position)))
+            )).get(position);
+
+            System.out.println((String) (gridview.getItemAtPosition(position)));
+            System.out.println( "Province di una regione: " + new DbManager(c).visualizzaTutteLeZoneByProvincia(
+                    (String) (gridview.getItemAtPosition(position))) );
 
             Intent intent = new Intent(CRUDZonaProvinciaListaActivity.this, CRUDZonaListaActivity.class);
-            //intent.putExtra("museo", museo);
+            intent.putExtra("zone", zone);
             startActivity( intent );
         });
     }
@@ -88,8 +95,6 @@ public class CRUDZonaProvinciaListaActivity extends AppCompatActivity {
     public void displayZonaList(){
         Intent intent = getIntent();
         HashMap<String, String> province = (HashMap<String, String>)intent.getSerializableExtra("province");
-
-        DbManager db = new DbManager(this);
 
         if(province.size() == 0) {
             Toast.makeText(this, "Nessuna zona registrata nel database", Toast.LENGTH_SHORT).show();

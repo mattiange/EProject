@@ -139,7 +139,8 @@ public class DbManager {
     }
 
     /**
-     * Seleziona tutte le zone presenti nel database
+     *
+     * Seleziona tutte le zone presenti nel database, per una specifica provincia
      *
      * @return HashMap<String, String>
      *     Restituisce un ArrayList contenenente un HashMap con le zone.
@@ -147,11 +148,12 @@ public class DbManager {
      *     L'HashMap ha una coppia chiave/valore che rispettivamente
      *     sono il nome del campo e il suo valore
      *
+     * @param provincia
      * @return
      */
     @Autore(autore = "Mattia")
-    public ArrayList<HashMap<String, String>> visualizzaTutteLeZoneByRegione(String regione){
-        String query="SELECT * FROM Zone WHERE Regione = '" + regione + "'";
+    public ArrayList<HashMap<String, String>> visualizzaTutteLeZoneByProvincia(String provincia){
+        String query="SELECT * FROM Zone WHERE Provincia = '" + provincia + "'";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
@@ -220,6 +222,7 @@ public class DbManager {
     @Autore(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeProvinceDiUnaRegione(String regione){
         String query="SELECT provincia FROM Zone WHERE regione = '"+regione+"' GROUP BY provincia";
+        System.out.println( query );
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
