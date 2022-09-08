@@ -28,6 +28,11 @@ import static com.uniba.sms.eproject.Azioni.NUOVA_ZONA;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
 
+/**
+ * Unica ListView utilizzata per molteplici activity.
+ *
+ * Sceglie cosa visualizzare in base ai dati passati alla intent.
+ */
 public class ListViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
