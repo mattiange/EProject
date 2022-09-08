@@ -56,6 +56,7 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Nome TEXT NOT NULL," +
                 "Anno TEXT," +
                 "Autore TEXT," +
+                "id_zona INTEGER," +
                 "Descrizione TEXT)";
 
         String museo = "CREATE TABLE Museo (" +
