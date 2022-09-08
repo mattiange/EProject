@@ -25,7 +25,6 @@
         android:layout_width="match_parent"
         android:layout_marginTop="50dp"
         android:textSize="45dp"
-        android:text="@string/crud_create_oggetto"
         android:layout_height="match_parent"></TextView>
 
     <ScrollView

@@ -70,8 +70,8 @@
                 android:id="@+id/txt_autore_oggetto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="36dp"
                 android:layout_weight="1"
                 android:text="@string/crud_txt_autore"
                 android:textSize="20sp"
@@ -142,18 +142,45 @@
                 app:layout_constraintLeft_toRightOf="@+id/txt_descrizione_oggetto"
                 app:layout_constraintTop_toBottomOf="@+id/et_autore_oggetto" />
 
+
+            <TextView
+                android:id="@+id/txt_zona_oggetto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="104dp"
+                android:layout_weight="1"
+                android:text="@string/crud_zona_id"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_descrizione_oggetto" />
+
+            <EditText
+                android:id="@+id/et_zona_oggetto"
+                android:layout_width="206dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="72dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toRightOf="@+id/txt_nome_oggetto"
+                app:layout_constraintStart_toEndOf="@+id/txt_autore_oggetto"
+                app:layout_constraintTop_toBottomOf="@+id/et_descrizione_oggetto" />
+
             <Button
                 android:id="@+id/salva_oggetto"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginStart="88dp"
+                android:layout_marginTop="36dp"
                 android:onClick="salvaOggetto"
                 android:text="@string/crud_txt_salva"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_descrizione_oggetto" />
+                app:layout_constraintTop_toBottomOf="@+id/et_zona_oggetto" />
 
             <!-- Usato per evitare che il pulsante non venga
             visualizzato per intero -->

@@ -73,7 +73,9 @@ public class ListViewActivity extends AppCompatActivity {
                 case NUOVA_ZONA:
                     //Riporta alla creazione di un nuovo oggetto
                     //aggiungere l'ID della zona!!!!!
-                    startActivity(new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class));
+
+                    startActivity(new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class)
+                                    .putExtra("zona_id", getIntent().getExtras().getString("id")));
                     break;
             }
         }catch(NullPointerException e){}//Eccezione lanciata se si arriva a questo punto senza un'azione passata
@@ -91,7 +93,7 @@ public class ListViewActivity extends AppCompatActivity {
             tv.setText("Non è stata trovata alcuna zona per la provincia: " + provincia);
             return;
         }
-        
+
         String zoneStr[] = new String[zone.size()];
 
         int pos = 0;
@@ -109,6 +111,7 @@ public class ListViewActivity extends AppCompatActivity {
             Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
             intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
+            intent.putExtra("id", provincia);
             startActivity(intent);
         });
     }

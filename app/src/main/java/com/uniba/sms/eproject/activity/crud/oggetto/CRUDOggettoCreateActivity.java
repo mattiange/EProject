@@ -45,6 +45,9 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
 
         //salvaBtn();
 
+        TextView tv = findViewById(R.id.et_zona_oggetto);
+        tv.setText(getIntent().getExtras().getString("zona_id"));
+
 
     }
 

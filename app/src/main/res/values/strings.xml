@@ -141,6 +141,7 @@
 
     <string name="crud_txt_anno">Anno</string>
     <string name="crud_txt_autore">Autore</string>
+    <string name="crud_zona_id">Zona</string>
     <string name="crud_txt_descrizione">Descr.</string>
 
     <string name="crud_manage_percorso">Gestisci i percorsi</string>
