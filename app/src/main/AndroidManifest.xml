@@ -103,6 +103,9 @@
             android:name=".activity.crud.zona.CRUDZonaRegioneListaActivity"
             android:exported="true"></activity>
         <activity
+            android:name=".activity.crud.zona.CRUDZonaProvinciaListaActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".activity.crud.zona.CRUDZonaCreateActivity"
             android:exported="true"
             android:parentActivityName=".activity.crud.zona.CRUDZonaActivity"></activity>

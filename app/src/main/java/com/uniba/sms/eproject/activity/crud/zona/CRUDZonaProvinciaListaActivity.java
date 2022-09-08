@@ -20,13 +20,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
-import com.uniba.sms.eproject.activity.crud.museo.CRUDMuseoListaActivity;
-import com.uniba.sms.eproject.activity.crud.museo.CRUDSingleMuseoActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.database.DbManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Questa classe serve a gestire l'activity activity_crud_lista_zona.
@@ -39,9 +38,8 @@ import java.util.HashMap;
  *     <li>Visualizzazione di tutte le zone aggiunte</li>
  * </ul>
  */
-public class CRUDZonaRegioneListaActivity extends AppCompatActivity {
+public class CRUDZonaProvinciaListaActivity extends AppCompatActivity {
 
-    private Bitmap[] mThumbIds;
     private String[] mNames;
     GridView gridview;
 
@@ -49,7 +47,7 @@ public class CRUDZonaRegioneListaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_crud_lista_zona_regioni);
+        setContentView(R.layout.activity_crud_lista_zona_province);
 
         //Add Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -70,18 +68,15 @@ public class CRUDZonaRegioneListaActivity extends AppCompatActivity {
     }
 
     /**
-     * Visualizza le province di una regione
+     * Visualizza le zone di una regione
      */
     public void gridViewClick(){
         Context c = this;
-        gridview.setOnItemClickListener( (p1, p2, position, p4)->{
-            HashMap<String, String> province = ((new DbManager(c).visualizzaTutteLeProvinceDiUnaRegione(
-                                                                        (String) (gridview.getItemAtPosition(position)))
-                                                                    )
-                                                ).get(position);
+        gridview.setOnItemClickListener( (p1, p2, p3, p4)->{
+            //HashMap<String, String> museo = ((new DbManager(c).visualizzaTuttiIMusei())).get(p3);
 
-            Intent intent = new Intent(CRUDZonaRegioneListaActivity.this, CRUDZonaProvinciaListaActivity.class);
-            intent.putExtra("province", province);
+            Intent intent = new Intent(CRUDZonaProvinciaListaActivity.this, CRUDZonaListaActivity.class);
+            //intent.putExtra("museo", museo);
             startActivity( intent );
         });
     }
@@ -91,16 +86,39 @@ public class CRUDZonaRegioneListaActivity extends AppCompatActivity {
      */
     @Autore(autore = "Mattia Leonardo Angelillo")
     public void displayZonaList(){
+        Intent intent = getIntent();
+        HashMap<String, String> province = (HashMap<String, String>)intent.getSerializableExtra("province");
+
+        //System.out.println( "EXTRAS ===>" + province );
+
         DbManager db = new DbManager(this);
-        ArrayList<HashMap<String, String>> regioni = db.visualizzaTutteLeRegioniDelleZone();
-        if(regioni == null) {
+        /*ArrayList<HashMap<String, String>> zone = db.visualizzaTutteLeRegioniDelleZone();
+        if(zone == null) {
             Toast.makeText(this, "Nessuna zona registrata nel database", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        mNames = new String[regioni.size()];
-        for(int i=0;i<regioni.size(); i ++){
-            mNames[i] = regioni.get(i).get("Regione");
+        mNames = new String[zone.size()];
+        for(int i=0;i<zone.size(); i ++){
+            mNames[i] = zone.get(i).get("Provincia");
+        }
+
+        gridview = (GridView) findViewById(R.id.gridviewZone);
+        gridview.setAdapter(new MyAdapter(this));
+        gridview.setNumColumns(4);*/
+
+        if(province.size() == 0) {
+            Toast.makeText(this, "Nessuna zona registrata nel database", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Stampo tutte le province
+        mNames = new String[province.size()];
+        int i = 0;
+        for(Map.Entry<String, String> v : province.entrySet()){
+            mNames[i] = v.getValue();
+
+            i ++;
         }
 
         gridview = (GridView) findViewById(R.id.gridviewZone);
@@ -160,7 +178,6 @@ public class CRUDZonaRegioneListaActivity extends AppCompatActivity {
             //Se la View è nulla allora crea
             //una nuova new per il context dell'activity
             if(convertView==null){
-                grid = new View(mContext);
                 LayoutInflater inflater=getLayoutInflater();
                 grid=inflater.inflate(R.layout.activity_crud_lista_row, parent, false);
             }else{//altrimenti la variabile grid sarà uguale
