@@ -89,23 +89,7 @@ public class CRUDZonaProvinciaListaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         HashMap<String, String> province = (HashMap<String, String>)intent.getSerializableExtra("province");
 
-        //System.out.println( "EXTRAS ===>" + province );
-
         DbManager db = new DbManager(this);
-        /*ArrayList<HashMap<String, String>> zone = db.visualizzaTutteLeRegioniDelleZone();
-        if(zone == null) {
-            Toast.makeText(this, "Nessuna zona registrata nel database", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        mNames = new String[zone.size()];
-        for(int i=0;i<zone.size(); i ++){
-            mNames[i] = zone.get(i).get("Provincia");
-        }
-
-        gridview = (GridView) findViewById(R.id.gridviewZone);
-        gridview.setAdapter(new MyAdapter(this));
-        gridview.setNumColumns(4);*/
 
         if(province.size() == 0) {
             Toast.makeText(this, "Nessuna zona registrata nel database", Toast.LENGTH_SHORT).show();
