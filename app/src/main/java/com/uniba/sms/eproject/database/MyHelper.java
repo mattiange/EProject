@@ -40,7 +40,6 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "Nome TEXT NOT NULL," +
                 "Cognome TEXT NOT NULL," +
-                "Username TEXT UNIQUE," +
                 "Email TEXT NOT NULL UNIQUE," +
                 "Password TEXT NOT NULL," +
                 "tipo INTEGER NOT NULL)";
@@ -68,7 +67,7 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Provincia TEXT," +
                 "CAP TEXT," +
                 "Regione TEXT," +
-                "Email_Contatti TEXT," +
+                "Email_Contatti TEXT UNIQUE," +
                 "Sito_Web TEXT," +
                 "Orario_Apertura TEXT," +
                 "Immagine_Museo TEXT)";
