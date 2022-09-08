@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,6 +29,8 @@ import java.util.HashMap;
 import static com.uniba.sms.eproject.Azioni.NUOVA_ZONA;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
+
+import org.w3c.dom.Text;
 
 /**
  * Unica ListView utilizzata per molteplici activity.
@@ -80,12 +84,15 @@ public class ListViewActivity extends AppCompatActivity {
      * @param provincia
      */
     public void visualizzaZone(String provincia){
-        System.out.println(provincia);
-
         ArrayList<HashMap<String, String>> zone = new DbManager(this).visualizzaTutteLeZoneByProvincia(provincia);
-        String zoneStr[] = new String[zone.size()];
 
-        System.out.println("province: " + zone);
+        if(zone == null){
+            TextView tv = findViewById(R.id.listTVEmpty);
+            tv.setText("Non è stata trovata alcuna zona per la provincia: " + provincia);
+            return;
+        }
+        
+        String zoneStr[] = new String[zone.size()];
 
         int pos = 0;
         for(HashMap<String, String> hm : zone){
@@ -110,7 +117,16 @@ public class ListViewActivity extends AppCompatActivity {
      * Visualizza tutte le zone delle regioni
      */
     public void visualizzaRegioni(){
+        System.out.println( "REGIONI" );
+
         ArrayList<HashMap<String, String>> regioni = new DbManager(this).visualizzaTutteLeRegioniDelleZone();
+
+        if(regioni == null){
+            TextView tv = findViewById(R.id.listTVEmpty);
+            tv.setText("Non è stata trovata alcuna regione per le zone");
+            return;
+        }
+
         String regioniStr[] = new String[regioni.size()];
 
         int pos = 0;
@@ -139,6 +155,13 @@ public class ListViewActivity extends AppCompatActivity {
      */
     public void visualizzaProvince(String regione){
         ArrayList<HashMap<String, String>> province = new DbManager(this).visualizzaTutteLeProvinceDiUnaRegione(regione);
+
+        if(province == null){
+            TextView tv = findViewById(R.id.listTVEmpty);
+            tv.setText("Non è stata trovata alcuna provincia nella regione: " + regione);
+            return;
+        }
+
         String provinceStr[] = new String[province.size()];
 
         int pos = 0;
