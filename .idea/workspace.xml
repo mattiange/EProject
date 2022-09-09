@@ -27,8 +27,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/crud/oggetto/CRUDOggettoCreateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/crud/oggetto/CRUDOggettoCreateActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/generiche/ListViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/generiche/ListViewActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

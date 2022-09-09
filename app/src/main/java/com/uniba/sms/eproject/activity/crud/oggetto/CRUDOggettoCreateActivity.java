@@ -117,6 +117,7 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
             Intent intent = new Intent(CRUDOggettoCreateActivity.this, ListViewActivity.class);
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
             intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+            intent.putExtra("regione", getIntent().getExtras().getString("regione"));
             startActivity(intent);
 
             return true;

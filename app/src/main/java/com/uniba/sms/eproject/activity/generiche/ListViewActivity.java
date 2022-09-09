@@ -2,6 +2,7 @@ package com.uniba.sms.eproject.activity.generiche;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +29,7 @@ import java.util.HashMap;
 
 import static com.uniba.sms.eproject.Azioni.NUOVA_ZONA;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
+import static com.uniba.sms.eproject.Azioni.VISUALIZZA_REGIONI;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
 
 import org.w3c.dom.Text;
@@ -65,18 +67,17 @@ public class ListViewActivity extends AppCompatActivity {
                     visualizzaRegioni();
                     break;
                 case VISUALIZZA_PROVINCE:
-                    System.out.println("===>PROVINCE");
                     visualizzaProvince(getIntent().getExtras().getString("regione"));
                     break;
                 case VISUALIZZA_ZONE:
                     visualizzaZone(getIntent().getExtras().getString("provincia"));
                     break;
                 case NUOVA_ZONA:
-                    System.out.println("===>ZONE");
                     //Riporta alla creazione di un nuovo oggetto
                     startActivity(new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class)
                                     .putExtra("zona_id", getIntent().getExtras().getString("id"))
-                                    .putExtra("provincia", getIntent().getExtras().getString("provincia")));
+                                    .putExtra("provincia", getIntent().getExtras().getString("provincia"))
+                                    .putExtra("regione", getIntent().getExtras().getString("regione")));
                     break;
             }
         }catch(NullPointerException e){}//Eccezione lanciata se si arriva a questo punto senza un'azione passata
@@ -114,7 +115,7 @@ public class ListViewActivity extends AppCompatActivity {
             intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
             intent.putExtra("id", (String)listView.getItemAtPosition(position));
             intent.putExtra("provincia", provincia);
-            System.out.println("PROV: " + provincia);
+            intent.putExtra("regione", getIntent().getExtras().getString("regione"));
             startActivity(intent);
         });
     }
@@ -149,7 +150,6 @@ public class ListViewActivity extends AppCompatActivity {
             intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_PROVINCE));
             intent.putExtra("regione", (String)listView.getItemAtPosition(position));
-            //finish();
             startActivity(intent);
         });
     }
@@ -184,8 +184,51 @@ public class ListViewActivity extends AppCompatActivity {
             intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
             intent.putExtra("provincia", (String)listView.getItemAtPosition(position));
+            intent.putExtra("regione", regione);
             startActivity(intent);
         });
     }
 
+
+    /**
+     * Riporta alla visualizzazione delle zone per la provincia
+     * precedentemente inviata.
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            String s = getIntent().getExtras().getString("funzione");
+
+            switch (Azioni.valueOf(s)){
+                case VISUALIZZA_ZONE: {
+                        Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
+                        intent.putExtra("funzione", String.valueOf(VISUALIZZA_PROVINCE));
+                        intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+                        intent.putExtra("regione", getIntent().getExtras().getString("regione"));
+                        startActivity(intent);
+                    }
+                    break;
+                case VISUALIZZA_PROVINCE: {
+                        Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
+                        intent.putExtra("funzione", String.valueOf(VISUALIZZA_REGIONI));
+                        intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+                        startActivity(intent);
+                    }
+                    break;
+                case VISUALIZZA_REGIONI:{
+                    Intent intent = new Intent(ListViewActivity.this, CRUDOggettoActivity.class);
+                    startActivity(intent);
+                }
+                break;
+
+            }
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
