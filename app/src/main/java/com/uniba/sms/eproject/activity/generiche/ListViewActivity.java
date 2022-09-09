@@ -65,17 +65,18 @@ public class ListViewActivity extends AppCompatActivity {
                     visualizzaRegioni();
                     break;
                 case VISUALIZZA_PROVINCE:
+                    System.out.println("===>PROVINCE");
                     visualizzaProvince(getIntent().getExtras().getString("regione"));
                     break;
                 case VISUALIZZA_ZONE:
                     visualizzaZone(getIntent().getExtras().getString("provincia"));
                     break;
                 case NUOVA_ZONA:
+                    System.out.println("===>ZONE");
                     //Riporta alla creazione di un nuovo oggetto
-                    //aggiungere l'ID della zona!!!!!
-
                     startActivity(new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class)
-                                    .putExtra("zona_id", getIntent().getExtras().getString("id")));
+                                    .putExtra("zona_id", getIntent().getExtras().getString("id"))
+                                    .putExtra("provincia", getIntent().getExtras().getString("provincia")));
                     break;
             }
         }catch(NullPointerException e){}//Eccezione lanciata se si arriva a questo punto senza un'azione passata
@@ -112,6 +113,8 @@ public class ListViewActivity extends AppCompatActivity {
             intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
             intent.putExtra("id", (String)listView.getItemAtPosition(position));
+            intent.putExtra("provincia", provincia);
+            System.out.println("PROV: " + provincia);
             startActivity(intent);
         });
     }
@@ -120,8 +123,6 @@ public class ListViewActivity extends AppCompatActivity {
      * Visualizza tutte le zone delle regioni
      */
     public void visualizzaRegioni(){
-        System.out.println( "REGIONI" );
-
         ArrayList<HashMap<String, String>> regioni = new DbManager(this).visualizzaTutteLeRegioniDelleZone();
 
         if(regioni == null){

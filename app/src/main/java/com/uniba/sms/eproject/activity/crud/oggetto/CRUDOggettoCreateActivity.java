@@ -1,6 +1,11 @@
 package com.uniba.sms.eproject.activity.crud.oggetto;
 
+import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
+import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.activity.generiche.ListViewActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Oggetto;
 import com.uniba.sms.eproject.database.DbManager;
@@ -47,6 +53,9 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
         //Recupero la zona
         TextView tv = findViewById(R.id.et_zona_oggetto);
         tv.setText(getIntent().getExtras().getString("zona_id"));
+
+        TextView provincia = findViewById(R.id.txtProvinciaZona);
+        provincia.setText( provincia.getText().toString().concat(getIntent().getExtras().getString("provincia")));
 
         //Pulsante di salvataggio
         Button btn = findViewById(R.id.salva_oggetto);
@@ -92,5 +101,26 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.et_anno_oggetto)).setText("");
         ((TextView)findViewById(R.id.et_autore_oggetto)).setText("");
         ((TextView)findViewById(R.id.et_descrizione_oggetto)).setText("");
+    }
+
+    /**
+     * Riporta alla visualizzazione delle zone per la provincia
+     * precedentemente inviata.
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(CRUDOggettoCreateActivity.this, ListViewActivity.class);
+            intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
+            intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+            startActivity(intent);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

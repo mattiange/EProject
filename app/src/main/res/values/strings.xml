@@ -153,6 +153,7 @@
     <string name="crud_show_oggetto">Visualizza tutti gli oggetti</string>
     <string name="crud_delete_oggetto">Cancella oggetto</string>
 
+    <string name="crud_provincia">Provincia: </string>
     <string name="crud_province_zone">Province con delle zone attive</string>
     <string name="crud_regioni_zone">Regioni con delle zone attive</string>
     <string name="crud_lista_zone">Elenco delle zone disponibili</string>
