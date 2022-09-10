@@ -163,7 +163,6 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            System.out.println("==========>" + zona_id);
             Intent intent = new Intent(CRUDOggettoCreateActivity.this, ListViewActivity.class);
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
             intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
