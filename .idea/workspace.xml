@@ -24,7 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ebff61-e559-43e2-b325-98d9d7e75ded" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_row_option_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_row_option_style.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/generiche/ListViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/uniba/sms/eproject/activity/generiche/ListViewActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

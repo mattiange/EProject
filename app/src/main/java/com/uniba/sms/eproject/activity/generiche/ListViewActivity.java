@@ -94,6 +94,7 @@ public class ListViewActivity extends AppCompatActivity {
      * Reindirizza all'activity per visualizzare gli oggetti di una zona
      * @param zona ID della zona degli oggetti da visualizzare
      */
+    @SuppressLint("UseCompatLoadingForDrawables")
     public void visualizzaOggetti(int zona){
         ArrayList<Oggetto> oggetti = new DbManager(this).visualizzaOggettiByZona(zona);
 
