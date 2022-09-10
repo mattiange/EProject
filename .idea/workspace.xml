@@ -24,9 +24,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5ebff61-e559-43e2-b325-98d9d7e75ded" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_listview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_listview.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_row.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/listview_row_option_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/listview_row_option_style.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

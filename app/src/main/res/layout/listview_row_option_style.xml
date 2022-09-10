@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 Layout per la visualizzazione delle righe di un elemento.
 Contiene:
@@ -6,7 +7,6 @@ Contiene:
 - ImageButton per la modifica dell'elemento
 - ImageButton per la cancellazione dell'elemento
 -->
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
