@@ -123,8 +123,7 @@ public class DbManager {
                 z.getRegione()+"', '"+
                 z.getCAP()+"'"+
                 ");";
-
-        System.out.println("---->" + insert1);
+        
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
@@ -132,7 +131,7 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            System.out.println( ex.getMessage() );
+            System.err.println( ex.getMessage() );
 
             return false;
         }
@@ -152,19 +151,20 @@ public class DbManager {
      * @return
      */
     @Autore(autore = "Mattia")
-    public ArrayList<HashMap<String, String>> visualizzaTutteLeZoneByProvincia(String provincia){
+    public ArrayList<Zona> visualizzaTutteLeZoneByProvincia(String provincia){
         String query="SELECT * FROM Zone WHERE Provincia = '" + provincia + "'";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
 
-        ArrayList<HashMap<String, String>> al = null;
+        //ArrayList<HashMap<String, String>> al = null;
+        ArrayList<Zona> al = new ArrayList<>();
 
         if (c.moveToFirst()){
             al = new ArrayList<>();
 
             do {
-                HashMap<String, String> hm = new HashMap<>();
+                /*HashMap<String, String> hm = new HashMap<>();
 
                 hm.put("ID", c.getString(0));
                 hm.put("Nome", c.getString(1));
@@ -172,7 +172,16 @@ public class DbManager {
                 hm.put("Regione", c.getString(3));
                 hm.put("CAP", c.getString(4));
 
-                al.add(hm);
+                al.add(hm);*/
+
+                al.add(new Zona(
+                        c.getString(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getString(3),
+                        c.getString(4)
+                        )
+                );
 
             } while(c.moveToNext());
         }
@@ -222,7 +231,7 @@ public class DbManager {
     @Autore(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeProvinceDiUnaRegione(String regione){
         String query="SELECT provincia FROM Zone WHERE regione = '"+regione+"' GROUP BY provincia";
-        System.out.println("QUERY: " + query);
+
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
@@ -250,6 +259,71 @@ public class DbManager {
     /////////////////////////////// GESTIONE OGGETTO
 
     /**
+     * Aggiorna un oggetto esistente.
+     * L'oggetto da modificare viene identificato mediante
+     * il campo ID.
+     *
+     * @param id ID dell'oggetto
+     * @param o Dati del nuovo oggetto
+     * @return Restituisce <string>true</string> se la modifica ha successo
+     *          <string>false</string> altrimenti.
+     */
+    public boolean updateOggetto(int id, Oggetto o){
+        String insert1="UPDATE Oggetto "
+                + "SET " +
+                "Nome = '"+o.getNome()+"', Anno = '"+
+                o.getAnno()+"', Autore = '"+
+                o.getAutore()+"', Descrizione = '"+
+                o.getDescrizione()+"';";
+
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
+     * Restituisce un singolo oggetto in base al suo ID
+     *
+     * @param id ID dell'oggetto
+     * @return Restituisce l'oggetto ottenuto. Restituisce <strong>null</strong> se non
+     *         trova nessun oggetto.
+     */
+    public Oggetto getOggetto(int id){
+        Oggetto ogg = null;
+
+        String query="SELECT * FROM Oggetto WHERE id = " + id + "";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()){
+            do {
+                ogg = new Oggetto(
+                        c.getString(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getString(3),
+                        c.getString(5),
+                        c.getInt(4)
+                );
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return ogg;
+    }
+
+    /**
      * Inserisce un nuovo oggetto all'interno del database
      *
      * @param o Oggetto da inserire
@@ -266,7 +340,6 @@ public class DbManager {
                 o.getId_zona() + "'" +
                 ");";
 
-        System.out.println("---->" + insert1);
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
@@ -274,10 +347,47 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            System.out.println( ex.getMessage() );
+            System.err.println( ex.getMessage() );
 
             return false;
         }
+    }
+
+    /**
+     *
+     * Recupero tutti gli oggetti di una zona
+     *
+     * @param id_zona
+     * @return
+     */
+    public ArrayList<Oggetto> visualizzaOggettiByZona(int id_zona){
+        String query="SELECT * FROM Oggetto WHERE id_zona = " + id_zona + "";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        //ArrayList<HashMap<String, String>> al = null;
+        ArrayList<Oggetto> al = new ArrayList<>();
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                al.add(new Oggetto(
+                        c.getString(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getString(3),
+                        c.getString(4),
+                        c.getInt(5)
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
     }
 
     ///////////////////////////// GESTIONE MUSEO
@@ -305,7 +415,6 @@ public class DbManager {
                             m.getImmagine()+"'"+
                             ");";
 
-        System.out.println("---->" + insert1);
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
@@ -313,7 +422,7 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            System.out.println( ex.getMessage() );
+            System.err.println( ex.getMessage() );
 
             return false;
         }
@@ -348,7 +457,7 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            System.out.println( ex.getMessage() );
+            System.err.println( ex.getMessage() );
 
             return false;
         }
@@ -371,7 +480,7 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            System.out.println( ex.getMessage() );
+            System.err.println( ex.getMessage() );
 
             return false;
         }

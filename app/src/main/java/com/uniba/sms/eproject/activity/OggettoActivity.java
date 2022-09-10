@@ -13,7 +13,7 @@ import com.uniba.sms.eproject.data.classes.Oggetto;
 
 public class OggettoActivity extends AppCompatActivity {
 
-    Oggetto oggetto = new Oggetto("test", "2004", "test", "test test test", "test");
+    Oggetto oggetto = new Oggetto("test", "2004", "test", 1, "test");
 
 
     @Override

@@ -5,9 +5,12 @@ package com.uniba.sms.eproject;
  * eseguire nel programma.
  */
 public enum Azioni {
+    UPDATE,
+
     //Funzioni
     NUOVA_ZONA,
     VISUALIZZA_REGIONI,
     VISUALIZZA_PROVINCE,
-    VISUALIZZA_ZONE
+    VISUALIZZA_ZONE,
+    VISUALIZZA_OGGETTI
 }

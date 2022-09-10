@@ -330,8 +330,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_qr_code_scanner_24" />
-                            <entry key="sourceFile" value="D:\SMS\EProject" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_trash_can" />
+                            <entry key="sourceFile" value="E:\xampp\htdocs\Teatralmente Gioia\I-Love-Teatro-Site\frontend\web\css\fontawesome-free-6.0.0-beta2-web\svgs\solid\trash-can.svg" />
                           </map>
                         </option>
                       </PersistentState>

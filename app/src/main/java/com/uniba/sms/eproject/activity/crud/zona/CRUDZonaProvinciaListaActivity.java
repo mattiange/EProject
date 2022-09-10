@@ -74,7 +74,7 @@ public class CRUDZonaProvinciaListaActivity extends AppCompatActivity {
         Context c = this;
         gridview.setOnItemClickListener( (p1, p2, position, p4)->{
 
-            HashMap<String, String> zone = ((new DbManager(c).visualizzaTutteLeZoneByProvincia(
+            /*HashMap<String, String> zone = ((new DbManager(c).visualizzaTutteLeZoneByProvincia(
                     (String) (gridview.getItemAtPosition(position)))
             )).get(position);
 
@@ -84,7 +84,7 @@ public class CRUDZonaProvinciaListaActivity extends AppCompatActivity {
 
             Intent intent = new Intent(CRUDZonaProvinciaListaActivity.this, CRUDZonaListaActivity.class);
             intent.putExtra("zone", zone);
-            startActivity( intent );
+            startActivity( intent );*/
         });
     }
 

@@ -2,14 +2,19 @@ package com.uniba.sms.eproject.data.classes;
 
 public class Oggetto {
 
+    String id;
     String nome;
     String anno;
     String autore;
     String descrizione;
-    String id_zona;
+    int id_zona;
 
-    public Oggetto(String nome, String anno, String autore, String descrizione, String id_zona) {
+    public Oggetto(String nome, String anno, String autore, int id_zona, String descrizione) {
+        this(null, nome, anno, autore, descrizione, id_zona);
+    }
 
+    public Oggetto(String id, String nome, String anno, String autore, String descrizione, int id_zona) {
+        this.id = id;
         this.nome = nome;
         this.anno = anno;
         this.autore = autore;
@@ -47,11 +52,19 @@ public class Oggetto {
 
     public void setDescrizione(String descrizione) { this.descrizione = descrizione; }
 
-    public void setId_zona(String id_zona) {
+    public void setId_zona(int id_zona) {
         this.id_zona = id_zona;
     }
 
-    public String getId_zona() {
+    public int getId_zona() {
         return id_zona;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

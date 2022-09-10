@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Android/EProject/app/src/main/res/drawable/customshape_header.xml" value="0.2545" />
         <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_baseline_qr_code_scanner_24.xml" value="0.4255" />
+        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_pen.xml" value="0.3175" />
+        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_trash_can.xml" value="0.3175" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.3145833333333333" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.5546875" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_oggetto.xml" value="0.3151041666666667" />
@@ -37,6 +39,7 @@
         <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_museo.xml" value="0.33469202898550726" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/delete_button.xml" value="0.5536458333333333" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/listview_row.xml" value="0.3145833333333333" />
+        <entry key="..\:/Android/EProject/app/src/main/res/layout/listview_row_option_style.xml" value="0.22" />
         <entry key="..\:/Android/EProject/app/src/main/res/layout/navigation_view.xml" value="0.5536458333333333" />
         <entry key="..\:/Android/EProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.5546875" />
         <entry key="..\:/Android/EProject/app/src/main/res/menu/menu.xml" value="0.5546875" />
@@ -67,5 +70,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3145833333333333" />
+      </ProjectState>
+    </option>
   </component>
 </project>

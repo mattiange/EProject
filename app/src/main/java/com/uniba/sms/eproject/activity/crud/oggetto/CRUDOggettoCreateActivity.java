@@ -1,12 +1,11 @@
 package com.uniba.sms.eproject.activity.crud.oggetto;
 
-import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
+import static com.uniba.sms.eproject.Azioni.VISUALIZZA_OGGETTI;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.navigation.NavigationView;
+import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.activity.generiche.ListViewActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
@@ -44,24 +43,43 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
 
         //Drawer menu
         DrawerLayout dl = findViewById(R.id.drawer_layout);
-        NavigationView nv = findViewById(R.id.menulaterale);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dl, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         dl.addDrawerListener(toggle);
         toggle.syncState();
         ////////////////////////////////////////////////////////////////////////////////
 
         //Recupero la zona
-        TextView tv = findViewById(R.id.et_zona_oggetto);
-        tv.setText(getIntent().getExtras().getString("zona_id"));
-
         TextView provincia = findViewById(R.id.txtProvinciaZona);
         provincia.setText( provincia.getText().toString().concat(getIntent().getExtras().getString("provincia")));
 
+        if(Azioni.valueOf(getIntent().getExtras().getString("azione")) == Azioni.UPDATE) {
+            compilaCampi();
+        }
+
         //Pulsante di salvataggio
         Button btn = findViewById(R.id.salva_oggetto);
-        btn.setOnClickListener( v->{
-            salvaOggetto();
-        });
+        btn.setOnClickListener( v-> salvaOggetto());
+    }
+
+    /**
+     * Compila i campi per l'aggiornamento
+     */
+    public void compilaCampi(){
+        TextView zona = findViewById(R.id.et_zona_oggetto);
+        zona.setText(getIntent().getExtras().getString("id"));
+
+        Oggetto oggetto = (new DbManager(this)).getOggetto(Integer.parseInt(getIntent().getExtras().getString("id_oggetto")));
+
+        ((TextView)findViewById(R.id.et_nome_oggetto)).setText(oggetto.getNome());
+        ((TextView)findViewById(R.id.et_anno_oggetto)).setText(oggetto.getAnno());
+        ((TextView)findViewById(R.id.et_autore_oggetto)).setText(oggetto.getAutore());
+        ((TextView)findViewById(R.id.et_zona_oggetto)).setText(String.valueOf(oggetto.getId_zona()));
+        ((TextView)findViewById(R.id.et_descrizione_oggetto)).setText(oggetto.getDescrizione());
+
+        //Sostituisco i testi di un nuovo oggetto
+        //con quelli dell'aggiornamento
+        ((TextView)findViewById(R.id.crea_oggetto_title)).setText(getResources().getText(R.string.aggiorna_oggetto_title));
+        ((Button)findViewById(R.id.salva_oggetto)).setText(getResources().getText(R.string.aggiorna));
     }
 
     /**
@@ -70,26 +88,53 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
     @Autore(autore = "Mattia Leonardo Angelillo")
     public void salvaOggetto(){
 
-        registraOggetto(new Oggetto(
-                ((TextView)findViewById(R.id.et_nome_oggetto)).getText().toString(),
-                ((TextView)findViewById(R.id.et_anno_oggetto)).getText().toString(),
-                ((TextView)findViewById(R.id.et_autore_oggetto)).getText().toString(),
-                ((TextView)findViewById(R.id.et_descrizione_oggetto)).getText().toString(),
-                ((TextView)findViewById(R.id.et_zona_oggetto)).getText().toString()
-        ));
+        if(Azioni.valueOf(getIntent().getExtras().getString("azione")) == Azioni.UPDATE) {
+            aggiornaOggetto(new Oggetto(
+                    getIntent().getExtras().getString("id_oggetto"),
+                    ((TextView) findViewById(R.id.et_nome_oggetto)).getText().toString(),
+                    ((TextView) findViewById(R.id.et_anno_oggetto)).getText().toString(),
+                    ((TextView) findViewById(R.id.et_autore_oggetto)).getText().toString(),
+                    ((TextView) findViewById(R.id.et_descrizione_oggetto)).getText().toString(),
+                    Integer.parseInt(((TextView) findViewById(R.id.et_zona_oggetto)).getText().toString())
+            ));
+        }else{
+            registraOggetto(new Oggetto(
+                    ((TextView) findViewById(R.id.et_nome_oggetto)).getText().toString(),
+                    ((TextView) findViewById(R.id.et_anno_oggetto)).getText().toString(),
+                    ((TextView) findViewById(R.id.et_autore_oggetto)).getText().toString(),
+                    Integer.parseInt(((TextView) findViewById(R.id.et_zona_oggetto)).getText().toString()),
+                    ((TextView) findViewById(R.id.et_descrizione_oggetto)).getText().toString()
+            ));
+        }
+    }
+
+    /**
+     * Aggiorna un oggetto già esistente
+     *
+     * @param oggetto Nuovi dati dell'oggetto. L'ID non è stato modificato.
+     */
+    public void aggiornaOggetto(Oggetto oggetto){
+        DbManager db = new DbManager(this);
+        if(db.updateOggetto(Integer.parseInt(getIntent().getExtras().getString("id_oggetto")), oggetto)){
+            Toast.makeText(this, getResources().getText(R.string.oggetto_update), Toast.LENGTH_SHORT).show();
+            clear();
+        }else{
+            Toast.makeText(this, getResources().getText(R.string.oggetto_problema_update), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
      * Inserisce un oggetto nel database
+     *
      */
     @Autore(autore = "Mattia Leonardo Angelillo")
     private void registraOggetto(Oggetto oggetto){
         DbManager db = new DbManager(this);
         if(db.inserisciOggetto(oggetto)){
-            Toast.makeText(this, "Oggetto inserito con successo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getText(R.string.oggetto_creato), Toast.LENGTH_SHORT).show();
             clear();
         }else{
-            Toast.makeText(this, "Problema nell'inserimento dell'oggetto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getText(R.string.oggetto_problema_creato), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -107,17 +152,18 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
      * Riporta alla visualizzazione delle zone per la provincia
      * precedentemente inviata.
      *
-     * @param keyCode
-     * @param event
-     * @return
+     * @param keyCode Codice del tasto premuto
+     * @param event Evento associato al tasto premuto
+     * @return Restituisce <strong>true</strong> per confermare l'avvenuto click di un tasto
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(CRUDOggettoCreateActivity.this, ListViewActivity.class);
-            intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
+            intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
             intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
             intent.putExtra("regione", getIntent().getExtras().getString("regione"));
+            intent.putExtra("id", Integer.parseInt(getIntent().getExtras().getString("id")));
             startActivity(intent);
 
             return true;
