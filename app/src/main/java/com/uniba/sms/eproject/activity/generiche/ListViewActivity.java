@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.uniba.sms.eproject.Azioni.NUOVA_ZONA;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_OGGETTI;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_REGIONI;
@@ -124,7 +125,7 @@ public class ListViewActivity extends AppCompatActivity {
                 intent.putExtra("id", getIntent().getExtras().getString("id"));
                 intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
                 intent.putExtra("azione", String.valueOf(Azioni.UPDATE));
-                intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
+                intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
                 startActivity(intent);
             });
 
@@ -246,6 +247,14 @@ public class ListViewActivity extends AppCompatActivity {
             String s = getIntent().getExtras().getString("funzione");
 
             switch (Azioni.valueOf(s)){
+                case VISUALIZZA_OGGETTI:{
+                    Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
+                    intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
+                    intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+                    intent.putExtra("regione", getIntent().getExtras().getString("regione"));
+                    intent.putExtra("id", Integer.parseInt(getIntent().getExtras().getString("id")));
+                    startActivity(intent);
+                }
                 case VISUALIZZA_ZONE: {
                         Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
                         intent.putExtra("funzione", String.valueOf(VISUALIZZA_PROVINCE));

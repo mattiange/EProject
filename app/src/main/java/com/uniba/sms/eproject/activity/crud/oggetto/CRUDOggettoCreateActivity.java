@@ -30,6 +30,8 @@ import com.uniba.sms.eproject.database.DbManager;
 @Autore(autore = "Mattia Leonardo Angelillo")
 public class CRUDOggettoCreateActivity extends AppCompatActivity {
 
+    private int zona_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +77,8 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.et_autore_oggetto)).setText(oggetto.getAutore());
         ((TextView)findViewById(R.id.et_zona_oggetto)).setText(String.valueOf(oggetto.getId_zona()));
         ((TextView)findViewById(R.id.et_descrizione_oggetto)).setText(oggetto.getDescrizione());
+
+        zona_id = oggetto.getId_zona();//ID Della zona
 
         //Sostituisco i testi di un nuovo oggetto
         //con quelli dell'aggiornamento
@@ -159,11 +163,12 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+            System.out.println("==========>" + zona_id);
             Intent intent = new Intent(CRUDOggettoCreateActivity.this, ListViewActivity.class);
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
             intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
             intent.putExtra("regione", getIntent().getExtras().getString("regione"));
-            intent.putExtra("id", Integer.parseInt(getIntent().getExtras().getString("id")));
+            intent.putExtra("id", zona_id);
             startActivity(intent);
 
             return true;
