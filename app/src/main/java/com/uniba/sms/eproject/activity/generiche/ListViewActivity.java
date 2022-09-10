@@ -301,11 +301,12 @@ public class ListViewActivity extends AppCompatActivity {
         @SuppressLint("ViewHolder")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.listview_row_option_style, null);
+
             TextView id = convertView.findViewById(R.id.txt_listview_row_id);
             TextView valore = convertView.findViewById(R.id.txt_listview_row);
+
             Oggetto c = getItem(position);
             id.setText(c.getId());
             valore.setText(c.getNome());
@@ -330,11 +331,12 @@ public class ListViewActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.listview_row_option_style, null);
+
             TextView id = convertView.findViewById(R.id.txt_listview_row_id);
             TextView valore = convertView.findViewById(R.id.txt_listview_row);
+
             Zona c = getItem(position);
             id.setText(c.getId());
             valore.setText(c.getNome());
