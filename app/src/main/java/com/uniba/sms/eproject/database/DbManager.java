@@ -274,7 +274,8 @@ public class DbManager {
                 "Nome = '"+o.getNome()+"', Anno = '"+
                 o.getAnno()+"', Autore = '"+
                 o.getAutore()+"', Descrizione = '"+
-                o.getDescrizione()+"';";
+                o.getDescrizione()+"' " +
+                "WHERE id = "+id+";";
 
         SQLiteDatabase db= helper.getWritableDatabase();
 
