@@ -7,13 +7,6 @@
     <string name="cancella">Cancella</string>
     <string name="annulla">Annulla</string>
     <string name="aggiorna">Aggiorna</string>
-    <string name="aggiorna_oggetto_title">Aggiorna l\'oggetto</string>
-    <string name="oggetto_creato">Oggetto inserito con successo</string>
-    <string name="oggetto_problema_creato">Problema nell\'inserimento dell\'oggetto</string>
-    <string name="oggetto_update">Oggetto modificato con successo</string>
-    <string name="oggetto_problema_update">Problema nella modifica dell\'oggetto</string>
-    <string name="oggetto_cancellato_ok">L\'oggetto è stato cancellato con succeso</string>
-    <string name="oggetto_cancellato_no">Si è verificato un problema nella cancellazione dell\'oggetto</string>
     <!-- /////////////////////////////////////// -->
 
     <!-- Message -->
@@ -54,6 +47,10 @@
     <string name="infouser_type">Seleziona un tipo utente.</string>
     <string name="confirmRegistation">Registrati</string>
     <string name="plus">+</string>
+    <string name="msg_seleziona_regione">Seleziona la regione</string>
+    <string name="msg_seleziona_provincia">Seleziona la provincia</string>
+    <string name="msg_seleziona_zona">Seleziona la zona</string>
+    <string name="msg_seleziona_oggetto">Seleziona l\'oggetto</string>
 
     <!-- Lista Percorsi -->
 
@@ -135,6 +132,13 @@
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
     <string name="crud_aggiorna">Aggiornamento</string>
     <string name="crud_cancella">Cancella</string>
+    <string name="aggiorna_oggetto_title">Aggiorna l\'oggetto</string>
+    <string name="oggetto_creato">Oggetto inserito con successo</string>
+    <string name="oggetto_problema_creato">Problema nell\'inserimento dell\'oggetto</string>
+    <string name="oggetto_update">Oggetto modificato con successo</string>
+    <string name="oggetto_problema_update">Problema nella modifica dell\'oggetto</string>
+    <string name="oggetto_cancellato_ok">L\'oggetto è stato cancellato con succeso</string>
+    <string name="oggetto_cancellato_no">Si è verificato un problema nella cancellazione dell\'oggetto</string>
 
     <string name="crud_manage_museo">Gestisci i musei</string>
     <string name="crud_create_museo">Crea un nuovo museo</string>

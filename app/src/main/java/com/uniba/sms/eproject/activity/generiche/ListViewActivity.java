@@ -2,13 +2,10 @@ package com.uniba.sms.eproject.activity.generiche;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -132,6 +128,10 @@ public class ListViewActivity extends AppCompatActivity {
             tv.setText(R.string.oggetti_non_trovati);
             return;
         }
+        //Visualizzo il titolo
+        TextView title = findViewById(R.id.listViewTitle);
+        title.setAlpha(1.0f);
+        title.setText(getResources().getText(R.string.msg_seleziona_oggetto));
 
         ListView listView = findViewById(R.id.listViewGenerica);
 
@@ -164,14 +164,6 @@ public class ListViewActivity extends AppCompatActivity {
                 intent.putExtra("azione", String.valueOf(Azioni.UPDATE));
                 intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
                 startActivity(intent);
-
-                /*Intent intent = new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class);
-                intent.putExtra("id_oggetto", ((Oggetto)(listView.getItemAtPosition(position))).getId());
-                intent.putExtra("id", getIntent().getExtras().getString("id"));
-                intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
-                intent.putExtra("azione", String.valueOf(Azioni.UPDATE));
-                intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
-                startActivity(intent);*/
             });
 
             delete.setOnClickListener(view1 -> {
@@ -179,7 +171,7 @@ public class ListViewActivity extends AppCompatActivity {
                 builder.setMessage("Vuoi cancellare il record?");
                 builder.setTitle("Cancella record");
                 builder.setCancelable(false);
-                builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+                builder.setPositiveButton("Yes",  (dialog, which) -> {
                     if((new DbManager(this)).deleteOggetto(idOggetto)){
                         Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_cancellato_ok), Snackbar.LENGTH_SHORT).show();
 
@@ -194,9 +186,7 @@ public class ListViewActivity extends AppCompatActivity {
                         Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_cancellato_no), Snackbar.LENGTH_LONG).show();
                     }
                 });
-                builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
-                    dialog.cancel();
-                });
+                builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
 
                 AlertDialog alertDialog = builder.create();
                 // Show the Alert Dialog box
@@ -219,6 +209,10 @@ public class ListViewActivity extends AppCompatActivity {
             tv.setText(String.format(getResources().getString(R.string.zona_non_trovata), provincia));
             return;
         }
+        //Visualizzo il titolo
+        TextView title = findViewById(R.id.listViewTitle);
+        title.setAlpha(1.0f);
+        title.setText(getResources().getText(R.string.msg_seleziona_zona));
 
         ListView listView = findViewById(R.id.listViewGenerica);
 
@@ -248,6 +242,10 @@ public class ListViewActivity extends AppCompatActivity {
             tv.setText(R.string.zona_non_trovata_per_la_regione);
             return;
         }
+        //Visualizzo il titolo
+        TextView title = findViewById(R.id.listViewTitle);
+        title.setAlpha(1.0f);
+        title.setText(getResources().getText(R.string.msg_seleziona_regione));
 
         String[] regioniStr = new String[regioni.size()];
 
@@ -282,6 +280,10 @@ public class ListViewActivity extends AppCompatActivity {
             tv.setText(String.format(getResources().getString(R.string.provincia_non_trovata_per_la_regione), regione));
             return;
         }
+        //Visualizzo il titolo
+        TextView title = findViewById(R.id.listViewTitle);
+        title.setAlpha(1.0f);
+        title.setText(getResources().getText(R.string.msg_seleziona_provincia));
 
         String[] provinceStr = new String[province.size()];
 
