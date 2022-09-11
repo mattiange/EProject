@@ -65,8 +65,18 @@ public class ZonaListViewActivity extends AppCompatActivity {
         }catch(NullPointerException e){//Eccezione lanciata se si arriva a questo punto senza un'azione passata
             visualizzaRegioni();
         }
+
+        aggiungiZona();
     }
 
+    /**
+     * Porta all'activity per creare una nuova zona
+     */
+    public void aggiungiZona(){
+        createBtn.setOnClickListener( v-> startActivity(
+                (new Intent(ZonaListViewActivity.this, CRUDZonaCreateActivity.class).putExtra("azione", String.valueOf(Azioni.CREATE))))
+        );
+    }
 
     /**
      * Visualizza tutte le zone di una determinata provincia
@@ -81,6 +91,8 @@ public class ZonaListViewActivity extends AppCompatActivity {
             tv.setText(String.format(getResources().getString(R.string.zona_non_trovata), provincia));
             return;
         }
+        createBtn.setAlpha(1.0f);
+
         //Visualizzo il titolo
         TextView title = findViewById(R.id.listViewTitle);
         title.setAlpha(1.0f);
