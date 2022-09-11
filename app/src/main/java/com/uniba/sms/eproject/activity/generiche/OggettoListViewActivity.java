@@ -23,6 +23,7 @@ import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoActivity;
 import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoCreateActivity;
+import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Oggetto;
 import com.uniba.sms.eproject.data.classes.Zona;
 import com.uniba.sms.eproject.database.DbManager;
@@ -47,6 +48,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
     private FloatingActionButton createBtn;
 
     @Override
+    @Autore(autore = "Mattia Leonardo Angelillo")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -96,6 +98,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
      * @param zona ID della zona degli oggetti da visualizzare
      */
     @SuppressLint("UseCompatLoadingForDrawables")
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public void visualizzaOggetti(int zona){
         ArrayList<Oggetto> oggetti = new DbManager(this).visualizzaOggettiByZona(zona);
 
@@ -189,6 +192,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
      * Visualizza tutte le zone di una determinata provincia
      * @param provincia Provincia delle zone da visualizzare
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public void visualizzaZone(String provincia){
         ArrayList<Zona> zone = new DbManager(this).visualizzaTutteLeZoneByProvincia(provincia);
 
@@ -222,6 +226,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
     /**
      * Visualizza tutte le zone delle regioni
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public void visualizzaRegioni(){
         ArrayList<HashMap<String, String>> regioni = new DbManager(this).visualizzaTutteLeRegioniDelleZone();
 
@@ -260,6 +265,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
     /**
      * Visualizza tutte le zone delle province
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public void visualizzaProvince(String regione){
         ArrayList<HashMap<String, String>> province = new DbManager(this).visualizzaTutteLeProvinceDiUnaRegione(regione);
 
@@ -306,6 +312,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
      * @return Restituisce true se il metodo va a buon fine
      */
     @Override
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             String s = getIntent().getExtras().getString("funzione");
@@ -354,6 +361,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
      *      *
      *      * L'ID ci è utile per poter modificare/eliminare l'oggetto
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public static class OggettoAdapter extends ArrayAdapter<Oggetto>{
 
         public OggettoAdapter(Context context, int textViewResourceId,
@@ -385,6 +393,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
      *
      * L'ID ci è utile per poter modificare/eliminare l'oggetto
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public static class ZonaAdapter extends ArrayAdapter<Zona>{
 
         public ZonaAdapter(Context context, int textViewResourceId,

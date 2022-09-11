@@ -61,6 +61,7 @@ public class Util {
      * @param t Toolbar da aggiungere
      * @param dl DrawerLayout da aggiungere
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public static void addToolbarAndMenu(AppCompatActivity aca, Toolbar t, DrawerLayout dl){
         //Add Toolbar
         aca.setSupportActionBar(t);
