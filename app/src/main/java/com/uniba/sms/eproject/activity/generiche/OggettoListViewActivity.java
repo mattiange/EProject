@@ -21,7 +21,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
-import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoActivity;
 import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoCreateActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Oggetto;

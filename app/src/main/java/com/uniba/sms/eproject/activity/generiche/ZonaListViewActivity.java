@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.uniba.sms.eproject.Azioni.VISUALIZZA_OGGETTI;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
 import static com.uniba.sms.eproject.util.Util.addToolbarAndMenu;

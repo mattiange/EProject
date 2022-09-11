@@ -79,24 +79,9 @@
             android:exported="true"
             android:parentActivityName=".activity.crud.museo.CRUDMuseoActivity"/>
         <activity
-            android:name=".activity.crud.oggetto.CRUDOggettoActivity"
-            android:exported="true"/>
-        <activity
             android:name=".activity.crud.oggetto.CRUDOggettoCreateActivity"
             android:exported="true"
             android:parentActivityName=".activity.crud.oggetto.CRUDOggettoActivity"/>
-        <activity
-            android:name=".activity.crud.zona.CRUDZonaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.zona.CRUDZonaListaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.zona.CRUDZonaRegioneListaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.zona.CRUDZonaProvinciaListaActivity"
-            android:exported="true"/>
         <activity
             android:name=".activity.crud.zona.CRUDZonaCreateActivity"
             android:exported="true"

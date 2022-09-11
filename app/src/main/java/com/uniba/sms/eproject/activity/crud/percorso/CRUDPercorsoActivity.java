@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.uniba.sms.eproject.R;
-import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoActivity;
-import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoCreateActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
 
 @Autore(autore = "Giandomenico Bucci")
