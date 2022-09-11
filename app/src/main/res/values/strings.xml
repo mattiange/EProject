@@ -132,6 +132,7 @@
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
     <string name="crud_aggiorna">Aggiornamento</string>
     <string name="crud_cancella">Cancella</string>
+    <string name="aggiorna_zona_title">Aggiorna la zona</string>
     <string name="aggiorna_oggetto_title">Aggiorna l\'oggetto</string>
     <string name="oggetto_creato">Oggetto inserito con successo</string>
     <string name="oggetto_problema_creato">Problema nell\'inserimento dell\'oggetto</string>
@@ -139,6 +140,8 @@
     <string name="oggetto_problema_update">Problema nella modifica dell\'oggetto</string>
     <string name="oggetto_cancellato_ok">L\'oggetto è stato cancellato con succeso</string>
     <string name="oggetto_cancellato_no">Si è verificato un problema nella cancellazione dell\'oggetto</string>
+    <string name="zona_update_ok">Zona modificata con successo</string>
+    <string name="zona_update_no">Problema nell\'inserimento della zona</string>
 
     <string name="crud_manage_museo">Gestisci i musei</string>
     <string name="crud_create_museo">Crea un nuovo museo</string>

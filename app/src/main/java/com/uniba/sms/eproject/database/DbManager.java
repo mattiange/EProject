@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.NonNull;
+
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Museo;
 import com.uniba.sms.eproject.data.classes.Oggetto;
@@ -108,6 +110,40 @@ public class DbManager {
 
     //////////////////////////// GESTIONE ZONE
 
+
+    /**
+     * Restituisce una singola zona in base al suo ID
+     *
+     * @param id ID della zona
+     * @return Restituisce la zona ottenuta. Restituisce <strong>null</strong> se non
+     *         trova nessuna zona.
+     */
+    public Zona getZona(int id){
+        Zona ogg = null;
+
+        String query="SELECT * FROM Zone WHERE id = " + id + "";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()){
+            do {
+                ogg = new Zona(
+                        Integer.parseInt(c.getString(0)),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getString(3),
+                        c.getString(4)
+                );
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return ogg;
+    }
+
     /**
      * Inserisce una nuova zona all'interno del database
      *
@@ -128,6 +164,38 @@ public class DbManager {
 
         try{
             db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
+     * Aggiorna una zona esistente.
+     * La zona da modificare viene identificato mediante
+     * il campo ID.
+     *
+     * @param id ID della zona
+     * @param z Dati della nuova zona
+     * @return Restituisce <string>true</string> se la modifica ha successo
+     *          <string>false</string> altrimenti.
+     */
+    public boolean updateZona(int id, @NonNull Zona z){
+        String query = "UPDATE Zone "
+                + "SET " +
+                "Nome = '"+z.getNome()+"', Provincia = '"+
+                z.getProvincia()+"', Regione = '"+
+                z.getRegione()+"', CAP = '"+
+                z.getCAP()+"' " +
+                "WHERE id = "+id+";";
+
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(query);
 
             return true;
         }catch(SQLException ex){
@@ -175,7 +243,7 @@ public class DbManager {
                 al.add(hm);*/
 
                 al.add(new Zona(
-                        c.getString(0),
+                        Integer.parseInt(c.getString(0)),
                         c.getString(1),
                         c.getString(2),
                         c.getString(3),
@@ -290,7 +358,7 @@ public class DbManager {
      * @return Restituisce <string>true</string> se la modifica ha successo
      *          <string>false</string> altrimenti.
      */
-    public boolean updateOggetto(int id, Oggetto o){
+    public boolean updateOggetto(int id, @NonNull Oggetto o){
         String insert1="UPDATE Oggetto "
                 + "SET " +
                 "Nome = '"+o.getNome()+"', Anno = '"+

@@ -2,13 +2,13 @@ package com.uniba.sms.eproject.data.classes;
 
 public class Zona {
 
-    String id;
+    int id;
     String nome;
     String provincia;
     String regione;
     String cap;
 
-    public Zona(String id, String nome, String provincia, String regione, String cap){
+    public Zona(int id, String nome, String provincia, String regione, String cap){
         this.id = id;
         this.nome = nome;
         this.provincia = provincia;
@@ -17,7 +17,7 @@ public class Zona {
     }
 
     public Zona(String nome, String provincia, String regione, String cap) {
-        this(null, nome, provincia, regione, cap);
+        this(-1, nome, provincia, regione, cap);
     }
 
     public String getNome() {
@@ -50,11 +50,11 @@ public class Zona {
 
     public void setCAP(String cap) { this.cap = cap; }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

@@ -84,7 +84,6 @@ public class OggettoListViewActivity extends AppCompatActivity {
                                     .putExtra("regione", getIntent().getExtras().getString("regione")));
                     break;
                 case VISUALIZZA_OGGETTI://Visualizza gli oggetti di una zona attraverso l'id della zona
-                    System.out.println("ID ZONA CREA OGGETTO ===> " + getIntent().getExtras().getString("id"));
                     visualizzaOggetti(Integer.parseInt(getIntent().getExtras().getString("id")));
                     break;
             }
@@ -208,7 +207,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listViewGenerica);
 
-        ZonaAdapter adapter = new ZonaAdapter(this, R.layout.listview_row_option_style, zone);
+        ZonaListViewActivity.ZonaAdapter adapter = new ZonaListViewActivity.ZonaAdapter(this, R.layout.listview_row_option_style, zone);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener( (adapter1, view, position, id)->{
@@ -387,34 +386,4 @@ public class OggettoListViewActivity extends AppCompatActivity {
 
     }
 
-    /***
-     * Adapter per poter gestire l'id e il nome
-     * delle zone selezionate.
-     *
-     * L'ID ci è utile per poter modificare/eliminare l'oggetto
-     */
-    @Autore(autore = "Mattia Leonardo Angelillo")
-    public static class ZonaAdapter extends ArrayAdapter<Zona>{
-
-        public ZonaAdapter(Context context, int textViewResourceId,
-                             List <Zona> objects) {
-            super(context, textViewResourceId, objects);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_row_option_style, null);
-
-            TextView id = convertView.findViewById(R.id.txt_listview_row_id);
-            TextView valore = convertView.findViewById(R.id.txt_listview_row);
-
-            Zona c = getItem(position);
-            id.setText(c.getId());
-            valore.setText(c.getNome());
-
-            return convertView;
-        }
-
-    }
 }
