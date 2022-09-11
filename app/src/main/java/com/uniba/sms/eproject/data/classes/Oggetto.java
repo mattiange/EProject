@@ -2,7 +2,7 @@ package com.uniba.sms.eproject.data.classes;
 
 public class Oggetto {
 
-    String id;
+    int id;
     String nome;
     String anno;
     String autore;
@@ -10,10 +10,10 @@ public class Oggetto {
     int id_zona;
 
     public Oggetto(String nome, String anno, String autore, int id_zona, String descrizione) {
-        this(null, nome, anno, autore, descrizione, id_zona);
+        this(-1, nome, anno, autore, descrizione, id_zona);
     }
 
-    public Oggetto(String id, String nome, String anno, String autore, String descrizione, int id_zona) {
+    public Oggetto(int id, String nome, String anno, String autore, String descrizione, int id_zona) {
         this.id = id;
         this.nome = nome;
         this.anno = anno;
@@ -60,11 +60,11 @@ public class Oggetto {
         return id_zona;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

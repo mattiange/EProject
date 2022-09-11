@@ -2,6 +2,7 @@ package com.uniba.sms.eproject.activity.generiche;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,10 +16,12 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoActivity;
@@ -98,7 +101,10 @@ public class ListViewActivity extends AppCompatActivity {
     public void visualizzaOggetti(int zona){
         ArrayList<Oggetto> oggetti = new DbManager(this).visualizzaOggettiByZona(zona);
 
+
+        System.out.println("oggetti =====>" + oggetti);
         if(oggetti == null){
+            System.out.println("NUUUUULL");
             TextView tv = findViewById(R.id.listTVEmpty);
             tv.setText(R.string.oggetti_non_trovati);
             return;
@@ -119,6 +125,7 @@ public class ListViewActivity extends AppCompatActivity {
             delete.getBackground().setAlpha(255);
             delete.setImageDrawable(getResources().getDrawable(R.drawable.ic_trash_can, null));
 
+            int idOggetto = ((Oggetto)(listView.getItemAtPosition(position))).getId();
             //Attivo l'evento per l'aggiornamento
             update.setOnClickListener( v -> {
                 Intent intent = new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class);
@@ -128,6 +135,35 @@ public class ListViewActivity extends AppCompatActivity {
                 intent.putExtra("azione", String.valueOf(Azioni.UPDATE));
                 intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
                 startActivity(intent);
+            });
+
+            delete.setOnClickListener(v -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListViewActivity.this);
+                builder.setMessage("Vuoi cancellare il record?");
+                builder.setTitle("Cancella record");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    if((new DbManager(this)).deleteOggetto(idOggetto)){
+                        Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_cancellato_ok), Snackbar.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(ListViewActivity.this, ListViewActivity.class);
+                        intent.putExtra("azione", getIntent().getExtras().getString("azione"));
+                        intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
+                        intent.putExtra("id", getIntent().getExtras().getString("id"));
+                        intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+                        intent.putExtra("regione", getIntent().getExtras().getString("regione"));
+                        startActivity(intent);
+                    }else{
+                        Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_cancellato_no), Snackbar.LENGTH_LONG).show();
+                    }
+                });
+                builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    dialog.cancel();
+                });
+
+                AlertDialog alertDialog = builder.create();
+                // Show the Alert Dialog box
+                alertDialog.show();
             });
 
             return true;
@@ -308,7 +344,7 @@ public class ListViewActivity extends AppCompatActivity {
             TextView valore = convertView.findViewById(R.id.txt_listview_row);
 
             Oggetto c = getItem(position);
-            id.setText(c.getId());
+            id.setText(String.valueOf(c.getId()));
             valore.setText(c.getNome());
 
             return convertView;

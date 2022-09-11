@@ -259,6 +259,28 @@ public class DbManager {
     /////////////////////////////// GESTIONE OGGETTO
 
     /**
+     * Elimina un oggetto dal database selezionandolo in base al suo ID.
+     *
+     * @param id ID dell'oggetto
+     * @return <strong>true</strong> se l'oggetto viene cancellato, <strong>false</strong> altrimenti
+     */
+    public boolean deleteOggetto(int id){
+        String query = "DELETE FROM Oggetto WHERE id = " + id;
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        try{
+            db.execSQL(query);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
      * Aggiorna un oggetto esistente.
      * L'oggetto da modificare viene identificato mediante
      * il campo ID.
@@ -308,7 +330,7 @@ public class DbManager {
         if (c.moveToFirst()){
             do {
                 ogg = new Oggetto(
-                        c.getString(0),
+                        Integer.parseInt(c.getString(0)),
                         c.getString(1),
                         c.getString(2),
                         c.getString(3),
@@ -368,14 +390,14 @@ public class DbManager {
         Cursor c = db.rawQuery(query, null);
 
         //ArrayList<HashMap<String, String>> al = null;
-        ArrayList<Oggetto> al = new ArrayList<>();
+        ArrayList<Oggetto> al = null;
 
         if (c.moveToFirst()){
             al = new ArrayList<>();
 
             do {
                 al.add(new Oggetto(
-                        c.getString(0),
+                        Integer.parseInt(c.getString(0)),
                         c.getString(1),
                         c.getString(2),
                         c.getString(3),

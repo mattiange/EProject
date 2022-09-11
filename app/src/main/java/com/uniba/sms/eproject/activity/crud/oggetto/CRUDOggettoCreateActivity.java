@@ -94,7 +94,7 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
 
         if(Azioni.valueOf(getIntent().getExtras().getString("azione")) == Azioni.UPDATE) {
             aggiornaOggetto(new Oggetto(
-                    getIntent().getExtras().getString("id_oggetto"),
+                    Integer.parseInt(getIntent().getExtras().getString("id_oggetto")),
                     ((TextView) findViewById(R.id.et_nome_oggetto)).getText().toString(),
                     ((TextView) findViewById(R.id.et_anno_oggetto)).getText().toString(),
                     ((TextView) findViewById(R.id.et_autore_oggetto)).getText().toString(),

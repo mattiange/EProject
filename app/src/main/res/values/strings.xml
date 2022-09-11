@@ -12,11 +12,13 @@
     <string name="oggetto_problema_creato">Problema nell\'inserimento dell\'oggetto</string>
     <string name="oggetto_update">Oggetto modificato con successo</string>
     <string name="oggetto_problema_update">Problema nella modifica dell\'oggetto</string>
+    <string name="oggetto_cancellato_ok">L\'oggetto è stato cancellato con succeso</string>
+    <string name="oggetto_cancellato_no">Si è verificato un problema nella cancellazione dell\'oggetto</string>
     <!-- /////////////////////////////////////// -->
 
     <!-- Message -->
     <string name="zona_non_trovata">Non è stata trovata alcuna zona per la provincia: %s</string>
-    <string name="oggetti_non_trovati">Non è stata trovata alcuna zona per la zona selezionata</string>
+    <string name="oggetti_non_trovati">Non è stata trovata alcun oggetto per la zona selezionata</string>
     <string name="zona_non_trovata_per_la_regione">Non è stata trovata alcuna regione per le zona</string>
     <string name="provincia_non_trovata_per_la_regione">Non è stata trovata alcuna provincia nella regione: %s</string>
     <!-- ////////////////////////////////////// -->

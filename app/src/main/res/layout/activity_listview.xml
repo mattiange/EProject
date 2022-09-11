@@ -27,8 +27,11 @@ elementi selezionati dal database
     <TextView
         android:id="@+id/listTVEmpty"
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
-        android:textSize="45dp"
+        android:textSize="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
         android:layout_height="match_parent"></TextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
