@@ -139,11 +139,9 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
     public void aggiornaOggetto(Oggetto oggetto){
         DbManager db = new DbManager(this);
         if(db.updateOggetto(Integer.parseInt(getIntent().getExtras().getString("id_oggetto")), oggetto)){
-            //Toast.makeText(this, getResources().getText(R.string.oggetto_update), Toast.LENGTH_SHORT).show();
             Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_update), Snackbar.LENGTH_LONG).show();
             clear();
         }else{
-            //Toast.makeText(this, getResources().getText(R.string.oggetto_problema_update), Toast.LENGTH_SHORT).show();
             Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_problema_update), Snackbar.LENGTH_LONG).show();
 
         }
@@ -157,11 +155,9 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
     private void registraOggetto(Oggetto oggetto){
         DbManager db = new DbManager(this);
         if(db.inserisciOggetto(oggetto)){
-            //Toast.makeText(this, getResources().getText(R.string.oggetto_creato), Toast.LENGTH_SHORT).show();
             Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_creato), Snackbar.LENGTH_LONG).show();
             clear();
         }else{
-            //Toast.makeText(this, getResources().getText(R.string.oggetto_problema_creato), Toast.LENGTH_SHORT).show();
             Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_problema_creato), Snackbar.LENGTH_LONG).show();
         }
     }
