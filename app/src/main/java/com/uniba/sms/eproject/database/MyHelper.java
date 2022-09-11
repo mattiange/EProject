@@ -73,7 +73,18 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Orario_Apertura TEXT," +
                 "Immagine_Museo TEXT)";
 
+        String permessi = "CREATE TABLE Permessi (" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "permesso varchar" +
+                ");";
 
+        String permessi_has_utente = "CREATE TABLE Permessi_has_Utente (" +
+                "Permessi_id INTEGER," +
+                "Utente_ID tINTEGER," +
+                "FOREIGN KEY(Utente_ID) REFERENCES Utente_Registrato(ID)," +
+                "FOREIGN KEY(Permessi_id) REFERENCES Permessi(id)," +
+                "PRIMARY KEY(Permessi_id,Utente_ID)" +
+                ");";
 
 
         try{
@@ -81,6 +92,8 @@ public class MyHelper  extends SQLiteOpenHelper {
             db.execSQL(zona);
             db.execSQL(oggetto);
             db.execSQL(museo);
+            db.execSQL(permessi);
+            db.execSQL(permessi_has_utente);
         }catch(SQLException ex){
             Toast.makeText(this.context , "onCreate() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
