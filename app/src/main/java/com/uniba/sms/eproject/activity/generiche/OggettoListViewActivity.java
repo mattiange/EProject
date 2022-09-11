@@ -340,7 +340,7 @@ public class OggettoListViewActivity extends AppCompatActivity {
                     }
                     break;
                 case VISUALIZZA_REGIONI:{
-                    Intent intent = new Intent(OggettoListViewActivity.this, CRUDOggettoActivity.class);
+                    Intent intent = new Intent(OggettoListViewActivity.this, CRUDOggettoCreateActivity.class);
                     startActivity(intent);
                 }
                 break;

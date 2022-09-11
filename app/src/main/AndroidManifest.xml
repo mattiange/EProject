@@ -78,14 +78,6 @@
             android:name=".activity.crud.museo.CRUDMuseoCreateActivity"
             android:exported="true"
             android:parentActivityName=".activity.crud.museo.CRUDMuseoActivity"/>
-        <activity
-            android:name=".activity.crud.oggetto.CRUDOggettoCreateActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.crud.oggetto.CRUDOggettoActivity"/>
-        <activity
-            android:name=".activity.crud.zona.CRUDZonaCreateActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.crud.zona.CRUDZonaActivity"/>
 
         <activity
             android:name=".activity.PercorsoActivity"
@@ -96,15 +88,18 @@
             android:parentActivityName=".activity.crud.percorso.CRUDPercorsoActivity"/>
         <activity
             android:name=".activity.generiche.OggettoListViewActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.generiche.ZonaListViewActivity"
-            android:exported="true">
+            android:exported="true">    
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.generiche.ZonaListViewActivity"
+            android:exported="true">
         </activity>
     </application>
 
