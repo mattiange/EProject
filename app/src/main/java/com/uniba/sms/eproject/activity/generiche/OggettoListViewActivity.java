@@ -88,6 +88,8 @@ public class OggettoListViewActivity extends AppCompatActivity {
             }
         }catch(NullPointerException e){//Eccezione lanciata se si arriva a questo punto senza un'azione passata
             System.err.println(e.getMessage());
+
+            visualizzaRegioni();
         }
     }
 
@@ -211,9 +213,8 @@ public class OggettoListViewActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener( (adapter1, view, position, id)->{
             Intent intent = new Intent(OggettoListViewActivity.this, OggettoListViewActivity.class);
-            intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
-            intent.putExtra("id", ((Zona)(listView.getItemAtPosition(position))).getId());
+            intent.putExtra("id", String.valueOf(((Zona)(listView.getItemAtPosition(position))).getId()));
             intent.putExtra("provincia", provincia);
             intent.putExtra("regione", getIntent().getExtras().getString("regione"));
             startActivity(intent);
@@ -253,7 +254,6 @@ public class OggettoListViewActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener( (adapter1, view, position, id)->{
             Intent intent = new Intent(OggettoListViewActivity.this, OggettoListViewActivity.class);
-            intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_PROVINCE));
             intent.putExtra("regione", (String)listView.getItemAtPosition(position));
             startActivity(intent);
@@ -292,7 +292,6 @@ public class OggettoListViewActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener( (adapter1, view, position, id)->{
             Intent intent = new Intent(OggettoListViewActivity.this, OggettoListViewActivity.class);
-            intent.putExtra("azione", getIntent().getExtras().getString("azione"));
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
             intent.putExtra("provincia", (String)listView.getItemAtPosition(position));
             intent.putExtra("regione", regione);
@@ -340,8 +339,8 @@ public class OggettoListViewActivity extends AppCompatActivity {
                     }
                     break;
                 case VISUALIZZA_REGIONI:{
-                    Intent intent = new Intent(OggettoListViewActivity.this, CRUDOggettoCreateActivity.class);
-                    startActivity(intent);
+                    /*Intent intent = new Intent(OggettoListViewActivity.this, CRUDOggettoActivity.class);
+                    startActivity(intent);*/
                 }
                 break;
 

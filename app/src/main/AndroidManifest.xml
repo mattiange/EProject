@@ -60,6 +60,9 @@
             android:exported="true"
             android:parentActivityName=".activity.MuseoActivity"/>
         <activity
+            android:name=".activity.crud.oggetto.CRUDOggettoCreateActivity"
+            android:exported="true"/>
+        <activity
             android:name=".activity.crud.museo.CRUDMuseoActivity"
             android:exported="true"/>
         <activity
@@ -88,7 +91,7 @@
             android:parentActivityName=".activity.crud.percorso.CRUDPercorsoActivity"/>
         <activity
             android:name=".activity.generiche.OggettoListViewActivity"
-            android:exported="true">    
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
