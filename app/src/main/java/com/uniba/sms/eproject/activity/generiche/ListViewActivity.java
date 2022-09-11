@@ -139,28 +139,42 @@ public class ListViewActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         listView.setOnItemLongClickListener( (adapter1, view, position, id)->{
+            View v = listView.getChildAt(position  - listView.getFirstVisiblePosition());
+
             //Visualizzo il pulsante di modifica
-            ImageButton update = findViewById(R.id.updateBtn);
+            ImageButton update = v.findViewById(R.id.updateBtn);
             update.getBackground().setAlpha(255);
             update.setImageDrawable(getResources().getDrawable(R.drawable.ic_pen, null));
             //Visualizzo il pulsante di cancellazione
-            ImageButton delete = findViewById(R.id.cancellaBtn);
+            ImageButton delete = v.findViewById(R.id.cancellaBtn);
             delete.getBackground().setAlpha(255);
             delete.setImageDrawable(getResources().getDrawable(R.drawable.ic_trash_can, null));
 
             int idOggetto = ((Oggetto)(listView.getItemAtPosition(position))).getId();
             //Attivo l'evento per l'aggiornamento
-            update.setOnClickListener( v -> {
+            update.setOnClickListener( view1 -> {
+                Oggetto o = (new DbManager(this)).getOggetto(((Oggetto)(listView.getItemAtPosition(position))).getId());
+
+                System.out.println("OGGETTO: " + o.getId() + ", " + o.getNome());
+
                 Intent intent = new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class);
+                intent.putExtra("id_oggetto", String.valueOf(o.getId()));
+                intent.putExtra("id", String.valueOf(o.getId_zona()));
+                intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+                intent.putExtra("azione", String.valueOf(Azioni.UPDATE));
+                intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
+                startActivity(intent);
+
+                /*Intent intent = new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class);
                 intent.putExtra("id_oggetto", ((Oggetto)(listView.getItemAtPosition(position))).getId());
                 intent.putExtra("id", getIntent().getExtras().getString("id"));
                 intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
                 intent.putExtra("azione", String.valueOf(Azioni.UPDATE));
                 intent.putExtra("funzione", String.valueOf(NUOVA_ZONA));
-                startActivity(intent);
+                startActivity(intent);*/
             });
 
-            delete.setOnClickListener(v -> {
+            delete.setOnClickListener(view1 -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListViewActivity.this);
                 builder.setMessage("Vuoi cancellare il record?");
                 builder.setTitle("Cancella record");

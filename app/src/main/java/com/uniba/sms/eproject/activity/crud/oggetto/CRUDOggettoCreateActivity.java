@@ -83,18 +83,10 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
 
         Oggetto oggetto = (new DbManager(this)).getOggetto(Integer.parseInt(getIntent().getExtras().getString("id_oggetto")));
 
-        String id_zona;
-
-        try {
-            id_zona = String.valueOf(oggetto.getId_zona());
-        }catch (Exception e){
-            id_zona = getIntent().getExtras().getString("id_zona");
-        }
-
         ((TextView)findViewById(R.id.et_nome_oggetto)).setText(oggetto.getNome());
         ((TextView)findViewById(R.id.et_anno_oggetto)).setText(oggetto.getAnno());
         ((TextView)findViewById(R.id.et_autore_oggetto)).setText(oggetto.getAutore());
-        ((TextView)findViewById(R.id.et_zona_oggetto)).setText(id_zona);
+        ((TextView)findViewById(R.id.et_zona_oggetto)).setText(String.valueOf(oggetto.getId()));
         ((TextView)findViewById(R.id.et_descrizione_oggetto)).setText(oggetto.getDescrizione());
 
         zona_id = oggetto.getId_zona();//ID Della zona
