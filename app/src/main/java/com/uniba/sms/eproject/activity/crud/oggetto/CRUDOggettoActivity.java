@@ -12,7 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
-import com.uniba.sms.eproject.activity.generiche.ListViewActivity;
+import com.uniba.sms.eproject.activity.generiche.OggettoListViewActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
 
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_REGIONI;
@@ -63,7 +63,7 @@ public class CRUDOggettoActivity extends AppCompatActivity {
      */
     public void showNewOggettoActivity(){
         btnCreate.setOnClickListener( p->{
-            Intent intent = new Intent(CRUDOggettoActivity.this, ListViewActivity.class);
+            Intent intent = new Intent(CRUDOggettoActivity.this, OggettoListViewActivity.class);
             intent.putExtra("azione", String.valueOf(NUOVA_ZONA));
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_REGIONI));
             startActivity(intent);

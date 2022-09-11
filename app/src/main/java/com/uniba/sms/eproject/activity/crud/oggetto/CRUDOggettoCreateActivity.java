@@ -1,7 +1,7 @@
 package com.uniba.sms.eproject.activity.crud.oggetto;
 
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_OGGETTI;
-import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
+import static com.uniba.sms.eproject.util.Util.addToolbarAndMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,22 +9,16 @@ import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
-import com.uniba.sms.eproject.activity.generiche.ListViewActivity;
+import com.uniba.sms.eproject.activity.generiche.OggettoListViewActivity;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Oggetto;
 import com.uniba.sms.eproject.database.DbManager;
-
-import org.w3c.dom.Text;
 
 /**
  * Questa classe serve a gestire l'activity activity_crud_create_oggetto.
@@ -42,17 +36,7 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_crud_create_oggetto);
 
-        //Add Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ////////////////////////////////////////////////////
-
-        //Drawer menu
-        DrawerLayout dl = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dl, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        dl.addDrawerListener(toggle);
-        toggle.syncState();
-        ////////////////////////////////////////////////////////////////////////////////
+        addToolbarAndMenu(this, findViewById(R.id.toolbar), findViewById(R.id.drawer_layout));
 
         //Recupero la provincia
         TextView provincia = findViewById(R.id.txtProvinciaZona);
@@ -176,7 +160,7 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             System.out.println("BACK ID ZONA ===> " + zona_id);
-            Intent intent = new Intent(CRUDOggettoCreateActivity.this, ListViewActivity.class);
+            Intent intent = new Intent(CRUDOggettoCreateActivity.this, OggettoListViewActivity.class);
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
             intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
             intent.putExtra("regione", getIntent().getExtras().getString("regione"));

@@ -1,7 +1,15 @@
 package com.uniba.sms.eproject.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.view.View;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.annotazioni.Autore;
 
 import java.io.ByteArrayOutputStream;
@@ -44,5 +52,24 @@ public class Util {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
         return stream.toByteArray();
+    }
+
+    /**
+     * Aggiunge la <strong>toolbar</strong> e il <strong>drawer layout</strong>.
+     *
+     * @param aca Activity sulla quale aggiungere i componenti
+     * @param t Toolbar da aggiungere
+     * @param dl DrawerLayout da aggiungere
+     */
+    public static void addToolbarAndMenu(AppCompatActivity aca, Toolbar t, DrawerLayout dl){
+        //Add Toolbar
+        aca.setSupportActionBar(t);
+        ////////////////////////////////////////////////////
+
+        //Drawer menu
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(aca, dl, t, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        dl.addDrawerListener(toggle);
+        toggle.syncState();
+        ////////////////////////////////////////////////////////////////////////////////
     }
 }

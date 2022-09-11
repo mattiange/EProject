@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.activity.generiche.ZonaListViewActivity;
 
 /**
  * Questa classe serve a gestire l'activity activity_crud_zona.
@@ -57,7 +58,9 @@ public class CRUDZonaActivity extends AppCompatActivity {
      */
     public void showNewZonaActivity(){
         btnCreate.setOnClickListener( p->{
-            Intent intent = new Intent(CRUDZonaActivity.this, CRUDZonaCreateActivity.class);
+            /*Intent intent = new Intent(CRUDZonaActivity.this, CRUDZonaCreateActivity.class);
+            startActivity(intent);*/
+            Intent intent = new Intent(CRUDZonaActivity.this, ZonaListViewActivity.class);
             startActivity(intent);
         });
     }
