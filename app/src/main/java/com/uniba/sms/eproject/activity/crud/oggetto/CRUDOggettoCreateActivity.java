@@ -86,7 +86,7 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.et_nome_oggetto)).setText(oggetto.getNome());
         ((TextView)findViewById(R.id.et_anno_oggetto)).setText(oggetto.getAnno());
         ((TextView)findViewById(R.id.et_autore_oggetto)).setText(oggetto.getAutore());
-        ((TextView)findViewById(R.id.et_zona_oggetto)).setText(String.valueOf(oggetto.getId()));
+        ((TextView)findViewById(R.id.et_zona_oggetto)).setText(String.valueOf(getIntent().getExtras().getString("id")));
         ((TextView)findViewById(R.id.et_descrizione_oggetto)).setText(oggetto.getDescrizione());
 
         zona_id = oggetto.getId_zona();//ID Della zona
@@ -180,7 +180,7 @@ public class CRUDOggettoCreateActivity extends AppCompatActivity {
             intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
             intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
             intent.putExtra("regione", getIntent().getExtras().getString("regione"));
-            intent.putExtra("id", ((EditText)(findViewById(R.id.et_zona_oggetto))).getText());
+            intent.putExtra("id", ((EditText)(findViewById(R.id.et_zona_oggetto))).getText().toString());
             startActivity(intent);
 
             return true;
