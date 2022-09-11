@@ -6,6 +6,7 @@ package com.uniba.sms.eproject;
  */
 public enum Azioni {
     UPDATE,
+    CREATE,
 
     //Funzioni
     NUOVA_ZONA,

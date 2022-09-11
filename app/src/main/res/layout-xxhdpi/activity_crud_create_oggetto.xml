@@ -23,6 +23,7 @@
         app:itemTextColor="@color/black"/>
 
     <ScrollView
+        android:id="@+id/listScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50sp">
@@ -175,8 +176,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="72dp"
                 android:inputType="text"
-                android:alpha="0"
-                android:text="@string/crud_cancella"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"

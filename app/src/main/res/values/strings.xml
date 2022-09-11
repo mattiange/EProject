@@ -132,6 +132,7 @@
     <!-- ///////////////////////////////////////////////// -->
 
     <!-- CRUD -->
+    <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
     <string name="crud_aggiorna">Aggiornamento</string>
     <string name="crud_cancella">Cancella</string>
 

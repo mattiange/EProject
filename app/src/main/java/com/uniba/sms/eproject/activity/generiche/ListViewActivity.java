@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -21,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
@@ -46,6 +50,8 @@ import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
  * Sceglie cosa visualizzare in base ai dati passati alla intent.
  */
 public class ListViewActivity extends AppCompatActivity {
+    private FloatingActionButton createBtn;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +69,13 @@ public class ListViewActivity extends AppCompatActivity {
         dl.addDrawerListener(toggle);
         toggle.syncState();
         ////////////////////////////////////////////////////////////////////////////////
+
+        //Nascondo il bottone di aggiunta
+        //deve essere visualizzato solamente
+        //per la sezione di creazione
+        createBtn = findViewById(R.id.floatingButtonCreate);
+        createBtn.setAlpha(0.0f);
+        //////////////////////////////////////////////////////////////////////////////////
 
         //Esegue le funzioni
         try{
@@ -84,7 +97,8 @@ public class ListViewActivity extends AppCompatActivity {
                                     .putExtra("provincia", getIntent().getExtras().getString("provincia"))
                                     .putExtra("regione", getIntent().getExtras().getString("regione")));
                     break;
-                case VISUALIZZA_OGGETTI:
+                case VISUALIZZA_OGGETTI://Visualizza gli oggetti di una zona attraverso l'id della zona
+                    System.out.println("ID ZONA CREA OGGETTO ===> " + getIntent().getExtras().getString("id"));
                     visualizzaOggetti(Integer.parseInt(getIntent().getExtras().getString("id")));
                     break;
             }
@@ -101,10 +115,19 @@ public class ListViewActivity extends AppCompatActivity {
     public void visualizzaOggetti(int zona){
         ArrayList<Oggetto> oggetti = new DbManager(this).visualizzaOggettiByZona(zona);
 
+        //Visualizzo il bottone per la creazione di un nuovo oggetto
+        createBtn.setAlpha(1.0f);
+        //Riporto alla pagina di creazione dell'oggettp
+        createBtn.setOnClickListener( v->{
+            //Snackbar.make(findViewById(R.id.listViewGenerica), "OK", Snackbar.LENGTH_LONG).show();
+            Intent intent = new Intent(ListViewActivity.this, CRUDOggettoCreateActivity.class);
+            intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+            intent.putExtra("azione", String.valueOf(Azioni.CREATE));
+            intent.putExtra("id_zona", String.valueOf(zona));
+            startActivity(intent);
+        });
 
-        System.out.println("oggetti =====>" + oggetti);
         if(oggetti == null){
-            System.out.println("NUUUUULL");
             TextView tv = findViewById(R.id.listTVEmpty);
             tv.setText(R.string.oggetti_non_trovati);
             return;
