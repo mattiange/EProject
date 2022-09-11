@@ -174,6 +174,28 @@ public class DbManager {
     }
 
     /**
+     * Elimina un oggetto dal database selezionandolo in base al suo ID.
+     *
+     * @param id ID dell'oggetto
+     * @return <strong>true</strong> se l'oggetto viene cancellato, <strong>false</strong> altrimenti
+     */
+    public boolean deleteZona(int id){
+        String query = "DELETE FROM Zone WHERE id = " + id;
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        try{
+            db.execSQL(query);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
      * Aggiorna una zona esistente.
      * La zona da modificare viene identificato mediante
      * il campo ID.
@@ -232,16 +254,6 @@ public class DbManager {
             al = new ArrayList<>();
 
             do {
-                /*HashMap<String, String> hm = new HashMap<>();
-
-                hm.put("ID", c.getString(0));
-                hm.put("Nome", c.getString(1));
-                hm.put("Provincia", c.getString(2));
-                hm.put("Regione", c.getString(3));
-                hm.put("CAP", c.getString(4));
-
-                al.add(hm);*/
-
                 al.add(new Zona(
                         Integer.parseInt(c.getString(0)),
                         c.getString(1),

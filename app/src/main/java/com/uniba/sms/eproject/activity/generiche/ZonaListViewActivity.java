@@ -13,13 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.uniba.sms.eproject.Azioni.VISUALIZZA_OGGETTI;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_PROVINCE;
 import static com.uniba.sms.eproject.Azioni.VISUALIZZA_ZONE;
 import static com.uniba.sms.eproject.util.Util.addToolbarAndMenu;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.Azioni;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.activity.crud.zona.CRUDZonaCreateActivity;
@@ -83,9 +86,7 @@ public class ZonaListViewActivity extends AppCompatActivity {
         title.setAlpha(1.0f);
         title.setText(getResources().getText(R.string.msg_seleziona_zona));
 
-
         ListView listView = findViewById(R.id.listViewGenerica);
-
 
         ZonaAdapter adapter = new ZonaAdapter(this, R.layout.listview_row_option_style, zone);
         listView.setAdapter(adapter);
@@ -114,13 +115,32 @@ public class ZonaListViewActivity extends AppCompatActivity {
                 intent.putExtra("regione", getIntent().getExtras().getString("regione"));
                 startActivity(intent);
             });
+            delete.setOnClickListener(view1->{
+                AlertDialog.Builder builder = new AlertDialog.Builder(ZonaListViewActivity.this);
+                builder.setMessage("Vuoi cancellare il record?");
+                builder.setTitle("Cancella record");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes",  (dialog, which) -> {
+                    if((new DbManager(this)).deleteZona(idZona)){
+                        Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_cancellato_ok), Snackbar.LENGTH_SHORT).show();
 
-            /*Intent intent = new Intent(ZonaListViewActivity.this, ZonaListViewActivity.class);
-            intent.putExtra("funzione", String.valueOf(VISUALIZZA_OGGETTI));
-            intent.putExtra("id", ((Zona)(listView.getItemAtPosition(position))).getId());
-            intent.putExtra("provincia", provincia);
-            intent.putExtra("regione", getIntent().getExtras().getString("regione"));
-            startActivity(intent);*/
+                        Intent intent = new Intent(ZonaListViewActivity.this, ZonaListViewActivity.class);
+                        intent.putExtra("funzione", String.valueOf(VISUALIZZA_ZONE));
+                        intent.putExtra("zona_id", getIntent().getExtras().getString("id"));
+                        intent.putExtra("provincia", getIntent().getExtras().getString("provincia"));
+                        intent.putExtra("regione", getIntent().getExtras().getString("regione"));
+                        startActivity(intent);
+                    }else{
+                        Snackbar.make(findViewById(R.id.listScrollView), getResources().getText(R.string.oggetto_cancellato_no), Snackbar.LENGTH_LONG).show();
+                    }
+                });
+                builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
+
+                AlertDialog alertDialog = builder.create();
+                // Show the Alert Dialog box
+                alertDialog.show();
+            });
+
 
             return true;
         });
