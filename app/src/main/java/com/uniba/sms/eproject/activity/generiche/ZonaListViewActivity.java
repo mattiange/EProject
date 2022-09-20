@@ -48,7 +48,7 @@ public class ZonaListViewActivity extends AppCompatActivity {
         //deve essere visualizzato solamente
         //per la sezione di creazione
         createBtn = findViewById(R.id.floatingButtonCreate);
-        createBtn.setAlpha(0.0f);
+        //createBtn.setAlpha(0.0f);
         //////////////////////////////////////////////////////////////////////////////////
 
         try{
