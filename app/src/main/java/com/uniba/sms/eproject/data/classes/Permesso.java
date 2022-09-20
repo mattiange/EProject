@@ -4,6 +4,9 @@ public class Permesso {
     int permesso_id;
     int utente_id;
 
+    public static final int CURATORE = 1;
+    public static final int VISITATORE = 2;
+
     public Permesso(int permesso_id, int utente_id){
         this.permesso_id = permesso_id;
         this.utente_id = utente_id;

@@ -1,23 +1,18 @@
 package com.uniba.sms.eproject.activity;
 
-import android.accounts.AccountManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.data.classes.Permesso;
 import com.uniba.sms.eproject.data.classes.Utente;
 import com.uniba.sms.eproject.database.DbManager;
 
@@ -36,9 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         loginIntoApp();
 
         //registrazione nuovo utente
-        ((findViewById(R.id.btnRegistrati))).setOnClickListener( v -> {
-            registrazione();
-        });
+        ((findViewById(R.id.btnRegistrati))).setOnClickListener( v -> registrazione());
     }
 
     /**
@@ -63,7 +56,10 @@ public class LoginActivity extends AppCompatActivity {
             DbManager dbManager = new DbManager(this);
             Utente u = dbManager.login(insertLoginEmail.getText().toString(), insertLoginPassword.getText().toString());
             if( u != null){
-                startActivity(new Intent(this, HomeActivity.class));
+                if(u.getPermesso_id() == Permesso.VISITATORE){
+                    startActivity(new Intent(this, HomeActivity.class));
+                }else if(u.getPermesso_id() == Permesso.CURATORE){
+                }
             }else{
                 Snackbar.make(findViewById(R.id.loginLayout), getResources().getText(R.string.login_error), Snackbar.LENGTH_LONG).show();
             }
