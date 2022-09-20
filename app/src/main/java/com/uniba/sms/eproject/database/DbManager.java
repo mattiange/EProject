@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import com.uniba.sms.eproject.annotazioni.Autore;
 import com.uniba.sms.eproject.data.classes.Museo;
 import com.uniba.sms.eproject.data.classes.Oggetto;
+import com.uniba.sms.eproject.data.classes.Permesso;
+import com.uniba.sms.eproject.data.classes.Utente;
 import com.uniba.sms.eproject.data.classes.Zona;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class DbManager {
         helper=new MyHelper(context, DATABASE,  null, VERSIONE_DATABASE);
     }
 
+    ///////////////////////////////////// GESTIONE DEGLI UTENTI
     /**
      * Visualizza tutti gli utenti registrati
      *
@@ -80,36 +83,67 @@ public class DbManager {
      *          ....
      */
     @Autore(autore = "Mattia, Giandomenico")
-    public HashMap<String, String> login(String username, String password){
+    public Utente login(String username, String password){
         String query="SELECT * FROM Utente_Registrato WHERE email = '"+username+"' AND password = '"+password+"';";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
 
-        HashMap<String, String> utente = null;
+        Utente utente = null;
 
         if (c.moveToFirst()){
-            utente = new HashMap<>();
+            utente = new Utente(
+                    c.getInt(0),
+                    c.getString(1),
+                    c.getString(2),
+                    c.getString(3),
+                    c.getString(4)
+            );
+        }
+        c.close();
+
+        if(utente != null) {
+            String query2 = "SELECT * FROM Permessi_Has_Utente WHERE utente_id = " + utente.getId();
+            c = db.rawQuery(query2, null);
+
+            if (c.moveToFirst()) {
+                utente.setPermesso_id(c.getInt(0));
+            }
+        }
+
+        return utente;
+    }
+
+    //////////////////////////// GESTIONE DEI PERMESSI
+
+    public ArrayList<Permesso> visualizzaTuttiIPermessi(){
+        String query="SELECT * FROM Permessi_has_Utente";
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Permesso> al = new ArrayList<>();
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
 
             do {
-
-                utente.put("ID", c.getString(0));
-                utente.put("Nome", c.getString(1));
-                utente.put("Cognome", c.getString(2));
-                utente.put("Username", c.getString(3));
-                utente.put("Email", c.getString(4));
-                utente.put("tipo", c.getString(6));
+                al.add(new Permesso(
+                        Integer.parseInt(c.getString(0)),
+                        Integer.parseInt(c.getString(1))
+                        )
+                );
 
             } while(c.moveToNext());
         }
 
         c.close();
 
-        return utente;
+        return al;
     }
 
     //////////////////////////// GESTIONE ZONE
-
 
     /**
      * Restituisce una singola zona in base al suo ID

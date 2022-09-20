@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.uniba.sms.eproject.R;
+import com.uniba.sms.eproject.data.classes.Utente;
 import com.uniba.sms.eproject.database.DbManager;
 
 
@@ -29,12 +30,42 @@ public class LoginActivity extends AppCompatActivity {
         loginToolBar.setTitle(R.string.login);
         setSupportActionBar(loginToolBar);
 
+        loginIntoApp();
 
+        //registrazione nuovo utente
         ((findViewById(R.id.btnRegistrati))).setOnClickListener( v -> {
             registrazione();
         });
     }
 
+    /**
+     * Entra nell'app tramite login
+     */
+    public void loginIntoApp(){
+        EditText insertLoginEmail = findViewById(R.id.insertLoginEmail);
+        TextView infoLoginEmail = findViewById(R.id.infoLoginEmail);
+
+        EditText insertLoginPassword = findViewById(R.id.insertLoginPassword);
+        TextView infoLoginPassword = findViewById(R.id.infoLoginPassword);
+
+        //login utente registrato
+        (findViewById(R.id.loginButton)).setOnClickListener( v-> {
+            if(insertLoginEmail.getText().toString().trim().isEmpty()){
+                infoLoginEmail.setVisibility(View.VISIBLE);
+            }
+            if(insertLoginPassword.getText().toString().trim().isEmpty()){
+                infoLoginPassword.setVisibility(View.VISIBLE);
+            }
+
+            DbManager dbManager = new DbManager(this);
+            Utente u = dbManager.login(insertLoginEmail.getText().toString(), insertLoginPassword.getText().toString());
+            if( u != null){
+                startActivity(new Intent(this, HomeActivity.class));
+            }else{
+                Snackbar.make(findViewById(R.id.loginLayout), getResources().getText(R.string.login_error), Snackbar.LENGTH_LONG).show();
+            }
+        });
+    }
 
     /**
      * Entra nell'app tramite login
@@ -51,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         //Flag per controllare se i dati inseriti sono validi
         boolean flag = true;
 
-        if ( insertLoginEmail.getText().toString().equals("") ) {
+        /*if ( insertLoginEmail.getText().toString().equals("") ) {
 
             infoLoginEmail.setVisibility(View.VISIBLE);
             infoLoginEmail.setText(R.string.info_email);
@@ -87,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, HomeActivity.class));
         }else{
             Snackbar.make((ConstraintLayout)findViewById(R.id.loginLayout), "Dati di login errati", Snackbar.LENGTH_LONG).show();
-        }
+        }*/
     }
 
     public void forgotPassword(View view){
