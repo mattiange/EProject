@@ -1,6 +1,8 @@
 package com.uniba.sms.eproject.activity;
 
+import android.accounts.Account;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -56,9 +58,22 @@ public class LoginActivity extends AppCompatActivity {
             DbManager dbManager = new DbManager(this);
             Utente u = dbManager.login(insertLoginEmail.getText().toString(), insertLoginPassword.getText().toString());
             if( u != null){
+                //Salvo le impostazioni della login sull'utente
+                SharedPreferences preferences = getSharedPreferences("Login", MODE_PRIVATE);
+                SharedPreferences.Editor ed = preferences.edit();
+                ed.putString("UserEmail", u.getEmail());
+                ed.putString("UserId", String.valueOf(u.getId()));
+                ed.putString("UserPermesso", String.valueOf(u.getPermesso_id()));
+                ed.putString("UserNome", u.getNome());
+                ed.putString("UserCognome", u.getCognome());
+                ed.commit();
+                /////////////////////////////////////////////////////////////////////////
+
+                //Visualizzo l'activity in base al permesso
                 if(u.getPermesso_id() == Permesso.VISITATORE){
                     startActivity(new Intent(this, HomeActivity.class));
                 }else if(u.getPermesso_id() == Permesso.CURATORE){
+                    startActivity(new Intent(this, HomeCuratoreActivity.class));
                 }
             }else{
                 Snackbar.make(findViewById(R.id.loginLayout), getResources().getText(R.string.login_error), Snackbar.LENGTH_LONG).show();

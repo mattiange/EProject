@@ -96,8 +96,7 @@ public class DbManager {
                     c.getInt(0),
                     c.getString(1),
                     c.getString(2),
-                    c.getString(3),
-                    c.getString(4)
+                    c.getString(3)
             );
         }
         c.close();

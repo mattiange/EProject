@@ -4,21 +4,19 @@ public class Utente {
     int id;
     String nome;
     String cognome;
-    String username;
     String email;
     int permesso_id;
 
     /*int tipoUtente;
     // 0 = Visitatore, 1 = Curatore*/
 
-    public Utente(String nome, String cognome, String username, String email) {
-        this(-1, nome, cognome, username, email);
+    public Utente(String nome, String cognome, String email) {
+        this(-1, nome, cognome, email);
     }
-    public Utente(int id, String nome, String cognome, String username, String email) {
+    public Utente(int id, String nome, String cognome, String email) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
-        this.username = username;
         this.email = email;
         //this.tipoUtente = tipoUtente;
     }
@@ -37,14 +35,6 @@ public class Utente {
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {

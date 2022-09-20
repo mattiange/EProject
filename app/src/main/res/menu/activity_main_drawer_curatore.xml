@@ -13,9 +13,19 @@
     <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_gallery"
+                android:id="@+id/nav_musei"
                 android:icon="@drawable/menu_icon__foreground_cog_fa"
-                android:title="Gestisci i musei"/>
+                android:title="@string/navigation_drawer_musei"/>
+
+            <item
+                android:id="@+id/nav_zone"
+                android:icon="@drawable/menu_icon__foreground_cog_fa"
+                android:title="@string/navigation_drawer_zone"/>
+
+            <item
+                android:id="@+id/nav_oggetto"
+                android:icon="@drawable/menu_icon__foreground_cog_fa"
+                android:title="@string/navigation_drawer_oggetti"/>
         </menu>
     </item>
 
