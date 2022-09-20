@@ -25,7 +25,14 @@
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true"
-            android:parentActivityName=".activity.MainActivity" />
+            android:parentActivityName=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".activity.RegistrationActivity"
             android:exported="true"
@@ -91,19 +98,10 @@
             android:parentActivityName=".activity.crud.percorso.CRUDPercorsoActivity"/>
         <activity
             android:name=".activity.generiche.OggettoListViewActivity"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".activity.generiche.ZonaListViewActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

@@ -51,7 +51,7 @@ public class DbManager {
     @Autore(autore = "Mattia, Giandomenico")
     public boolean registrazione(String nome, String cognome, String username, String email, String password, int tipo){
         String insert1="INSERT INTO Utente_Registrato (ID, Nome, Cognome, Username, Email, Password, tipo) "
-                + "VALUES (NULL,'"+nome+"','"+cognome+"', '"+username+"', '"+email+"', '"+password+"', "+tipo+")";
+                + "VALUES (NULL,'"+nome+"','"+cognome+"', '"+username+"', '"+email+"', '"+password+"')";
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{

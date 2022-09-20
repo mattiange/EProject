@@ -31,39 +31,13 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    public void onUserTypeClicked(View view) {
-
-        boolean checked = ((RadioButton) view).isChecked();
-
-        switch(view.getId()) {
-
-            case R.id.radioVisitatore:
-
-                if (checked)
-
-                    break;
-
-            case R.id.radioCuratore:
-
-                if (checked)
-
-                    break;
-        }
-    }
-
 
     public void confirmRegistration(View view){
-
-        Toast.makeText(this, "Da implementare", Toast.LENGTH_SHORT).show();
-
         EditText insertName = findViewById(R.id.insertName);
         TextView infoName = findViewById(R.id.infoName);
 
         EditText insertSurname = findViewById(R.id.insertSurname);
         TextView infoSurname = findViewById(R.id.infoSurname);
-
-        EditText insertUserName = findViewById(R.id.insertUserName);
-        TextView infoUsername = findViewById(R.id.infoUserName);
 
         EditText insertEmail = findViewById(R.id.insertEmail);
         TextView infoEmail = findViewById(R.id.infoEmail);
@@ -73,14 +47,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         EditText insertRepeatPassword = findViewById(R.id.insertRepeatPassword);
         TextView infoRepeatPassword = findViewById(R.id.infoRepeatPassword);
-
-        RadioButton radioVisitatore = findViewById(R.id.radioVisitatore);
-        boolean checkedVisitatore = ((RadioButton) radioVisitatore).isChecked();
-
-        RadioButton radioCuratore = findViewById(R.id.radioCuratore);
-        boolean checkedCuratore = ((RadioButton) radioCuratore).isChecked();
-
-        TextView infoUserType = findViewById(R.id.infoUserType);
 
         int flag = 0;
 
@@ -102,21 +68,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         } else { infoSurname.setVisibility(View.GONE); }
 
-
-
-        if ( insertUserName.getEditableText().toString().equals("") ) {
-
-            infoUsername.setVisibility(View.VISIBLE);
-            infoUsername.setText(R.string.null_username);
-            flag = 1;
-
-        } else if ( insertUserName.getEditableText().toString().contains(" ") ){
-
-            infoUsername.setVisibility(View.VISIBLE);
-            infoUsername.setText(R.string.info_username);
-            flag = 1;
-
-        } else { infoUsername.setVisibility(View.GONE); }
 
 
 
@@ -154,14 +105,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         } else { infoRepeatPassword.setVisibility(View.GONE); }
 
-
-        if ( !(checkedVisitatore) && !(checkedCuratore) ) {
-
-            infoUserType.setVisibility(View.VISIBLE);
-            infoUserType.setText(R.string.infouser_type);
-            flag = 1;
-
-        } else { infoUserType.setVisibility(View.GONE); }
 
     }
 

@@ -105,7 +105,7 @@
         android:id="@+id/loginButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="48dp"
         android:elevation="@dimen/default_elevation"
         android:onClick="loginIntoApp"
         android:text="@string/login"
@@ -117,17 +117,32 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/forgotPasswordButton"
+        android:id="@+id/btnRegistrati"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="68dp"
         android:elevation="@dimen/default_elevation"
-        android:onClick="forgotPassword"
-        android:text="@string/forgot_password"
+        android:onClick="loginIntoApp"
+        android:text="@string/registrati"
         app:iconTint="@color/blue_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/forgotPasswordButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:elevation="@dimen/default_elevation"
+        android:onClick="forgotPassword"
+        android:text="@string/forgot_password"
+        app:iconTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegistrati"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 

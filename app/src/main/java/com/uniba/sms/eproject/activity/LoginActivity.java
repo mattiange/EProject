@@ -3,6 +3,7 @@ package com.uniba.sms.eproject.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         loginToolBar.setTitle(R.string.login);
         setSupportActionBar(loginToolBar);
 
-        ActionBar ab = getSupportActionBar();
 
-        if (ab != null) { ab.setDisplayHomeAsUpEnabled(true); }
-
+        ((findViewById(R.id.btnRegistrati))).setOnClickListener( v -> {
+            registrazione();
+        });
     }
 
 
@@ -95,6 +96,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Roconduce all'activity per registrarsi
+     */
+    public void registrazione(){
+        startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
+    }
 
 }

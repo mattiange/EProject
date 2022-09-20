@@ -19,6 +19,7 @@
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="login">Login</string>
+    <string name="registrati">Registrati</string>
     <string name="registration">Registrazione</string>
     <string name="forgot_password">Pass. dimenticata</string>
     <string name="name">Nome</string>
