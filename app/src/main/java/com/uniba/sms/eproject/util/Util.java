@@ -9,8 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
 import com.uniba.sms.eproject.annotazioni.Autore;
+import com.uniba.sms.eproject.drawermenu.CuratoreDrawerMenuAction;
 
 import java.io.ByteArrayOutputStream;
 
@@ -69,6 +71,9 @@ public class Util {
 
         //Drawer menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(aca, dl, t, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        NavigationView nv = aca.findViewById(R.id.menulaterale);
+        CuratoreDrawerMenuAction cdma = new CuratoreDrawerMenuAction(nv);
+        cdma.set(aca, aca.getApplicationContext());
         dl.addDrawerListener(toggle);
         toggle.syncState();
         ////////////////////////////////////////////////////////////////////////////////
