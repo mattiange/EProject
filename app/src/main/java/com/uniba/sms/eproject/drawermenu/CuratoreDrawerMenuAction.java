@@ -1,4 +1,4 @@
-package com.uniba.sms.eproject.activity.drawermenu;
+package com.uniba.sms.eproject.drawermenu;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

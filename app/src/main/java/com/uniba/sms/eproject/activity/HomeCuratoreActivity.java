@@ -1,9 +1,7 @@
 package com.uniba.sms.eproject.activity;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.uniba.sms.eproject.R;
-import com.uniba.sms.eproject.activity.crud.museo.CRUDMuseoActivity;
-import com.uniba.sms.eproject.activity.crud.oggetto.CRUDOggettoCreateActivity;
-import com.uniba.sms.eproject.activity.crud.zona.CRUDZonaCreateActivity;
-import com.uniba.sms.eproject.activity.drawermenu.CuratoreDrawerMenuAction;
-import com.uniba.sms.eproject.activity.generiche.OggettoListViewActivity;
-import com.uniba.sms.eproject.activity.generiche.ZonaListViewActivity;
+import com.uniba.sms.eproject.drawermenu.CuratoreDrawerMenuAction;
 
 public class HomeCuratoreActivity extends AppCompatActivity {
 
