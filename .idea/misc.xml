@@ -1,89 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="..\:/Android/EProject/app/src/main/res/drawable/customshape_header.xml" value="0.2545" />
-        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_baseline_qr_code_scanner_24.xml" value="0.4255" />
-        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_pen.xml" value="0.3175" />
-        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_plus.xml" value="0.3175" />
-        <entry key="..\:/Android/EProject/app/src/main/res/drawable/ic_trash_can.xml" value="0.3175" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_oggetto.xml" value="0.3151041666666667" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_crud_zona.xml" value="0.3151041666666667" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_home.xml" value="0.14666666666666667" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_home_curatore.xml" value="0.2677083333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_lista_percorsi.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_login.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_main.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_oggetto.xml" value="0.3151041666666667" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_registration.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_zona.xml" value="0.27219202898550726" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/activity_zona_view.xml" value="0.27219202898550726" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/app_bar.xml" value="0.5358931552587646" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/content_main.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/dddde.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout-xxhdpi/nav_header_main.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_create_museo.xml" value="0.3333333333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_create_percorso.xml" value="0.3333333333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_create_zona.xml" value="0.3333333333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_delete.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_delete_museo.xml" value="0.26975683890577506" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_museo.xml" value="0.2717391304347826" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_row.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zona.xml" value="0.22" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zona_province.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zona_regioni.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zone.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_lista_zonei.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_museo.xml" value="0.3140625" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_single_museo.xml" value="0.2717391304347826" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_crud_update_museo.xml" value="0.27355072463768115" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_home_curatore.xml" value="0.26666666666666666" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_listview.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/activity_museo.xml" value="0.33469202898550726" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/delete_button.xml" value="0.5536458333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/listview_row.xml" value="0.3145833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/listview_row_option_style.xml" value="0.22" />
-        <entry key="..\:/Android/EProject/app/src/main/res/layout/navigation_view.xml" value="0.5536458333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/menu/activity_main_drawer_curatore.xml" value="0.3770833333333333" />
-        <entry key="..\:/Android/EProject/app/src/main/res/menu/menu.xml" value="0.5546875" />
-        <entry key="..\:/Android/EProject/app/src/main/res/menu/menu_crud.xml" value="0.31354166666666666" />
-        <entry key="..\:/Android/EProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4255" />
-        <entry key="..\:/Android/EProject/app/src/main/res/mipmap-anydpi-v26/menu_icon_signature_.xml" value="0.4255" />
-        <entry key="..\:/SMS/EProject/app/src/main/res/layout/activity_crud_create_museo.xml" value="0.1" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_crud_create_oggetto.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_crud_create_zona.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_crud_oggetto.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_oggetto.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_oggetto_view.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_registration.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout-xxhdpi/activity_zona.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout/activity_crud_create_museo.xml" value="0.2006340579710145" />
-        <entry key="app/src/main/res/layout/activity_crud_create_percorso.xml" value="0.37184917062952905" />
-        <entry key="app/src/main/res/layout/activity_crud_lista_museo.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout/activity_crud_lista_row.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/layout/activity_museo.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout/activity_museo_view.xml" value="0.182518115942029" />
-        <entry key="app/src/main/res/layout/activity_percorso.xml" value="0.312194108816893" />
-        <entry key="app/src/main/res/layout/activity_percorso_view.xml" value="0.22093353271484378" />
-        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.3145833333333333" />
-      </ProjectState>
-    </option>
   </component>
 </project>

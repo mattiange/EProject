@@ -1,112 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uniba.sms.eproject">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="it.sms.eproject">
 
     <application
         android:allowBackup="true"
-        android:fullBackupOnly="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EProject">
+        android:theme="@style/Theme.EProject"
+        tools:targetApi="31">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
-        <activity
-            android:name=".activity.LoginActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.MainActivity" />
-        <activity
-            android:name=".activity.RegistrationActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.MainActivity"/>
-        <activity
-            android:name=".activity.HomeActivity"
-            android:exported="true"/>
-        <activity android:name=".activity.HomeCuratoreActivity"
-                android:exported="true" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.ZonaActivity"
-            android:exported="true">
-            </activity>
-        <activity
-            android:name=".activity.ListaPercorsiActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.HomeActivity"/>
-        <activity
-            android:name=".activity.VisualizzaZonaActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.ZonaActivity"/>
-        <activity
-            android:name=".activity.OggettoActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.VisualizzaOggettoActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.OggettoActivity"/>
-        <activity
-            android:name=".activity.MuseoActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.VisualizzaMuseoActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.MuseoActivity"/>
-        <activity
-            android:name=".activity.crud.zona.CRUDZonaCreateActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.oggetto.CRUDOggettoCreateActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.museo.CRUDMuseoActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.museo.CRUDSingleMuseoActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.museo.CRUDMuseoModificaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.museo.CRUDMuseoCancellaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.museo.CRUDMuseoListaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.museo.CRUDMuseoCreateActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.crud.museo.CRUDMuseoActivity"/>
-
-        <activity
-            android:name=".activity.PercorsoActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.crud.percorso.CRUDPercorsoCreateActivity"
-            android:exported="true"
-            android:parentActivityName=".activity.crud.percorso.CRUDPercorsoActivity"/>
-        <activity
-            android:name=".activity.generiche.OggettoListViewActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".activity.generiche.ZonaListViewActivity"
-            android:exported="true"/>
     </application>
 
 </manifest>
