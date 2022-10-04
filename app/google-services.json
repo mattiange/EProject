@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "488948003327",
+    "project_id": "sms-2021-2022",
+    "storage_bucket": "sms-2021-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488948003327:android:3749f5751c2894d996b7ca",
+        "android_client_info": {
+          "package_name": "it.sms.eproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488948003327-7nqhmhj7tuavgl12ckft8ft9g0lqf6hq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZRnHwJwBoTBhaF56lmL7NZyJUUCNE5rQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488948003327-7nqhmhj7tuavgl12ckft8ft9g0lqf6hq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
