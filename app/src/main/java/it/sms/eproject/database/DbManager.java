@@ -4,15 +4,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
+import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.data.classes.Zona;
 
 public class DbManager {
@@ -30,28 +33,45 @@ public class DbManager {
      * @return
      */
     @Autore(autore = "Mattia, Giandomenico")
-    public Cursor elencoUtenti()      {
-        String query="SELECT * FROM Utente_Registrato";
+    public ArrayList<Utente> elencoUtenti()      {
+        String query="SELECT * FROM utenti";
         SQLiteDatabase db= helper.getReadableDatabase();
 
-        return db.rawQuery(query, null);
+        ArrayList<Utente> utenti = null;
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()){
+            utenti = new ArrayList<>();
+
+            do {
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    utenti.add(new Utente(
+                            Integer.parseInt(c.getString(0)),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getString(3),
+                            LocalDate.parse(c.getString(4)),
+                            c.getString(7)
+                    ));
+                }
+
+            } while(c.moveToNext());
+        }
+
+        return utenti;
     }
 
     /**
      * Registra un nuovo utente
      *
-     * @param nome
-     * @param cognome
-     * @param username
-     * @param email
-     * @param password
-     * @param tipo
+     * @param u Utente da registrare
      * @return
      */
     @Autore(autore = "Mattia, Giandomenico")
-    public boolean registrazione(String nome, String cognome, String username, String email, String password, int tipo){
-        String insert1="INSERT INTO Utente_Registrato (ID, Nome, Cognome, Username, Email, Password, tipo) "
-                + "VALUES (NULL,'"+nome+"','"+cognome+"', '"+username+"', '"+email+"', '"+password+"', "+tipo+")";
+    public boolean registrazione(Utente u){
+        String insert1="INSERT INTO utenti(codice, nome, cognome, codice_fiscale, data_di_nascita, email, password) "
+                + "VALUES (NULL,'"+u.getNome()+"','"+u.getCognome()+"', '"+u.getCodice_fiscale()+"', '"+u.getData_di_nascita()+"', '"+u.getEmail()+"', '"+u.getPassword()+"')";
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
