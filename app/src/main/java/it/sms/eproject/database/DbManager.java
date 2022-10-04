@@ -124,25 +124,32 @@ public class DbManager {
      *          ....
      */
     @Autore(autore = "Mattia, Giandomenico")
-    public HashMap<String, String> login(String username, String password){
-        String query="SELECT * FROM Utente_Registrato WHERE email = '"+username+"' AND password = '"+password+"';";
+    public Utente login(String email, String password){
+        String query="SELECT * FROM utenti AS u, permessi AS p, permesso_has_utente AS pu " +
+                                "WHERE email = '"+email+"' " +
+                                    "AND password = '"+password+"' " +
+                                    "AND u.codice = pu.codice_utente " +
+                                    "AND p.codice = pu.codice_permesso;";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
 
-        HashMap<String, String> utente = null;
+        Utente utente = null;
 
         if (c.moveToFirst()){
-            utente = new HashMap<>();
-
             do {
 
-                utente.put("ID", c.getString(0));
-                utente.put("Nome", c.getString(1));
-                utente.put("Cognome", c.getString(2));
-                utente.put("Username", c.getString(3));
-                utente.put("Email", c.getString(4));
-                utente.put("tipo", c.getString(6));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    utente = new Utente(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getString(3),
+                            LocalDate.parse(c.getString(4)),
+                            c.getString(7),
+                            new Permesso(c.getInt(9), c.getString(10))
+                    );
+                }
 
             } while(c.moveToNext());
         }
