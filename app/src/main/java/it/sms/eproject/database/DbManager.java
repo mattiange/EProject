@@ -15,6 +15,7 @@ import java.util.HashMap;
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
+import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.data.classes.Zona;
 
@@ -28,13 +29,13 @@ public class DbManager {
     }
 
     /**
-     * Visualizza tutti gli utenti registrati
+     * Visualizza tutti gli utenti registrati e i permessi a loro associati
      *
      * @return
      */
     @Autore(autore = "Mattia, Giandomenico")
     public ArrayList<Utente> elencoUtenti()      {
-        String query="SELECT * FROM utenti";
+        String query="SELECT * FROM utenti AS u, permessi AS p, permesso_has_utente AS pu WHERE u.codice = pu.codice_utente AND p.codice = pu.codice_permesso";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         ArrayList<Utente> utenti = null;
@@ -52,7 +53,9 @@ public class DbManager {
                             c.getString(2),
                             c.getString(3),
                             LocalDate.parse(c.getString(4)),
-                            c.getString(7)
+                            c.getString(7),
+                            //Permesso associato all'utente
+                            new Permesso(Integer.parseInt(c.getString(9)), c.getString(10))
                     ));
                 }
 
@@ -74,11 +77,32 @@ public class DbManager {
                 + "VALUES (NULL,'"+u.getNome()+"','"+u.getCognome()+"', '"+u.getCodice_fiscale()+"', '"+u.getData_di_nascita()+"', '"+u.getEmail()+"', '"+u.getPassword()+"')";
         SQLiteDatabase db= helper.getWritableDatabase();
 
+
         try{
             db.execSQL(insert1);
 
+            //Leggo l'id inserito e aggiungo il permesso all'utente
+                String last_id_query = "SELECT last_insert_rowid() as last_id FROM utenti;";
+                db= helper.getReadableDatabase();
+                Cursor c = db.rawQuery(last_id_query, null);
+                if(c.moveToFirst()){
+                    int last_id = Integer.parseInt(c.getString(0));
+
+                    //inserisco il permesso dell'utente
+                    String insertPermessoUtente = "INSERT INTO permesso_has_utente(codice_utente, codice_permesso)" +
+                            "VALUES ("+last_id+","+u.getPermesso().getCodice()+");";
+
+                    db= helper.getWritableDatabase();
+                    db.execSQL(insertPermessoUtente);
+                    //------------
+                }
+            //----------------------------------------------------
+
+
+
             return true;
         }catch(SQLException ex){
+            System.out.println("))))))))))) EX => " + ex.getMessage() );
             return false;
         }
     }

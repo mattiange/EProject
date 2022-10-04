@@ -13,6 +13,8 @@ public class Utente {
 
     LocalDate data_di_nascita;
 
+    Permesso permesso;
+
     /**
      *
      * @param codice  Codice dell'utente
@@ -21,14 +23,16 @@ public class Utente {
      * @param codice_fiscale Codice fiscale dell'utente
      * @param data_di_nascita Data di nascita dell'utente
      * @param email Email dell'utente
+     * @param permesso Permesso associato all'utente
      */
-    public Utente(int codice, String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email) {
+    public Utente(int codice, String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email, Permesso permesso) {
         this.codice             = codice;
         this.nome               = nome;
         this.cognome            = cognome;
         this.codice_fiscale     = codice_fiscale;
         this.email              = email;
         this.data_di_nascita    = data_di_nascita;
+        this.permesso           = permesso;
     }
 
     /**
@@ -38,9 +42,10 @@ public class Utente {
      * @param codice_fiscale Codice fiscale dell'utente
      * @param data_di_nascita Data di nascita dell'utente
      * @param email Email dell'utente
+     * @param permesso Permesso associato all'utente
      */
-    public Utente(String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email){
-        this(-1, nome, cognome, codice_fiscale, data_di_nascita, email);
+    public Utente(String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email, Permesso permesso){
+        this(-1, nome, cognome, codice_fiscale, data_di_nascita, email, permesso);
     }
 
     /**
@@ -52,9 +57,10 @@ public class Utente {
      * @param data_di_nascita Data di nascita dell'utente
      * @param email Email dell'utente
      * @param password Password dell'utente
+     * @param permesso Permesso associato all'utente
      */
-    public Utente(String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email, String password){
-        this(nome, cognome, codice_fiscale, data_di_nascita, email);
+    public Utente(String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email, String password, Permesso permesso){
+        this(nome, cognome, codice_fiscale, data_di_nascita, email, permesso);
         this.password = password;
     }
 
@@ -101,6 +107,14 @@ public class Utente {
 
     /**
      *
+     * @param permesso Permesso assocciato all'utente
+     */
+    public void setPermesso(Permesso permesso) {
+        this.permesso = permesso;
+    }
+
+    /**
+     *
      * @return Restituisce il codice
      */
     public int getCodice() {return codice;}
@@ -142,4 +156,10 @@ public class Utente {
      * @return Restituisce la password dell'utente
      */
     public String getPassword() {return password;}
+
+    /**
+     *
+     * @return Permesso dell'utente
+     */
+    public Permesso getPermesso() {return permesso;}
 }

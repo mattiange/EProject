@@ -30,8 +30,16 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "VALUES (NULL,'Alessandro','Manzoni', 'MNZSS80C18H098L', '1980-03-18', 'a.manzoni@gmail.com', 'test')," +
                 "(NULL,'Mario','Rossi', 'MRRSSIZSS80D18H098L', '1980-04-18', 'm.rossi@gmail.com', 'test')," +
                 "(NULL,'Mattia Leonardo','Angelillo', 'NGLMTL93A25H096J', '1993-01-25', 'm.angelillo@gmail.com', 'test')";
+        String insert2 = "INSERT INTO permessi(codice, permesso)" +
+                "VALUES (NULL, 'Curatore')," +
+                "(NULL, 'Guida turistica')," +
+                "(NULL, 'Visitatore')";
+        String insert3 = "INSERT INTO permesso_has_utente(codice_utente, codice_permesso)" +
+                "VALUES (1, 3), (2, 2), (3, 1)";
         try{
             db.execSQL(insert1);
+            db.execSQL(insert2);
+            db.execSQL(insert3);
         }catch(SQLException ex){
             Toast.makeText(this.context , "inizializza() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
@@ -56,10 +64,10 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "permesso varchar" +
                 ");";
 
-        String permessi_has_utente = "CREATE TABLE Permesso_has_Utente (" +
+        String permessi_has_utente = "CREATE TABLE permesso_has_utente (" +
                 "codice_utente INTEGER," +
                 "codice_permesso tINTEGER," +
-                "FOREIGN KEY(Utente_ID) REFERENCES permessi(codice)," +
+                "FOREIGN KEY(codice_utente) REFERENCES permessi(codice)," +
                 "FOREIGN KEY(codice_permesso) REFERENCES utenti(codice)," +
                 "PRIMARY KEY(codice_utente,codice_permesso)" +
                 ");";
