@@ -72,4 +72,47 @@ public class Util {
         toggle.syncState();
         ////////////////////////////////////////////////////////////////////////////////
     }
+
+    /**
+     * Verifica se un email è valida
+     *
+     * @param email Email da verificare
+     * @return true se l'email è valida, false altrimenti
+     */
+    public static boolean verificaEmail(String email){
+        String secondaParteEmail = "";
+
+        try {
+            secondaParteEmail = email.substring(email.indexOf('@'));
+        }catch (StringIndexOutOfBoundsException e){
+            //Non è contenuto il simbolo della @
+            return false;
+        }
+
+        //Controllo la seconda parte dell'email (dopo la @) contenga
+        //il simbolo del punto (.)
+        if(email.contains("@") && secondaParteEmail.contains(".")){
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

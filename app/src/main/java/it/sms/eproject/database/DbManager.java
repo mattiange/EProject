@@ -110,7 +110,7 @@ public class DbManager {
     /**
      * Effettua il login di un utente
      *
-     * @param username  Nome utente
+     * @param email  Nome utente
      * @param password  Password di login
      * @return HashMap<String, String>
      *     Restituisce un HashMap dove la chiave è il nome della colonna della tabella Utente_Registrato
@@ -131,6 +131,8 @@ public class DbManager {
                                     "AND u.codice = pu.codice_utente " +
                                     "AND p.codice = pu.codice_permesso;";
         SQLiteDatabase db= helper.getReadableDatabase();
+
+        System.out.println("====> " + query);
 
         Cursor c = db.rawQuery(query, null);
 

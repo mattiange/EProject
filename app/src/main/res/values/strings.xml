@@ -14,12 +14,15 @@
     <string name="oggetti_non_trovati">Non è stato trovato alcun oggetto per la zona selezionata</string>
     <string name="zona_non_trovata_per_la_regione">Non è stata trovata alcuna regione per le zona</string>
     <string name="provincia_non_trovata_per_la_regione">Non è stata trovata alcuna provincia nella regione: %s</string>
+    <string name="campi_vuoti">I campi non possono essere vuoti</string>
+    <string name="email_non_corretta">L\'email inserita non è corretta</string>
+    <string name="login_non_valida">I dati di login non sono corretti</string>
     <!-- ////////////////////////////////////// -->
 
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="login">Login</string>
-    <string name="registration">Registrazione</string>
+    <string name="registrazione">Registrazione</string>
     <string name="forgot_password">Pass. dimenticata</string>
     <string name="name">Nome</string>
     <string name="insert_name">Inserisci Nome</string>
