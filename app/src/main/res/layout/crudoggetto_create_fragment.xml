@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inserisci_nomeoggetto"
+        android:text="@string/crud_txt_nome"
         android:textSize="24dp" />
 
     <EditText
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inserisci_prov_oggetto"
+        android:text="@string/crud_provincia"
         android:textSize="24dp" />
 
     <EditText
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inserisci_anno_oggetto"
+        android:text="@string/crud_txt_anno"
         android:textSize="24dp" />
 
     <EditText
@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inserisci_autore_oggetto"
+        android:text="@string/crud_txt_autore"
         android:textSize="24dp" />
 
     <EditText
@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inserisci_descr_oggetto"
+        android:text="@string/crud_txt_descrizione"
         android:textSize="24dp" />
     <EditText
         android:id="@+id/labelDescOggetto"
@@ -65,6 +65,6 @@
         android:layout_height="46dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/crud_txt_salva_oggetto"/>
+        android:text="@string/crud_txt_salva"/>
 
 </LinearLayout>

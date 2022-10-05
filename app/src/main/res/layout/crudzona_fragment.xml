@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:text="@string/gestione_zona"
+        android:text="@string/crud_manage_zona"
         android:textSize="34dp"
         android:textAlignment="center"/>
 
@@ -19,12 +19,12 @@
         android:id="@+id/btnCreaZona"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:text="@string/crea_nuova_zona"/>
+        android:text="@string/crud_create_zona"/>
     <Button
         android:id="@+id/btnVisualizzaZona"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:text="@string/visualizza_zona"/>
+        android:text="@string/crud_show_zona"/>
 
 
 </LinearLayout>

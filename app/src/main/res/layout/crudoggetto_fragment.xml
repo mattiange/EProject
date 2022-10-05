@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:text="@string/gestione_oggetto"
+        android:text="@string/crud_manage_oggetto"
         android:textSize="34dp"
         android:textAlignment="center"/>
 
@@ -19,12 +19,12 @@
         android:id="@+id/btnCreaOggetto"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:text="@string/crea_nuovo_oggetto"/>
+        android:text="@string/crud_create_oggetto"/>
     <Button
         android:id="@+id/btnVisualizzaOggetto"
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:text="@string/visualizza_oggetti"/>
+        android:text="@string/crud_show_oggetto"/>
 
 
 </LinearLayout>
