@@ -1,6 +1,11 @@
 package it.sms.eproject.data.classes;
 
 public class Permesso {
+
+    public static final int CURATORE = 1;
+    public static final int GUIDA = 2;
+    public static final int VISITATORE = 3;
+
     int codice;
     String permesso;
 

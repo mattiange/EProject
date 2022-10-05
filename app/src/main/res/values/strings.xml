@@ -155,6 +155,9 @@
     <string name="crud_delete_museo">Cancella museo</string>
 
     <string name="crud_txt_nome">Nome</string>
+    <string name="crud_txt_cognome">Cognome</string>
+    <string name="crud_txt_codice_fiscale">Codice Fiscale</string>
+    <string name="crud_txt_data_di_nascita">Data di nascita</string>
     <string name="crud_txt_telefono">Telefono</string>
     <string name="crud_txt_indirizzo">Indirizzo</string>
     <string name="crud_txt_citta">Città</string>

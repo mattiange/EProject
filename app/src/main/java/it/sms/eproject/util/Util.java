@@ -79,6 +79,7 @@ public class Util {
      * @param email Email da verificare
      * @return true se l'email è valida, false altrimenti
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public static boolean verificaEmail(String email){
         String secondaParteEmail = "";
 
@@ -98,7 +99,25 @@ public class Util {
         return false;
     }
 
+    /**
+     * Verifica che le due password siano uguali
+     *
+     * @param password1 Password
+     * @param password2 Password da confermare
+     * @return
+     */
+    public static boolean confermaPassword(String password1, String password2){
+        return password1.equals(password2);
+    }
 
+    /**
+     * Verifica se un campo è stato correttamente compilato
+     *
+     * @return true se è compilato, false altrimenti
+     */
+    public static boolean campoCompilato(String campo){
+        return !campo.trim().isEmpty();
+    }
 
 
 

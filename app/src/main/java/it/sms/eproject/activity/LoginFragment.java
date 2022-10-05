@@ -1,7 +1,6 @@
 package it.sms.eproject.activity;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +29,6 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onAttach(@NonNull Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("usersFile", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         super.onAttach(context);
     }
 
@@ -74,7 +71,6 @@ public class LoginFragment extends Fragment {
 
         //Riporto alla pagina di registrazione di un nuovo utente
         buttonRegister.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
             if(callbackFragment!=null){
                 callbackFragment.changeFragment();
             }
