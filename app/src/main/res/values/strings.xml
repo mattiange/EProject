@@ -1,5 +1,10 @@
 <resources>
 
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
 
     <!-- Button -->
     <string name="btn_modifica">Modifica</string>

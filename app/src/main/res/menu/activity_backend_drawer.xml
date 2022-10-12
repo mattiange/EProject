@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/menu_icon_foreground"
+            android:title="@string/crud_manage_profilo"/>
+    </group>
+
+    <item android:title="">
+        <menu>
+
+            <item
+                android:id="@+id/nav_manage_museo"
+                android:icon="@drawable/menu_icon_signature_foreground"
+                android:title="@string/crud_manage_museo"/>
+
+            <item
+                android:id="@+id/nav_manage_zona"
+                android:icon="@drawable/menu_icon_foreground_cog_fa"
+                android:title="@string/crud_manage_zona"/>
+
+            <item
+                android:id="@+id/nav_manage_oggetto"
+                android:icon="@drawable/menu_icon_signature_foreground"
+                android:title="@string/crud_manage_oggetto"/>
+        </menu>
+    </item>
+
+</menu>
