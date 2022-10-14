@@ -1,6 +1,8 @@
 package it.sms.eproject.activity.login_e_registrazione;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin,
             buttonRegister;
     EditText etEmail, etPassword;
-
     String email, password;
 
     @Override
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin     = findViewById(R.id.btnLogin);
         buttonRegister  = findViewById(R.id.btnRegister);
     }
+
 
     /**
      * Imposta le azioni dell'activity

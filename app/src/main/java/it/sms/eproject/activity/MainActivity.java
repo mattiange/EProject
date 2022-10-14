@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
+//import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -16,13 +16,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.material.navigation.NavigationView;
+//import com.google.android.material.navigation.NavigationView;
 
 import it.sms.eproject.R;
+import it.sms.eproject.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements CallbackFragment {
 
-    Fragment fragment;
+    //Fragment fragment;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
@@ -50,14 +51,6 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         //visualizzo il pulsante di visualizzazione del menu
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /*DrawerLayout dl = findViewById(R.id.drawer_layout);
-        NavigationView nv = findViewById(R.id.nav_view);
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_gallery, R.id.nav_share)
-                                                        .setOpenableLayout(dl)
-                                                                .build();*/
-        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(nv, navController);*/
 
 
         addFragment();
@@ -67,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
      * Aggiunge il fragment della login
      */
     public void addFragment(){
-        LoginFragment fragment = new LoginFragment();
+        HomeFragment fragment = new HomeFragment();
         fragment.setCallbackFragment(this);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -78,19 +71,19 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
     /**
      * Rimpiazza il fragment della login con quello della registrazione
      */
-    public void replaceFragment (){
+    /*public void replaceFragment (){
         fragment = new RegisterFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void changeFragment() {
         replaceFragment();
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

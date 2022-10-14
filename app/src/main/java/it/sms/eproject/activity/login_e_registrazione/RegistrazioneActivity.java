@@ -34,8 +34,10 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_registrazione);
 
+        //Visualizzo il pulsante back
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_back_white);
+        //----------------------------------------------------------------------------------------\
 
         registraElementi();
 
