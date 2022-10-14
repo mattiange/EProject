@@ -3,6 +3,7 @@ package it.sms.eproject.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import it.sms.eproject.EmailGiaEsistenteException;
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
@@ -23,8 +25,10 @@ public class DbManager {
     MyHelper helper=null;
     private final static String DATABASE="ProgettoSMS.db";
     private final static int VERSIONE_DATABASE=1;
+    Context c;
 
     public DbManager(Context context)      {
+        this.c = context;
         helper=new MyHelper(context, DATABASE,  null, VERSIONE_DATABASE);
     }
 
@@ -72,7 +76,7 @@ public class DbManager {
      * @return
      */
     @Autore(autore = "Mattia, Giandomenico")
-    public boolean registrazione(Utente u){
+    public boolean registrazione(Utente u) throws EmailGiaEsistenteException{
         String insert1="INSERT INTO utenti(codice, nome, cognome, codice_fiscale, data_di_nascita, email, password) "
                 + "VALUES (NULL,'"+u.getNome()+"','"+u.getCognome()+"', '"+u.getCodice_fiscale()+"', '"+u.getData_di_nascita()+"', '"+u.getEmail()+"', '"+u.getPassword()+"')";
         SQLiteDatabase db= helper.getWritableDatabase();
@@ -102,7 +106,12 @@ public class DbManager {
 
             return true;
         }catch(SQLException ex){
-            System.out.println("))))))))))) EX => " + ex.getMessage() );
+            /*System.out.println("))))))))))) EX => " + ex.getMessage() );
+            ex.getStackTrace();*/
+            if(ex instanceof SQLiteConstraintException){
+                throw new EmailGiaEsistenteException(this.c);
+            }
+
             return false;
         }
     }
@@ -131,8 +140,6 @@ public class DbManager {
                                     "AND u.codice = pu.codice_utente " +
                                     "AND p.codice = pu.codice_permesso;";
         SQLiteDatabase db= helper.getReadableDatabase();
-
-        System.out.println("====> " + query);
 
         Cursor c = db.rawQuery(query, null);
 

@@ -1,5 +1,7 @@
 package it.sms.eproject.activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -12,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
+    public DrawerLayout drawerLayout;
+    public ActionBarDrawerToggle actionBarDrawerToggle;
+
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -31,17 +37,30 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
 
         setContentView(R.layout.activity_main);
 
-        DrawerLayout dl = findViewById(R.id.drawer_layout);
+
+
+        //Abilito l'apertura/chiusura del drawer menu
+        drawerLayout = findViewById(R.id.drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        //visualizzo il pulsante di visualizzazione del menu
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /*DrawerLayout dl = findViewById(R.id.drawer_layout);
         NavigationView nv = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_gallery, R.id.nav_share)
                                                         .setOpenableLayout(dl)
-                                                                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+                                                                .build();*/
+        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(nv, navController);
+        NavigationUI.setupWithNavController(nv, navController);*/
 
 
-        //addFragment();
+        addFragment();
     }
 
     /**
@@ -80,6 +99,13 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {

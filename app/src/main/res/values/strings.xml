@@ -28,6 +28,7 @@
     <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="login">Login</string>
     <string name="registrazione">Registrazione</string>
+    <string name="registrazione_successo">Registrazione avvenuta con successo</string>
     <string name="forgot_password">Pass. dimenticata</string>
     <string name="name">Nome</string>
     <string name="insert_name">Inserisci Nome</string>
@@ -40,6 +41,7 @@
     <string name="info_username">NOTA: L\'Username non deve prevedere spazi.</string>
     <string name="null_username">L\'Username non può essere vuoto!</string>
     <string name="email">E-mail</string>
+    <string name="email_gia_esistente">E-mail già esistente</string>
     <string name="insert_email">Inserisci E-mail</string>
     <string name="info_email">L\'E-mail non può essere vuota!</string>
     <string name="not_an_email">Non hai inserito una E-mail!</string>
