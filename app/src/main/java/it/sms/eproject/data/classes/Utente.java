@@ -162,4 +162,13 @@ public class Utente {
      * @return Permesso dell'utente
      */
     public Permesso getPermesso() {return permesso;}
+
+    /**
+     * Crea un nuovo utente
+     *
+     * @return
+     */
+    public static Utente of(int codice, String nome, String cognome, String codice_fiscale, String email, LocalDate data_di_nascita, Permesso permesso){
+        return new Utente(codice, nome, cognome, codice_fiscale, data_di_nascita, email, permesso);
+    }
 }

@@ -82,12 +82,20 @@ public class LoginActivity extends AppCompatActivity {
 
             Utente u;
             if((u = new DbManager(this).login(email, password)) != null){
+                //Dati dell'utente da passare tra le varie sezioni del sito
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
                 SharedPreferences.Editor editor = pref.edit();
+
                 editor.putString("user_id", String.valueOf(u.getCodice()));
                 editor.putString("user_nome", u.getNome());
-                editor.putString("user_permesso", String.valueOf(u.getPermesso().getCodice()));
+                editor.putString("user_cognome", u.getCognome());
+                editor.putString("user_codice_fiscale", u.getCodice_fiscale());
+                editor.putString("user_email", u.getEmail());
+                editor.putString("user_data_di_nascita", String.valueOf(u.getData_di_nascita()));
+                editor.putString("user_permesso_codice", String.valueOf(u.getPermesso().getCodice()));
+                editor.putString("user_permesso_nome", String.valueOf(u.getPermesso().getPermesso()));
                 editor.apply();
+                //-------------------------------
 
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }else{

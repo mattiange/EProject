@@ -59,4 +59,15 @@ public class Permesso {
     public String getPermesso() {
         return permesso;
     }
+
+    /**
+     * Creazione di un nuovo permesso
+     *
+     * @param codice
+     * @param permesso
+     * @return
+     */
+    public static Permesso of(int codice, String permesso){
+        return new Permesso(codice, permesso);
+    }
 }

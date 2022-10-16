@@ -12,13 +12,20 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-//import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import java.time.LocalDate;
 
 import it.sms.eproject.R;
+import it.sms.eproject.data.classes.Permesso;
+import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements CallbackFragment {
@@ -27,10 +34,17 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
+    //Utente loggato
+    Utente u;
+
+    /**
+     * Preferenze del sistema
+     */
+    SharedPreferences pref;
+
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
-
-    private AppBarConfiguration mAppBarConfiguration;
+    public AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +52,20 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
 
         setContentView(R.layout.activity_main);
 
+        pref = getApplicationContext().getSharedPreferences("credenziali", 0);
 
+        registraUtenteLoggato();
 
         //Abilito l'apertura/chiusura del drawer menu
         drawerLayout = findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        NavigationView nv = findViewById(R.id.nav_view);
+        if(u.getPermesso().getCodice() == Permesso.CURATORE) {
+            nv.inflateMenu(R.menu.activity_backend_drawer);
+        }else{
+            nv.inflateMenu(R.menu.activity_main_drawer);
+        }
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -51,9 +74,27 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         //visualizzo il pulsante di visualizzazione del menu
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
         addFragment();
+    }
+
+    /**
+     * Recupera le informazioni sull'utente che si è loggato all'app
+     */
+    public void registraUtenteLoggato(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            u = Utente.of(
+                    Integer.parseInt(pref.getString("user_id", "-1")),
+                    pref.getString("user_nome", ""),
+                    pref.getString("user_cognome", ""),
+                    pref.getString("user_codice_fiscaale", ""),
+                    pref.getString("user_email", ""),
+                    LocalDate.parse(pref.getString("user_data_di_nascita", "")),
+                    Permesso.of(
+                            Integer.parseInt(pref.getString("user_permesso_codice", "")),
+                            pref.getString("user_permesso_nome", "")
+                    )
+            );
+        }
     }
 
     /**
