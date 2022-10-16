@@ -13,8 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 import it.sms.eproject.R;
 import it.sms.eproject.activity.MainActivity;
+import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.database.DbManager;
 import it.sms.eproject.util.Util;
 
@@ -77,8 +80,15 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+            Utente u;
+            if((u = new DbManager(this).login(email, password)) != null){
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("user_id", String.valueOf(u.getCodice()));
+                editor.putString("user_nome", u.getNome());
+                editor.putString("user_permesso", String.valueOf(u.getPermesso().getCodice()));
+                editor.apply();
 
-            if(new DbManager(this).login(email, password) != null){
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }else{
                 lblError.setVisibility(View.VISIBLE);
