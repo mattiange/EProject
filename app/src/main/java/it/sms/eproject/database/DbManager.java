@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.sms.eproject.EmailGiaEsistenteException;
+import it.sms.eproject.eccezioni.EmailGiaEsistenteException;
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;

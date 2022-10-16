@@ -12,13 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
 import java.time.LocalDate;
 
-import it.sms.eproject.EmailGiaEsistenteException;
+import it.sms.eproject.eccezioni.EmailGiaEsistenteException;
 import it.sms.eproject.R;
-import it.sms.eproject.activity.MainActivity;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.database.DbManager;

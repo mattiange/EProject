@@ -1,6 +1,8 @@
-package it.sms.eproject;
+package it.sms.eproject.eccezioni;
 
 import android.content.Context;
+
+import it.sms.eproject.R;
 
 public class EmailGiaEsistenteException extends RuntimeException{
     public EmailGiaEsistenteException(Context c){
