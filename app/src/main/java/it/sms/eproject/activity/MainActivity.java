@@ -3,6 +3,7 @@ package it.sms.eproject.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 //import androidx.fragment.app.Fragment;
 import androidx.fragment.app.Fragment;
@@ -29,11 +30,14 @@ import java.time.LocalDate;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.crud.CrudMuseo;
+import it.sms.eproject.activity.crud.CrudOggetto;
+import it.sms.eproject.activity.crud.CrudZona;
+import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.HomeFragment;
 
-public class MainActivity extends AppCompatActivity implements CallbackFragment{
+public class MainActivity extends AppCompatActivity implements CallbackFragment, NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
 
     //Fragment fragment;
@@ -82,7 +86,16 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         addFragment();
+
+
+        nv.setNavigationItemSelectedListener(this);
+        //Modifico l'ordine dell'asse z del menu nell'albero
+        //portandolo sopra tutto, così da permettere il click
+        //sulle singole voci
+        nv.bringToFront();
     }
+
+
 
     /**
      * Recupera le informazioni sull'utente che si è loggato all'app
@@ -165,5 +178,40 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment{
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    /**
+     * Aggiungo il supporto alla navigazione del DrawerMenu
+     *
+     * @param item
+     * @return
+     */
+    @Autore(autore = "Mattia Leonardo Angelillo")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {// Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+
+        switch (id){
+            case R.id.nav_manage_museo:
+                fragment = new CrudMuseo();
+                break;
+            case R.id.nav_manage_zona:
+                fragment = new CrudZona();
+                break;
+            case R.id.nav_manage_oggetto:
+                fragment = new CrudOggetto();
+                break;
+        }
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.commit();
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 }
