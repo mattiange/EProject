@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      */
     @Autore(autore = "Mattia Leonardo Angelillo")
     public void addFragment(){
-        CuratoreHomeFragment fragment = new CuratoreHomeFragment();
-        //fragment.setCallbackFragment(this);
+        //CuratoreHomeFragment fragment = new CuratoreHomeFragment();
+        fragment = new CrudMuseo();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);

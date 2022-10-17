@@ -1,129 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:padding="16dp">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_nome"
-        android:textSize="24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_nome"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelNomeMuseo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_telefono"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelNomeMuseo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_telefono"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelNumTelefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_indirizzo"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelNumTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_indirizzo"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelIndirizzo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_citta"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelIndirizzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_citta"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelCitta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/labelCitta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_provincia"
-        android:textSize="24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_provincia"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelProvincia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_cap"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelProvincia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_cap"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelCap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_regione"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelCap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_regione"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelRegione"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/email"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelRegione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/labelEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_orario_apertura"
-        android:textSize="24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_orario_apertura"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelOrario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/museum_image"
-        android:textSize="24dp" />
+        <EditText
+            android:id="@+id/labelOrario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/museum_image"
+            android:textSize="24dp" />
 
-    <EditText
-        android:id="@+id/labelImmagine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btn_immagini_museo"
-        android:layout_width="206dp"
-        android:layout_height="46dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/crud_txt_seleziona_immagine"/>
+        <EditText
+            android:id="@+id/labelImmagine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_immagini_museo"
+            android:layout_width="206dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/crud_txt_seleziona_immagine"/>
 
-    <Button
-        android:id="@+id/btn_salva_museo"
-        android:layout_width="206dp"
-        android:layout_height="46dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/crud_txt_salva"/>
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_salva_museo"
+            android:layout_width="206dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/crud_txt_salva"/>
+    </LinearLayout>
+</ScrollView>
