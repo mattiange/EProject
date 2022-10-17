@@ -17,7 +17,7 @@ import it.sms.eproject.activity.crud.CrudZona;
 import it.sms.eproject.annotazioni.Autore;
 
 /**
- * Fragmente principale del curatore
+ * Fragment principale del curatore
  */
 @Autore(autore = "Mattia Leonardo Angelillo")
 public class CuratoreHomeFragment extends Fragment {

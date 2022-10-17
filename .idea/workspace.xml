@@ -10,19 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="264b3b13-81b0-4c4d-864c-465210204aee" name="Changes" comment="Gestione della visualizzazione e aggiunta nuovo utente">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Museo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Museo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Oggetto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Oggetto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Percorso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Percorso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Permesso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Permesso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Zona.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Zona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/MyHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/MyHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/CuratoreHomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/CuratoreHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/CuratoreHomeFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
