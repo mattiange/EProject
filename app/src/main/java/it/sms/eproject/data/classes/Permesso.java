@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.Autore;
+
+/**
+ * Gestisce i dati dei permessi
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class Permesso {
 
     public static final int CURATORE = 1;

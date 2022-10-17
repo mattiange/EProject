@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.Autore;
+
+/**
+ * Gestisce i dati della zona
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class Zona {
 
     int id;

@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.Autore;
+
+/**
+ * Gestisce i dati del museo
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class Museo {
 
     int ID;
@@ -15,6 +21,7 @@ public class Museo {
     String orario;
     String immagine;
 
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, String immagine) {
         this(0, nome, telefono, indirizzo, citta, regione, provincia, cap, email, sito_web, orario, immagine);
     }

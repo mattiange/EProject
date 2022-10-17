@@ -21,6 +21,10 @@ import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.data.classes.Zona;
 
+/**
+ * Tabella di gestione del database
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class DbManager {
     MyHelper helper=null;
     private final static String DATABASE="ProgettoSMS.db";

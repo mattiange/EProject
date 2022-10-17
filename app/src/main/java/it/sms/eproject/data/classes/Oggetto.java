@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.Autore;
+
+/**
+ * Gestisce i dati degli oggetti
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class Oggetto {
 
     int id;

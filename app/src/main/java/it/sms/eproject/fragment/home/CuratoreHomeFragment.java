@@ -1,4 +1,4 @@
-package it.sms.eproject.fragment;
+package it.sms.eproject.fragment.home;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -8,22 +8,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.activity.crud.CrudMuseo;
 import it.sms.eproject.activity.crud.CrudOggetto;
 import it.sms.eproject.activity.crud.CrudZona;
+import it.sms.eproject.annotazioni.Autore;
 
-public class HomeFragment extends Fragment {
+/**
+ * Fragmente principale del curatore
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
+public class CuratoreHomeFragment extends Fragment {
 
     CallbackFragment callbackFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_home, container, false);
+        View view= inflater.inflate(R.layout.fragment_curatore_home, container, false);
 
         aggiuntaEventiClickBottoni(view);
 

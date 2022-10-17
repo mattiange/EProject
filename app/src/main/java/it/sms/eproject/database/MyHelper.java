@@ -6,6 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import it.sms.eproject.annotazioni.Autore;
+
+/**
+ * Crea il database e inserisce i valori di default
+ */
+@Autore(autore = "Mattia Leonardo Angelillo")
 public class MyHelper  extends SQLiteOpenHelper {
 
     private Context context;
@@ -16,6 +22,7 @@ public class MyHelper  extends SQLiteOpenHelper {
      * @param factory
      * @param version   Versione del database
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public MyHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
@@ -25,6 +32,7 @@ public class MyHelper  extends SQLiteOpenHelper {
      *
      * @param db Database reference
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     private void inizializza(SQLiteDatabase db)      {
         String insert1="INSERT INTO utenti (codice, nome, cognome, codice_fiscale, data_di_nascita, Email, Password) " +
                 "VALUES (NULL,'Alessandro','Manzoni', 'MNZSS80C18H098L', '1980-03-18', 'a.manzoni@gmail.com', 'test')," +
@@ -45,6 +53,7 @@ public class MyHelper  extends SQLiteOpenHelper {
         }
     }
 
+    @Autore(autore = "Mattia Leonardo Angelillo")
     @Override
     public void onCreate(SQLiteDatabase db) {
         String utente="CREATE TABLE utenti (" +

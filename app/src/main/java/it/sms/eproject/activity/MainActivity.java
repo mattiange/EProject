@@ -5,7 +5,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-//import androidx.fragment.app.Fragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,16 +13,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
@@ -35,9 +29,9 @@ import it.sms.eproject.activity.crud.CrudZona;
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
-import it.sms.eproject.fragment.HomeFragment;
+import it.sms.eproject.fragment.home.CuratoreHomeFragment;
 
-public class MainActivity extends AppCompatActivity implements CallbackFragment, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
 
     //Fragment fragment;
@@ -119,37 +113,16 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment,
 
     /**
      * Aggiunge il fragment della login
+     *
      */
+    @Autore(autore = "Mattia Leonardo Angelillo")
     public void addFragment(){
-        HomeFragment fragment = new HomeFragment();
-        fragment.setCallbackFragment(this);
+        CuratoreHomeFragment fragment = new CuratoreHomeFragment();
+        //fragment.setCallbackFragment(this);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
-    }
-
-    /**
-     * Rimpiazza il fragment della login con quello della registrazione
-     */
-    public void replaceFragment (){
-        /*fragment = new RegisterFragment();
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-        fragmentTransaction.commit();*/
-        fragment = new CrudMuseo();
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-        fragmentTransaction.commit();
-    }
-
-    @Override
-    public void changeFragment() {
-        replaceFragment();
     }
 
     @Override
@@ -208,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment,
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
