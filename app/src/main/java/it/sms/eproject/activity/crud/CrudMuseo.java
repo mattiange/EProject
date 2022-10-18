@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.activity.crud.liste.ListaStati;
 
 public class CrudMuseo extends Fragment {
     private Button btnShowAll;
@@ -48,7 +48,7 @@ public class CrudMuseo extends Fragment {
      */
     private void nuovoMuseo(View e) {
         visualizzaFragment(() -> {
-            Fragment fragment = new CrudMuseo_Create();
+            Fragment fragment = new ListaStati();
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -3,12 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_create_museo"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -43,47 +51,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/crud_txt_citta"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/etCitta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_provincia"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/etProvincia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_cap"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/etCap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_regione"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/etRegione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/email"
             android:textSize="24dp" />
 
@@ -113,6 +80,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_citta"
+            android:textSize="24dp" />
+
+        <Spinner
+            android:id="@+id/etCitta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

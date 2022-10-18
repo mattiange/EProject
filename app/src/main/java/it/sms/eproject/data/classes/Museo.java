@@ -19,13 +19,13 @@ public class Museo {
     String email;
     String sito_web;
     String orario;
-    String immagine;
+    byte[] immagine;
 
     @Autore(autore = "Mattia Leonardo Angelillo")
-    public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, String immagine) {
+    public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, byte[] immagine) {
         this(0, nome, telefono, indirizzo, citta, regione, provincia, cap, email, sito_web, orario, immagine);
     }
-    public Museo(int id, String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, String immagine) {
+    public Museo(int id, String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, byte[] immagine) {
         this.ID = id;
         this.nome = nome;
         this.telefono = telefono;
@@ -124,11 +124,11 @@ public class Museo {
         this.orario = orario;
     }
 
-    public void setImmagine(String immagine) {
+    public void setImmagine(byte[] immagine) {
         this.immagine = immagine;
     }
 
-    public String getImmagine() {
+    public byte[] getImmagine() {
         return immagine;
     }
 }

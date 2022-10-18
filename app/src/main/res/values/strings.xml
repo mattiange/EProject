@@ -14,6 +14,12 @@
     <string name="aggiorna">Aggiorna</string>
     <!-- /////////////////////////////////////// -->
 
+    <!-- Titoli -->
+    <string name="seleziona_stato">Seleziona uno stato</string>
+    <string name="seleziona_regione">Seleziona una regione</string>
+    <string name="seleziona_provincia">Seleziona una provincia</string>
+    <string name="seleziona_citta">Seleziona una città</string>
+
     <!-- Message -->
     <string name="zona_non_trovata">Non è stata trovata alcuna zona per la provincia: %s</string>
     <string name="oggetti_non_trovati">Non è stato trovato alcun oggetto per la zona selezionata</string>
