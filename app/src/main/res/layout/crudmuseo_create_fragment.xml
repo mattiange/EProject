@@ -3,121 +3,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="16dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/crud_create_museo"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp" />
+
+        <TextView
+            android:labelFor="@+id/etNomeMuseo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/crud_txt_nome"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/labelNomeMuseo"
+            android:id="@+id/etNomeMuseo"
+            android:autofillHints="name"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
         <TextView
+            android:labelFor="@+id/etNumTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/crud_txt_telefono"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/labelNumTelefono"
+            android:id="@+id/etNumTelefono"
+            android:autofillHints="phone"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:labelFor="@+id/etIndirizzo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/crud_txt_indirizzo"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/labelIndirizzo"
+            android:id="@+id/etIndirizzo"
+            android:autofillHints="postalAddress"
+            android:inputType="textPostalAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_citta"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/labelCitta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_provincia"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/labelProvincia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_cap"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/labelCap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_regione"
-            android:textSize="24dp" />
-
-        <EditText
-            android:id="@+id/labelRegione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:labelFor="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/email"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/labelEmail"
+            android:id="@+id/etEmail"
+            android:autofillHints="emailAddress"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:labelFor="@+id/etSitoWeb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_sito"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etSitoWeb"
+            android:autofillHints="name"
+            android:inputType="textWebEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:labelFor="@+id/etOrario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/crud_txt_orario_apertura"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/labelOrario"
+            android:id="@+id/etOrario"
+            android:autofillHints="name"
+            android:inputType="time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
         <TextView
+            android:labelFor="@+id/etCitta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_citta"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etCitta"
+            android:inputType="none"
+            android:autofillHints="name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Usato per passare l'ID della città
+        (è un campo nascosto) -->
+        <EditText
+            android:id="@+id/etIdCitta"
+            android:visibility="invisible"
+            android:inputType="none"
+            android:autofillHints="name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!-- ///////////////////////////////////// -->
+
+        <TextView
+            android:labelFor="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/museum_image"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/labelImmagine"
+        <ImageView
+            android:id="@+id/imageView"
+            android:contentDescription="@string/crud_txt_immagine"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="61dp" />
+
+
         <Button
-            android:id="@+id/btn_immagini_museo"
+            android:id="@+id/btn_upload_immagine"
             android:layout_width="206dp"
             android:layout_height="46dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/crud_txt_seleziona_immagine"/>
 
@@ -125,7 +151,7 @@
             android:id="@+id/btn_salva_museo"
             android:layout_width="206dp"
             android:layout_height="46dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/crud_txt_salva"/>
     </LinearLayout>

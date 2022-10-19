@@ -36,6 +36,8 @@ public class DbManager {
         helper=new MyHelper(context, DATABASE,  null, VERSIONE_DATABASE);
     }
 
+
+
     /**
      * Visualizza tutti gli utenti registrati e i permessi a loro associati
      *
