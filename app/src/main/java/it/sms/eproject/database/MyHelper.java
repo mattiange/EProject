@@ -49,13 +49,20 @@ public class MyHelper  extends SQLiteOpenHelper {
         String insert_stati="INSERT INTO stati (nome) " +
                 "VALUES ('Italia')";
         String insert_regioni="INSERT INTO regioni (nome, stato_codice) " +
-                "VALUES ('Puglia', 1)";
+                "VALUES ('Puglia', 1)," +
+                        "('Basilicata', 1)";
         String insert_province="INSERT INTO province (nome, regione_codice) " +
-                "VALUES ('Bari', 1)";
+                "VALUES ('Bari', 1)," +
+                        "('Taranto', 1)," +
+                        "('Potenza', 2)," +
+                        "('Matera', 2)";
         String insert_citta="INSERT INTO citta (nome, cap, provincia_codice) " +
                 "VALUES ('Gioia del Colle', '70023', 1), " +
                 "('Bari centro', '70122', 1), " +
-                "('Bari Mungivacca', '70126', 1)";
+                "('Bari Mungivacca', '70126', 1)," +
+                "('Abriola', '85010', 3)," +
+                "('Potenza centro', '85100', 3)," +
+                "('Massafra', '74016', 1)";
         //---------------------------------------------------------------------------
 
         //Inserimento musei

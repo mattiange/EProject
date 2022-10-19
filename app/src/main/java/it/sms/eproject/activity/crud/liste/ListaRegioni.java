@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,17 +25,23 @@ import it.sms.eproject.database.DBRegione;
 
 public class ListaRegioni extends Fragment {
     ListView listView;
+    Bundle bundle;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
-        Regione[] regioni = new Regione[0];
-        ArrayAdapter<Regione> adapter = new RegioneAdapter(getContext(), new DBRegione(getContext()).elencoRegioni().toArray(regioni));
-        listView = v.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        try{
+            Regione[] regioni = new Regione[0];
+            ArrayAdapter<Regione> adapter = new RegioneAdapter(getContext(), new DBRegione(getContext()).elencoRegioni(Integer.parseInt(getArguments().getString("codice_stato"))).toArray(regioni));
+            listView = v.findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+        }catch (NullPointerException e) {
+            ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_regione), getArguments().getString("nome_stato")));
+        }
 
+        this.bundle = new Bundle();
         aggiungiEvento();
 
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_regione);
@@ -48,16 +55,23 @@ public class ListaRegioni extends Fragment {
      */
     public void aggiungiEvento(){
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            getCitta();
+            TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
+            TextView nome   = ((TextView)view.findViewById(R.id.listViewNome));
+
+            this.bundle.putString("codice_regione", codice.getText().toString());
+            this.bundle.putString("nome_regione", nome.getText().toString());
+
+            getProvince();
         });
     }
 
     /**
      * Visualizzo le città
      */
-    private void getCitta() {
+    private void getProvince() {
         changeFragment(()->{
             Fragment fragment = new ListaProvince();
+            fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -11,12 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import org.w3c.dom.Text;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.crud.CrudMuseo_Create;
@@ -27,20 +32,27 @@ import it.sms.eproject.database.DBStato;
 
 public class ListaCitta extends Fragment {
     ListView listView;
+    Bundle bundle;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
-        Citta[] citta = new Citta[0];
-        ArrayAdapter<Citta> adapter = new CittaAdapter(getContext(), new DBCitta(getContext()).elencoCitta().toArray(citta));
-        listView = v.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        try {
+            Citta[] citta = new Citta[0];
+            ArrayAdapter<Citta> adapter = new CittaAdapter(getContext(), new DBCitta(getContext()).elencoCitta(Integer.parseInt(getArguments().getString("codice_provincia"))).toArray(citta));
+            listView = v.findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+        }catch (NullPointerException e) {
+            ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_citta), getArguments().getString("nome_provincia")));
+        }
 
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_citta);
 
-        aggiungiEvento();
+        this.bundle = new Bundle();
+
+        //aggiungiEvento();
 
         return v;
     }
@@ -50,6 +62,12 @@ public class ListaCitta extends Fragment {
      */
     public void aggiungiEvento(){
         listView.setOnItemClickListener((parent, view, position, id) -> {
+            TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
+            TextView nome   = ((TextView)view.findViewById(R.id.listViewNome));
+
+            this.bundle.putString("codice_citta", codice.getText().toString());
+            this.bundle.putString("nome_citta",   nome.getText().toString());
+
             getNuovoMuseo();
         });
     }
@@ -60,6 +78,7 @@ public class ListaCitta extends Fragment {
     private void getNuovoMuseo() {
         changeFragment(()->{
             Fragment fragment = new CrudMuseo_Create();
+            fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

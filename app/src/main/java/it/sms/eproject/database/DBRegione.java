@@ -23,8 +23,8 @@ public class DBRegione extends DbManager{
      *
      * @return ArrayList delle regioni
      */
-    public ArrayList<Regione> elencoRegioni()      {
-        String query="SELECT * FROM regioni ORDER BY nome";
+    public ArrayList<Regione> elencoRegioni(int codice_stato)      {
+        String query="SELECT * FROM regioni WHERE stato_codice = "+codice_stato+" ORDER BY nome";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         ArrayList<Regione> regioni = null;

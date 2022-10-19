@@ -111,6 +111,10 @@ public class CrudMuseo_Create extends Fragment {
         btnImageUpload.setOnClickListener(this::fetchImage);
         salvaBtn.setOnClickListener(this::salvaMuseo);
 
+        //Setto il nome della città e il suo ID
+        ((TextView)v.findViewById(R.id.etIdCitta)).setText(String.valueOf(getArguments().getString("codice_citta")));
+        ((TextView)v.findViewById(R.id.etCitta)).setText(String.valueOf(getArguments().getString("nome_citta")));
+
         return v;
     }
 

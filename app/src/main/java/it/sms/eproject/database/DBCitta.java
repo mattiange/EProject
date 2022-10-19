@@ -23,8 +23,9 @@ public class DBCitta extends DbManager{
      *
      * @return ArrayList delle città
      */
-    public ArrayList<Citta> elencoCitta(){
-        String query="SELECT * FROM citta ORDER BY nome";
+    public ArrayList<Citta> elencoCitta(int codice_provincia){
+        String query="SELECT * FROM citta WHERE provincia_codice = "+codice_provincia+" ORDER BY nome";
+        System.out.println("QUERY ======> " + query);
         SQLiteDatabase db= helper.getReadableDatabase();
 
         ArrayList<Citta> citta = null;

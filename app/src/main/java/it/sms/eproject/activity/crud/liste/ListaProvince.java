@@ -24,16 +24,23 @@ import it.sms.eproject.database.DBProvincia;
 
 public class ListaProvince extends Fragment {
     ListView listView;
+    Bundle bundle;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
-        Provincia[] province = new Provincia[0];
-        ArrayAdapter<Provincia> adapter = new ProvinciaAdapter(getContext(), new DBProvincia(getContext()).elencoProvince().toArray(province));
-        listView = v.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        try {
+            Provincia[] province = new Provincia[0];
+            ArrayAdapter<Provincia> adapter = new ProvinciaAdapter(getContext(), new DBProvincia(getContext()).elencoProvince(Integer.parseInt(getArguments().getString("codice_regione"))).toArray(province));
+            listView = v.findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+        }catch (NullPointerException e) {
+            ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_provincia), getArguments().getString("nome_stato")));
+        }
+
+        this.bundle = new Bundle();
 
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_provincia);
 
@@ -47,16 +54,23 @@ public class ListaProvince extends Fragment {
      */
     public void aggiungiEvento(){
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            getNuovoMuseo();
+            TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
+            TextView nome   = ((TextView)view.findViewById(R.id.listViewNome));
+
+            this.bundle.putString("codice_provincia", codice.getText().toString());
+            this.bundle.putString("nome_provincia", nome.getText().toString());
+
+            getCitta();
         });
     }
 
     /**
      * Pagina di creazione nuovo museo
      */
-    private void getNuovoMuseo() {
+    private void getCitta() {
         changeFragment(()->{
             Fragment fragment = new ListaCitta();
+            fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

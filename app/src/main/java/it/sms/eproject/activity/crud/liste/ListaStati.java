@@ -24,18 +24,25 @@ import static it.sms.eproject.util.EseguiFragment.changeFragment;
 
 public class ListaStati extends Fragment {
     ListView listView;
+    Bundle bundle;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
-        Stato[] stati = new Stato[0];
-        ArrayAdapter<Stato> adapter = new StatoAdapter(getContext(), new DBStato(getContext()).elencoStati().toArray(stati));
-        listView = v.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        try {
+            Stato[] stati = new Stato[0];
+            ArrayAdapter<Stato> adapter = new StatoAdapter(getContext(), new DBStato(getContext()).elencoStati().toArray(stati));
+            listView = v.findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+        }catch (NullPointerException e) {
+            ((TextView)v.findViewById(R.id.msgError)).setText(R.string.msg_error_no_stato);
+        }
 
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_stato);
+
+        this.bundle = new Bundle();
 
         aggiungiEvento();
 
@@ -48,6 +55,12 @@ public class ListaStati extends Fragment {
      */
     public void aggiungiEvento(){
         listView.setOnItemClickListener((parent, view, position, id) -> {
+            TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
+            TextView nome   = ((TextView)view.findViewById(R.id.listViewNome));
+
+            this.bundle.putString("codice_stato", codice.getText().toString());
+            this.bundle.putString("nome_stato", nome.getText().toString());
+
             getRegioni();
         });
     }
@@ -58,6 +71,7 @@ public class ListaStati extends Fragment {
     private void getRegioni() {
         changeFragment(()->{
             Fragment fragment = new ListaRegioni();
+            fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
