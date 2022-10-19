@@ -1,4 +1,4 @@
-package it.sms.eproject.activity.crud.liste;
+package it.sms.eproject.fragment.home.crud.liste;
 
 import static it.sms.eproject.util.EseguiFragment.changeFragment;
 

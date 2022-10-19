@@ -23,13 +23,12 @@ import com.google.android.material.navigation.NavigationView;
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
-import it.sms.eproject.activity.crud.CrudMuseo;
-import it.sms.eproject.activity.crud.CrudOggetto;
-import it.sms.eproject.activity.crud.CrudZona;
+import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
+import it.sms.eproject.fragment.home.crud.CrudOggetto;
+import it.sms.eproject.fragment.home.crud.CrudZona;
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
-import it.sms.eproject.fragment.home.CuratoreHomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;

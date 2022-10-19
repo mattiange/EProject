@@ -1,4 +1,4 @@
-package it.sms.eproject.activity.crud;
+package it.sms.eproject.fragment.home.crud.museo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
-import it.sms.eproject.activity.crud.liste.ListaStati;
+import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudMuseo extends Fragment {
     private Button btnShowAll;

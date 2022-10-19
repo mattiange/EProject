@@ -13,27 +13,21 @@ public class Museo {
     String telefono;
     String indirizzo;
     String citta;
-    String regione;
-    String provincia;
-    String cap;
     String email;
     String sito_web;
     String orario;
     byte[] immagine;
 
     @Autore(autore = "Mattia Leonardo Angelillo")
-    public Museo(String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, byte[] immagine) {
-        this(0, nome, telefono, indirizzo, citta, regione, provincia, cap, email, sito_web, orario, immagine);
+    public Museo(String nome, String telefono, String indirizzo, String citta, String email, String sito_web, String orario, byte[] immagine) {
+        this(0, nome, telefono, indirizzo, citta, email, sito_web, orario, immagine);
     }
-    public Museo(int id, String nome, String telefono, String indirizzo, String citta, String regione, String provincia, String cap, String email, String sito_web, String orario, byte[] immagine) {
+    public Museo(int id, String nome, String telefono, String indirizzo, String citta, String email, String sito_web, String orario, byte[] immagine) {
         this.ID = id;
         this.nome = nome;
         this.telefono = telefono;
         this.indirizzo = indirizzo;
         this.citta = citta;
-        this.regione = regione;
-        this.provincia = provincia;
-        this.cap = cap;
         this.email = email;
         this.sito_web = sito_web;
         this.orario = orario;
@@ -74,30 +68,6 @@ public class Museo {
 
     public void setCitta(String citta) {
         this.citta = citta;
-    }
-
-    public String getRegione() {
-        return regione;
-    }
-
-    public void setRegione(String regione) {
-        this.regione = regione;
-    }
-
-    public String getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    public String getCap() {
-        return cap;
-    }
-
-    public void setCap(String cap) {
-        this.cap = cap;
     }
 
     public String getEmail() {

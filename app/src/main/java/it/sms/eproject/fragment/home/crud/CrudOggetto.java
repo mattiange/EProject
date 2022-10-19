@@ -1,4 +1,4 @@
-package it.sms.eproject.activity.crud;
+package it.sms.eproject.fragment.home.crud;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

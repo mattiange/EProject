@@ -1,4 +1,4 @@
-package it.sms.eproject.activity.crud;
+package it.sms.eproject.fragment.home.crud;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,21 +11,27 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.CallbackFragment;
 
-public class CrudMuseo_Delete extends Fragment {
+public class CrudZona extends Fragment {
+    private Button btnShowAll;
+    private Button btnCreate;
 
-    private Button btnDelete;
-    private Button btnCancel;
+    CallbackFragment callbackFragment;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.crudmuseo_delete_fragment, container,false);
+        View v = inflater.inflate(R.layout.crudzona_fragment, container, false);
 
-        btnDelete = v.findViewById(R.id.btnDeleteMuseo);
-        btnCancel = v.findViewById(R.id.btnCancel);
-
+        btnCreate = v.findViewById(R.id.btnCreaZona);
+        btnShowAll = v.findViewById(R.id.btnVisualizzaZona);
 
         return v;
+
     }
+
+    //Da implementare click sui bottoni
+
 }

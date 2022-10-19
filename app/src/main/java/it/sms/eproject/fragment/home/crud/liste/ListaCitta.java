@@ -1,4 +1,4 @@
-package it.sms.eproject.activity.crud.liste;
+package it.sms.eproject.fragment.home.crud.liste;
 
 import static it.sms.eproject.util.EseguiFragment.changeFragment;
 
@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,10 +19,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
-import it.sms.eproject.data.classes.Regione;
-import it.sms.eproject.database.DBRegione;
+import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
+import it.sms.eproject.data.classes.Citta;
+import it.sms.eproject.database.DBCitta;
 
-public class ListaRegioni extends Fragment {
+public class ListaCitta extends Fragment {
     ListView listView;
     Bundle bundle;
 
@@ -32,46 +32,45 @@ public class ListaRegioni extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
-        try{
-            Regione[] regioni = new Regione[0];
-            ArrayAdapter<Regione> adapter = new RegioneAdapter(getContext(), new DBRegione(getContext()).elencoRegioni(Integer.parseInt(getArguments().getString("codice_stato"))).toArray(regioni));
+        try {
+            Citta[] citta = new Citta[0];
+            ArrayAdapter<Citta> adapter = new CittaAdapter(getContext(), new DBCitta(getContext()).elencoCitta(Integer.parseInt(getArguments().getString("codice_provincia"))).toArray(citta));
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
 
             aggiungiEvento();
         }catch (NullPointerException e) {
-            ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_regione), getArguments().getString("nome_stato")));
+            ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_citta), getArguments().getString("nome_provincia")));
         }
 
-        this.bundle = new Bundle();
+        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_citta);
 
-        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_regione);
+        this.bundle = new Bundle();
 
         return v;
     }
 
     /**
-     * Aggiunge l'evento per intercettare il click
-     * sulla singola riga della lista
+     * Visualizza la pagina di creazione di un nuovo museo
      */
     public void aggiungiEvento(){
         listView.setOnItemClickListener((parent, view, position, id) -> {
             TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
             TextView nome   = ((TextView)view.findViewById(R.id.listViewNome));
 
-            this.bundle.putString("codice_regione", codice.getText().toString());
-            this.bundle.putString("nome_regione", nome.getText().toString());
+            this.bundle.putString("codice_citta", codice.getText().toString());
+            this.bundle.putString("nome_citta",   nome.getText().toString());
 
-            getProvince();
+            getNuovoMuseo();
         });
     }
 
     /**
-     * Visualizzo le città
+     * Pagina di creazione nuovo museo
      */
-    private void getProvince() {
+    private void getNuovoMuseo() {
         changeFragment(()->{
-            Fragment fragment = new ListaProvince();
+            Fragment fragment = new CrudMuseo_Create();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -82,15 +81,15 @@ public class ListaRegioni extends Fragment {
     }
 
     /**
-     * Adapter per visualizzare le regioni.
+     * Adapter per visualizzare gli stati.
      *
      * Tiene traccia anche dei rispettivi ID
      */
-    static class RegioneAdapter extends ArrayAdapter<Regione>{
+    static class CittaAdapter extends ArrayAdapter<Citta>{
         private final Context context;
-        private final Regione[] values;
+        private final Citta[] values;
 
-        public RegioneAdapter(@NonNull Context context, Regione[]  values) {
+        public CittaAdapter(@NonNull Context context, Citta[]  values) {
             super(context, -1, values);
 
             this.context = context;

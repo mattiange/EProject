@@ -1,8 +1,7 @@
-package it.sms.eproject.activity.crud;
+package it.sms.eproject.fragment.home.crud.museo;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,39 +20,39 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Museo;
+import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DbManager;
 
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class CrudMuseo_Create extends Fragment {
     ActivityResultLauncher<Intent> launchSomeActivity;
 
-    private int STORAGE_PERMISSION_CODE = 23;
+    private final int STORAGE_PERMISSION_CODE = 23;
     ImageView imageView;
     SQLiteDatabase db;
 
     byte[] immagine;
 
+    View v;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View v = inflater.inflate(R.layout.crudmuseo_create_fragment, container, false);
+       v = inflater.inflate(R.layout.crudmuseo_create_fragment, container, false);
 
         Button btnImageUpload = v.findViewById(R.id.btn_upload_immagine);
         Button salvaBtn = v.findViewById(R.id.btn_salva_museo);
@@ -95,21 +93,15 @@ public class CrudMuseo_Create extends Fragment {
                         }
                     }
                 });
-        /*btnImageUpload.setOnClickListener(
+        btnImageUpload.setOnClickListener(
                 view -> {
-                    try {
-                        fetchImage(view);
-                    }catch (IOException e){
-                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                        System.out.println("ERRORE: " + e.getMessage());
-                        Log.e("IOEXCEPTION", e.getMessage());
-                    }
+                    fetchImage(view);
                 }
         );
         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
-         */
+
         btnImageUpload.setOnClickListener(this::fetchImage);
-        salvaBtn.setOnClickListener(this::salvaMuseo);
+        salvaBtn.setOnClickListener(v1 -> salvaMuseo());
 
         //Setto il nome della città e il suo ID
         ((TextView)v.findViewById(R.id.etIdCitta)).setText(String.valueOf(getArguments().getString("codice_citta")));
@@ -118,22 +110,48 @@ public class CrudMuseo_Create extends Fragment {
         return v;
     }
 
-    private void salvaMuseo(View view) {
-        EditText nome = view.findViewById(R.id.etNomeMuseo);
-        EditText telefono = view.findViewById(R.id.etNomeMuseo);
-        EditText indirizzo = view.findViewById(R.id.etIndirizzo);
-        EditText citta = view.findViewById(R.id.etCitta);
-        EditText email = view.findViewById(R.id.etEmail);
-        EditText sito_web = view.findViewById(R.id.etSitoWeb);
-        EditText orario_apertura = view.findViewById(R.id.etOrario);
+    private void salvaMuseo() {
+        EditText nome               = v.findViewById(R.id.etNomeMuseo);
+        EditText telefono           = v.findViewById(R.id.etNomeMuseo);
+        EditText indirizzo          = v.findViewById(R.id.etIndirizzo);
+        EditText email              = v.findViewById(R.id.etEmail);
+        EditText sito_web           = v.findViewById(R.id.etSitoWeb);
+        EditText orario_apertura    = v.findViewById(R.id.etOrario);
+        EditText citta              = v.findViewById(R.id.etIdCitta);
 
-        /*Museo m = new Museo(nome.getText().toString(), telefono.getText().toString(), indirizzo.getText().toString(),
-                            citta.getText().toString(), provincia.getText().toString(), cap.getText().toString(),
-                            email.getText().toString(), sito_web.getText().toString(), orario_apertura.getText().toString(),
-                        immagine);*/
+        System.out.println("===========DATI MUSEO============");
+        System.out.println(nome.getText());
+        System.out.println(telefono);
+        System.out.println(indirizzo);
+        System.out.println(email);
+        System.out.println(sito_web);
+        System.out.println(orario_apertura);
+        System.out.println(citta);
+        System.out.println(immagine);
+
+        DBMuseo dbMuseo = new DBMuseo(getContext());
+        if(dbMuseo.inserisciMuseo(new Museo(
+                nome.getText().toString(),
+                telefono.getText().toString(),
+                indirizzo.getText().toString(),
+                citta.getText().toString(),
+                email.getText().toString(),
+                sito_web.getText().toString(),
+                orario_apertura.getText().toString(),
+                immagine
+        ))){
+            Fragment fragment = new CRUDMuseoSalvatoSuccesso();
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.commit();
+        }else{
+            Toast.makeText(getContext(), String.format(getResources().getString( R.string.msg_error_salvataggio), getResources().getString(R.string.il_museo)), Toast.LENGTH_SHORT).show();
+        }
     }
 
-    /*public void viewImage(View view)
+    public void viewImage(View view)
     {
         Cursor c = db.rawQuery("select * from imageTb", null);
         if(c.moveToNext())
@@ -143,7 +161,7 @@ public class CrudMuseo_Create extends Fragment {
             imageView.setImageBitmap(bmp);
             Toast.makeText(getContext(),"Done", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
 
     public  void fetchImage(View view)/* throws IOException */{
 

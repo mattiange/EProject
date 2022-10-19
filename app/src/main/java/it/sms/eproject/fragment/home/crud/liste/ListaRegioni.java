@@ -1,4 +1,6 @@
-package it.sms.eproject.activity.crud.liste;
+package it.sms.eproject.fragment.home.crud.liste;
+
+import static it.sms.eproject.util.EseguiFragment.changeFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,12 +19,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
-import it.sms.eproject.data.classes.Stato;
-import it.sms.eproject.database.DBStato;
+import it.sms.eproject.data.classes.Regione;
+import it.sms.eproject.database.DBRegione;
 
-import static it.sms.eproject.util.EseguiFragment.changeFragment;
-
-public class ListaStati extends Fragment {
+public class ListaRegioni extends Fragment {
     ListView listView;
     Bundle bundle;
 
@@ -31,20 +31,20 @@ public class ListaStati extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
-        try {
-            Stato[] stati = new Stato[0];
-            ArrayAdapter<Stato> adapter = new StatoAdapter(getContext(), new DBStato(getContext()).elencoStati().toArray(stati));
+        try{
+            Regione[] regioni = new Regione[0];
+            ArrayAdapter<Regione> adapter = new RegioneAdapter(getContext(), new DBRegione(getContext()).elencoRegioni(Integer.parseInt(getArguments().getString("codice_stato"))).toArray(regioni));
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
 
             aggiungiEvento();
         }catch (NullPointerException e) {
-            ((TextView)v.findViewById(R.id.msgError)).setText(R.string.msg_error_no_stato);
+            ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_regione), getArguments().getString("nome_stato")));
         }
 
-        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_stato);
-
         this.bundle = new Bundle();
+
+        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_regione);
 
         return v;
     }
@@ -58,19 +58,19 @@ public class ListaStati extends Fragment {
             TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
             TextView nome   = ((TextView)view.findViewById(R.id.listViewNome));
 
-            this.bundle.putString("codice_stato", codice.getText().toString());
-            this.bundle.putString("nome_stato", nome.getText().toString());
+            this.bundle.putString("codice_regione", codice.getText().toString());
+            this.bundle.putString("nome_regione", nome.getText().toString());
 
-            getRegioni();
+            getProvince();
         });
     }
 
     /**
-     * Visualizzo le regioni
+     * Visualizzo le città
      */
-    private void getRegioni() {
+    private void getProvince() {
         changeFragment(()->{
-            Fragment fragment = new ListaRegioni();
+            Fragment fragment = new ListaProvince();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -81,15 +81,15 @@ public class ListaStati extends Fragment {
     }
 
     /**
-     * Adapter per visualizzare gli stati.
+     * Adapter per visualizzare le regioni.
      *
      * Tiene traccia anche dei rispettivi ID
      */
-    static class StatoAdapter extends ArrayAdapter<Stato>{
+    static class RegioneAdapter extends ArrayAdapter<Regione>{
         private final Context context;
-        private final Stato[] values;
+        private final Regione[] values;
 
-        public StatoAdapter(@NonNull Context context, Stato[]  values) {
+        public RegioneAdapter(@NonNull Context context, Regione[]  values) {
             super(context, -1, values);
 
             this.context = context;

@@ -11,6 +11,10 @@
     <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
     <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
     <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
+    <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>
+
+    <!-- Messaggi di successo -->
+    <string name="msg_success_salvato">%s è stato salvato con successo</string>
 
     <!-- Button -->
     <string name="btn_modifica">Modifica</string>
@@ -129,6 +133,10 @@
     <string name="object_author">Autore:</string>
     <string name="object_desc">Descrizione:</string>
     <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Nomi -->
+    <string name="museo_uc">Museo</string>
+    <string name="il_museo">il museo</string>
 
     <!-- Museo -->
     <string name="museum">Museo</string>

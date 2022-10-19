@@ -562,42 +562,6 @@ public class DbManager {
     ///////////////////////////// GESTIONE MUSEO
 
     /**
-     * Inserisce un nuovo museo all'interno del database
-     *
-     * @param m Museo da inserire
-     * @return
-     */
-    @Autore(autore = "Mattia")
-    public boolean inserisciMuseo(Museo m){
-        String insert1="INSERT INTO Museo (ID, Nome, Numero_Telefono, Indirizzo, Citta, Provincia, CAP, Regione, Email_contatti, Sito_Web, Orario_Apertura, Immagine_Museo) "
-                + "VALUES (NULL," +
-                "'"+m.getNome()+"','"+
-                m.getTelefono()+"', '"+
-                m.getIndirizzo()+"', '"+
-                m.getCitta()+"', '"+
-                m.getProvincia()+"', '"+
-                m.getCap()+"', '"+
-                m.getRegione()+"', '"+
-                m.getEmail()+"', '"+
-                m.getSito_web()+"', '"+
-                m.getOrario()+"', '"+
-                m.getImmagine()+"'"+
-                ");";
-
-        SQLiteDatabase db= helper.getWritableDatabase();
-
-        try{
-            db.execSQL(insert1);
-
-            return true;
-        }catch(SQLException ex){
-            System.err.println( ex.getMessage() );
-
-            return false;
-        }
-    }
-
-    /**
      * Aggiorna un museo
      *
      * @param m Nuovi dati del museo da aggiornare
@@ -610,9 +574,6 @@ public class DbManager {
                 "Numero_Telefono = '" + m.getTelefono() + "', "+
                 "Indirizzo = '" + m.getIndirizzo() + "', "+
                 "Citta = '" + m.getCitta() + "', "+
-                "Provincia = '" + m.getProvincia() + "', "+
-                "CAP = '" + m.getCap() + "', "+
-                "Regione = '" + m.getRegione() + "', "+
                 "Email_Contatti = '" + m.getEmail() + "', "+
                 "Sito_Web = '" + m.getSito_web() + "', "+
                 "Orario_Apertura = '" + m.getOrario() + "', "+

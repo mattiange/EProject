@@ -11,9 +11,9 @@ import android.widget.ImageButton;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
-import it.sms.eproject.activity.crud.CrudMuseo;
-import it.sms.eproject.activity.crud.CrudOggetto;
-import it.sms.eproject.activity.crud.CrudZona;
+import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
+import it.sms.eproject.fragment.home.crud.CrudOggetto;
+import it.sms.eproject.fragment.home.crud.CrudZona;
 import it.sms.eproject.annotazioni.Autore;
 
 /**
