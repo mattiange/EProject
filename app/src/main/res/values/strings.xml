@@ -6,6 +6,12 @@
 
     <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
 
+    <!-- Messaggi di errore -->
+    <string name="msg_error_no_stato">Nessuno stato trovato</string>
+    <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
+    <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
+    <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
+
     <!-- Button -->
     <string name="btn_modifica">Modifica</string>
     <string name="btn_elimina">Elimina</string>
@@ -215,8 +221,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="crud_cancella_oggetto">Cancella Oggetto</string>
-    <string name="crud_txt_nomezona">Nome Zona</string>
 
     <!-- ///////////////////////////////////////////////// -->
 
