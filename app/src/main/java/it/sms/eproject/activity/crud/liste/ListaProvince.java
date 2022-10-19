@@ -36,6 +36,8 @@ public class ListaProvince extends Fragment {
             ArrayAdapter<Provincia> adapter = new ProvinciaAdapter(getContext(), new DBProvincia(getContext()).elencoProvince(Integer.parseInt(getArguments().getString("codice_regione"))).toArray(province));
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
+
+            aggiungiEvento();
         }catch (NullPointerException e) {
             ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_provincia), getArguments().getString("nome_stato")));
         }
@@ -44,7 +46,6 @@ public class ListaProvince extends Fragment {
 
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_provincia);
 
-        aggiungiEvento();
 
         return v;
     }

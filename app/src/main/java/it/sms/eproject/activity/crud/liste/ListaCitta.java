@@ -44,6 +44,8 @@ public class ListaCitta extends Fragment {
             ArrayAdapter<Citta> adapter = new CittaAdapter(getContext(), new DBCitta(getContext()).elencoCitta(Integer.parseInt(getArguments().getString("codice_provincia"))).toArray(citta));
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
+
+            aggiungiEvento();
         }catch (NullPointerException e) {
             ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_citta), getArguments().getString("nome_provincia")));
         }
@@ -51,8 +53,6 @@ public class ListaCitta extends Fragment {
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_citta);
 
         this.bundle = new Bundle();
-
-        //aggiungiEvento();
 
         return v;
     }

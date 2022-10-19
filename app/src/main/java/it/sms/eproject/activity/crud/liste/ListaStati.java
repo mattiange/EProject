@@ -36,6 +36,8 @@ public class ListaStati extends Fragment {
             ArrayAdapter<Stato> adapter = new StatoAdapter(getContext(), new DBStato(getContext()).elencoStati().toArray(stati));
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
+
+            aggiungiEvento();
         }catch (NullPointerException e) {
             ((TextView)v.findViewById(R.id.msgError)).setText(R.string.msg_error_no_stato);
         }
@@ -43,8 +45,6 @@ public class ListaStati extends Fragment {
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_stato);
 
         this.bundle = new Bundle();
-
-        aggiungiEvento();
 
         return v;
     }

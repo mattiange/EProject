@@ -37,12 +37,13 @@ public class ListaRegioni extends Fragment {
             ArrayAdapter<Regione> adapter = new RegioneAdapter(getContext(), new DBRegione(getContext()).elencoRegioni(Integer.parseInt(getArguments().getString("codice_stato"))).toArray(regioni));
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
+
+            aggiungiEvento();
         }catch (NullPointerException e) {
             ((TextView)v.findViewById(R.id.msgError)).setText(String.format(getResources().getString(R.string.msg_error_no_regione), getArguments().getString("nome_stato")));
         }
 
         this.bundle = new Bundle();
-        aggiungiEvento();
 
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.seleziona_regione);
 
