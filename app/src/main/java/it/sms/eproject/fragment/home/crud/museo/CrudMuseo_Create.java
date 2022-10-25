@@ -33,6 +33,7 @@ import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DbManager;
+import it.sms.eproject.util.Util;
 
 
 import java.io.ByteArrayOutputStream;
@@ -118,36 +119,54 @@ public class CrudMuseo_Create extends Fragment {
         EditText sito_web           = v.findViewById(R.id.etSitoWeb);
         EditText orario_apertura    = v.findViewById(R.id.etOrario);
         EditText citta              = v.findViewById(R.id.etIdCitta);
+        TextView lblError           = v.findViewById(R.id.lblError);
 
-        System.out.println("===========DATI MUSEO============");
-        System.out.println(nome.getText());
-        System.out.println(telefono);
-        System.out.println(indirizzo);
-        System.out.println(email);
-        System.out.println(sito_web);
-        System.out.println(orario_apertura);
-        System.out.println(citta);
-        System.out.println(immagine);
+        lblError.setVisibility(View.INVISIBLE);
 
-        DBMuseo dbMuseo = new DBMuseo(getContext());
-        if(dbMuseo.inserisciMuseo(new Museo(
-                nome.getText().toString(),
-                telefono.getText().toString(),
-                indirizzo.getText().toString(),
-                Integer.parseInt(citta.getText().toString()),
-                email.getText().toString(),
-                sito_web.getText().toString(),
-                orario_apertura.getText().toString(),
-                immagine
-        ))){
-            Fragment fragment = new CRUDMuseoSalvatoSuccesso();
 
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.commit();
+        boolean salva;
+
+        if(nome.getText().toString().trim().isEmpty()){
+            lblError.setVisibility(View.VISIBLE);
+
+            lblError.setText(R.string.campi_vuoti);
+
+            salva = false;
         }else{
-            Toast.makeText(getContext(), String.format(getResources().getString( R.string.msg_error_salvataggio), getResources().getString(R.string.il_museo)), Toast.LENGTH_SHORT).show();
+            salva = true;
+        }
+
+
+        if(!Util.checkEmail(email.getText().toString()) && !email.getText().toString().trim().isEmpty()){
+            lblError.setVisibility(View.VISIBLE);
+
+            lblError.setText(R.string.email_non_corretta);
+
+            salva = false;
+        }else{
+            salva = true;
+        }
+        if(salva) {
+            DBMuseo dbMuseo = new DBMuseo(getContext());
+            if (dbMuseo.inserisciMuseo(new Museo(
+                    nome.getText().toString(),
+                    telefono.getText().toString(),
+                    indirizzo.getText().toString(),
+                    Integer.parseInt(citta.getText().toString()),
+                    email.getText().toString(),
+                    sito_web.getText().toString(),
+                    orario_apertura.getText().toString(),
+                    immagine
+            ))) {
+                Fragment fragment = new CRUDMuseoSalvatoSuccesso();
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.commit();
+            } else {
+                Toast.makeText(getContext(), String.format(getResources().getString(R.string.msg_error_salvataggio), getResources().getString(R.string.il_museo)), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

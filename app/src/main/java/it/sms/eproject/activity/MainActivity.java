@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else{
             nv.inflateMenu(R.menu.activity_main_drawer);
         }
+        //usato per test curatore
+        ///nv.inflateMenu(R.menu.activity_backend_drawer);
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
