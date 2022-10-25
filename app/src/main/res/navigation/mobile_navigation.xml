@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="it.sms.eproject.fragment.home.crud.CrudOggetto"
+        android:name="it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto"
         android:label="@string/menu_gallery"
         tools:layout="@layout/crudoggetto_fragment" />
 

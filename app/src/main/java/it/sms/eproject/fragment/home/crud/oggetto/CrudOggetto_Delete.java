@@ -1,4 +1,4 @@
-package it.sms.eproject.fragment.home.crud;
+package it.sms.eproject.fragment.home.crud.oggetto;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,22 +12,19 @@ import androidx.fragment.app.Fragment;
 
 import it.sms.eproject.R;
 
-public class CrudOggetto extends Fragment {
-
-    private Button btnShowAll;
-    private Button btnCreate;
-
+public class CrudOggetto_Delete extends Fragment {
+    private Button btnDelete;
+    private Button btnCancel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.crudoggetto_fragment, container, false);
+        View v = inflater.inflate(R.layout.crudoggetto_delete_fragment, container,false);
 
-        btnCreate = v.findViewById(R.id.btnCreaOggetto);
-        btnShowAll = v.findViewById(R.id.btnVisualizzaOggetto);
+        btnDelete = v.findViewById(R.id.btnDeleteOggetto);
+        btnCancel = v.findViewById(R.id.btnCancelOggetto);
+
 
         return v;
     }
-
-    //Da implementare click sui bottoni
 }
