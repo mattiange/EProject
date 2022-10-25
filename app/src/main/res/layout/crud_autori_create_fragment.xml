@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_autori_gestisci"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp" />
+
+        <TextView
+            android:labelFor="@+id/txtNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_nome"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etNome"
+            android:autofillHints="name"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:labelFor="@+id/txtDataNascita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_data_di_nascita"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etDataDiNascita"
+            android:autofillHints="phone"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:labelFor="@+id/txtDataMorte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_autori_data_morte"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etDataMorte"
+            android:autofillHints="postalAddress"
+            android:inputType="textPostalAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:labelFor="@+id/txtDescrizione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descrizione"
+            android:textSize="24sp" />
+        <EditText
+            android:id="@+id/etDescrizione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="10"/>
+
+        <TextView
+            android:id="@+id/lblError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/red"/>
+
+        <Button
+            android:id="@+id/btn_salva"
+            android:text="@string/crud_txt_salva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

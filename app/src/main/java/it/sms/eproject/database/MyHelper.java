@@ -164,8 +164,8 @@ public class MyHelper  extends SQLiteOpenHelper {
         String autori = "CREATE TABLE autori (" +
                 "codice INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "Nome TEXT NOT NULL," +
-                "dato_di_nascita INTEGER," +
-                "dato_di_morte INTEGER," +
+                "data_di_nascita INTEGER," +
+                "data_di_morte INTEGER," +
                 "descrizione TEXT," +
                 "citta_codice INTEGER," +
                 "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +

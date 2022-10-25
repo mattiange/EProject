@@ -27,6 +27,11 @@
                     android:id="@+id/nav_manage_oggetto"
                     android:icon="@drawable/menu_icon_signature_foreground"
                     android:title="@string/crud_manage_oggetto"/>
+
+                <item
+                    android:id="@+id/nav_manage_autori"
+                    android:icon="@drawable/menu_icon_signature_foreground"
+                    android:title="@string/crud_manage_autori"/>
             </group>
         </menu>
     </item>

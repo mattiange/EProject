@@ -11,10 +11,21 @@
     <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
     <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
     <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
-    <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>
+    <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>>
+    <string name="campi_vuoti">I campi non possono essere vuoti</string>
+    <string name="email_non_corretta">L\'email inserita non è corretta</string>
+    <string name="login_non_valida">I dati di login non sono corretti</string>
+    <string name="zona_non_trovata">Non è stata trovata alcuna zona per la provincia: %s</string>
+    <string name="oggetti_non_trovati">Non è stato trovato alcun oggetto per la zona selezionata</string>
+    <string name="zona_non_trovata_per_la_regione">Non è stata trovata alcuna regione per le zona</string>
+    <string name="provincia_non_trovata_per_la_regione">Non è stata trovata alcuna provincia nella regione: %s</string>
 
     <!-- Messaggi di successo -->
     <string name="msg_success_salvato">%s è stato salvato con successo</string>
+
+    <!-- Messaggi -->
+    <string name="descrizione">Descrizione:</string>
+    <!-- ////////////////////////////////////// -->
 
     <!-- Button -->
     <string name="btn_modifica">Modifica</string>
@@ -30,16 +41,7 @@
     <string name="seleziona_provincia">Seleziona una provincia</string>
     <string name="seleziona_citta">Seleziona una città</string>
     <string name="visualizza_tutti_i_musei">Musei presenti</string>
-
-    <!-- Message -->
-    <string name="zona_non_trovata">Non è stata trovata alcuna zona per la provincia: %s</string>
-    <string name="oggetti_non_trovati">Non è stato trovato alcun oggetto per la zona selezionata</string>
-    <string name="zona_non_trovata_per_la_regione">Non è stata trovata alcuna regione per le zona</string>
-    <string name="provincia_non_trovata_per_la_regione">Non è stata trovata alcuna provincia nella regione: %s</string>
-    <string name="campi_vuoti">I campi non possono essere vuoti</string>
-    <string name="email_non_corretta">L\'email inserita non è corretta</string>
-    <string name="login_non_valida">I dati di login non sono corretti</string>
-    <!-- ////////////////////////////////////// -->
+    <string name="visualizza_tutti_gli_autori">Autori presenti</string>
 
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
@@ -80,7 +82,6 @@
     <string name="msg_seleziona_oggetto">Seleziona l\'oggetto</string>
 
     <!-- Lista Percorsi -->
-
     <string name="no_routes_msg_label">Non sono presenti percorsi di visita. Crea un percorso di visita cliccando sul tasto "+".</string>
     <!-- ///////////////////////////////////////////////// -->
 
@@ -132,12 +133,13 @@
     <string name="object_name">Nome Oggetto:</string>
     <string name="object_year">Anno:</string>
     <string name="object_author">Autore:</string>
-    <string name="object_desc">Descrizione:</string>
     <!-- ///////////////////////////////////////////////// -->
 
     <!-- Nomi -->
     <string name="museo_uc">Museo</string>
     <string name="il_museo">il museo</string>
+    <string name="autore_uc">Autore</string>
+    <string name="l_autore">l\'autore</string>
 
     <!-- Museo -->
     <string name="museum">Museo</string>
@@ -159,7 +161,14 @@
     <string name="museum_image">Immagine: </string>
     <!-- ///////////////////////////////////////////////// -->
 
-    <!-- CRUD -->
+    <!--======================================= CRUD =======================================-->
+    <!-- Autori -->
+    <string name="crud_autori_gestisci">Gestisci gli autori</string>
+    <string name="crud_autori_data_nascita">Data di nascita</string>
+    <string name="crud_autori_data_morte">Data di morte</string>
+    <string name="crud_autori_nome_obbligatorio">Il nome dell\'autore è obbligatorio</string>
+    <!-- /////////// -->
+
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
     <string name="crud_aggiorna">Aggiornamento</string>
     <string name="crud_cancella">Cancella</string>
@@ -218,6 +227,7 @@
     <string name="crud_regioni_zone">Regioni con delle zone attive</string>
     <string name="crud_lista_zone">Elenco delle zone disponibili</string>
     <string name="crud_manage_zona">Gestisci le zone</string>
+    <string name="crud_manage_autori">Gestisci gli autori</string>
     <string name="crud_create_zona">Crea una nuova zona</string>
     <string name="crud_show_zona">Visualizza tutte le zone</string>
     <string name="crud_delete_zona">Cancella zona</string>
