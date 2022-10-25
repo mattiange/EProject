@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import it.sms.eproject.annotazioni.Autore;
 import it.sms.eproject.data.classes.Museo;
@@ -51,5 +52,83 @@ public class DBMuseo extends DbManager{
 
             return false;
         }
+    }
+
+    /**
+     * Restituisce un museo selezionandolo in base al suo codice.
+     *
+     * @param codice Codice del museo da cercare
+     * @return Museo trovato o null se non ci sono musei con quel codice
+     */
+    @Autore(autore = "Mattia Leonardo Angelillo")
+    public Museo getMuseo(int codice){
+        String query="SELECT * FROM musei WHERE codice = " + codice;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        Museo m = null;
+
+        if(c.moveToFirst()){
+            System.out.println("======================= OK =========================");
+
+            m = new Museo(
+                    c.getInt(0),//Codice
+                    c.getString(1),//Nome
+                    c.getString(2),//Telefono
+                    c.getString(3),//Indirizzo
+                    c.getInt(8),//codice_citta
+                    c.getString(4),//Email
+                    c.getString(5),//Sito web
+                    c.getString(6),//Orario
+                    c.getBlob(7)//Immagine del museo
+            );
+        }
+
+        System.out.println();
+
+        return m;
+    }
+
+
+    /**
+     * Seleziona tutti i musei presenti nel database
+     *
+     * @return ArrayList<Museo>
+     *     Restituisce un ArrayList contenenente tutti i musei presenti nel database
+     *
+     * @return
+     */
+    @Autore(autore = "Mattia")
+    public ArrayList<Museo> elencoMusei(){
+        String query="SELECT * FROM musei";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Museo> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                al.add(new Museo(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Telefono
+                        c.getString(3),//Indirizzo
+                        c.getInt(8),//codice_citta
+                        c.getString(4),//Email
+                        c.getString(5),//Sito web
+                        c.getString(6),//Orario
+                        c.getBlob(7)//Immagine del museo
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
     }
 }

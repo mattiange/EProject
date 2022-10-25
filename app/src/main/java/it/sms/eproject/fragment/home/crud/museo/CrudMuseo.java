@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudMuseo extends Fragment {
@@ -31,6 +32,7 @@ public class CrudMuseo extends Fragment {
         btnShowAll = v.findViewById(R.id.btnVisualizzaMuseo);
 
         btnCreate.setOnClickListener(this::nuovoMuseo);
+        btnShowAll.setOnClickListener(this::visualizzaMusei);
 
         return v;
 
@@ -38,6 +40,23 @@ public class CrudMuseo extends Fragment {
 
     public void visualizzaFragment(CallbackFragment callbackFragment){
         callbackFragment.changeFragment();
+    }
+
+
+    /**
+     * Visualizzo la pagina di creazione dei musei
+     *
+     * @param e
+     */
+    private void visualizzaMusei(View e) {
+        visualizzaFragment(() -> {
+            Fragment fragment = new ListaMusei();
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.commit();
+        });
     }
 
 

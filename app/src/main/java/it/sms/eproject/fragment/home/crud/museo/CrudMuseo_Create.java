@@ -134,7 +134,7 @@ public class CrudMuseo_Create extends Fragment {
                 nome.getText().toString(),
                 telefono.getText().toString(),
                 indirizzo.getText().toString(),
-                citta.getText().toString(),
+                Integer.parseInt(citta.getText().toString()),
                 email.getText().toString(),
                 sito_web.getText().toString(),
                 orario_apertura.getText().toString(),

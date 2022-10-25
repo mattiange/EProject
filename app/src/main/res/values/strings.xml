@@ -29,6 +29,7 @@
     <string name="seleziona_regione">Seleziona una regione</string>
     <string name="seleziona_provincia">Seleziona una provincia</string>
     <string name="seleziona_citta">Seleziona una città</string>
+    <string name="visualizza_tutti_i_musei">Musei presenti</string>
 
     <!-- Message -->
     <string name="zona_non_trovata">Non è stata trovata alcuna zona per la provincia: %s</string>

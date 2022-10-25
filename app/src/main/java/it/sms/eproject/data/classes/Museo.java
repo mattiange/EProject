@@ -12,17 +12,17 @@ public class Museo {
     String nome;
     String telefono;
     String indirizzo;
-    String citta;
+    int citta;
     String email;
     String sito_web;
     String orario;
     byte[] immagine;
 
     @Autore(autore = "Mattia Leonardo Angelillo")
-    public Museo(String nome, String telefono, String indirizzo, String citta, String email, String sito_web, String orario, byte[] immagine) {
+    public Museo(String nome, String telefono, String indirizzo, int citta, String email, String sito_web, String orario, byte[] immagine) {
         this(0, nome, telefono, indirizzo, citta, email, sito_web, orario, immagine);
     }
-    public Museo(int id, String nome, String telefono, String indirizzo, String citta, String email, String sito_web, String orario, byte[] immagine) {
+    public Museo(int id, String nome, String telefono, String indirizzo, int citta, String email, String sito_web, String orario, byte[] immagine) {
         this.ID = id;
         this.nome = nome;
         this.telefono = telefono;
@@ -62,11 +62,11 @@ public class Museo {
         this.indirizzo = indirizzo;
     }
 
-    public String getCitta() {
+    public int getCitta() {
         return citta;
     }
 
-    public void setCitta(String citta) {
+    public void setCitta(int citta) {
         this.citta = citta;
     }
 
