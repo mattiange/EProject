@@ -21,7 +21,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Citta;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBCitta;
@@ -29,6 +29,7 @@ import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.fragment.home.crud.museo.CrudVisualizzaMuseo;
 
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaMusei extends Fragment {
     ListView listView;
     Bundle bundle;
@@ -62,7 +63,6 @@ public class ListaMusei extends Fragment {
     /**
      * Porta alla visualizzazione del museo selezionato
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public void getMuseo(){
         changeFragment(()->{
             Fragment fragment = new CrudVisualizzaMuseo();

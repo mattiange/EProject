@@ -20,7 +20,6 @@ import java.time.LocalDate;
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.database.DBAutore;
-import it.sms.eproject.fragment.home.crud.oggetto.CRUDAutoreSalvatoSuccesso;
 
 public class CRUDCreateAutori extends Fragment {
     @Nullable

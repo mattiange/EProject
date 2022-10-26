@@ -17,12 +17,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudVisualizzaMuseo extends Fragment {
     private Button btnShowAll;
     private Button btnCreate;
@@ -58,7 +59,6 @@ public class CrudVisualizzaMuseo extends Fragment {
     /**
      * Inizializza i campi
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public void inizializzaCampi(){
         this.codice = (EditText) this.v.findViewById(R.id.etCodiceMuseo);
         this.nome = (EditText) this.v.findViewById(R.id.etNomeMuseo);
@@ -76,7 +76,6 @@ public class CrudVisualizzaMuseo extends Fragment {
     /**
      * Compila i campi del museo da visualizzare
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public void compilaCampi(){
         DBMuseo db = new DBMuseo(getContext());
 

@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
  * Crea il database e inserisce i valori di default
  */
-@Autore(autore = "Mattia Leonardo Angelillo")
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class MyHelper  extends SQLiteOpenHelper {
 
     private Context context;
@@ -22,7 +22,6 @@ public class MyHelper  extends SQLiteOpenHelper {
      * @param factory
      * @param version   Versione del database
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public MyHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
@@ -32,7 +31,6 @@ public class MyHelper  extends SQLiteOpenHelper {
      *
      * @param db Database reference
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     private void inizializza(SQLiteDatabase db)      {
         String insert1="INSERT INTO utenti (codice, nome, cognome, codice_fiscale, data_di_nascita, Email, Password) " +
                 "VALUES (NULL,'Alessandro','Manzoni', 'MNZSS80C18H098L', '1980-03-18', 'a.manzoni@gmail.com', 'test')," +
@@ -63,6 +61,13 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "('Abriola', '85010', 3)," +
                 "('Potenza centro', '85100', 3)," +
                 "('Massafra', '74016', 1)";
+
+        //Inserimento degli autori
+        String insert_autori="INSERT INTO autori (nome, data_di_nascita, data_di_morte) " +
+                "VALUES ('Donatello', '1386-0-0', '1466-12-13'), " +
+                "('Michelangelo Buonarotti', '1475-03-06', '1564-03-06'), " +
+                "('Gian Lorenzo Bernini', '1598-12-07', '1680-11-28')," +
+                "('Antonio Canova', '1757-11-1', '1822-10-13')";
         //---------------------------------------------------------------------------
 
         //Inserimento musei
@@ -79,12 +84,12 @@ public class MyHelper  extends SQLiteOpenHelper {
             db.execSQL(insert_province);
             db.execSQL(insert_citta);
             db.execSQL(insert_musei);
+            db.execSQL(insert_autori);
         }catch(SQLException ex){
             Toast.makeText(this.context , "inizializza() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
-    @Autore(autore = "Mattia Leonardo Angelillo")
     @Override
     public void onCreate(SQLiteDatabase db) {
         String utenti = "CREATE TABLE utenti (" +

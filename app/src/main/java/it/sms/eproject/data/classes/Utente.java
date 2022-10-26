@@ -2,12 +2,12 @@ package it.sms.eproject.data.classes;
 
 import java.time.LocalDate;
 
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
  * Gestisce i dati degli utenti
  */
-@Autore(autore = "Mattia Leonardo Angelillo")
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Utente {
     int codice;
 

@@ -14,12 +14,12 @@ import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
 import it.sms.eproject.fragment.home.crud.CrudZona;
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
  * Fragment principale del curatore
  */
-@Autore(autore = "Mattia Leonardo Angelillo")
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CuratoreHomeFragment extends Fragment {
 
     CallbackFragment callbackFragment;

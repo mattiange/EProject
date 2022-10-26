@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.sms.eproject.eccezioni.EmailGiaEsistenteException;
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Permesso;
@@ -24,7 +24,7 @@ import it.sms.eproject.data.classes.Zona;
 /**
  * Tabella di gestione del database
  */
-@Autore(autore = "Mattia Leonardo Angelillo")
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DbManager {
     MyHelper helper=null;
     private final static String DATABASE="ProgettoSMS.db";
@@ -43,7 +43,7 @@ public class DbManager {
      *
      * @return
      */
-    @Autore(autore = "Mattia, Giandomenico")
+    @AutoreCodice(autore = "Mattia, Giandomenico")
     public ArrayList<Utente> elencoUtenti()      {
         String query="SELECT * FROM utenti AS u, permessi AS p, permesso_has_utente AS pu WHERE u.codice = pu.codice_utente AND p.codice = pu.codice_permesso";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -81,7 +81,7 @@ public class DbManager {
      * @param u Utente da registrare
      * @return
      */
-    @Autore(autore = "Mattia, Giandomenico")
+    @AutoreCodice(autore = "Mattia, Giandomenico")
     public boolean registrazione(Utente u) throws EmailGiaEsistenteException{
         String insert1="INSERT INTO utenti(codice, nome, cognome, codice_fiscale, data_di_nascita, email, password) "
                 + "VALUES (NULL,'"+u.getNome()+"','"+u.getCognome()+"', '"+u.getCodice_fiscale()+"', '"+u.getData_di_nascita()+"', '"+u.getEmail()+"', '"+u.getPassword()+"')";
@@ -138,7 +138,7 @@ public class DbManager {
      *          Email => mariorossi@email.com
      *          ....
      */
-    @Autore(autore = "Mattia, Giandomenico")
+    @AutoreCodice(autore = "Mattia, Giandomenico")
     public Utente login(String email, String password){
         String query="SELECT * FROM utenti AS u, permessi AS p, permesso_has_utente AS pu " +
                                 "WHERE email = '"+email+"' " +
@@ -216,7 +216,7 @@ public class DbManager {
      * @param z Zona da inserire
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public boolean inserisciZona(Zona z){
         String insert1="INSERT INTO Zone (ID, Nome, Provincia, Regione, CAP) "
                 + "VALUES (NULL," +
@@ -306,7 +306,7 @@ public class DbManager {
      * @param provincia
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public ArrayList<Zona> visualizzaTutteLeZoneByProvincia(String provincia){
         String query="SELECT * FROM Zone WHERE Provincia = '" + provincia + "'";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -342,7 +342,7 @@ public class DbManager {
      *
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeRegioniDelleZone(){
         String query="SELECT Regione FROM Zone GROUP BY Regione";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -374,7 +374,7 @@ public class DbManager {
      *
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeProvinceDiUnaRegione(String regione){
         String query="SELECT provincia FROM Zone WHERE regione = '"+regione+"' GROUP BY provincia";
 
@@ -498,7 +498,7 @@ public class DbManager {
      * @param o Oggetto da inserire
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public boolean inserisciOggetto(Oggetto o){
         String insert1="INSERT INTO Oggetto (ID, Nome, Anno, Autore, Descrizione, id_zona) "
                 + "VALUES (NULL," +
@@ -567,7 +567,7 @@ public class DbManager {
      * @param m Nuovi dati del museo da aggiornare
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public boolean aggiornaMuseo(Museo m){
         String insert1="UPDATE Museo SET " +
                 "Nome = '" + m.getNome() + "', "+
@@ -599,7 +599,7 @@ public class DbManager {
      * @param id ID del museo
      * @return
      */
-    @Autore(autore = "Mattia")
+    @AutoreCodice(autore = "Mattia")
     public boolean eliminaMuseo(int id){
         String insert1="DELETE FROM Museo " +
                 "WHERE ID = " + id;

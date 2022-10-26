@@ -9,8 +9,13 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
+import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudOggetto extends Fragment {
 
@@ -26,8 +31,50 @@ public class CrudOggetto extends Fragment {
         btnCreate = v.findViewById(R.id.btnCreaOggetto);
         btnShowAll = v.findViewById(R.id.btnVisualizzaOggetto);
 
+
+        btnCreate.setOnClickListener(this::nuovoOggetto);
+        btnShowAll.setOnClickListener(this::visualizzaOggetti);
+
         return v;
     }
 
-    //Da implementare click sui bottoni
+    public void visualizzaFragment(CallbackFragment callbackFragment){
+        callbackFragment.changeFragment();
+    }
+
+
+
+
+    /**
+     * Visualizzo la pagina di creazione dei musei
+     *
+     * @param e
+     */
+    private void visualizzaOggetti(View e) {
+        visualizzaFragment(() -> {
+            Fragment fragment = new ListaMusei();
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.commit();
+        });
+    }
+
+
+    /**
+     * Visualizzo la pagina di creazione dei musei
+     *
+     * @param e
+     */
+    private void nuovoOggetto(View e) {
+        visualizzaFragment(() -> {
+            Fragment fragment = new ListaStati();
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.commit();
+        });
+    }
 }

@@ -7,14 +7,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.data.classes.Museo;
 
 /**
  * Gestisce le operazioni per gli stati nel database
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBAutore extends DbManager{
     public DBAutore(Context context) {
         super(context);
@@ -51,6 +54,48 @@ public class DBAutore extends DbManager{
     }
 
     /**
+     * Restituisce un autore selezionandolo in base al suo codice.
+     *
+     * @param codice Codice dell'autore da cercare
+     * @return Autore trovato o null se non ci sono autori con quel codice
+     */
+    public Autore getAutore(int codice){
+        String query="SELECT * FROM autori WHERE codice = " + codice;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        Autore a = null;
+
+        if(c.moveToFirst()){
+            System.out.println("======================= OK =========================");
+
+            LocalDate data_di_nascita   = null;
+            LocalDate data_di_morte     = null;
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                try {
+                    data_di_nascita = LocalDate.parse(c.getString(2));
+                    data_di_morte   = LocalDate.parse(c.getString(3));
+                }catch (DateTimeParseException e){
+
+                }
+            }
+            a = new Autore(
+                    c.getInt(0),
+                    c.getString(1),
+                    data_di_nascita,
+                    data_di_morte,
+                    c.getString(4)
+            );
+        }
+
+        System.out.println();
+
+        return a;
+    }
+
+    /**
      * Visualizza un elenco con tutti gli autori presenti nel database
      *
      * @return
@@ -67,15 +112,23 @@ public class DBAutore extends DbManager{
             al = new ArrayList<>();
 
             do {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    al.add(new Autore(
-                            c.getInt(0),
-                            c.getString(1),
-                            c.getString(2).equals("null") ? null : LocalDate.parse(c.getString(2)),
-                            c.getString(3).equals("null") ? null : LocalDate.parse(c.getString(3)),
-                            c.getString(4)
-                    ));
+                LocalDate data_di_nascita   = null;
+                LocalDate data_di_morte     = null;
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    try {
+                        data_di_nascita = LocalDate.parse(c.getString(2));
+                        data_di_morte   = LocalDate.parse(c.getString(3));
+                    }catch (DateTimeParseException e){}
                 }
+
+                al.add(new Autore(
+                        c.getInt(0),
+                        c.getString(1),
+                        data_di_nascita,
+                        data_di_morte,
+                        c.getString(4)
+                ));
 
             } while(c.moveToNext());
         }

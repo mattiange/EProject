@@ -9,13 +9,14 @@ import android.os.Build;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Stato;
 
 /**
  * Gestisce le operazioni per gli stati nel database
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBMuseo extends DbManager{
     public DBMuseo(Context context) {
         super(context);
@@ -27,7 +28,6 @@ public class DBMuseo extends DbManager{
      * @param m Museo da inserire
      * @return
      */
-    @Autore(autore = "Mattia")
     public boolean inserisciMuseo(Museo m){
         String insert1="INSERT INTO musei (codice, nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, immagine_museo, citta_codice) "
                 + "VALUES (NULL," +
@@ -60,7 +60,6 @@ public class DBMuseo extends DbManager{
      * @param codice Codice del museo da cercare
      * @return Museo trovato o null se non ci sono musei con quel codice
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public Museo getMuseo(int codice){
         String query="SELECT * FROM musei WHERE codice = " + codice;
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -99,7 +98,6 @@ public class DBMuseo extends DbManager{
      *
      * @return
      */
-    @Autore(autore = "Mattia")
     public ArrayList<Museo> elencoMusei(){
         String query="SELECT * FROM musei";
         SQLiteDatabase db= helper.getReadableDatabase();

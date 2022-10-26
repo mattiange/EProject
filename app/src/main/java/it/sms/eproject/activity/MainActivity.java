@@ -23,10 +23,13 @@ import com.google.android.material.navigation.NavigationView;
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
+import it.sms.eproject.fragment.home.CuratoreHomeFragment;
+import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
+import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
 import it.sms.eproject.fragment.home.crud.CrudZona;
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 
@@ -58,20 +61,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         pref = getApplicationContext().getSharedPreferences("credenziali", 0);
 
-        registraUtenteLoggato();
+        //registraUtenteLoggato();
 
         //Abilito l'apertura/chiusura del drawer menu
         drawerLayout = findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         nv = findViewById(R.id.nav_view);
-        if(u.getPermesso().getCodice() == Permesso.CURATORE) {
+        /*if(u.getPermesso().getCodice() == Permesso.CURATORE) {
             nv.inflateMenu(R.menu.activity_backend_drawer);
         }else{
             nv.inflateMenu(R.menu.activity_main_drawer);
-        }
+        }*/
         //usato per test curatore
-        ///nv.inflateMenu(R.menu.activity_backend_drawer);
+         nv.inflateMenu(R.menu.activity_backend_drawer);
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     pref.getString("user_cognome", ""),
                     pref.getString("user_codice_fiscaale", ""),
                     pref.getString("user_email", ""),
-                    LocalDate.parse(pref.getString("user_data_di_nascita", "")),
+                    LocalDate.parse(pref.getString("user_data_di_nascita", "000-00-00")),
                     Permesso.of(
                             Integer.parseInt(pref.getString("user_permesso_codice", "")),
                             pref.getString("user_permesso_nome", "")
@@ -116,10 +119,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * Aggiunge il fragment della login
      *
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public void addFragment(){
         //CuratoreHomeFragment fragment = new CuratoreHomeFragment();
-        fragment = new CrudMuseo();
+        fragment = new CuratoreHomeFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);
@@ -160,11 +162,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * @param item
      * @return
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
+    @AutoreCodice(autore = "Mattia Leonardo Angelillo")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {// Handle navigation view item clicks here.
         int id = item.getItemId();
-
 
         switch (id){
             case R.id.nav_manage_museo:
@@ -175,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_manage_oggetto:
                 fragment = new CrudOggetto();
+                break;
+            case R.id.nav_manage_autori:
+                fragment = new CRUDAutore();
                 break;
         }
         fragmentManager = getSupportFragmentManager();

@@ -10,13 +10,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import java.io.ByteArrayOutputStream;
 
 import it.sms.eproject.R;
-import it.sms.eproject.annotazioni.Autore;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
 
 /**
  * Classe con metodi di utility comuni
  */
-@Autore(autore = "Mattia Leonardo Angelillo")
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Util {
     private Util(){}
 
@@ -26,7 +26,6 @@ public class Util {
      * @param email Email da validare
      * @return true | false a seconda che l'email sia valida o meno
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public static boolean checkEmail(String email){
         String[] parts = email.split("@");
 
@@ -46,7 +45,6 @@ public class Util {
      * @param bitmap
      * @return
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public static byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
@@ -60,7 +58,6 @@ public class Util {
      * @param t Toolbar da aggiungere
      * @param dl DrawerLayout da aggiungere
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public static void addToolbarAndMenu(AppCompatActivity aca, Toolbar t, DrawerLayout dl){
         //Add Toolbar
         aca.setSupportActionBar(t);
@@ -79,7 +76,6 @@ public class Util {
      * @param email Email da verificare
      * @return true se l'email è valida, false altrimenti
      */
-    @Autore(autore = "Mattia Leonardo Angelillo")
     public static boolean verificaEmail(String email){
         String secondaParteEmail = "";
 
@@ -118,20 +114,5 @@ public class Util {
     public static boolean campoCompilato(String campo){
         return !campo.trim().isEmpty();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

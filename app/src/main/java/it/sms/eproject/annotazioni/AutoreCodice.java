@@ -1,5 +1,5 @@
 package it.sms.eproject.annotazioni;
 
-public @interface Autore{
+public @interface AutoreCodice {
     String autore();
 }
