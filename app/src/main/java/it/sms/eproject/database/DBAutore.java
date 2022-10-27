@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
-import it.sms.eproject.data.classes.Museo;
 
 /**
  * Gestisce le operazioni per gli stati nel database
@@ -27,7 +25,7 @@ public class DBAutore extends DbManager{
      * Inserisce un nuovo autore all'interno del database
      *
      * @param a Autore da inserire
-     * @return
+     * @return true se l'inserimento ha avuto successo, false altrimenti
      */
     public boolean inserisciAutore(Autore a){
         String insert1="INSERT INTO autori (codice, nome, data_di_nascita, data_di_morte, descrizione) "
@@ -54,6 +52,38 @@ public class DBAutore extends DbManager{
     }
 
     /**
+     * Aggiorna i dati di un autore
+     *
+     * @param a Autore da aggiornare
+     * @return true se i dati sono stati aggiornati, false altrimenti
+     */
+    public boolean aggiornaAutore(Autore a){
+        String update = "UPDATE autori SET " +
+                "nome = '" + a.getNome() + "', " +
+                "data_di_nascita = '" + (a.getDataDiNascita()==null?"null":a.getDataDiNascita()) + "', " +
+                "data_di_morte = '" + (a.getDataDiMorte()==null?"null":a.getDataDiMorte()) + "', " +
+                "descrizione = '" + a.getDescrizione() + "' " +
+                "WHERE codice = " + a.getCodice();
+
+        System.out.println("===========================");
+        System.out.println(update);
+        System.out.println("===========================");
+
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(update);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+
+    }
+
+    /**
      * Restituisce un autore selezionandolo in base al suo codice.
      *
      * @param codice Codice dell'autore da cercare
@@ -70,7 +100,7 @@ public class DBAutore extends DbManager{
         if(c.moveToFirst()){
             System.out.println("======================= OK =========================");
 
-            LocalDate data_di_nascita   = null;
+            LocalDate data_di_nascita = null;
             LocalDate data_di_morte     = null;
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -78,7 +108,7 @@ public class DBAutore extends DbManager{
                     data_di_nascita = LocalDate.parse(c.getString(2));
                     data_di_morte   = LocalDate.parse(c.getString(3));
                 }catch (DateTimeParseException e){
-
+                    e.printStackTrace();
                 }
             }
             a = new Autore(
@@ -90,7 +120,7 @@ public class DBAutore extends DbManager{
             );
         }
 
-        System.out.println();
+        c.close();
 
         return a;
     }
@@ -98,10 +128,10 @@ public class DBAutore extends DbManager{
     /**
      * Visualizza un elenco con tutti gli autori presenti nel database
      *
-     * @return
+     * @return ArrayList contenente tutti gli autori
      */
     public ArrayList<Autore> elencoAutori(){
-        String query="SELECT * FROM autori";
+        String query="SELECT * FROM autori ORDER BY nome";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
@@ -119,7 +149,7 @@ public class DBAutore extends DbManager{
                     try {
                         data_di_nascita = LocalDate.parse(c.getString(2));
                         data_di_morte   = LocalDate.parse(c.getString(3));
-                    }catch (DateTimeParseException e){}
+                    }catch (DateTimeParseException e){e.printStackTrace();}
                 }
 
                 al.add(new Autore(

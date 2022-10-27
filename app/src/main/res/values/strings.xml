@@ -20,6 +20,8 @@
     <string name="zona_non_trovata_per_la_regione">Non è stata trovata alcuna regione per le zona</string>
     <string name="provincia_non_trovata_per_la_regione">Non è stata trovata alcuna provincia nella regione: %s</string>
 
+    <string name="msg_error_update">Impossibile aggiornare</string>
+
     <!-- Messaggi di successo -->
     <string name="msg_success_salvato">%s è stato salvato con successo</string>
 
@@ -163,6 +165,8 @@
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->
+    <string name="crud_autori_codice">Codice autore</string>
+    <string name="crud_autori_update_titolo">Aggiornamento autore</string>
     <string name="crud_autori_gestisci">Gestisci gli autori</string>
     <string name="crud_autori_data_nascita">Data di nascita</string>
     <string name="crud_autori_data_morte">Data di morte</string>

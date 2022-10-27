@@ -33,6 +33,7 @@ import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DbManager;
+import it.sms.eproject.util.EseguiFragment;
 import it.sms.eproject.util.Util;
 
 
@@ -158,12 +159,14 @@ public class CrudMuseo_Create extends Fragment {
                     orario_apertura.getText().toString(),
                     immagine
             ))) {
-                Fragment fragment = new CRUDMuseoSalvatoSuccesso();
+                EseguiFragment.changeFragment(()-> {
+                    Fragment fragment = new CRUDMuseoSalvatoSuccesso();
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                fragmentTransaction.commit();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                    fragmentTransaction.commit();
+                });
             } else {
                 Toast.makeText(getContext(), String.format(getResources().getString(R.string.msg_error_salvataggio), getResources().getString(R.string.il_museo)), Toast.LENGTH_SHORT).show();
             }

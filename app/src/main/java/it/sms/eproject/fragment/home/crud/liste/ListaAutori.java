@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBAutore;
 import it.sms.eproject.database.DBMuseo;
+import it.sms.eproject.fragment.home.crud.autori.CrudVisualizzaAutore;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.fragment.home.crud.museo.CrudVisualizzaMuseo;
 
@@ -46,9 +48,10 @@ public class ListaAutori extends Fragment {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
 
-            this.bundle.putString("codice_museo", codice.getText().toString());
+            this.bundle.putString("codice_autore", codice.getText().toString());
 
-            getMuseo();
+            getAutore();
+
         });
 
         this.bundle = new Bundle();
@@ -57,11 +60,11 @@ public class ListaAutori extends Fragment {
     }
 
     /**
-     * Porta alla visualizzazione del museo selezionato
+     * Porta alla visualizzazione dell'autore selezionato
      */
-    public void getMuseo(){
+    public void getAutore(){
         changeFragment(()->{
-            Fragment fragment = new CrudVisualizzaMuseo();
+            Fragment fragment = new CrudVisualizzaAutore();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
