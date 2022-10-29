@@ -65,10 +65,6 @@ public class DBAutore extends DbManager{
                 "descrizione = '" + a.getDescrizione() + "' " +
                 "WHERE codice = " + a.getCodice();
 
-        System.out.println("===========================");
-        System.out.println(update);
-        System.out.println("===========================");
-
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
