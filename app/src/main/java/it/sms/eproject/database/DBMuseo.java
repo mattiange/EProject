@@ -108,6 +108,50 @@ public class DBMuseo extends DbManager{
         return m;
     }
 
+    /**
+     * Aggiorna un museo
+     *
+     * @param m Nuovi dati del museo da aggiornare
+     * @return
+     */
+    @AutoreCodice(autore = "Mattia")
+    public boolean aggiornaMuseo(Museo m){
+        /*String insert1="UPDATE Museo SET " +
+                "Nome = '" + m.getNome() + "', "+
+                "Numero_Telefono = '" + m.getTelefono() + "', "+
+                "Indirizzo = '" + m.getIndirizzo() + "', "+
+                "Citta = '" + m.getCitta() + "', "+
+                "Email_Contatti = '" + m.getEmail() + "', "+
+                "Sito_Web = '" + m.getSito_web() + "', "+
+                "Orario_Apertura = '" + m.getOrario() + "', "+
+                "Immagine_Museo = '" + m.getImmagine() + "' " +
+                "WHERE ID = " + m.getID();*/
+
+        SQLiteDatabase db= helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put("codice", "null");
+        values.put("nome", m.getNome());
+        values.put("numero_telefono", m.getTelefono());
+        values.put("indirizzo", m.getIndirizzo());
+        values.put("email_contatti", m.getEmail());
+        values.put("immagine_museo", m.getImmagine());
+        values.put("citta_codice", m.getCitta());
+
+        try{
+            //db.execSQL(insert1);
+
+            long res = db.update("musei", values, "codice = ?", new String[]{String.valueOf(m.getID())});
+
+            if(res == -1) return false;
+            else return true;
+
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
 
     /**
      * Seleziona tutti i musei presenti nel database

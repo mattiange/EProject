@@ -25,7 +25,6 @@ public class DBCitta extends DbManager{
      */
     public ArrayList<Citta> elencoCitta(int codice_provincia){
         String query="SELECT * FROM citta WHERE provincia_codice = "+codice_provincia+" ORDER BY nome";
-        System.out.println("QUERY ======> " + query);
         SQLiteDatabase db= helper.getReadableDatabase();
 
         ArrayList<Citta> citta = null;
@@ -52,5 +51,32 @@ public class DBCitta extends DbManager{
         return citta;
     }
 
+    /**
+     * Restituisce il nome della città
+     * selezionandolo attraverso il
+     * suo codice
+     *
+     * @param codice Codice della cittò
+     * @return Nome della cittò se c'è un riscontro, altrimenti
+     *          restituisce una stringa vuota
+     */
+    public String getNomeCitta(int codice){
+        String query="SELECT nome FROM citta WHERE codice = "+codice;
+        System.out.println("==================> " + query);
+        SQLiteDatabase db= helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        String citta = "";
+        if (c.moveToFirst()){
+            do {
+
+                citta = c.getString(0);
+
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        return citta;
+    }
 
 }

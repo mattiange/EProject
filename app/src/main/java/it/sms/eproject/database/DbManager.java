@@ -562,38 +562,6 @@ public class DbManager {
     ///////////////////////////// GESTIONE MUSEO
 
     /**
-     * Aggiorna un museo
-     *
-     * @param m Nuovi dati del museo da aggiornare
-     * @return
-     */
-    @AutoreCodice(autore = "Mattia")
-    public boolean aggiornaMuseo(Museo m){
-        String insert1="UPDATE Museo SET " +
-                "Nome = '" + m.getNome() + "', "+
-                "Numero_Telefono = '" + m.getTelefono() + "', "+
-                "Indirizzo = '" + m.getIndirizzo() + "', "+
-                "Citta = '" + m.getCitta() + "', "+
-                "Email_Contatti = '" + m.getEmail() + "', "+
-                "Sito_Web = '" + m.getSito_web() + "', "+
-                "Orario_Apertura = '" + m.getOrario() + "', "+
-                "Immagine_Museo = '" + m.getImmagine() + "' " +
-                "WHERE ID = " + m.getID();
-
-        SQLiteDatabase db= helper.getWritableDatabase();
-
-        try{
-            db.execSQL(insert1);
-
-            return true;
-        }catch(SQLException ex){
-            System.err.println( ex.getMessage() );
-
-            return false;
-        }
-    }
-
-    /**
      * Cancella un museo
      *
      * @param id ID del museo

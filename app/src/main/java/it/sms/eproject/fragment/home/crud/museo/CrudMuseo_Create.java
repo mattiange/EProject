@@ -46,7 +46,6 @@ public class CrudMuseo_Create extends Fragment {
 
     private final int STORAGE_PERMISSION_CODE = 23;
     ImageView imageView;
-    SQLiteDatabase db;
 
     byte[] immagine;
 
@@ -99,11 +98,7 @@ public class CrudMuseo_Create extends Fragment {
                     }
                 });
 
-        btnImageUpload.setOnClickListener(
-                view -> {
-                    fetchImage(view);
-                }
-        );
+        //Richiedo il permesso per aprire la galleria
         ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
 
         btnImageUpload.setOnClickListener(this::fetchImage);
@@ -118,7 +113,7 @@ public class CrudMuseo_Create extends Fragment {
 
     private void salvaMuseo() {
         EditText nome               = v.findViewById(R.id.etNomeMuseo);
-        EditText telefono           = v.findViewById(R.id.etNomeMuseo);
+        EditText telefono           = v.findViewById(R.id.etNumTelefono);
         EditText indirizzo          = v.findViewById(R.id.etIndirizzo);
         EditText email              = v.findViewById(R.id.etEmail);
         EditText sito_web           = v.findViewById(R.id.etSitoWeb);
@@ -127,8 +122,6 @@ public class CrudMuseo_Create extends Fragment {
         TextView lblError           = v.findViewById(R.id.lblError);
 
         lblError.setVisibility(View.INVISIBLE);
-
-        Toast.makeText(getContext(), "SAVE", Toast.LENGTH_SHORT).show();
 
         boolean salva;
 

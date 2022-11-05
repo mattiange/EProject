@@ -142,7 +142,6 @@
             android:contentDescription="@string/crud_txt_immagine"
             android:src="@drawable/museo" />
 
-
         <Button
             android:id="@+id/btn_upload_immagine"
             android:layout_width="206dp"
@@ -150,6 +149,23 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/crud_txt_seleziona_immagine" />
+
+        <TextView
+            android:id="@+id/lblError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/red"/>
+
+        <Button
+            android:id="@+id/btn_salva_museo"
+            android:layout_width="206dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/crud_txt_salva"/>
     </LinearLayout>
 
 
