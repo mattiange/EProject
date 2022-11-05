@@ -207,7 +207,7 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "email_contatti VARCHAR," +
                 "sito_web VARCHAR," +
                 "orario_apertura VARCHAR," +
-                "immagine_museo VARCHAR," +
+                "immagine_museo BLOB," +
                 "citta_codice INTEGER," +
                 "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +
                 ")";

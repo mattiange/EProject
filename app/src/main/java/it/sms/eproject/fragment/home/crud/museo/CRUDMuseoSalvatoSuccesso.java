@@ -9,8 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
+import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
+import it.sms.eproject.fragment.home.crud.liste.ListaStati;
+import it.sms.eproject.util.Util;
 
 public class CRUDMuseoSalvatoSuccesso extends Fragment {
     @Nullable
@@ -20,7 +27,32 @@ public class CRUDMuseoSalvatoSuccesso extends Fragment {
 
         ((TextView)v.findViewById(R.id.titolo)).setText(String.format(getResources().getString(R.string.msg_success_salvato), getResources().getString(R.string.museo_uc)));
 
+        ((FloatingActionButton)v.findViewById(R.id.btnNuovoMuseo)).setOnClickListener(v1 -> {
+            Util.visualizzaFragment(() -> {
+                Fragment fragment = new ListaStati();
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.commit();
+            });
+        });
+
+        ((FloatingActionButton)v.findViewById(R.id.btnElencoMusei)).setOnClickListener(v1 -> {
+            Util.visualizzaFragment(() -> {
+                Fragment fragment = new ListaMusei();
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.commit();
+            });
+        });
+
 
         return v;
     }
+
+
+
 }

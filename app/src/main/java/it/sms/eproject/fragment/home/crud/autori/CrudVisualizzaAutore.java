@@ -82,6 +82,7 @@ public class CrudVisualizzaAutore extends Fragment {
     /**
      * Inizializza i campi
      */
+    @AutoreCodice(autore = "Mattia Leonardo Angelillo")
     public void init(){
         db = new DBAutore(getContext());
         autore = db.getAutore(Integer.parseInt(getArguments().getString("codice_autore")));
@@ -101,6 +102,7 @@ public class CrudVisualizzaAutore extends Fragment {
     /**
      * Compila i campi del museo da visualizzare
      */
+    @AutoreCodice(autore = "Mattia Leonardo Angelillo")
     public void compilaCampi(){
         System.out.println("============>" + autore.getDataDiMorte());
         System.out.println("============>" + autore.getDataDiNascita());

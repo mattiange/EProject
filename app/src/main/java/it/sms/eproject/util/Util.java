@@ -1,6 +1,7 @@
 package it.sms.eproject.util;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -8,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.annotazioni.AutoreCodice;
 
 
@@ -144,4 +147,36 @@ public class Util {
         return null;
     }
 
+    /**
+     * Converte un array di byte in Bitmap
+     *
+     * @param imageData
+     * @return
+     */
+    public static Bitmap getImageDataInBitmap(byte[] imageData) {
+        if (imageData != null) {
+            //turn byte[] to bitmap
+
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(imageData);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+
+            System.out.println("NOT NULL: " + imageData + " " + imageData.length);
+            System.out.println("NOT NULL: " + imageData + " " + bitmap);
+
+            return bitmap;
+
+            //return BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+        }
+        System.out.println("NULL");
+        return null;
+    }
+
+    /**
+     * Utilizzato per visualizzare un nuovo fragment
+     *
+     * @param callbackFragment
+     */
+    public static void visualizzaFragment(CallbackFragment callbackFragment){
+        callbackFragment.changeFragment();
+    }
 }

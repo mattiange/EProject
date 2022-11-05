@@ -1,5 +1,6 @@
 package it.sms.eproject.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -29,7 +30,7 @@ public class DBMuseo extends DbManager{
      * @return
      */
     public boolean inserisciMuseo(Museo m){
-        String insert1="INSERT INTO musei (codice, nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, immagine_museo, citta_codice) "
+        /*String insert1="INSERT INTO musei (codice, nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, immagine_museo, citta_codice) "
                 + "VALUES (NULL," +
                 "'"+m.getNome()+"','"+
                 m.getTelefono()+"', '"+
@@ -38,15 +39,30 @@ public class DBMuseo extends DbManager{
                 m.getSito_web()+"', '"+
                 m.getOrario()+"', '"+
                 m.getImmagine()+"', '"+
-                m.getImmagine() +"'" +
-                ");";
+                m.getCitta() +"'" +
+                ");";*/
 
         SQLiteDatabase db= helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //values.put("codice", "null");
+        values.put("nome", m.getNome());
+        values.put("numero_telefono", m.getTelefono());
+        values.put("indirizzo", m.getIndirizzo());
+        values.put("email_contatti", m.getEmail());
+        values.put("immagine_museo", m.getImmagine());
+        values.put("citta_codice", m.getCitta());
+
 
         try{
-            db.execSQL(insert1);
+            //db.execSQL(insert1);
+            //db.insertOrThrow(RECORDS_)
 
-            return true;
+            //Salvo i dati del museo
+            long res = db.insert("musei", null, values);
+
+            if(res ==-1) return false;
+            else return true;
+
         }catch(SQLException ex){
             System.err.println( ex.getMessage() );
 
@@ -82,6 +98,9 @@ public class DBMuseo extends DbManager{
                     c.getString(6),//Orario
                     c.getBlob(7)//Immagine del museo
             );
+
+            /*System.out.println("=======================> " + m.getImmagine()[0]);
+            System.out.println("=======================> " + m.getCitta());*/
         }
 
         System.out.println();

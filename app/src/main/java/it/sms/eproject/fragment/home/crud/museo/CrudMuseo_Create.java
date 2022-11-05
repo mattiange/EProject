@@ -42,6 +42,7 @@ import java.io.IOException;
 
 public class CrudMuseo_Create extends Fragment {
     ActivityResultLauncher<Intent> launchSomeActivity;
+    Bitmap selectedImageBitmap;
 
     private final int STORAGE_PERMISSION_CODE = 23;
     ImageView imageView;
@@ -73,7 +74,7 @@ public class CrudMuseo_Create extends Fragment {
                         if (data != null
                                 && data.getData() != null) {
                             Uri selectedImageUri = data.getData();
-                            Bitmap selectedImageBitmap = null;
+                             selectedImageBitmap = null;
                             try {
                                 selectedImageBitmap
                                         = MediaStore.Images.Media.getBitmap(
@@ -86,15 +87,18 @@ public class CrudMuseo_Create extends Fragment {
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             selectedImageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                             byte[] b = stream.toByteArray();
+                            immagine = b;
                             //selectedImageBitmap.recycle();
                             DbManager dbManager = new DbManager(getContext());
                             //dbManager.inserisciMuseo();
 
+                            //Visualizzo l'immagine selezionata
                             imageView.setImageBitmap(
                                     selectedImageBitmap);
                         }
                     }
                 });
+
         btnImageUpload.setOnClickListener(
                 view -> {
                     fetchImage(view);
@@ -124,6 +128,7 @@ public class CrudMuseo_Create extends Fragment {
 
         lblError.setVisibility(View.INVISIBLE);
 
+        Toast.makeText(getContext(), "SAVE", Toast.LENGTH_SHORT).show();
 
         boolean salva;
 
@@ -173,44 +178,14 @@ public class CrudMuseo_Create extends Fragment {
         }
     }
 
-    public void viewImage(View view)
-    {
-        Cursor c = db.rawQuery("select * from imageTb", null);
-        if(c.moveToNext())
-        {
-            byte[] image = c.getBlob(0);
-            Bitmap bmp= BitmapFactory.decodeByteArray(image, 0 , image.length);
-            imageView.setImageBitmap(bmp);
-            Toast.makeText(getContext(),"Done", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public  void fetchImage(View view)/* throws IOException */{
-
-        /*File folder= new File(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)));
-        FileInputStream fis = new FileInputStream(folder);
-        byte[] image= new byte[fis.available()];
-        fis.read(image);
-        ContentValues values = new ContentValues();
-        values.put("image",image);
-        db.insert("imageTb", null,values);
-        fis.close();
-        Toast.makeText(getContext(),"Image Fetched", Toast.LENGTH_SHORT).show();*/
+    public  void fetchImage(View view){
 
 
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-        //startActivityForResult(Intent.createChooser(i, "Select Picture"), CODE_OK);
         launchSomeActivity.launch(i);
 
     }
 
-     /* private void uploadImmagine(View view) {
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-        //startActivityForResult(Intent.createChooser(i, "Select Picture"), CODE_OK);
-        launchSomeActivity.launch(i);
-    }*/
 }

@@ -1,5 +1,6 @@
 package it.sms.eproject.fragment.home.crud.museo;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
+import it.sms.eproject.util.Util;
 
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudVisualizzaMuseo extends Fragment {
@@ -71,6 +73,8 @@ public class CrudVisualizzaMuseo extends Fragment {
 
         this.codiceCitta = (EditText) this.v.findViewById(R.id.etIdCitta);
         this.nomeCitta = (EditText) this.v.findViewById(R.id.etCitta);
+
+        this.immagine = (ImageView)this.v.findViewById(R.id.imageView);
     }
 
     /**
@@ -92,6 +96,12 @@ public class CrudVisualizzaMuseo extends Fragment {
 
         this.codiceCitta.setText(museo.getNome());
         this.nomeCitta.setText(museo.getNome());
+
+        Bitmap bitmap = Util.getImageDataInBitmap(museo.getImmagine());
+
+        System.out.println("=========> BITMAP: " + bitmap);
+
+        this.immagine.setImageBitmap(bitmap);
     }
 
 }
