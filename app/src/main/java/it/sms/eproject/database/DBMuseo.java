@@ -30,21 +30,9 @@ public class DBMuseo extends DbManager{
      * @return
      */
     public boolean inserisciMuseo(Museo m){
-        /*String insert1="INSERT INTO musei (codice, nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, immagine_museo, citta_codice) "
-                + "VALUES (NULL," +
-                "'"+m.getNome()+"','"+
-                m.getTelefono()+"', '"+
-                m.getIndirizzo()+"', '"+
-                m.getEmail()+"', '"+
-                m.getSito_web()+"', '"+
-                m.getOrario()+"', '"+
-                m.getImmagine()+"', '"+
-                m.getCitta() +"'" +
-                ");";*/
-
         SQLiteDatabase db= helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        //values.put("codice", "null");
+
         values.put("nome", m.getNome());
         values.put("numero_telefono", m.getTelefono());
         values.put("indirizzo", m.getIndirizzo());
@@ -54,10 +42,6 @@ public class DBMuseo extends DbManager{
 
 
         try{
-            //db.execSQL(insert1);
-            //db.insertOrThrow(RECORDS_)
-
-            //Salvo i dati del museo
             long res = db.insert("musei", null, values);
 
             if(res ==-1) return false;
@@ -85,8 +69,6 @@ public class DBMuseo extends DbManager{
         Museo m = null;
 
         if(c.moveToFirst()){
-            System.out.println("======================= OK =========================");
-
             m = new Museo(
                     c.getInt(0),//Codice
                     c.getString(1),//Nome
@@ -98,9 +80,6 @@ public class DBMuseo extends DbManager{
                     c.getString(6),//Orario
                     c.getBlob(7)//Immagine del museo
             );
-
-            /*System.out.println("=======================> " + m.getImmagine()[0]);
-            System.out.println("=======================> " + m.getCitta());*/
         }
 
         System.out.println();
@@ -116,20 +95,9 @@ public class DBMuseo extends DbManager{
      */
     @AutoreCodice(autore = "Mattia")
     public boolean aggiornaMuseo(Museo m){
-        /*String insert1="UPDATE Museo SET " +
-                "Nome = '" + m.getNome() + "', "+
-                "Numero_Telefono = '" + m.getTelefono() + "', "+
-                "Indirizzo = '" + m.getIndirizzo() + "', "+
-                "Citta = '" + m.getCitta() + "', "+
-                "Email_Contatti = '" + m.getEmail() + "', "+
-                "Sito_Web = '" + m.getSito_web() + "', "+
-                "Orario_Apertura = '" + m.getOrario() + "', "+
-                "Immagine_Museo = '" + m.getImmagine() + "' " +
-                "WHERE ID = " + m.getID();*/
-
         SQLiteDatabase db= helper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        //values.put("codice", "null");
+
         values.put("nome", m.getNome());
         values.put("numero_telefono", m.getTelefono());
         values.put("indirizzo", m.getIndirizzo());
@@ -138,8 +106,6 @@ public class DBMuseo extends DbManager{
         values.put("citta_codice", m.getCitta());
 
         try{
-            //db.execSQL(insert1);
-
             long res = db.update("musei", values, "codice = ?", new String[]{String.valueOf(m.getID())});
 
             if(res == -1) return false;
@@ -191,5 +157,27 @@ public class DBMuseo extends DbManager{
         c.close();
 
         return al;
+    }
+
+    /**
+     * Cancella un museo
+     *
+     * @param codice Codice del museo
+     * @return true se il museo è stato cancellato, false altrimenti
+     */
+    @AutoreCodice(autore = "Mattia")
+    public boolean eliminaMuseo(int codice){
+        String insert1="DELETE FROM musei WHERE codice = " + codice;
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
     }
 }

@@ -12,6 +12,7 @@
     <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
     <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
     <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>>
+    <string name="msg_error_delete">Problema di eliminazione del %s</string>>
     <string name="campi_vuoti">I campi non possono essere vuoti</string>
     <string name="email_non_corretta">L\'email inserita non è corretta</string>
     <string name="login_non_valida">I dati di login non sono corretti</string>
@@ -24,6 +25,7 @@
 
     <!-- Messaggi di successo -->
     <string name="msg_success_salvato">%s è stato salvato con successo</string>
+    <string name="msg_success_eliminato">%s è stato eliminato con successo</string>
 
     <!-- Messaggi -->
     <string name="descrizione">Descrizione:</string>
@@ -139,6 +141,7 @@
 
     <!-- Nomi -->
     <string name="museo_uc">Museo</string>
+    <string name="del_museo">del museo</string>
     <string name="il_museo">il museo</string>
     <string name="autore_uc">Autore</string>
     <string name="l_autore">l\'autore</string>
@@ -149,6 +152,7 @@
     <string name="view_museum">Visualizza Museo</string>
     <string name="change_museum">Cambia Museo</string>
     <string name="delete_museum">Elimina Museo</string>
+    <string name="delete_museum_msq_question">Vuoi cancellare il museo selezionato?</string>
 
     <string name="museum_name">Nome Museo: </string>
     <string name="museum_phone">Numero di telefono: </string>

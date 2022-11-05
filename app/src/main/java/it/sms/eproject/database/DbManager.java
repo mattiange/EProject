@@ -559,28 +559,4 @@ public class DbManager {
         return al;
     }
 
-    ///////////////////////////// GESTIONE MUSEO
-
-    /**
-     * Cancella un museo
-     *
-     * @param id ID del museo
-     * @return
-     */
-    @AutoreCodice(autore = "Mattia")
-    public boolean eliminaMuseo(int id){
-        String insert1="DELETE FROM Museo " +
-                "WHERE ID = " + id;
-        SQLiteDatabase db= helper.getWritableDatabase();
-
-        try{
-            db.execSQL(insert1);
-
-            return true;
-        }catch(SQLException ex){
-            System.err.println( ex.getMessage() );
-
-            return false;
-        }
-    }
 }
