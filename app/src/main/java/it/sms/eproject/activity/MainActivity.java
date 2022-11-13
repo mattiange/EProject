@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

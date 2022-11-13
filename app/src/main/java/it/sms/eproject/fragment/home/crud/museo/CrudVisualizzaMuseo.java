@@ -227,7 +227,7 @@ public class CrudVisualizzaMuseo extends Fragment {
                 System.out.println("UPDATE MUSEO OK");
 
                 EseguiFragment.changeFragment(()-> {
-                    Fragment fragment = new CRUDMuseoSalvatoSuccesso();
+                    Fragment fragment = new CRUDMuseoEliminatoSuccesso();
 
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
