@@ -25,6 +25,7 @@ import androidx.fragment.app.FragmentTransaction;
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.database.DBAutore;
+import it.sms.eproject.fragment.home.crud.autori.CRUDAutoreEliminatoSuccesso;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutoreSalvatoSuccesso;
 import it.sms.eproject.fragment.home.crud.autori.CrudVisualizzaAutore;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
@@ -80,7 +81,7 @@ public class ListaAutori extends Fragment {
                                     DBAutore db = new DBAutore(getContext());
                                     if (db.eliminaAutore(codice)) {
                                         Util.visualizzaFragment(() -> {
-                                            Fragment fragment = new CRUDAutoreSalvatoSuccesso();
+                                            Fragment fragment = new CRUDAutoreEliminatoSuccesso();
 
                                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -127,21 +128,6 @@ public class ListaAutori extends Fragment {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
-        });
-    }
-
-    /**
-     * Pagina di creazione nuovo museo
-     */
-    private void getNuovoMuseo() {
-        changeFragment(()->{
-            Fragment fragment = new CrudMuseo_Create();
-            fragment.setArguments(this.bundle);
-
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.commit();
         });
     }
 

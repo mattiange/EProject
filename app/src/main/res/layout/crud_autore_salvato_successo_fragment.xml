@@ -45,7 +45,7 @@
         android:layout_marginRight="20dp"
         android:src="@drawable/ic_baseline_format_list_bulleted_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnNuovoMuseo" />
+        app:layout_constraintEnd_toStartOf="@+id/btnNuovoAutore" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

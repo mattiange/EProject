@@ -41,7 +41,6 @@ public class CrudVisualizzaAutore extends Fragment {
 
     DBAutore db;
 
-    CallbackFragment callbackFragment;
 
     @Nullable
     @Override
@@ -104,8 +103,6 @@ public class CrudVisualizzaAutore extends Fragment {
      */
     @AutoreCodice(autore = "Mattia Leonardo Angelillo")
     public void compilaCampi(){
-        System.out.println("============>" + autore.getDataDiMorte());
-        System.out.println("============>" + autore.getDataDiNascita());
         this.titolo.setText(getResources().getText(R.string.crud_autori_update_titolo));
         this.nome.setText(autore.getNome());
         this.dataNascita.setText(autore.getDataDiNascita()==null?"":autore.getDataDiNascita().toString());
