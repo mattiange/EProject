@@ -54,7 +54,7 @@ public class CRUDAutore extends Fragment {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.commit();
+            fragmentTransaction.addToBackStack(null).commit();
         });
     }
 
@@ -71,7 +71,7 @@ public class CRUDAutore extends Fragment {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.commit();
+            fragmentTransaction.addToBackStack(null).commit();
         });
     }
 }

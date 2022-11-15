@@ -27,16 +27,28 @@ public class CRUDAutoreSalvatoSuccesso extends Fragment {
 
         ((TextView)v.findViewById(R.id.titolo)).setText(String.format(getResources().getString(R.string.msg_success_salvato), getResources().getString(R.string.autore_uc)));
 
-        FloatingActionButton fab = v.findViewById(R.id.btnElenco);
+        FloatingActionButton elenco = v.findViewById(R.id.btnElenco);
+        FloatingActionButton nuovo = v.findViewById(R.id.btnNuovoAutore);
 
-        fab.setOnClickListener(e->{
+        elenco.setOnClickListener(e->{
             getFragment(()->{
                 Fragment fragment = new ListaAutori();
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                fragmentTransaction.commit();
+                fragmentTransaction.addToBackStack(null).commit();
+            });
+        });
+
+        nuovo.setOnClickListener(e->{
+            getFragment(()->{
+                Fragment fragment = new CRUDCreateAutori();
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.addToBackStack(null).commit();
             });
         });
 

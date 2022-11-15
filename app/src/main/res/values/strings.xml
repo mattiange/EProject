@@ -11,8 +11,12 @@
     <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
     <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
     <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
-    <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>>
-    <string name="msg_error_delete">Problema di eliminazione del %s</string>>
+    <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>
+    <string name="msg_error_delete">Problema di eliminazione del %s</string>
+
+    <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
+
+
     <string name="campi_vuoti">I campi non possono essere vuoti</string>
     <string name="email_non_corretta">L\'email inserita non è corretta</string>
     <string name="login_non_valida">I dati di login non sono corretti</string>
@@ -145,6 +149,7 @@
     <string name="il_museo">il museo</string>
     <string name="autore_uc">Autore</string>
     <string name="l_autore">l\'autore</string>
+    <string name="del_autore">dell\'museo</string>
 
     <!-- Museo -->
     <string name="museum">Museo</string>
@@ -169,6 +174,8 @@
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->
+    <string name="delete_autore">Cancella autore</string>
+    <string name="delete_autore_msq_question">Vuoi cancellare l\'autore selezionato?</string>
     <string name="crud_autori_codice">Codice autore</string>
     <string name="crud_autori_update_titolo">Aggiornamento autore</string>
     <string name="crud_autori_gestisci">Gestisci gli autori</string>

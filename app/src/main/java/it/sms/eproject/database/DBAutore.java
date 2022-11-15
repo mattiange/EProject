@@ -163,4 +163,26 @@ public class DBAutore extends DbManager{
 
         return al;
     }
+
+    /**
+     * Cancella un autore
+     *
+     * @param codice Codice dell'autore
+     * @return true se l'autore è stato cancellato, false altrimenti
+     */
+    @AutoreCodice(autore = "Mattia")
+    public boolean eliminaAutore(int codice){
+        String insert1="DELETE FROM autori WHERE codice = " + codice;
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
 }

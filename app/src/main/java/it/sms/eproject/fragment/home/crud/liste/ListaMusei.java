@@ -48,9 +48,9 @@ public class ListaMusei extends Fragment {
         ((TextView)v.findViewById(R.id.titolo)).setText(R.string.visualizza_tutti_i_musei);
 
         Museo[] musei = new Museo[0];
-
+        musei = new DBMuseo(getContext()).elencoMusei().toArray(musei);
         if(musei.length > 0) {
-            ArrayAdapter<Museo> adapter = new MuseoAdapter(getContext(), new DBMuseo(getContext()).elencoMusei().toArray(musei));
+            ArrayAdapter<Museo> adapter = new MuseoAdapter(getContext(), musei);
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
 

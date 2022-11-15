@@ -27,7 +27,7 @@
         app:srcCompat="@drawable/successo" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnNuovoMuseo"
+        android:id="@+id/btnNuovoAutore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
