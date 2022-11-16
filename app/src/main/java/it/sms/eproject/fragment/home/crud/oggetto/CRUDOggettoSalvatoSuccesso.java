@@ -21,6 +21,7 @@ import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaCitta;
+import it.sms.eproject.fragment.home.crud.liste.ListaOggetti;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CRUDOggettoSalvatoSuccesso extends Fragment {
@@ -41,7 +42,7 @@ public class CRUDOggettoSalvatoSuccesso extends Fragment {
 
         elenco.setOnClickListener(e->{
             getFragment(()->{
-                Fragment fragment = new ListaAutori();
+                Fragment fragment = new ListaOggetti();
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -63,7 +64,6 @@ public class CRUDOggettoSalvatoSuccesso extends Fragment {
                 fragmentTransaction.addToBackStack(null).commit();
             });
         });
-
 
         return v;
     }

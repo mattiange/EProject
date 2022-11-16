@@ -26,6 +26,7 @@ import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBAutore;
+import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutoreEliminatoSuccesso;
 import it.sms.eproject.fragment.home.crud.autori.CrudVisualizzaAutore;
 import it.sms.eproject.util.Util;
@@ -41,12 +42,12 @@ public class ListaOggetti extends Fragment {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
 
-        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.visualizza_tutti_gli_autori);
+        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.visualizza_tutti_gli_oggetti);
         this.lblError = ((TextView)v.findViewById(R.id.lblError));
         this.lblError.setText(R.string.msg_error_autori_no_trovati);
 
         Oggetto[] oggetti = new Oggetto[0];
-        oggetti = new DBAutore(getContext()).elencoAutori().toArray(oggetti);
+        oggetti = new DBOggetto(getContext()).elencoOggetti().toArray(oggetti);
         if(oggetti.length > 0) {
             ArrayAdapter<Oggetto> adapter = new OggettoAdapter(getContext(), oggetti);
             listView = v.findViewById(R.id.listView);

@@ -51,6 +51,41 @@ public class DBOggetto extends DbManager{
         }
     }
 
+    /**
+     * Visualizza un elenco con tutti gli oggetti presenti nel database
+     *
+     * @return ArrayList contenente tutti gli oggetti
+     */
+    public ArrayList<Oggetto> elencoOggetti(){
+        String query="SELECT * FROM oggetti ORDER BY nome";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Oggetto> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+
+                al.add(new Oggetto(
+                        c.getInt(0),//id
+                        c.getString(1),//nome
+                        c.getInt(2),//anno
+                        c.getInt(4),//id autore
+                        c.getString(3),//descrizione
+                        c.getInt(5)//id città
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
+
     //DA MODIFICARE//
 
     /**
@@ -123,48 +158,6 @@ public class DBOggetto extends DbManager{
         return a;
     }
 
-    /**
-     * Visualizza un elenco con tutti gli autori presenti nel database
-     *
-     * @return ArrayList contenente tutti gli autori
-     */
-    public ArrayList<Autore> elencoAutori(){
-        String query="SELECT * FROM autori ORDER BY nome";
-        SQLiteDatabase db= helper.getReadableDatabase();
-
-        Cursor c = db.rawQuery(query, null);
-
-        ArrayList<Autore> al = null;
-
-        if (c.moveToFirst()){
-            al = new ArrayList<>();
-
-            do {
-                LocalDate data_di_nascita   = null;
-                LocalDate data_di_morte     = null;
-
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    try {
-                        data_di_nascita = LocalDate.parse(c.getString(2));
-                        data_di_morte   = LocalDate.parse(c.getString(3));
-                    }catch (DateTimeParseException e){e.printStackTrace();}
-                }
-
-                al.add(new Autore(
-                        c.getInt(0),
-                        c.getString(1),
-                        data_di_nascita,
-                        data_di_morte,
-                        c.getString(4)
-                ));
-
-            } while(c.moveToNext());
-        }
-
-        c.close();
-
-        return al;
-    }
 
     /**
      * Cancella un autore

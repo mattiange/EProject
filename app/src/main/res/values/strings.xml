@@ -51,6 +51,7 @@
     <string name="seleziona_citta">Seleziona una città</string>
     <string name="visualizza_tutti_i_musei">Musei presenti</string>
     <string name="visualizza_tutti_gli_autori">Autori presenti</string>
+    <string name="visualizza_tutti_gli_oggetti">Oggetti presenti</string>
 
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
