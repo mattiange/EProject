@@ -101,6 +101,7 @@ public class ListaAutori extends Fragment {
                                 bundle.putString("codice_autore", codiceAutore.getText().toString());
 
                                 getAutore();
+
                             })
                             .show();
 
@@ -136,7 +137,7 @@ public class ListaAutori extends Fragment {
      *
      * Tiene traccia anche dei rispettivi ID
      */
-    static class AutoreAdapter extends ArrayAdapter<Autore>{
+    public static class AutoreAdapter extends ArrayAdapter<Autore>{
         private final Context context;
         private final Autore[] values;
 

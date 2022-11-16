@@ -34,9 +34,14 @@ import java.util.Locale;
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.data.classes.Citta;
+import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBAutore;
 import it.sms.eproject.database.DBCitta;
+import it.sms.eproject.database.DBMuseo;
+import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutoreSalvatoSuccesso;
+import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
+import it.sms.eproject.fragment.home.crud.liste.ListaAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaCitta;
 
 public class CrudOggetto_Create extends Fragment {
@@ -84,7 +89,7 @@ public class CrudOggetto_Create extends Fragment {
         ((TextView)v.findViewById(R.id.cittaCodice)).setText(String.valueOf(getArguments().getString("codice_citta")));
         ((TextView)v.findViewById(R.id.cittaValue)).setText(String.valueOf(getArguments().getString("nome_citta")));
 
-        ((TextView)v.findViewById(R.id.autoreValue)).setOnClickListener(e->getDialog(v, inflater));
+        ((TextView)v.findViewById(R.id.autoreValue)).setOnClickListener(e->getDialogAutori(v, inflater));
     }
 
     /**
@@ -93,7 +98,7 @@ public class CrudOggetto_Create extends Fragment {
      * @param v View principale
      * @param inflater File XML per la gestione della lista
      */
-    public void getDialog(View v, LayoutInflater inflater){
+    public void getDialogAutori(View v, LayoutInflater inflater){
         View convertView = (View) inflater.inflate(R.layout.lista_fragment, null);
         TextView lvTitolo = convertView.findViewById(R.id.titolo);
         lvTitolo.setText("Autori");
@@ -121,7 +126,7 @@ public class CrudOggetto_Create extends Fragment {
         //Se sono presenti autori (length > 0) allora
         //li aggiungo alla lista
         if(autori.length>0) {
-            ArrayAdapter<Autore> adapter = new AutoreAdapter(getContext(), autori);
+            ArrayAdapter<Autore> adapter = new ListaAutori.AutoreAdapter(getContext(), autori);
             ListView listview = convertView.findViewById(R.id.listView);
             listview.setAdapter(adapter);
             listview.setOnItemClickListener((parent, view, position, id) -> {
@@ -133,6 +138,7 @@ public class CrudOggetto_Create extends Fragment {
             });
         }
     }
+
 
     /**
      * Formatta la data
@@ -150,52 +156,40 @@ public class CrudOggetto_Create extends Fragment {
         EditText nome           = v.findViewById(R.id.nomeOggetto);
         EditText anno           = v.findViewById(R.id.annoOggetto);
         EditText descrizione    = v.findViewById(R.id.descOggetto);
-        EditText autore         = v.findViewById(R.id.autoreCodice);
-        EditText citta          = v.findViewById(R.id.cittaCodice);
+        TextView autore         = v.findViewById(R.id.autoreCodice);
+        TextView citta          = v.findViewById(R.id.cittaCodice);
         TextView error          = v.findViewById(R.id.lblError);
 
         error.setVisibility(View.INVISIBLE);
 
         //controllo se è stato inserito
-        //il nome dell'autore di un'opera
+        //il nome dell'opera
         if(nome.getText().toString().trim().isEmpty()){
             error.setVisibility(View.VISIBLE);
             error.setText(R.string.crud_oggetto_nome_obbligatorio);
 
             return;
         }
-    }
+        //controllo se è stato inserito
+        //l'autore di un'opera
+        if(autore.getText().toString().trim().isEmpty()){
+            error.setVisibility(View.VISIBLE);
+            error.setText(R.string.crud_autori_nome_obbligatorio);
 
-
-    /**
-     * Adapter per visualizzare gli stati.
-     *
-     * Tiene traccia anche dei rispettivi ID
-     */
-    static class AutoreAdapter extends ArrayAdapter<Autore> {
-        private final Context context;
-        private final Autore[] values;
-
-        public AutoreAdapter(@NonNull Context context, Autore[]  values) {
-            super(context, -1, values);
-
-            this.context = context;
-            this.values = values;
+            return;
         }
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.row, parent, false);
-
-            TextView codice = rowView.findViewById(R.id.listViewCodice);
-            TextView nome = rowView.findViewById(R.id.listViewNome);
-
-            codice.setText(String.valueOf(values[position].getCodice()));
-            nome.setText(values[position].getNome());
-
-            return rowView;
+        DBOggetto dbOggetto = new DBOggetto(getContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if(dbOggetto.inserisciOggetto(new Oggetto(
+                    nome.getText().toString(),
+                    (anno.getText().toString()==null || anno.getText().toString().trim().isEmpty()) ? null : LocalDate.parse(anno.getText().toString()),
+                    Integer.parseInt(autore.getText().toString()),
+                    descrizione.getText().toString(),
+                    Integer.parseInt(citta.getText().toString())
+            ))){
+                Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

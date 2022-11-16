@@ -110,7 +110,7 @@ public class ListaCitta extends Fragment {
      *
      * Tiene traccia anche dei rispettivi ID
      */
-    static class CittaAdapter extends ArrayAdapter<Citta>{
+    public static class CittaAdapter extends ArrayAdapter<Citta>{
         private final Context context;
         private final Citta[] values;
 

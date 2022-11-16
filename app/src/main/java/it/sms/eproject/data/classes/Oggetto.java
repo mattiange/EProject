@@ -1,5 +1,7 @@
 package it.sms.eproject.data.classes;
 
+import java.time.LocalDate;
+
 import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
@@ -11,16 +13,16 @@ public class Oggetto {
     int id;
     int codice_citta;
     String nome;
-    String anno;
+    LocalDate anno;
     int autore;
     String descrizione;
 
 
-    public Oggetto(String nome, String anno, int autore, String descrizione, int codice_citta) {
+    public Oggetto(String nome, LocalDate anno, int autore, String descrizione, int codice_citta) {
         this(-1, nome, anno, autore, descrizione, codice_citta);
     }
 
-    public Oggetto(int id, String nome, String anno, int autore, String descrizione, int codice_citta) {
+    public Oggetto(int id, String nome, LocalDate anno, int autore, String descrizione, int codice_citta) {
         this.id = id;
         this.nome = nome;
         this.anno = anno;
@@ -53,7 +55,7 @@ public class Oggetto {
      *
      * @param anno Anno
      */
-    public void setAnno(String anno) {
+    public void setAnno(LocalDate anno) {
         this.anno = anno;
     }
 
@@ -105,7 +107,7 @@ public class Oggetto {
      *
      * @return Anno
      */
-    public String getAnno() {
+    public LocalDate getAnno() {
         return anno;
     }
 
