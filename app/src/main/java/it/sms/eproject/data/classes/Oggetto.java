@@ -9,68 +9,130 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 public class Oggetto {
 
     int id;
+    int codice_citta;
     String nome;
     String anno;
-    String autore;
+    int autore;
     String descrizione;
-    int id_zona;
 
-    public Oggetto(String nome, String anno, String autore, int id_zona, String descrizione) {
-        this(-1, nome, anno, autore, descrizione, id_zona);
+
+    public Oggetto(String nome, String anno, int autore, String descrizione, int codice_citta) {
+        this(-1, nome, anno, autore, descrizione, codice_citta);
     }
 
-    public Oggetto(int id, String nome, String anno, String autore, String descrizione, int id_zona) {
+    public Oggetto(int id, String nome, String anno, int autore, String descrizione, int codice_citta) {
         this.id = id;
         this.nome = nome;
         this.anno = anno;
         this.autore = autore;
         this.descrizione = descrizione;
-        this.id_zona = id_zona;
+        this.codice_citta = codice_citta;
     }
 
-    public String getNome() {
-        return nome;
+
+    /**
+     * imposta il codice dell'autore
+     *
+     * @param autore Codice
+     */
+    public void setAutore(int autore) {
+        this.autore = autore;
     }
 
+    /**
+     * imposta il nome dell'oggetto
+     *
+     * @param nome Nome
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getAnno() {
-        return anno;
-    }
-
+    /**
+     * imposta l'anno in cui l'oggetto è stato realizzato
+     *
+     * @param anno Anno
+     */
     public void setAnno(String anno) {
         this.anno = anno;
     }
 
-    public String getAutore() {
-        return autore;
+    /**
+     * imposta la descrizione dell'oggetto
+     *
+     * @param descrizione Descrizione
+     */
+    public void setDescrizione(String descrizione) { this.descrizione = descrizione; }
+
+    /**
+     * imposta il codice della città
+     *
+     * @param codice_citta Codice
+     */
+    public void setCodice_citta(int codice_citta) {
+        this.codice_citta = codice_citta;
     }
 
-    public void setAutore(String autore) {
-        this.autore = autore;
-    }
-
+    /**
+     * restituisce la descrizione
+     *
+     * @return Descrizione
+     */
     public String getDescrizione() {
         return descrizione;
     }
 
-    public void setDescrizione(String descrizione) { this.descrizione = descrizione; }
-
-    public void setId_zona(int id_zona) {
-        this.id_zona = id_zona;
+    /**
+     * imposta il codice dell'oggetto
+     *
+     * @param id Codice
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getId_zona() {
-        return id_zona;
+    /**
+     * restituisce il nome
+     *
+     * @return Nome
+     */
+    public String getNome() {
+        return nome;
     }
 
+    /**
+     * restituisce l'anno di realizzazione
+     *
+     * @return Anno
+     */
+    public String getAnno() {
+        return anno;
+    }
+
+    /**
+     * restituisce il codice dell'autore
+     *
+     * @return codice
+     */
+    public int getAutore() {
+        return autore;
+    }
+
+    /**
+     * restituisce il codice dell'oggetto
+     *
+     * @return codice
+     */
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    /**
+     * restituisce il codice della città
+     *
+     * @return codice
+     */
+    public int getCodice_citta() {
+        return codice_citta;
     }
 }

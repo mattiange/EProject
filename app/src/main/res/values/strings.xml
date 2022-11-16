@@ -45,6 +45,7 @@
 
     <!-- Titoli -->
     <string name="seleziona_stato">Seleziona uno stato</string>
+    <string name="seleziona_autore">Seleziona un autore</string>
     <string name="seleziona_regione">Seleziona una regione</string>
     <string name="seleziona_provincia">Seleziona una provincia</string>
     <string name="seleziona_citta">Seleziona una città</string>
@@ -182,6 +183,11 @@
     <string name="crud_autori_data_nascita">Data di nascita</string>
     <string name="crud_autori_data_morte">Data di morte</string>
     <string name="crud_autori_nome_obbligatorio">Il nome dell\'autore è obbligatorio</string>
+    <!-- /////////// -->
+
+    <!-- Oggetti -->
+    <string name="delete_oggetto">Cancella oggetto</string>
+    <string name="crud_oggetto_nome_obbligatorio">Il nome dell\'oggetto è obbligatorio</string>
     <!-- /////////// -->
 
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>

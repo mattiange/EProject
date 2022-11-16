@@ -63,51 +63,48 @@ public class ListaMusei extends Fragment {
             getMuseo();
         });*/
 
-            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            listView.setOnItemLongClickListener((parent, view, position, id) -> {
 
-                    //Toast.makeText(getContext(), "OK LONG CLICK", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "OK LONG CLICK", Toast.LENGTH_SHORT).show();
 
-                    TextView codiceTv = view.findViewById(R.id.listViewCodice);
-                    int codice = Integer.parseInt(codiceTv.getText().toString());
+                TextView codiceTv = view.findViewById(R.id.listViewCodice);
+                int codice = Integer.parseInt(codiceTv.getText().toString());
 
-                    //Visualizzo l'alert per la conferma dell'eliminazione del museo
-                    new AlertDialog.Builder(getContext())
-                            .setTitle(getResources().getString(R.string.delete_museum))
-                            .setMessage(getResources().getString(R.string.delete_museum_msq_question))
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .setPositiveButton(R.string.cancella, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    DBMuseo db = new DBMuseo(getContext());
-                                    if (db.eliminaMuseo(codice)) {
-                                        Util.visualizzaFragment(() -> {
-                                            Fragment fragment = new CRUDMuseoEliminatoSuccesso();
+                //Visualizzo l'alert per la conferma dell'eliminazione del museo
+                new AlertDialog.Builder(getContext())
+                        .setTitle(getResources().getString(R.string.delete_museum))
+                        .setMessage(getResources().getString(R.string.delete_museum_msq_question))
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(R.string.cancella, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DBMuseo db = new DBMuseo(getContext());
+                                if (db.eliminaMuseo(codice)) {
+                                    Util.visualizzaFragment(() -> {
+                                        Fragment fragment = new CRUDMuseoEliminatoSuccesso();
 
-                                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                                            fragmentTransaction.commit();
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                                        fragmentTransaction.commit();
 
-                                        });
-                                    } else {
-                                        Toast.makeText(getContext(), getResources().getString(R.string.msg_error_delete, getResources().getString(R.string.del_museo)), Toast.LENGTH_SHORT).show();
-                                    }
+                                    });
+                                } else {
+                                    Toast.makeText(getContext(), getResources().getString(R.string.msg_error_delete, getResources().getString(R.string.del_museo)), Toast.LENGTH_SHORT).show();
                                 }
-                            })
-                            .setNegativeButton(R.string.btn_modifica, (d, w) -> {
+                            }
+                        })
+                        .setNegativeButton(R.string.btn_modifica, (d, w) -> {
 
-                                TextView codiceMuseo = ((TextView) view.findViewById(R.id.listViewCodice));
+                            TextView codiceMuseo = ((TextView) view.findViewById(R.id.listViewCodice));
 
-                                bundle.putString("codice_museo", codiceMuseo.getText().toString());
+                            bundle.putString("codice_museo", codiceMuseo.getText().toString());
 
-                                getMuseo();
-                            })
-                            .show();
+                            getMuseo();
+                        })
+                        .show();
 
-                    return false;
-                }
+                return false;
             });
         }
 

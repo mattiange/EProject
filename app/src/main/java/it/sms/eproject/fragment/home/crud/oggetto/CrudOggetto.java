@@ -1,10 +1,13 @@
 package it.sms.eproject.fragment.home.crud.oggetto;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +22,8 @@ import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudOggetto extends Fragment {
 
-    private Button btnShowAll;
-    private Button btnCreate;
+    private ImageButton btnShowAll;
+    private ImageButton btnCreate;
 
 
     @Nullable
@@ -28,8 +31,8 @@ public class CrudOggetto extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.crudoggetto_fragment, container, false);
 
-        btnCreate = v.findViewById(R.id.btnCreaOggetto);
-        btnShowAll = v.findViewById(R.id.btnVisualizzaOggetto);
+        btnCreate = v.findViewById(R.id.btnNuovo);
+        btnShowAll = v.findViewById(R.id.btnElenco);
 
 
         btnCreate.setOnClickListener(this::nuovoOggetto);
@@ -69,6 +72,11 @@ public class CrudOggetto extends Fragment {
      */
     private void nuovoOggetto(View e) {
         visualizzaFragment(() -> {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("azione-lista","nuovo-oggetto");
+            editor.apply();
+
             Fragment fragment = new ListaStati();
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

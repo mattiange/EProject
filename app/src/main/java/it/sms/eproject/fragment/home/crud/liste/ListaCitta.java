@@ -4,7 +4,9 @@ import static it.sms.eproject.util.EseguiFragment.changeFragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import it.sms.eproject.R;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.data.classes.Citta;
 import it.sms.eproject.database.DBCitta;
+import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto_Create;
 
 public class ListaCitta extends Fragment {
     ListView listView;
@@ -61,7 +64,29 @@ public class ListaCitta extends Fragment {
             this.bundle.putString("codice_citta", codice.getText().toString());
             this.bundle.putString("nome_citta",   nome.getText().toString());
 
-            getNuovoMuseo();
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String azione = preferences.getString("azione-lista", "");
+
+            if(azione.equalsIgnoreCase("nuovo-museo")) {
+                getNuovoMuseo();
+            }else if(azione.equalsIgnoreCase("nuovo-oggetto")){
+                getNuovoOggetto();
+            }
+        });
+    }
+
+    /**
+     * Pagina di creazione nuovo oggetto
+     */
+    private void getNuovoOggetto() {
+        changeFragment(()->{
+            Fragment fragment = new CrudOggetto_Create();
+            fragment.setArguments(this.bundle);
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null).commit();
         });
     }
 
