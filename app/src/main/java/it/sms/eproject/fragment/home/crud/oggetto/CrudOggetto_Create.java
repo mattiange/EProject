@@ -43,6 +43,8 @@ import it.sms.eproject.fragment.home.crud.autori.CRUDAutoreSalvatoSuccesso;
 import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaCitta;
+import it.sms.eproject.fragment.home.crud.museo.CRUDMuseoSalvatoSuccesso;
+import it.sms.eproject.util.EseguiFragment;
 
 public class CrudOggetto_Create extends Fragment {
 
@@ -67,7 +69,7 @@ public class CrudOggetto_Create extends Fragment {
             }
         };
         anno.setOnClickListener(v1->{
-            new DatePickerDialog(getContext(),date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            //new DatePickerDialog(getContext(),date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         });
         //----------------------------------------
 
@@ -179,16 +181,24 @@ public class CrudOggetto_Create extends Fragment {
             return;
         }
 
+        //Salvo il nuovo oggetto
         DBOggetto dbOggetto = new DBOggetto(getContext());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if(dbOggetto.inserisciOggetto(new Oggetto(
                     nome.getText().toString(),
-                    (anno.getText().toString()==null || anno.getText().toString().trim().isEmpty()) ? null : LocalDate.parse(anno.getText().toString()),
+                    anno.getText().toString().isEmpty() ? 0 : Integer.parseInt(anno.getText().toString()),
                     Integer.parseInt(autore.getText().toString()),
                     descrizione.getText().toString(),
                     Integer.parseInt(citta.getText().toString())
             ))){
-                Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
+                EseguiFragment.changeFragment(()-> {
+                    Fragment fragment = new CRUDOggettoSalvatoSuccesso();
+
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                    fragmentTransaction.addToBackStack(null).commit();
+                });
             }
         }
     }

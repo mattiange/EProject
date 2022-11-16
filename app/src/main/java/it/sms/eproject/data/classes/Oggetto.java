@@ -13,16 +13,16 @@ public class Oggetto {
     int id;
     int codice_citta;
     String nome;
-    LocalDate anno;
+    int anno;
     int autore;
     String descrizione;
 
 
-    public Oggetto(String nome, LocalDate anno, int autore, String descrizione, int codice_citta) {
+    public Oggetto(String nome, int anno, int autore, String descrizione, int codice_citta) {
         this(-1, nome, anno, autore, descrizione, codice_citta);
     }
 
-    public Oggetto(int id, String nome, LocalDate anno, int autore, String descrizione, int codice_citta) {
+    public Oggetto(int id, String nome, int anno, int autore, String descrizione, int codice_citta) {
         this.id = id;
         this.nome = nome;
         this.anno = anno;
@@ -55,7 +55,7 @@ public class Oggetto {
      *
      * @param anno Anno
      */
-    public void setAnno(LocalDate anno) {
+    public void setAnno(int anno) {
         this.anno = anno;
     }
 
@@ -107,7 +107,7 @@ public class Oggetto {
      *
      * @return Anno
      */
-    public LocalDate getAnno() {
+    public int getAnno() {
         return anno;
     }
 
