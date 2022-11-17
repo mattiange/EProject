@@ -48,30 +48,14 @@ import it.sms.eproject.util.EseguiFragment;
 
 public class CrudOggetto_Create extends Fragment {
 
-    Calendar myCalendar;
     EditText anno;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.crudoggetto_create_fragment, container, false);
 
         Button salva = v.findViewById(R.id.btn_salva_oggetto);
-        myCalendar = Calendar.getInstance();
         anno = v.findViewById(R.id.annoOggetto);
 
-        //Visualizzo il DatePicker
-        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH,month);
-                myCalendar.set(Calendar.DAY_OF_MONTH,day);
-                updateLabel();
-            }
-        };
-        anno.setOnClickListener(v1->{
-            //new DatePickerDialog(getContext(),date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-        });
-        //----------------------------------------
 
 
         init(v, inflater);
@@ -139,16 +123,6 @@ public class CrudOggetto_Create extends Fragment {
                 dialog.hide();
             });
         }
-    }
-
-
-    /**
-     * Formatta la data
-     */
-    private void updateLabel(){
-        String myFormat="yyyy-MM-dd";
-        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.ITALY);
-        anno.setText(dateFormat.format(myCalendar.getTime()));
     }
 
     /**

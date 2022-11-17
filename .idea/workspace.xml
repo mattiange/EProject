@@ -10,11 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Gestione della visualizzazione e aggiunta nuovo utente">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CRUDOggettoEliminatoSuccesso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudVisualizzaOggetto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Oggetto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Oggetto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBOggetto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBOggetto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaOggetti.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaOggetti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/museo/CrudMuseo_Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/museo/CrudMuseo_Create.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CRUDOggettoSalvatoSuccesso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CRUDOggettoSalvatoSuccesso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudOggetto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudOggetto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudOggetto_Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudOggetto_Create.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

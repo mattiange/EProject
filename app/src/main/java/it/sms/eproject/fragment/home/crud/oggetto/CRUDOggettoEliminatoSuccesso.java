@@ -17,41 +17,27 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
-import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
 import it.sms.eproject.fragment.home.crud.liste.ListaOggetti;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
+import it.sms.eproject.util.Util;
 
-public class CRUDOggettoSalvatoSuccesso extends Fragment {
-    public void m(){}
-
+public class CRUDOggettoEliminatoSuccesso extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.crud_oggetto_salvato_successo_fragment, container,false);
+        View v = inflater.inflate(R.layout.crudmuseo_salvato_successo_fragment, container,false);
 
-        ((TextView)v.findViewById(R.id.titolo)).setText(String.format(getResources().getString(R.string.msg_success_salvato), getResources().getString(R.string.object)));
+        ((TextView)v.findViewById(R.id.titolo)).setText(String.format(getResources().getString(R.string.msg_success_eliminato), getResources().getString(R.string.object)));
+
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("azione-lista","");
         editor.apply();
 
-        FloatingActionButton elenco = v.findViewById(R.id.btnElenco);
-        FloatingActionButton nuovo = v.findViewById(R.id.btnNuovoAutore);
-
-        elenco.setOnClickListener(e->{
-            getFragment(()->{
-                Fragment fragment = new ListaOggetti();
-
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                fragmentTransaction.addToBackStack(null).commit();
-            });
-        });
-
-        nuovo.setOnClickListener(e->{
-            getFragment(()->{
+        ((FloatingActionButton)v.findViewById(R.id.btnNuovoMuseo)).setOnClickListener(v1 -> {
+            Util.visualizzaFragment(() -> {
                 editor.putString("azione-lista","nuovo-oggetto");
                 editor.apply();
 
@@ -64,10 +50,21 @@ public class CRUDOggettoSalvatoSuccesso extends Fragment {
             });
         });
 
+        ((FloatingActionButton)v.findViewById(R.id.btnElencoMusei)).setOnClickListener(v1 -> {
+            Util.visualizzaFragment(() -> {
+                Fragment fragment = new ListaOggetti();
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.addToBackStack(null).commit();
+            });
+        });
+
+
         return v;
     }
 
-    public void getFragment(CallbackFragment callbackFragment){
-        callbackFragment.changeFragment();
-    }
+
+
 }

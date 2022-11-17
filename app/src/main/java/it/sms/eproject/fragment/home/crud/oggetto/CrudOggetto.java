@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
+import it.sms.eproject.fragment.home.crud.liste.ListaOggetti;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudOggetto extends Fragment {
@@ -55,7 +56,7 @@ public class CrudOggetto extends Fragment {
      */
     private void visualizzaOggetti(View e) {
         visualizzaFragment(() -> {
-            Fragment fragment = new ListaMusei();
+            Fragment fragment = new ListaOggetti();
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

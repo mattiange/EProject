@@ -189,6 +189,8 @@
     <!-- Oggetti -->
     <string name="delete_oggetto">Cancella oggetto</string>
     <string name="crud_oggetto_nome_obbligatorio">Il nome dell\'oggetto è obbligatorio</string>
+    <string name="crud_oggetto_update_titolo">Aggiornamento oggetto</string>
+    <string name="delete_oggetto_msq_question">Vuoi cancellare l\'oggetto selezionato?</string>
     <!-- /////////// -->
 
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>

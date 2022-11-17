@@ -135,7 +135,6 @@ public class CrudMuseo_Create extends Fragment {
             salva = true;
         }
 
-
         if(!Util.checkEmail(email.getText().toString()) && !email.getText().toString().trim().isEmpty()){
             lblError.setVisibility(View.VISIBLE);
 

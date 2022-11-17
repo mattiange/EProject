@@ -31,7 +31,6 @@ public class Oggetto {
         this.codice_citta = codice_citta;
     }
 
-
     /**
      * imposta il codice dell'autore
      *

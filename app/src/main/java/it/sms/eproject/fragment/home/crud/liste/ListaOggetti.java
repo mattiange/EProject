@@ -29,6 +29,9 @@ import it.sms.eproject.database.DBAutore;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutoreEliminatoSuccesso;
 import it.sms.eproject.fragment.home.crud.autori.CrudVisualizzaAutore;
+import it.sms.eproject.fragment.home.crud.oggetto.CRUDOggettoEliminatoSuccesso;
+import it.sms.eproject.fragment.home.crud.oggetto.CRUDOggettoSalvatoSuccesso;
+import it.sms.eproject.fragment.home.crud.oggetto.CrudVisualizzaOggetto;
 import it.sms.eproject.util.Util;
 
 public class ListaOggetti extends Fragment {
@@ -65,15 +68,15 @@ public class ListaOggetti extends Fragment {
                     //Visualizzo l'alert per la conferma dell'eliminazione del museo
                     new AlertDialog.Builder(getContext())
                             .setTitle(getResources().getString(R.string.delete_oggetto))
-                            .setMessage(getResources().getString(R.string.delete_autore_msq_question))
+                            .setMessage(getResources().getString(R.string.delete_oggetto_msq_question))
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .setPositiveButton(R.string.cancella, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    DBAutore db = new DBAutore(getContext());
-                                    if (db.eliminaAutore(codice)) {
+                                    DBOggetto db = new DBOggetto(getContext());
+                                    if (db.eliminaOggetto(codice)) {
                                         Util.visualizzaFragment(() -> {
-                                            Fragment fragment = new CRUDAutoreEliminatoSuccesso();
+                                            Fragment fragment = new CRUDOggettoEliminatoSuccesso();
 
                                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -90,9 +93,9 @@ public class ListaOggetti extends Fragment {
 
                                 TextView codiceAutore = ((TextView) view.findViewById(R.id.listViewCodice));
 
-                                bundle.putString("codice_autore", codiceAutore.getText().toString());
+                                bundle.putString("codice_oggetto", codiceAutore.getText().toString());
 
-                                getAutore();
+                                getOggetto();
                             })
                             .show();
 
@@ -111,9 +114,9 @@ public class ListaOggetti extends Fragment {
     /**
      * Porta alla visualizzazione dell'autore selezionato
      */
-    public void getAutore(){
+    public void getOggetto(){
         changeFragment(()->{
-            Fragment fragment = new CrudVisualizzaAutore();
+            Fragment fragment = new CrudVisualizzaOggetto();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

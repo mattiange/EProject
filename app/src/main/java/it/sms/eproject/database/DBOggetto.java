@@ -86,21 +86,50 @@ public class DBOggetto extends DbManager{
         return al;
     }
 
-    //DA MODIFICARE//
+    /**
+     * Restituisce un oggetto selezionandolo in base al suo codice.
+     *
+     * @param codice Codice dell'oggetto da cercare
+     * @return Oggetto trovato o null se non ce ne sono con quel codice
+     */
+    public Oggetto getOggetto(int codice){
+        String query="SELECT * FROM oggetti WHERE codice = " + codice;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        Oggetto o = null;
+
+        if(c.moveToFirst()){
+            o = new Oggetto(
+                    c.getInt(0),//id
+                    c.getString(1),//nome
+                    c.getInt(2),//anno
+                    c.getInt(4),//autore
+                    c.getString(3),//descrizione
+                    c.getInt(5)//citta
+            );
+        }
+
+        c.close();
+
+        return o;
+    }
 
     /**
      * Aggiorna i dati di un autore
      *
-     * @param a Autore da aggiornare
+     * @param o Oggetto da aggiornare
      * @return true se i dati sono stati aggiornati, false altrimenti
      */
-    public boolean aggiornaAutore(Autore a){
-        String update = "UPDATE autori SET " +
-                "nome = '" + a.getNome() + "', " +
-                "data_di_nascita = '" + (a.getDataDiNascita()==null?"null":a.getDataDiNascita()) + "', " +
-                "data_di_morte = '" + (a.getDataDiMorte()==null?"null":a.getDataDiMorte()) + "', " +
-                "descrizione = '" + a.getDescrizione() + "' " +
-                "WHERE codice = " + a.getCodice();
+    public boolean aggiornaOggetto(Oggetto o){
+        String update = "UPDATE oggetti SET " +
+                "Nome = '" + o.getNome() + "', " +
+                "anno = '" + o.getAnno() + "', " +
+                "descrizione = '" + o.getDescrizione() + "', " +
+                "autore_codice = '" + o.getAutore() + "', " +
+                "citta_codice = '" + o.getCodice_citta() + "' " +
+                "WHERE codice = " + o.getId();
 
         SQLiteDatabase db= helper.getWritableDatabase();
 
@@ -115,59 +144,15 @@ public class DBOggetto extends DbManager{
         }
 
     }
-
     /**
-     * Restituisce un autore selezionandolo in base al suo codice.
+     * Cancella un oggetto
      *
-     * @param codice Codice dell'autore da cercare
-     * @return Autore trovato o null se non ci sono autori con quel codice
-     */
-    public Autore getAutore(int codice){
-        String query="SELECT * FROM autori WHERE codice = " + codice;
-        SQLiteDatabase db= helper.getReadableDatabase();
-
-        Cursor c = db.rawQuery(query, null);
-
-        Autore a = null;
-
-        if(c.moveToFirst()){
-            System.out.println("======================= OK =========================");
-
-            LocalDate data_di_nascita = null;
-            LocalDate data_di_morte     = null;
-
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                try {
-                    data_di_nascita = LocalDate.parse(c.getString(2));
-                    data_di_morte   = LocalDate.parse(c.getString(3));
-                }catch (DateTimeParseException e){
-                    e.printStackTrace();
-                }
-            }
-            a = new Autore(
-                    c.getInt(0),
-                    c.getString(1),
-                    data_di_nascita,
-                    data_di_morte,
-                    c.getString(4)
-            );
-        }
-
-        c.close();
-
-        return a;
-    }
-
-
-    /**
-     * Cancella un autore
-     *
-     * @param codice Codice dell'autore
-     * @return true se l'autore è stato cancellato, false altrimenti
+     * @param codice Codice dell'oggetto
+     * @return true se l'oggetto è stato cancellato, false altrimenti
      */
     @AutoreCodice(autore = "Mattia")
-    public boolean eliminaAutore(int codice){
-        String insert1="DELETE FROM autori WHERE codice = " + codice;
+    public boolean eliminaOggetto(int codice){
+        String insert1="DELETE FROM oggetti WHERE codice = " + codice;
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
@@ -179,5 +164,29 @@ public class DBOggetto extends DbManager{
 
             return false;
         }
+    }
+
+    /**
+     * Restituisce il nome dell'autore
+     *
+     * @param codice Codice
+     * @return
+     */
+    public String getNomeAutore(int codice){
+        DBAutore db = new DBAutore(this.c);
+
+        return db.getAutore(codice).getNome();
+    }
+
+    /**
+     * Restituisce il nome della città
+     *
+     * @param codice Codice
+     * @return
+     */
+    public String getNomeCitta(int codice){
+        DBCitta db = new DBCitta(this.c);
+
+        return db.getNomeCitta(codice);
     }
 }
