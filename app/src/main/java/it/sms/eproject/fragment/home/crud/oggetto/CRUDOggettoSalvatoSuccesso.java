@@ -22,8 +22,6 @@ import it.sms.eproject.fragment.home.crud.liste.ListaOggetti;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CRUDOggettoSalvatoSuccesso extends Fragment {
-    public void m(){}
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -1,6 +1,8 @@
 package it.sms.eproject.fragment.home.crud.museo;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,6 @@ public class CrudMuseo extends Fragment {
     private Button btnShowAll;
     private Button btnCreate;
 
-    CallbackFragment callbackFragment;
 
     @Nullable
     @Override
@@ -67,6 +68,10 @@ public class CrudMuseo extends Fragment {
      */
     private void nuovoMuseo(View e) {
         visualizzaFragment(() -> {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("azione-lista","nuovo-museo");
+            editor.apply();
             Fragment fragment = new ListaStati();
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

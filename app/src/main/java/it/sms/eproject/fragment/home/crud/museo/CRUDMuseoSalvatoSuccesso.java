@@ -1,6 +1,8 @@
 package it.sms.eproject.fragment.home.crud.museo;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +29,16 @@ public class CRUDMuseoSalvatoSuccesso extends Fragment {
 
         ((TextView)v.findViewById(R.id.titolo)).setText(String.format(getResources().getString(R.string.msg_success_salvato), getResources().getString(R.string.museo_uc)));
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("azione-lista","");
+        editor.apply();
+
         ((FloatingActionButton)v.findViewById(R.id.btnNuovoMuseo)).setOnClickListener(v1 -> {
             Util.visualizzaFragment(() -> {
+                editor.putString("azione-lista","nuovo-oggetto");
+                editor.apply();
+
                 Fragment fragment = new ListaStati();
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
