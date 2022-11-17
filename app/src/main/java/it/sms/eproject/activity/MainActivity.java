@@ -61,20 +61,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         pref = getApplicationContext().getSharedPreferences("credenziali", 0);
 
-        //registraUtenteLoggato();
+        registraUtenteLoggato();
 
         //Abilito l'apertura/chiusura del drawer menu
         drawerLayout = findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         nv = findViewById(R.id.nav_view);
-        /*if(u.getPermesso().getCodice() == Permesso.CURATORE) {
+        if(u.getPermesso().getCodice() == Permesso.CURATORE) {
             nv.inflateMenu(R.menu.activity_backend_drawer);
+        }else if (u.getPermesso().getCodice() == Permesso.GUIDA){
+            nv.inflateMenu(R.menu.activity_backend_drawer_guida);
         }else{
             nv.inflateMenu(R.menu.activity_main_drawer);
-        }*/
+        }
         //usato per test curatore
-         nv.inflateMenu(R.menu.activity_backend_drawer);
+         //nv.inflateMenu(R.menu.activity_backend_drawer);
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);

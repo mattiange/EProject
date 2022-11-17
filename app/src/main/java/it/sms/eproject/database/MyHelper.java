@@ -33,13 +33,13 @@ public class MyHelper  extends SQLiteOpenHelper {
      */
     private void inizializza(SQLiteDatabase db)      {
         String insert1="INSERT INTO utenti (codice, nome, cognome, codice_fiscale, data_di_nascita, Email, Password) " +
-                "VALUES (NULL,'Alessandro','Manzoni', 'MNZSS80C18H098L', '1980-03-18', 'a.manzoni@gmail.com', 'test')," +
-                "(NULL,'Mario','Rossi', 'MRRSSIZSS80D18H098L', '1980-04-18', 'm.rossi@gmail.com', 'test')," +
-                "(NULL,'Mattia Leonardo','Angelillo', 'NGLMTL93A25H096J', '1993-01-25', 'm.angelillo@gmail.com', 'test')";
+                "VALUES (NULL,'Alessandro','Manzoni', 'MNZSS80C18H098L', '1980-03-18', 'a.manzoni@gmail.com', 'test')," + //id 1
+                "(NULL,'Mario','Rossi', 'MRRSSIZSS80D18H098L', '1980-04-18', 'm.rossi@gmail.com', 'test')," +//id 2
+                "(NULL,'Mattia Leonardo','Angelillo', 'NGLMTL93A25H096J', '1993-01-25', 'm.angelillo@gmail.com', 'test')";//id 3
         String insert2 = "INSERT INTO permessi(codice, permesso)" +
-                "VALUES (NULL, 'Curatore')," +
-                "(NULL, 'Guida turistica')," +
-                "(NULL, 'Visitatore')";
+                "VALUES (NULL, 'Curatore')," +//id 1
+                "(NULL, 'Guida turistica')," +//id 2
+                "(NULL, 'Visitatore')";//id 3
         String insert3 = "INSERT INTO permesso_has_utente(codice_utente, codice_permesso)" +
                 "VALUES (1, 3), (2, 2), (3, 1)";
 
