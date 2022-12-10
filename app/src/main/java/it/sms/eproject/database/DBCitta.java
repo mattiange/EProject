@@ -62,7 +62,7 @@ public class DBCitta extends DbManager{
      */
     public String getNomeCitta(int codice){
         String query="SELECT nome FROM citta WHERE codice = "+codice;
-        System.out.println("==================> " + query);
+
         SQLiteDatabase db= helper.getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
 

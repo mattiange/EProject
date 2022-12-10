@@ -13,8 +13,9 @@
     <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
     <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>
     <string name="msg_error_delete">Problema di eliminazione del %s</string>
-
     <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
+    <string name="msg_error_percorso_nome_obbligatorio">Il nome del percorso è obbligatorio</string>
+    <string name="msg_error_percorso_musei">Devi selezionare almeno un museo per salvare il percorso.</string>
 
 
     <string name="campi_vuoti">I campi non possono essere vuoti</string>
@@ -209,11 +210,13 @@
 
     <string name="crud_manage_museo">Gestisci i musei</string>
     <string name="crud_create_museo">Crea un nuovo museo</string>
+    <string name="crud_durata_visita_museo">Durata della visita (in minuti)</string>
     <string name="crud_update_museo">Aggiorna il museo</string>
     <string name="crud_lista_museo">Elenco di tutti i musei</string>
     <string name="crud_single_museo">Visualizzazione museo</string>
     <string name="crud_show_museo">Visualizza tutti i musei</string>
     <string name="crud_delete_museo">Cancella museo</string>
+    <string name="crud_no_found_museo">Nessun museo per la città selezionata</string>
 
     <string name="crud_txt_nome">Nome</string>
     <string name="crud_txt_cognome">Cognome</string>
@@ -240,6 +243,11 @@
     <string name="crud_manage_percorso">Gestisci i percorsi</string>
     <string name="crud_create_percorso">Nuovo percorso</string>
     <string name="crud_nome_percorso">Nome percorso</string>
+    <string name="crud_txt_descrizione_percorso">Descrizione percorso</string>
+    <string name="crud_txt_seleziona_museo_percorso">Seleziona i musei da associare al percorso di visita</string>
+    <string name="crud_txt_dati_percorso">Dati del percorso di visita</string>
+    <string name="crud_txt_durata_percorso">Durata di visita</string>
+    <string name="crud_txt_data_visita_percorso">Inserisci la data di visita</string>
 
     <string name="crud_manage_oggetto">Gestisci gli oggetti</string>
     <string name="crud_create_oggetto">Crea un nuovo oggetto</string>
@@ -265,9 +273,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="crud_create_percorsodivisita">Creazione percorso di visita</string>
-    <string name="crud_txt_percorso">Nome percorso di visita</string>
-    <string name="crud_txt_data_visita">Inserisci la data di visita</string>
-    <string name="crud_txt_durata">Inserisci durata massima</string>
     <string name="confirmModifica">Conferma Modifica</string>
     <string name="gestioneprofilo">Gestione Profilo</string>
     <string name="Modificaprofilo">Modifica</string>

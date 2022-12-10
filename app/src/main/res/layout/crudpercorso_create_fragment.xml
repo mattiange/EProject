@@ -1,61 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_create_percorsodivisita"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:textSize="30sp" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:labelFor="@+id/etNomePercorso"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_percorso"
-        android:textSize="24sp" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/etNomePercorsoDiVIsita"
-        android:autofillHints="name"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:labelFor="@+id/etNomeDataVisita"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_data_visita"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/titolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_create_percorsodivisita"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp"
+            android:textColor="@color/red"/>
 
-    <EditText
-        android:id="@+id/etNomeDataDiVisita"
-        android:autofillHints="name"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:labelFor="@+id/etDurata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/crud_txt_durata"
-        android:textSize="24sp" />
+        <TextView
+            android:labelFor="@+id/lblDescrizionePercorso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_seleziona_museo_percorso"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/lblErrorNoMusei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_no_found_museo"
+            android:visibility="invisible"/>
+        <ListView
+            android:id="@+id/listElencoMusei"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <EditText
-        android:id="@+id/etDurataVisita"
-        android:autofillHints="name"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/errorMuseiPercorso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_error_percorso_musei"
+            android:textSize="18sp"
+            android:textColor="@color/red"
+            android:visibility="invisible"/>
 
-    <Button
-        android:id="@+id/btnCreaPercorso"
-        android:layout_width="wrap_content"
-        android:layout_height="66dp"
-        android:text="@string/crud_create_percorsodivisita" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_dati_percorso"
+            android:textSize="24sp"
+            android:layout_marginBottom="30sp"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:labelFor="@+id/lblNomePercorso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_nome_percorso"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/errorNomePercorso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msg_error_percorso_nome_obbligatorio"
+            android:textSize="18sp"
+            android:textColor="@color/red"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/etNomePercorso"
+            android:autofillHints="name"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--<TextView
+            android:labelFor="@+id/etNomeDataVisita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_data_visita"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etNomeDataDiVisita"
+            android:autofillHints="name"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>-->
+        <TextView
+            android:labelFor="@+id/lblDurataPercorso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_durata_percorso"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etDurataPercorso"
+            android:autofillHints="name"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+        <TextView
+            android:labelFor="@+id/lblDescrizionePercorso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crud_txt_descrizione_percorso"
+            android:textSize="24sp"/>
+
+        <EditText
+            android:id="@+id/etDescrizionePercorso"
+            android:autofillHints="name"
+            android:lines="10"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_salva_percorso"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:text="@string/crud_create_percorsodivisita" />
+    </LinearLayout>
+
+</ScrollView>

@@ -18,7 +18,7 @@ public class CRUDPercorso extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.crudpercorso_create_fragment, container, false);
 
-        btnCreate = v.findViewById(R.id.btnCreaPercorso);
+        //btnCreate = v.findViewById(R.id.btnCreaPercorso);
         return v;
     }
 }

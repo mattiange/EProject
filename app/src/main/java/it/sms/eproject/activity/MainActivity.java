@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
@@ -26,12 +27,14 @@ import it.sms.eproject.R;
 import it.sms.eproject.fragment.home.CuratoreHomeFragment;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
 import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
+import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
 import it.sms.eproject.fragment.home.crud.CrudZona;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
+import it.sms.eproject.fragment.home.crud.percorso.CrudPercorso_Create;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -68,15 +71,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         nv = findViewById(R.id.nav_view);
-        if(u.getPermesso().getCodice() == Permesso.CURATORE) {
+        /*if(u.getPermesso().getCodice() == Permesso.CURATORE) {
             nv.inflateMenu(R.menu.activity_backend_drawer);
         }else if (u.getPermesso().getCodice() == Permesso.GUIDA){
             nv.inflateMenu(R.menu.activity_backend_drawer_guida);
         }else{
             nv.inflateMenu(R.menu.activity_main_drawer);
-        }
+        }*/
         //usato per test curatore
-         //nv.inflateMenu(R.menu.activity_backend_drawer);
+        //nv.inflateMenu(R.menu.activity_backend_drawer);
+
+        //usato per il test della guida
+        nv.inflateMenu(R.menu.activity_backend_drawer_guida);
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -118,7 +124,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
-     * Aggiunge il fragment della login
+     * Aggiunge il fragment da visualizzare
+     *
+     * TODO: differenziare la visualizzazione in base ai permessi dell'utente loggato
      *
      */
     public void addFragment(){
@@ -182,6 +190,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_manage_autori:
                 fragment = new CRUDAutore();
                 break;
+            case R.id.nav_create_percorso:
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("azione-lista","nuovo-percorso");
+                editor.apply();
+
+                fragment = new ListaStati();
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();

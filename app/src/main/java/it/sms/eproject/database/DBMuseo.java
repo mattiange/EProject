@@ -78,7 +78,8 @@ public class DBMuseo extends DbManager{
                     c.getString(4),//Email
                     c.getString(5),//Sito web
                     c.getString(6),//Orario
-                    c.getBlob(7)//Immagine del museo
+                    c.getBlob(7),//Immagine del museo
+                    c.getInt(9)//Durata della visita
             );
         }
 
@@ -148,7 +149,51 @@ public class DBMuseo extends DbManager{
                         c.getString(4),//Email
                         c.getString(5),//Sito web
                         c.getString(6),//Orario
-                        c.getBlob(7)//Immagine del museo
+                        c.getBlob(7),//Immagine del museo
+                        c.getInt(9)//Durata della visita
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
+
+    /**
+     * Seleziona tutti i musei presenti nel database
+     *
+     * @return ArrayList<Museo>
+     *     Restituisce un ArrayList contenenente tutti i musei presenti nel database
+     *
+     * @param citta Codice della città
+     *
+     * @return
+     */
+    public ArrayList<Museo> elencoMuseiByCitta(int citta){
+        String query="SELECT * FROM musei WHERE citta_codice=" + citta;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Museo> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                al.add(new Museo(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Telefono
+                        c.getString(3),//Indirizzo
+                        c.getInt(8),//codice_citta
+                        c.getString(4),//Email
+                        c.getString(5),//Sito web
+                        c.getString(6),//Orario
+                        c.getBlob(7),//Immagine del museo
+                        c.getInt(9)//Durata della visita
                 ));
 
             } while(c.moveToNext());

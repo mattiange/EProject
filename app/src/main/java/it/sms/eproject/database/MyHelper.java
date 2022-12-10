@@ -71,8 +71,8 @@ public class MyHelper  extends SQLiteOpenHelper {
         //---------------------------------------------------------------------------
 
         //Inserimento musei
-        String insert_musei = "INSERT INTO musei (nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, citta_codice) " +
-                "VALUES ('Museo archeologico nazionale', ' 080 5285231', 'Piazza dei Martiri del 1799, n.1', NULL, 'https://musei.puglia.beniculturali.it/musei/museo-archeologico-nazionale-castello-di-gioia-del-colle/', '15:00', 1)";
+        String insert_musei = "INSERT INTO musei (nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, citta_codice, durata_visita) " +
+                "VALUES ('Museo archeologico nazionale', ' 080 5285231', 'Piazza dei Martiri del 1799, n.1', NULL, 'https://musei.puglia.beniculturali.it/musei/museo-archeologico-nazionale-castello-di-gioia-del-colle/', '15:00', 1, 60)";
         //---------------------------------------------------------------------------
 
         try{
@@ -156,8 +156,8 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "Nome TEXT NOT NULL," +
                 "descrizione TEXT," +
                 "durata INTEGER," +
-                "codice_percorso INTEGER," +
-                "FOREIGN KEY(codice_percorso) REFERENCES utenti(codice)" +
+                "codice_utente INTEGER," +
+                "FOREIGN KEY(codice_utente) REFERENCES utenti(codice)" +
                 ")";
 
         String oggetti_has_percorsi = "CREATE TABLE oggetti_has_percorsi (" +
@@ -209,6 +209,7 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "orario_apertura VARCHAR," +
                 "immagine_museo BLOB," +
                 "citta_codice INTEGER," +
+                "durata_visita INTEGER DEFAULT 0," + //Durata della visita in minuti
                 "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +
                 ")";
 

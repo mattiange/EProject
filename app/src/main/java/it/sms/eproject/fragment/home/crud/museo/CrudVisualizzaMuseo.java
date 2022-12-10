@@ -183,6 +183,7 @@ public class CrudVisualizzaMuseo extends Fragment {
         EditText sito_web           = v.findViewById(R.id.etSitoWeb);
         EditText orario_apertura    = v.findViewById(R.id.etOrario);
         EditText citta              = v.findViewById(R.id.etIdCitta);
+        EditText durata_visita      = v.findViewById(R.id.etDurataVisita);
         TextView lblError           = v.findViewById(R.id.lblError);
 
         lblError.setVisibility(View.INVISIBLE);
@@ -222,7 +223,8 @@ public class CrudVisualizzaMuseo extends Fragment {
                     email.getText().toString(),
                     sito_web.getText().toString(),
                     orario_apertura.getText().toString(),
-                    immagine
+                    immagine,
+                    Integer.parseInt(durata_visita.getText().toString())
             ))) {
                 System.out.println("UPDATE MUSEO OK");
 

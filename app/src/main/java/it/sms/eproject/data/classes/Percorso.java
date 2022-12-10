@@ -9,9 +9,10 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 public class Percorso {
 
     int ID;
+    int durata;
+    int codiceUtente;
     String nome;
     String descrizione;
-    int durata;
 
     /** Da Implementare**/
     Museo museo;
@@ -19,47 +20,52 @@ public class Percorso {
     Oggetto oggetti;
 
 
-    public Percorso(int ID, String nome, String descrizione, int durata) {
-        this.ID = ID;
-        this.nome = nome;
-        this.descrizione = descrizione;
-        this.durata = durata;
-
+    public Percorso(int ID, String nome, String descrizione, int durata, int codiceUtente) {
+        this.ID                 = ID;
+        this.nome               = nome;
+        this.descrizione        = descrizione;
+        this.durata             = durata;
+        this.codiceUtente       = codiceUtente;
     }
 
-    public Percorso() {
-
-    }
-
-    public int getID() {
-        return ID;
-    }
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getDescrizione() {
-        return descrizione;
-    }
-
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    public void setDurata(int durata) {
+        this.durata = durata;
     }
 
     public int getDurata() {
         return durata;
     }
 
-    public void setDurata(int durata) {
-        this.durata = durata;
+    public void setCodiceUtente(int codiceUtente) {
+        this.codiceUtente = codiceUtente;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getCodiceUtente() {
+        return codiceUtente;
     }
 }

@@ -25,6 +25,7 @@ import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.data.classes.Citta;
 import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto_Create;
+import it.sms.eproject.fragment.home.crud.percorso.CrudPercorso_Create;
 
 public class ListaCitta extends Fragment {
     ListView listView;
@@ -71,6 +72,8 @@ public class ListaCitta extends Fragment {
                 getNuovoMuseo();
             }else if(azione.equalsIgnoreCase("nuovo-oggetto")){
                 getNuovoOggetto();
+            }else if(azione.equalsIgnoreCase("nuovo-percorso")){
+                getNuovoPercorso();
             }
         });
     }
@@ -96,6 +99,21 @@ public class ListaCitta extends Fragment {
     private void getNuovoMuseo() {
         changeFragment(()->{
             Fragment fragment = new CrudMuseo_Create();
+            fragment.setArguments(this.bundle);
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null).commit();
+        });
+    }
+
+    /**
+     * Pagina di creazione di un nuovo percorso
+     */
+    private void getNuovoPercorso(){
+        changeFragment(()->{
+            Fragment fragment = new CrudPercorso_Create();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
