@@ -103,6 +103,12 @@ public class CrudPercorso_Create extends Fragment {
         }
         //--------------------------------------------------------------------------
 
+        AGGIUNGERE LA LISTA PER LA VISUALIZZAZIONE DEGLI OGGETTI.
+        CONTROLLARE CHE CI SIA LA TABELLA musei_has_permessi ALTRIMENTI CREARLA
+                (E AGGIORNARE LA DOCUMENTAZIONE)
+
+
+
         return v;
     }
 

@@ -42,6 +42,8 @@ public class DBPercorso extends DbManager{
         try{
             db.execSQL(insert1);
 
+            INSERIRE QUI SALVATAGGIO PER I COLLEGAMENTI DEL PERCORSO (COME I MUSEI)
+
             return true;
         }catch(SQLException ex){
             System.err.println( ex.getMessage() );
