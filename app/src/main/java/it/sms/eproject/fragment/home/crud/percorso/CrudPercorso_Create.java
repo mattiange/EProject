@@ -23,8 +23,10 @@ import java.util.List;
 
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Museo;
+import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBMuseo;
+import it.sms.eproject.database.DBOggetto;
 
 public class CrudPercorso_Create extends Fragment {
 
@@ -68,6 +70,11 @@ public class CrudPercorso_Create extends Fragment {
      */
     List<Museo> museiScelti = new ArrayList<>();
 
+    /**
+     * Elenco degli oggetti associati al percorso
+     */
+    List<Oggetto> oggettiScelti = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -103,11 +110,26 @@ public class CrudPercorso_Create extends Fragment {
         }
         //--------------------------------------------------------------------------
 
+        /*
         AGGIUNGERE LA LISTA PER LA VISUALIZZAZIONE DEGLI OGGETTI.
-        CONTROLLARE CHE CI SIA LA TABELLA musei_has_permessi ALTRIMENTI CREARLA
+        CONTROLLARE CHE CI SIA LA TABELLA musei_has_percorsi ALTRIMENTI CREARLA
                 (E AGGIORNARE LA DOCUMENTAZIONE)
+        */
 
+        //Popolo la lista con gli oggetti
+        //Se non ci sono oggetti per la città selezionata
+        //allora viene visualizzato un messaggio (invece
+        //di non dare alcun responso)
+        ArrayList<Oggetto> oggetti = new DBOggetto(getContext()).elencoOggettiByCitta(Integer.parseInt(getArguments().getString("codice_citta")));
 
+        ListAdapter listAdapterOggetti = new OggettoAdapter(getContext(), oggetti);
+        if(musei != null){
+            ListView mainListView = (ListView) v.findViewById( R.id.listElencoMusei );
+            mainListView.setAdapter(listAdapter);
+        }else{
+            TextView tvNoMusei = v.findViewById(R.id.lblErrorNoMusei);
+            tvNoMusei.setVisibility(View.VISIBLE);
+        }
 
         return v;
     }
@@ -161,6 +183,61 @@ public class CrudPercorso_Create extends Fragment {
         errorMuseiPercorso      = v.findViewById(R.id.errorMuseiPercorso);
 
         durataPercorso.setText("0");
+    }
+
+    /**
+     * Adapter per visualizzare gli oggetti della città selezionata.
+     *
+     *
+     */
+    class OggettoAdapter extends ArrayAdapter<Oggetto> {
+        private final Context context;
+        private final List<Oggetto> values;
+        private LayoutInflater inflater;
+
+        public OggettoAdapter(@NonNull Context context, List<Oggetto> values) {
+            super(context, R.layout.checkbox_row, R.id.nome, values);
+
+            inflater = LayoutInflater.from(context);
+            this.context = context;
+            this.values = values;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.checkbox_row, parent, false);
+
+            TextView nome = rowView.findViewById(R.id.nome);
+            CheckBox check = rowView.findViewById(R.id.CheckBox01);
+
+            nome.setText(values.get(position).getNome());
+            check.setOnClickListener(v -> {
+
+                CheckBox checkBox = (CheckBox) v;
+
+                if (!checkBox.isChecked()) {
+                    museiScelti.remove(values.get(position));
+
+                    //Aggiorno la durata della visita per il percorso
+                    totaleDurata -= values.get(position).getDurataVisita();
+                    //-----------------------------------------------------------
+                } else {
+                    oggettiScelti.add(values.get(position));
+
+                    //Aggiorno la durata della visita per il percorso
+                    totaleDurata += values.get(position).getDurataVisita();
+                    //-----------------------------------------------------------
+                }
+
+                //Aggiorno il campo per visualizzare i minuti totali della visita
+                durataPercorso.setText(String.valueOf(totaleDurata));
+
+            });
+
+            return rowView;
+        }
     }
 
     /**

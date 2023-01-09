@@ -245,6 +245,7 @@
     <string name="crud_nome_percorso">Nome percorso</string>
     <string name="crud_txt_descrizione_percorso">Descrizione percorso</string>
     <string name="crud_txt_seleziona_museo_percorso">Seleziona i musei da associare al percorso di visita</string>
+    <string name="crud_txt_seleziona_oggetti_percorso">Seleziona gli oggetti da associare al percorso di visita</string>
     <string name="crud_txt_dati_percorso">Dati del percorso di visita</string>
     <string name="crud_txt_durata_percorso">Durata di visita</string>
     <string name="crud_txt_data_visita_percorso">Inserisci la data di visita</string>

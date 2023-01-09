@@ -183,6 +183,7 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "descrizione TEXT," +
                 "autore_codice INTEGER," +
                 "citta_codice INTEGER," +
+                "durata_visita INTEGER DEFAULT 0," + //Durata della visita in minuti
                 "FOREIGN KEY(autore_codice) REFERENCES autori(codice)," +
                 "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +
                 ")";
@@ -211,6 +212,12 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "citta_codice INTEGER," +
                 "durata_visita INTEGER DEFAULT 0," + //Durata della visita in minuti
                 "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +
+                ")";
+
+        String musei_has_percorsi = "CREATE TABLE musei_has_percorsi (" +
+                "museo_codice INTEGER NOT NULL," +
+                "percorso_codice INTEGER NOT NULL," +
+                "PRIMARY KEY(museo_codice, percorso_codice)" +
                 ")";
 
         String oggetti_has_attivita = "CREATE TABLE oggetti_has_attivita (" +
@@ -274,6 +281,7 @@ public class MyHelper  extends SQLiteOpenHelper {
             db.execSQL(oggetti);
             db.execSQL(attivita);
             db.execSQL(musei);
+            db.execSQL(musei_has_percorsi);
             db.execSQL(oggetti_has_attivita);
             db.execSQL(attivita_has_musei);
             db.execSQL(valutazioni);

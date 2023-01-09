@@ -12,23 +12,66 @@ public class Oggetto {
 
     int id;
     int codice_citta;
-    String nome;
     int anno;
     int autore;
+    int durataVisita;
+
+    String nome;
     String descrizione;
 
 
-    public Oggetto(String nome, int anno, int autore, String descrizione, int codice_citta) {
-        this(-1, nome, anno, autore, descrizione, codice_citta);
+    public Oggetto(String nome, int anno, int autore, String descrizione, int codice_citta, int durataVisita) {
+        this(-1, nome, anno, autore, descrizione, codice_citta, durataVisita);
     }
 
+    public Oggetto(int id, String nome, int anno, int autore, String descrizione, int codice_citta, int durataVisita) {
+        this.id             = id;
+        this.nome           = nome;
+        this.anno           = anno;
+        this.autore         = autore;
+        this.durataVisita   = durataVisita;
+        this.descrizione    = descrizione;
+        this.codice_citta   = codice_citta;
+    }
+
+    /**
+     * Costruttore tampone, utilizzato per applicare di default
+     * la durata di una visita a 10 minuti.
+     *
+     * =================================================================
+     * Appena possibile modificare l'app per permettere di inserire
+     * e gestire (CRUD) la durata di una visita direttamente in fase
+     * di creazione/modifica dell'oggetto
+     * =================================================================
+     *
+     * @param nome
+     * @param anno
+     * @param autore
+     * @param descrizione
+     * @param codice_citta
+     */
+    public Oggetto(String nome, int anno, int autore, String descrizione, int codice_citta) {
+        this(-1, nome, anno, autore, descrizione, codice_citta, 10);
+    }
+
+    /**
+     * Costruttore tampone, utilizzato per applicare di default
+     * la durata di una visita a 10 minuti.
+     *
+     * =================================================================
+     * Appena possibile modificare l'app per permettere di inserire
+     * e gestire (CRUD) la durata di una visita direttamente in fase
+     * di creazione/modifica dell'oggetto
+     * =================================================================
+     *
+     * @param nome
+     * @param anno
+     * @param autore
+     * @param descrizione
+     * @param codice_citta
+     */
     public Oggetto(int id, String nome, int anno, int autore, String descrizione, int codice_citta) {
-        this.id = id;
-        this.nome = nome;
-        this.anno = anno;
-        this.autore = autore;
-        this.descrizione = descrizione;
-        this.codice_citta = codice_citta;
+        this(id, nome, anno, autore, descrizione, codice_citta, 10);
     }
 
     /**
@@ -56,6 +99,15 @@ public class Oggetto {
      */
     public void setAnno(int anno) {
         this.anno = anno;
+    }
+
+    /**
+     * Imposta la durata di una visita per l'oggetto
+     *
+     * @param durataVisita Durata della visita, espressa in minuti
+     */
+    public void setDurataVisita(int durataVisita) {
+        this.durataVisita = durataVisita;
     }
 
     /**
@@ -135,5 +187,14 @@ public class Oggetto {
      */
     public int getCodice_citta() {
         return codice_citta;
+    }
+
+    /**
+     * Restituisce la durata della visita, espressa in minuti
+     *
+     * @return Durata della visita
+     */
+    public int getDurataVisita() {
+        return durataVisita;
     }
 }

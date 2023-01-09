@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
+import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
 
 /**
@@ -76,6 +77,45 @@ public class DBOggetto extends DbManager{
                         c.getInt(4),//id autore
                         c.getString(3),//descrizione
                         c.getInt(5)//id città
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
+    /**
+     * Seleziona tutti gli oggetti presenti nel database per una data città
+     *
+     * @return ArrayList<Oggetto>
+     *     Restituisce un ArrayList contenenente tutti gli oggetti presenti nel database
+     *     per una data cittò
+     *
+     * @param citta Codice della città
+     *
+     * @return
+     */
+    public ArrayList<Oggetto> elencoOggettiByCitta(int citta){
+        String query="SELECT * FROM oggetti WHERE citta_codice=" + citta;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Oggetto> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                al.add(new Oggetto(
+                        c.getInt(0),//id
+                        c.getString(1),//nome
+                        c.getInt(2),//anno
+                        c.getInt(4),//codice dell'autore
+                        c.getString(3),//descrizione
+                        c.getInt(5)//codice della città
                 ));
 
             } while(c.moveToNext());
