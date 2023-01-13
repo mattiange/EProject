@@ -123,9 +123,9 @@ public class CrudPercorso_Create extends Fragment {
         ArrayList<Oggetto> oggetti = new DBOggetto(getContext()).elencoOggettiByCitta(Integer.parseInt(getArguments().getString("codice_citta")));
 
         ListAdapter listAdapterOggetti = new OggettoAdapter(getContext(), oggetti);
-        if(musei != null){
-            ListView mainListView = (ListView) v.findViewById( R.id.listElencoMusei );
-            mainListView.setAdapter(listAdapter);
+        if(oggetti != null){
+            ListView mainListView = (ListView) v.findViewById( R.id.listElencoOggetti );
+            mainListView.setAdapter(listAdapterOggetti);
         }else{
             TextView tvNoMusei = v.findViewById(R.id.lblErrorNoMusei);
             tvNoMusei.setVisibility(View.VISIBLE);
