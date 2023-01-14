@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -139,7 +140,12 @@ public class CrudPercorso_Create extends Fragment {
      */
     private void salva(){
         if(controllaCampiObbligatori()){
+            Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
 
+            //Lettura dei campi
+            String np = nomePercorso.getText().toString();
+            String dv = durataPercorso.getText().toString();
+            String dp = descrizionePercorso.getText().toString();
         }
     }
 
