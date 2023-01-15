@@ -2,6 +2,7 @@ package it.sms.eproject.fragment.home.crud.percorso;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +26,11 @@ import java.util.List;
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
+import it.sms.eproject.data.classes.Percorso;
 import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
+import it.sms.eproject.database.DBPercorso;
 
 public class CrudPercorso_Create extends Fragment {
 
@@ -144,8 +147,22 @@ public class CrudPercorso_Create extends Fragment {
 
             //Lettura dei campi
             String np = nomePercorso.getText().toString();
-            String dv = durataPercorso.getText().toString();
+            String ddp = durataPercorso.getText().toString();
             String dp = descrizionePercorso.getText().toString();
+            SharedPreferences pref = getContext().getSharedPreferences("credenziali", 0);
+
+
+            new DBPercorso(getContext())
+                    .inserisciPercorso(
+                            new Percorso(
+                                    np,
+                                    dp,
+                                    Integer.parseInt(ddp),
+                                    Integer.parseInt(pref.getString("user_id", "-1"))
+                            ),
+                            museiScelti,
+                            oggettiScelti
+                    );
         }
     }
 

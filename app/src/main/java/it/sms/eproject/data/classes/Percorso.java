@@ -27,6 +27,9 @@ public class Percorso {
         this.durata             = durata;
         this.codiceUtente       = codiceUtente;
     }
+    public Percorso(String nome, String descrizione, int durata, int codiceUtente) {
+        this(-1, nome, descrizione, durata, codiceUtente);
+    }
 
 
     public void setID(int ID) {
