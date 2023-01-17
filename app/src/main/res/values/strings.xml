@@ -53,6 +53,7 @@
     <string name="visualizza_tutti_i_musei">Musei presenti</string>
     <string name="visualizza_tutti_gli_autori">Autori presenti</string>
     <string name="visualizza_tutti_gli_oggetti">Oggetti presenti</string>
+    <string name="visualizza_tutti_i_percorsi">Percorsi creati</string>
 
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
@@ -242,6 +243,7 @@
 
     <string name="crud_manage_percorso">Gestisci i percorsi</string>
     <string name="crud_create_percorso">Nuovo percorso</string>
+    <string name="crud_show_percorso">Visualizza tutti i percorsi creati</string>
     <string name="crud_nome_percorso">Nome percorso</string>
     <string name="crud_txt_descrizione_percorso">Descrizione percorso</string>
     <string name="crud_txt_seleziona_museo_percorso">Seleziona i musei da associare al percorso di visita</string>

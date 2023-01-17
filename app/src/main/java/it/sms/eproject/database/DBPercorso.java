@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
@@ -75,5 +76,42 @@ public class DBPercorso extends DbManager{
         }finally {
             db.close();
         }
+    }
+
+
+    /**
+     * Seleziona tutti i percorsi presenti nel database
+     *
+     * @return ArrayList<Percorso>
+     *     Restituisce un ArrayList contenenente tutti i percorsi presenti nel database
+     *
+     * @return
+     */
+    public ArrayList<Percorso> elencoPercorsi(){
+        String query="SELECT * FROM percorsi";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+                al.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4)//Codice utente
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
     }
 }

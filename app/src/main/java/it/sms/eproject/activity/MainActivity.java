@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
@@ -34,6 +36,7 @@ import it.sms.eproject.fragment.home.crud.CrudZona;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
+import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
 import it.sms.eproject.fragment.home.crud.percorso.CrudPercorso_Create;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -198,6 +201,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 editor.apply();
 
                 fragment = new ListaStati();
+                break;
+            case R.id.nav_manage_percorso:
+                fragment = new CRUDPercorso();
+
+                break;
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
