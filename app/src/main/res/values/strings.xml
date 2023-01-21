@@ -154,6 +154,8 @@
     <string name="autore_uc">Autore</string>
     <string name="l_autore">l\'autore</string>
     <string name="del_autore">dell\'museo</string>
+    <string name="percorso_uc">Percorso</string>
+    <string name="del_percorso">del percorso</string>
 
     <!-- Museo -->
     <string name="museum">Museo</string>
@@ -175,6 +177,11 @@
     <string name="museum_hours">Orari di apertura/chiusura: </string>
     <string name="museum_image">Immagine: </string>
     <!-- ///////////////////////////////////////////////// -->
+
+
+    <!-- Museo -->
+    <string name="delete_percorso">Elimina percorso</string>
+    <string name="delete_percorso_msq_question">Vuoi cancellare il percorso selezionato?</string>
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->

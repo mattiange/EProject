@@ -30,6 +30,8 @@ import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.home.crud.museo.CRUDMuseoEliminatoSuccesso;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.fragment.home.crud.museo.CrudVisualizzaMuseo;
+import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorsoEliminatoSuccesso;
+import it.sms.eproject.fragment.home.crud.percorso.CRUDVisualizzaPercorso;
 import it.sms.eproject.util.Util;
 
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
@@ -43,7 +45,8 @@ public class ListaPercorso extends Fragment {
         View v = inflater.inflate(R.layout.lista_fragment, container, false);
 
 
-        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.visualizza_tutti_i_musei);
+        ((TextView)v.findViewById(R.id.titolo)).setText(R.string.visualizza_tutti_i_percorsi);
+        this.bundle = new Bundle();
 
         Percorso[] percorsi = new Percorso[0];
         percorsi = new DBPercorso(getContext()).elencoPercorsi().toArray(percorsi);
@@ -52,57 +55,17 @@ public class ListaPercorso extends Fragment {
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
 
-
-        /*listView.setOnItemClickListener((parent, view, position, id) -> {
-            TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
-
-            this.bundle.putString("codice_museo", codice.getText().toString());
-
-            getMuseo();
-        });*/
-
-            listView.setOnItemLongClickListener((parent, view, position, id) -> {
+            listView.setOnItemClickListener((parent, view, position, id) -> {
 
                 //Toast.makeText(getContext(), "OK LONG CLICK", Toast.LENGTH_SHORT).show();
 
                 TextView codiceTv = view.findViewById(R.id.listViewCodice);
                 int codice = Integer.parseInt(codiceTv.getText().toString());
 
-                //Visualizzo l'alert per la conferma dell'eliminazione del museo
-                new AlertDialog.Builder(getContext())
-                        .setTitle(getResources().getString(R.string.delete_museum))
-                        .setMessage(getResources().getString(R.string.delete_museum_msq_question))
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(R.string.cancella, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                DBMuseo db = new DBMuseo(getContext());
-                                if (db.eliminaMuseo(codice)) {
-                                    Util.visualizzaFragment(() -> {
-                                        Fragment fragment = new CRUDMuseoEliminatoSuccesso();
+                this.bundle.putInt("codice_percorso", codice);
 
-                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                                        fragmentTransaction.commit();
+                getPercorso();
 
-                                    });
-                                } else {
-                                    Toast.makeText(getContext(), getResources().getString(R.string.msg_error_delete, getResources().getString(R.string.del_museo)), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .setNegativeButton(R.string.btn_modifica, (d, w) -> {
-
-                            TextView codiceMuseo = ((TextView) view.findViewById(R.id.listViewCodice));
-
-                            bundle.putString("codice_museo", codiceMuseo.getText().toString());
-
-                            getMuseo();
-                        })
-                        .show();
-
-                return false;
             });
         }
 
@@ -115,9 +78,9 @@ public class ListaPercorso extends Fragment {
     /**
      * Porta alla visualizzazione del museo selezionato
      */
-    public void getMuseo(){
+    public void getPercorso(){
         changeFragment(()->{
-            Fragment fragment = new CrudVisualizzaMuseo();
+            Fragment fragment = new CRUDVisualizzaPercorso();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

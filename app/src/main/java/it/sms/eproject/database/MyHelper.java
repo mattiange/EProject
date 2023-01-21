@@ -55,12 +55,12 @@ public class MyHelper  extends SQLiteOpenHelper {
                         "('Potenza', 2)," +
                         "('Matera', 2)";
         String insert_citta="INSERT INTO citta (nome, cap, provincia_codice) " +
-                "VALUES ('Gioia del Colle', '70023', 1), " +
-                "('Bari centro', '70122', 1), " +
-                "('Bari Mungivacca', '70126', 1)," +
-                "('Abriola', '85010', 3)," +
-                "('Potenza centro', '85100', 3)," +
-                "('Massafra', '74016', 1)";
+                "VALUES ('Gioia del Colle', '70023', 1), " +//1
+                "('Bari centro', '70122', 1), " +//2
+                "('Bari Mungivacca', '70126', 1)," +//3
+                "('Abriola', '85010', 3)," +//4
+                "('Potenza centro', '85100', 3)," +//5
+                "('Massafra', '74016', 1)";//6
 
         //Inserimento degli autori
         String insert_autori="INSERT INTO autori (nome, data_di_nascita, data_di_morte) " +
@@ -72,8 +72,32 @@ public class MyHelper  extends SQLiteOpenHelper {
 
         //Inserimento musei
         String insert_musei = "INSERT INTO musei (nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, citta_codice, durata_visita) " +
-                "VALUES ('Museo archeologico nazionale', ' 080 5285231', 'Piazza dei Martiri del 1799, n.1', NULL, 'https://musei.puglia.beniculturali.it/musei/museo-archeologico-nazionale-castello-di-gioia-del-colle/', '15:00', 1, 60)";
+                "VALUES ('Museo archeologico', ' 080 5285231', 'Piazza dei Martiri del 1799, n.1', NULL, 'https://musei.puglia.beniculturali.it/musei/museo-archeologico-nazionale-castello-di-gioia-del-colle/', '15:00', 1, 60)";
         //---------------------------------------------------------------------------
+
+        //Inserimento oggetti
+        String insert_oggetti = "INSERT INTO oggetti (Nome, anno, descrizione, autore_codice, citta_codice, durata_visita) " +
+                "VALUES ('Monumento dei caduti', 0, 'Monumento in ricordo dei caduti di tutte le guerre', 0, 1, 10), " +
+                "('Arco Costantinopoli', '1600', 'L’arco, intitolato alla Madonna di Costantinopoli nel XVII secolo, consente l’accesso ad uno spiazzo, anticamente comunitario, con al centro un pozzo di acqua sorgiva del secolo XVI e con scala esterna in pietra per l’accesso al vano di cui molte volte l’abitazione risulta unicamente costituita.', 0, 1, 10), " +
+                "('Arco di Cimone', 0, 'L’arco con le imposte poco al di sopra del piano stradale introduce nella corte, sede in età normanna del rappresentante dell’abate della Chiesa di S.Nicola di Bari, dopo che a questa Riccardo Siniscalco aveva donato il Castello. Tracce rilevanti dell’antica residenza sono tuttora visibili nella costruzione che si erge al disopra dell’arco. Ancora visibili sono anche l’arco ogivale e la bifora che lo sormonta.', 0, 1, 10)," +
+                "('Distilleria Cassano', '1859', \"La Distilleria Cassano è annoverata fra i monumenti dell'archeologia industriale di maggior rilievo in Puglia. Di proprietà di Paolo Cassano dal 1859, si collocava tra le quattro più importanti del nostro territorio assieme a quelle di Castellana, Bari e Barletta, esportando i propri prodotti anche all’estero. L'attività dell'opificio continuò a gonfie vele fino al 1914, quando la società fu messa in liquidazione. La distilleria, passata alla famiglia Taranto e progressivamente lasciata in stato di abbandono, venne poi ceduta alla USL (oggi Azienda sanitaria locale) nel 1970 per farne un ospedale. La costruzione fu nuovamente ceduta al comune di Gioia del Colle nel 1997. L'ex distilleria rappresenta un esempio pionieristico dell'industria pugliese, in ragione di queste considerazioni il Ministero dei Beni Culturali e Ambientali ne ha sancito l'importanza storica con l'iscrizione nell'elenco dei beni monumentali e ambientali. Nel 2006 vengono avviati dei lavori di restauro ed attualmente la distilleria ospita sagre e concerti.\", 0, 1, 30);";
+        //---------------------------------------------------------------------------
+
+        //Inserimento percorsi
+        String insert_percorsi = "INSERT INTO percorsi (Nome, descrizione, durata, codice_utente) " +
+                "VALUES ('Terra di peucezia', 'Visita le origini di Gioia del Colle', 90, 2)";
+        //---------------------------------------------------------------------------
+
+        //Inserimento musei has percorsi
+        String insert_musei_has_percorsi = "INSERT INTO musei_has_percorsi (museo_codice, percorso_codice) " +
+                "VALUES (1, 1)";
+        //---------------------------------------------------------------------------
+
+        //Inserimento oggetti has percorsi
+        String insert_oggetti_has_percorsi = "INSERT INTO oggetti_has_percorsi (oggetto_codice, percorso_codice) " +
+                "VALUES (1, 1),(2, 1),(3, 1), (4,1)";
+        //---------------------------------------------------------------------------
+
 
         try{
             db.execSQL(insert1);
@@ -85,6 +109,10 @@ public class MyHelper  extends SQLiteOpenHelper {
             db.execSQL(insert_citta);
             db.execSQL(insert_musei);
             db.execSQL(insert_autori);
+            db.execSQL(insert_oggetti);
+            db.execSQL(insert_percorsi);
+            db.execSQL(insert_musei_has_percorsi);
+            db.execSQL(insert_oggetti_has_percorsi);
         }catch(SQLException ex){
             Toast.makeText(this.context , "inizializza() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
@@ -160,12 +188,6 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "FOREIGN KEY(codice_utente) REFERENCES utenti(codice)" +
                 ")";
 
-        String oggetti_has_percorsi = "CREATE TABLE oggetti_has_percorsi (" +
-                "percorso_codice INTEGER NOT NULL," +
-                "oggetto_codice INTEGER NOT NULL," +
-                "PRIMARY KEY(percorso_codice, oggetto_codice)" +
-                ")";
-
         String autori = "CREATE TABLE autori (" +
                 "codice INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "Nome TEXT NOT NULL," +
@@ -186,6 +208,12 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "durata_visita INTEGER DEFAULT 0," + //Durata della visita in minuti
                 "FOREIGN KEY(autore_codice) REFERENCES autori(codice)," +
                 "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +
+                ")";
+
+        String oggetti_has_percorsi = "CREATE TABLE oggetti_has_percorsi (" +
+                "percorso_codice INTEGER NOT NULL," +
+                "oggetto_codice INTEGER NOT NULL," +
+                "PRIMARY KEY(percorso_codice, oggetto_codice)" +
                 ")";
 
         String attivita = "CREATE TABLE attivita (" +

@@ -11,6 +11,7 @@ import java.util.List;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
+import it.sms.eproject.data.classes.OggettiHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Percorso;
 
@@ -78,6 +79,61 @@ public class DBPercorso extends DbManager{
         }
     }
 
+    public OggettiHasPercorsi getElementiPercorso(int codice_percorso){
+        String query_oggetti="SELECT * FROM oggetti_has_percorsi WHERE percorso_codice = " + codice_percorso;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query_oggetti, null);
+
+        ArrayList<Oggetto> po = new ArrayList<>();;
+
+        if (c.moveToFirst()){
+            do {
+                po.add(new DBOggetto(this.c).getOggetto(c.getInt(1)));
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        String query_musei = "SELECT * FROM musei_has_percorsi WHERE percorso_codice = " + codice_percorso;
+        db = helper.getReadableDatabase();
+
+        c = db.rawQuery(query_musei, null);
+
+        ArrayList<Museo> pm = new ArrayList<>();;
+
+        if (c.moveToFirst()){
+            do {
+                pm.add(new DBMuseo(this.c).getMuseo(c.getInt(1)));
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return new OggettiHasPercorsi(pm, po);
+    }
+
+    /**
+     * Cancella un percorso
+     *
+     * @param codice Codice del percorso
+     * @return true se il percorso è stato cancellato, false altrimenti
+     */
+    @AutoreCodice(autore = "Mattia")
+    public boolean eliminaPercorso(int codice){
+        String insert1 = "DELETE FROM percorsi WHERE codice = " + codice;
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
 
     /**
      * Seleziona tutti i percorsi presenti nel database

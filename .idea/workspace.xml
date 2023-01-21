@@ -10,13 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Gestione della visualizzazione e aggiunta nuovo utente">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaPercorso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/crudpercorso_fragment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/OggettiHasPercorsi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CRUDPercorsoEliminatoSuccesso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CRUDVisualizzaPercorso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/crudpercorso_salvato_successo_fragment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/crudpercorso_visualizza_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBPercorso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBPercorso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CRUDPercorso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CRUDPercorso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/MyHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/MyHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaPercorso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaPercorso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +58,8 @@
         <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -101,15 +105,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "PROJECT_TRUSTED_KEY": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED": "View",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/AdapterView.java_SELECTED": "AdapterView",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "D:/Uniba/3 anno/4_Sviluppo di mobile software/EProject/app/src/main/res/layout"
+    "last_opened_file_path": "D:/Uniba/3 anno/4_Sviluppo di mobile software/EProject/app/src/main/res/drawable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res\layout" />
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res\drawable" />
+      <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res\layout" />
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res" />
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res\menu" />
     </key>
@@ -117,9 +124,9 @@
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.sms.eproject.fragment.home.crud.percorso" />
       <recent name="it.sms.eproject.fragment.home.crud.liste" />
       <recent name="it.sms.eproject.database" />
-      <recent name="it.sms.eproject.fragment.home.crud.percorso" />
       <recent name="it.sms.eproject.fragment.home.crud.autori" />
       <recent name="it.sms.eproject.fragment.home.crud.oggetto" />
     </key>
