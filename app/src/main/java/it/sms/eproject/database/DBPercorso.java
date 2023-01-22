@@ -11,7 +11,7 @@ import java.util.List;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
-import it.sms.eproject.data.classes.OggettiHasPercorsi;
+import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Percorso;
 
@@ -79,13 +79,46 @@ public class DBPercorso extends DbManager{
         }
     }
 
-    public OggettiHasPercorsi getElementiPercorso(int codice_percorso){
+    /**
+     * Restituisce un percorso in base al suo ID
+     *
+     * @param codice_percorso Codice del percorso da restituire
+     * @return Percorso ottenuto. NULL se non c'è nessun percorso con quell'ID.
+     */
+    public Percorso get(int codice_percorso){
+        String query_oggetti="SELECT * FROM percorsi WHERE codice = " + codice_percorso;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query_oggetti, null);
+
+        if (c.moveToFirst()){
+            do {
+                return new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4)//Codice utente
+                );
+            } while(c.moveToNext());
+        }
+
+        return null;
+    }
+
+    /**
+     * Restituisce gli oggetti
+     *
+     * @param codice_percorso Codice del Percorso
+     * @return Musei e oggetti del percorso
+     */
+    public OggettiMuseoHasPercorsi getElementiPercorso(int codice_percorso){
         String query_oggetti="SELECT * FROM oggetti_has_percorsi WHERE percorso_codice = " + codice_percorso;
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query_oggetti, null);
 
-        ArrayList<Oggetto> po = new ArrayList<>();;
+        ArrayList<Oggetto> po = new ArrayList<>();
 
         if (c.moveToFirst()){
             do {
@@ -110,7 +143,7 @@ public class DBPercorso extends DbManager{
 
         c.close();
 
-        return new OggettiHasPercorsi(pm, po);
+        return new OggettiMuseoHasPercorsi(pm, po);
     }
 
     /**

@@ -54,6 +54,7 @@
     <string name="visualizza_tutti_gli_autori">Autori presenti</string>
     <string name="visualizza_tutti_gli_oggetti">Oggetti presenti</string>
     <string name="visualizza_tutti_i_percorsi">Percorsi creati</string>
+    <string name="percorso_titolo">%s</string>
 
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
@@ -274,6 +275,7 @@
     <string name="crud_show_zona">Visualizza tutte le zone</string>
     <string name="crud_delete_zona">Cancella zona</string>
     <string name="title_activity_crud_create_zona">CrudCreateZonaActivity</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
