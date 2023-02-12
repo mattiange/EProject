@@ -55,7 +55,7 @@ public class ListaCitta extends Fragment {
     }
 
     /**
-     * Visualizza la pagina di creazione di un nuovo museo
+     * Visualizza la pagina di creazion
      */
     public void aggiungiEvento(){
         listView.setOnItemClickListener((parent, view, position, id) -> {

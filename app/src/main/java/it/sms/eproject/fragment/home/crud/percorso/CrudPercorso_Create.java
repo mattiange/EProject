@@ -89,6 +89,10 @@ public class CrudPercorso_Create extends Fragment {
 
         init();
 
+        System.out.println("ARG: " + getArguments());
+        System.out.println(Integer.parseInt(getArguments().getString("codice_citta")));
+        System.out.println(new DBCitta(getContext()).getNomeCitta(Integer.parseInt(getArguments().getString("codice_citta"))));
+
         titolo.setText(titolo.getText().toString().concat(" " +new DBCitta(getContext()).getNomeCitta(Integer.parseInt(getArguments().getString("codice_citta")))));
 
         Button btnSalva = v.findViewById(R.id.btn_salva_percorso);

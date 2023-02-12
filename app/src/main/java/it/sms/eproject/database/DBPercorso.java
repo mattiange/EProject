@@ -113,7 +113,7 @@ public class DBPercorso extends DbManager{
      * @return Musei e oggetti del percorso
      */
     public OggettiMuseoHasPercorsi getElementiPercorso(int codice_percorso){
-        String query_oggetti="SELECT * FROM oggetti_has_percorsi WHERE percorso_codice = " + codice_percorso;
+        String query_oggetti="SELECT oggetto_codice FROM oggetti_has_percorsi WHERE percorso_codice = " + codice_percorso;
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query_oggetti, null);
@@ -122,13 +122,13 @@ public class DBPercorso extends DbManager{
 
         if (c.moveToFirst()){
             do {
-                po.add(new DBOggetto(this.c).getOggetto(c.getInt(1)));
+                po.add(new DBOggetto(this.c).getOggetto(c.getInt(0)));
             } while(c.moveToNext());
         }
 
         c.close();
 
-        String query_musei = "SELECT * FROM musei_has_percorsi WHERE percorso_codice = " + codice_percorso;
+        String query_musei = "SELECT museo_codice FROM musei_has_percorsi WHERE percorso_codice = " + codice_percorso;
         db = helper.getReadableDatabase();
 
         c = db.rawQuery(query_musei, null);
@@ -137,11 +137,13 @@ public class DBPercorso extends DbManager{
 
         if (c.moveToFirst()){
             do {
-                pm.add(new DBMuseo(this.c).getMuseo(c.getInt(1)));
+                pm.add(new DBMuseo(this.c).getMuseo(c.getInt(0)));
             } while(c.moveToNext());
         }
 
         c.close();
+        System.out.println(query_musei);
+        System.out.println(query_oggetti);
 
         return new OggettiMuseoHasPercorsi(pm, po);
     }
@@ -202,5 +204,71 @@ public class DBPercorso extends DbManager{
         c.close();
 
         return al;
+    }
+
+    /**
+     * Restituisce il codice della città a cui il percorso fa riferimento
+     *
+     * @param percorso_codice Codice del percorso
+     * @return Codice della città
+     */
+    public long getCodiceCitta(long percorso_codice){
+        String query = "select musei.citta_codice m_citta, oggetti.citta_codice o_citta " +
+                "from oggetti_has_percorsi, musei_has_percorsi, musei, oggetti, citta " +
+                "where oggetti_has_percorsi.oggetto_codice = oggetti.codice AND musei.codice = musei_has_percorsi.museo_codice " +
+                        "and (oggetti_has_percorsi.percorso_codice = "+ percorso_codice + " AND musei_has_percorsi.percorso_codice = " + percorso_codice + ") " +
+                "AND (citta.codice = oggetti.citta_codice OR musei.citta_codice = citta.codice) " +
+                "LIMIT 1";
+        SQLiteDatabase db= helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        long codice_m = -1;
+        long codice_o = -1;
+        long codice   = -1;
+        if (c.moveToFirst()){
+            do {
+                codice_m = c.getLong(0);
+                codice_o = c.getLong(1);
+
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        if(codice_m == -1 && codice_o > -1){
+            codice = codice_o;
+        }else if(codice_o == -1 && codice_m > -1){
+            codice = codice_m;
+        }
+
+        return codice;
+    }
+
+
+    /**
+     * Restituisce il codice della città a cui il percorso fa riferimento
+     *
+     * @param percorso_codice Codice del percorso
+     * @return Codice della città
+     */
+    public String getNomeCitta(long percorso_codice){
+        String query = "select citta.nome " +
+                "from oggetti_has_percorsi, musei_has_percorsi, musei, oggetti, citta " +
+                "where oggetti_has_percorsi.oggetto_codice = oggetti.codice AND musei.codice = musei_has_percorsi.museo_codice " +
+                "and (oggetti_has_percorsi.percorso_codice = "+ percorso_codice + " AND musei_has_percorsi.percorso_codice = " + percorso_codice + ") " +
+                "AND (citta.codice = oggetti.citta_codice OR musei.citta_codice = citta.codice) " +
+                "LIMIT 1";
+        SQLiteDatabase db= helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        String nomeCitta = null;
+        if (c.moveToFirst()){
+            do {
+                nomeCitta = c.getString(0);
+
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        return nomeCitta;
     }
 }

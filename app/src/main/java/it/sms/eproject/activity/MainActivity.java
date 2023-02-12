@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         pref = getApplicationContext().getSharedPreferences("credenziali", 0);
 
+
         registraUtenteLoggato();
 
         //Abilito l'apertura/chiusura del drawer menu
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     pref.getString("user_cognome", ""),
                     pref.getString("user_codice_fiscaale", ""),
                     pref.getString("user_email", ""),
-                    LocalDate.parse(pref.getString("user_data_di_nascita", "000-00-00")),
+                    LocalDate.parse(pref.getString("user_data_di_nascita", "1993-01-25")),
                     Permesso.of(
                             Integer.parseInt(pref.getString("user_permesso_codice", "")),
                             pref.getString("user_permesso_nome", "")

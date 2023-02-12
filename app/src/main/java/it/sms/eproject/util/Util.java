@@ -13,10 +13,13 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.annotazioni.AutoreCodice;
+import it.sms.eproject.data.classes.Museo;
+import it.sms.eproject.data.classes.Oggetto;
 
 
 /**
@@ -179,4 +182,77 @@ public class Util {
     public static void visualizzaFragment(CallbackFragment callbackFragment){
         callbackFragment.changeFragment();
     }
+
+    public static String getJsonString(ArrayList<Oggetto> oggetti, ArrayList<Museo> musei){
+        boolean continue_json = false;
+
+        System.out.println(musei);
+        System.out.println(oggetti);
+
+        String items = "[";
+        if(musei!=null) {
+            for (int i = 0; i < musei.size(); i++) {
+                continue_json = true;
+
+                items += "{\"nome\" : \""+musei.get(i).getNome()+"\"}";
+
+                if (i < musei.size() - 1) items += ",";
+            }
+        }
+
+        if (continue_json){
+            items += ",";
+        }
+
+        if(oggetti != null) {
+            for (int i = 0; i < oggetti.size(); i++) {
+                items += "{\"nome\" : \"" + oggetti.get(i).getNome() + "\"}";
+
+                if (i < oggetti.size() - 1) items += ",";
+            }
+        }
+        items += "]";
+
+        return items;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

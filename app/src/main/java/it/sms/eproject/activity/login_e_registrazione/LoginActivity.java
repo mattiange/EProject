@@ -58,6 +58,29 @@ public class LoginActivity extends AppCompatActivity {
         //Riporto alla pagina di registrazione di un nuovo utente
         buttonRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegistrazioneActivity.class)));
 
+        /*SOLO PER TEST (LOGIN DIRETTA)*/
+        email = "m.rossi@gmail.com";
+        password = "test";
+        Utente u;
+        if((u = new DbManager(this).login(email, password)) != null){
+            //Dati dell'utente da passare tra le varie sezioni del sito
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
+            SharedPreferences.Editor editor = pref.edit();
+
+            editor.putString("user_id", String.valueOf(u.getCodice()));
+            editor.putString("user_nome", u.getNome());
+            editor.putString("user_cognome", u.getCognome());
+            editor.putString("user_codice_fiscale", u.getCodice_fiscale());
+            editor.putString("user_email", u.getEmail());
+            editor.putString("user_data_di_nascita", String.valueOf(u.getData_di_nascita()));
+            editor.putString("user_permesso_codice", String.valueOf(u.getPermesso().getCodice()));
+            editor.putString("user_permesso_nome", String.valueOf(u.getPermesso().getPermesso()));
+            editor.apply();
+            //-------------------------------
+
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
+        //---------------------------------------------
 
         //Effettuo il login
         buttonLogin.setOnClickListener(v -> {
@@ -80,20 +103,20 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            Utente u;
-            if((u = new DbManager(this).login(email, password)) != null){
+            Utente u1 = null;
+            if((u1 = new DbManager(this).login(email, password)) != null){
                 //Dati dell'utente da passare tra le varie sezioni del sito
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
                 SharedPreferences.Editor editor = pref.edit();
 
-                editor.putString("user_id", String.valueOf(u.getCodice()));
-                editor.putString("user_nome", u.getNome());
-                editor.putString("user_cognome", u.getCognome());
-                editor.putString("user_codice_fiscale", u.getCodice_fiscale());
-                editor.putString("user_email", u.getEmail());
-                editor.putString("user_data_di_nascita", String.valueOf(u.getData_di_nascita()));
-                editor.putString("user_permesso_codice", String.valueOf(u.getPermesso().getCodice()));
-                editor.putString("user_permesso_nome", String.valueOf(u.getPermesso().getPermesso()));
+                editor.putString("user_id", String.valueOf(u1.getCodice()));
+                editor.putString("user_nome", u1.getNome());
+                editor.putString("user_cognome", u1.getCognome());
+                editor.putString("user_codice_fiscale", u1.getCodice_fiscale());
+                editor.putString("user_email", u1.getEmail());
+                editor.putString("user_data_di_nascita", String.valueOf(u1.getData_di_nascita()));
+                editor.putString("user_permesso_codice", String.valueOf(u1.getPermesso().getCodice()));
+                editor.putString("user_permesso_nome", String.valueOf(u1.getPermesso().getPermesso()));
                 editor.apply();
                 //-------------------------------
 
