@@ -18,7 +18,7 @@ public class GestioneProfilo extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.gestioneprofilo_fragment, container,false);
 
-        btnModify = v.findViewById(R.id.btnModifica);
+        btnModify = v.findViewById(R.id.btnModificaProfilo);
 
         btnModify.setOnClickListener(this::modificaProfilo);
 
@@ -34,6 +34,9 @@ public class GestioneProfilo extends Fragment {
      */
 
     private void modificaProfilo(View e) {
+
+        /**Intent i = new Intent("com.example.testdati.GestioneProfiloModifica");
+        startActivity(i)**/
 
     }
 }
