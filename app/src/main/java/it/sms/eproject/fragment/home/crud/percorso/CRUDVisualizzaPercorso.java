@@ -1,6 +1,7 @@
 package it.sms.eproject.fragment.home.crud.percorso;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -11,6 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +69,15 @@ public class CRUDVisualizzaPercorso extends Fragment {
         ArrayList<Oggetto> oggetti = percorsi_utente.getOggetti();
         //---------------------------------------------------------------------------------
 
+        //Se non ci sono elementi visualizzo il messaggio
+        //di avviso
+
+        TextView noElementMsg = v.findViewById(R.id.lblError);
+        if(musei.size() == 0 && oggetti.size() == 0){
+            noElementMsg.setVisibility(View.VISIBLE);
+        }else {
+            noElementMsg.setVisibility(View.INVISIBLE);
+        }
 
         this.bundle.putString("codice_citta", String.valueOf(dbPercorso.getCodiceCitta(codice)));
         this.bundle.putString("nome_citta", dbPercorso.getNomeCitta(codice));
@@ -98,18 +109,14 @@ public class CRUDVisualizzaPercorso extends Fragment {
      */
     public void getNuovoPercorso(View v){
         EseguiFragment.changeFragment(()-> {
-
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("azione-lista","nuovo-percorso");
-            editor.apply();
-
-            Fragment fragment = new ListaStati();
+            Fragment fragment = new CrudPercorso_Aggiungi_Item();
+            fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
+
         });
     }
 
@@ -120,7 +127,7 @@ public class CRUDVisualizzaPercorso extends Fragment {
      */
     public void getModificaPercorso(View v){
         EseguiFragment.changeFragment(()-> {
-            Fragment fragment = new CrudPercorso_Create();
+            Fragment fragment = new CrudPercorso_Modifica();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

@@ -84,8 +84,8 @@ public class MyHelper  extends SQLiteOpenHelper {
         //---------------------------------------------------------------------------
 
         //Inserimento percorsi
-        String insert_percorsi = "INSERT INTO percorsi (Nome, descrizione, durata, codice_utente) " +
-                "VALUES ('Terra di peucezia', 'Visita le origini di Gioia del Colle', 90, 2)";
+        String insert_percorsi = "INSERT INTO percorsi (Nome, descrizione, durata, codice_utente, codice_citta) " +
+                "VALUES ('Terra di peucezia', 'Visita le origini di Gioia del Colle', 90, 2, 1)";
         //---------------------------------------------------------------------------
 
         //Inserimento musei has percorsi
@@ -185,6 +185,8 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "descrizione TEXT," +
                 "durata INTEGER," +
                 "codice_utente INTEGER," +
+                "codice_citta INTEGER, " +
+                "FOREIGN KEY(codice_citta) REFERENCES citta(codice), " +
                 "FOREIGN KEY(codice_utente) REFERENCES utenti(codice)" +
                 ")";
 

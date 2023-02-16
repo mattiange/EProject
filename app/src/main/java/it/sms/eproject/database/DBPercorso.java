@@ -41,6 +41,7 @@ public class DBPercorso extends DbManager{
             cv_percorso.put("descrizione", p.getDescrizione());
             cv_percorso.put("durata", p.getDurata());
             cv_percorso.put("codice_utente", p.getCodiceUtente());
+            cv_percorso.put("codice_citta", p.getCodice_citta());
 
             //db.execSQL(insert_percorso);
             long percorso_id = db.insert("percorsi", null, cv_percorso);
@@ -98,7 +99,8 @@ public class DBPercorso extends DbManager{
                         c.getString(1),//Nome
                         c.getString(2),//Descrizione
                         c.getInt(3),//Durata
-                        c.getInt(4)//Codice utente
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
                 );
             } while(c.moveToNext());
         }
@@ -195,7 +197,8 @@ public class DBPercorso extends DbManager{
                         c.getString(1),//Nome
                         c.getString(2),//Descrizione
                         c.getInt(3),//Durata
-                        c.getInt(4)//Codice utente
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
                 ));
 
             } while(c.moveToNext());
@@ -213,18 +216,26 @@ public class DBPercorso extends DbManager{
      * @return Codice della città
      */
     public long getCodiceCitta(long percorso_codice){
-        String query = "select musei.citta_codice m_citta, oggetti.citta_codice o_citta " +
-                "from oggetti_has_percorsi, musei_has_percorsi, musei, oggetti, citta " +
-                "where oggetti_has_percorsi.oggetto_codice = oggetti.codice AND musei.codice = musei_has_percorsi.museo_codice " +
-                        "and (oggetti_has_percorsi.percorso_codice = "+ percorso_codice + " AND musei_has_percorsi.percorso_codice = " + percorso_codice + ") " +
-                "AND (citta.codice = oggetti.citta_codice OR musei.citta_codice = citta.codice) " +
-                "LIMIT 1";
+        String query = "select codice_citta " +
+                "from percorsi " +
+                "where codice = " + percorso_codice;
         SQLiteDatabase db= helper.getReadableDatabase();
+
+        System.out.println(query);
+
         Cursor c = db.rawQuery(query, null);
 
-        long codice_m = -1;
-        long codice_o = -1;
         long codice   = -1;
+        if (c.moveToFirst()){
+            do {
+                codice = c.getLong(0);
+
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        /*long codice_m = -1;
+        long codice_o = -1;
         if (c.moveToFirst()){
             do {
                 codice_m = c.getLong(0);
@@ -238,7 +249,7 @@ public class DBPercorso extends DbManager{
             codice = codice_o;
         }else if(codice_o == -1 && codice_m > -1){
             codice = codice_m;
-        }
+        }*/
 
         return codice;
     }
@@ -270,5 +281,47 @@ public class DBPercorso extends DbManager{
         c.close();
 
         return nomeCitta;
+    }
+
+    /**
+     * Elimina un museo dal percorso
+     *
+     * @param m
+     * @return
+     */
+    public boolean deleteMuseo(Museo m){
+        String sql = "DELETE FROM musei_has_percorsi WHERE museo_codice = " + m.getID();
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(sql);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+    }
+
+    /**
+     * Elimina un oggetto dal percorso
+     *
+     * @param o
+     * @return
+     */
+    public boolean deleteOggetto(Oggetto o){
+        String sql = "DELETE FROM oggetti_has_percorsi WHERE oggetto_codice = " + o.getId();
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        try{
+            db.execSQL(sql);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
     }
 }

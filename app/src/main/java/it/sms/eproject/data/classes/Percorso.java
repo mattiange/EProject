@@ -14,23 +14,29 @@ public class Percorso {
     String nome;
     String descrizione;
 
+    long codice_citta;
+
     /** Da Implementare**/
     Museo museo;
     Zona zone;
     Oggetto oggetti;
 
 
-    public Percorso(int ID, String nome, String descrizione, int durata, int codiceUtente) {
+    public Percorso(int ID, String nome, String descrizione, int durata, int codiceUtente, long codice_citta) {
         this.ID                 = ID;
         this.nome               = nome;
         this.descrizione        = descrizione;
         this.durata             = durata;
         this.codiceUtente       = codiceUtente;
+        this.codice_citta       = codice_citta;
     }
-    public Percorso(String nome, String descrizione, int durata, int codiceUtente) {
-        this(-1, nome, descrizione, durata, codiceUtente);
+    public Percorso(String nome, String descrizione, int durata, int codiceUtente, long codice_citta) {
+        this(-1, nome, descrizione, durata, codiceUtente, codice_citta);
     }
 
+    public void setCodice_citta(long codice_citta) {
+        this.codice_citta = codice_citta;
+    }
 
     public void setID(int ID) {
         this.ID = ID;
@@ -46,6 +52,10 @@ public class Percorso {
 
     public void setDurata(int durata) {
         this.durata = durata;
+    }
+
+    public long getCodice_citta() {
+        return codice_citta;
     }
 
     public int getDurata() {
