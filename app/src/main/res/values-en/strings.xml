@@ -1,0 +1,298 @@
+<resources>
+
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
+
+    <!-- Messaggi di errore -->
+    <string name="msg_error_no_stato">Nessuno stato trovato</string>
+    <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
+    <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
+    <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
+    <string name="msg_error_salvataggio">Errore di salvataggio per %s</string>
+    <string name="msg_error_delete">Problema di eliminazione del %s</string>
+    <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
+    <string name="msg_error_percorso_nome_obbligatorio">Il nome del percorso è obbligatorio</string>
+    <string name="msg_error_percorso_musei">Devi selezionare almeno un museo per salvare il percorso.</string>
+
+
+    <string name="campi_vuoti">I campi non possono essere vuoti</string>
+    <string name="email_non_corretta">L\'email inserita non è corretta</string>
+    <string name="login_non_valida">I dati di login non sono corretti</string>
+    <string name="zona_non_trovata">Non è stata trovata alcuna zona per la provincia: %s</string>
+    <string name="oggetti_non_trovati">Non è stato trovato alcun oggetto per la zona selezionata</string>
+    <string name="zona_non_trovata_per_la_regione">Non è stata trovata alcuna regione per le zona</string>
+    <string name="provincia_non_trovata_per_la_regione">Non è stata trovata alcuna provincia nella regione: %s</string>
+
+    <string name="msg_error_update">Impossibile aggiornare</string>
+
+    <!-- Messaggi di successo -->
+    <string name="msg_success_salvato">%s è stato salvato con successo</string>
+    <string name="msg_success_eliminato">%s è stato eliminato con successo</string>
+
+    <!-- Messaggi -->
+    <string name="descrizione">Descrizione:</string>
+    <!-- ////////////////////////////////////// -->
+
+    <!-- Button -->
+    <string name="btn_modifica">Modifica</string>
+    <string name="btn_elimina">Elimina</string>
+    <string name="cancella">Cancella</string>
+    <string name="annulla">Annulla</string>
+    <string name="aggiorna">Aggiorna</string>
+    <!-- /////////////////////////////////////// -->
+
+    <!-- Titoli -->
+    <string name="seleziona_stato">Seleziona uno stato</string>
+    <string name="seleziona_autore">Seleziona un autore</string>
+    <string name="seleziona_regione">Seleziona una regione</string>
+    <string name="seleziona_provincia">Seleziona una provincia</string>
+    <string name="seleziona_citta">Seleziona una città</string>
+    <string name="visualizza_tutti_i_musei">Musei presenti</string>
+    <string name="visualizza_tutti_gli_autori">Autori presenti</string>
+    <string name="visualizza_tutti_gli_oggetti">Oggetti presenti</string>
+    <string name="visualizza_tutti_i_percorsi">Percorsi creati</string>
+    <string name="percorso_titolo">%s</string>
+
+    <string name="app_name">E-Culture Tool</string>
+    <string name="welcome">Benvenuto su E-Culture Tool</string>
+    <string name="login">Login</string>
+    <string name="registrazione">Registrazione</string>
+    <string name="registrazione_successo">Registrazione avvenuta con successo</string>
+    <string name="forgot_password">Pass. dimenticata</string>
+    <string name="name">Nome</string>
+    <string name="insert_name">Inserisci Nome</string>
+    <string name="info_name">Il Nome non può essere vuoto!</string>
+    <string name="surname">Cognome</string>
+    <string name="insert_surname">Inserisci Cognome</string>
+    <string name="info_surname">Il Cognome non può essere vuoto!</string>
+    <string name="username">Username</string>
+    <string name="insert_username">Inserisci Username</string>
+    <string name="info_username">NOTA: L\'Username non deve prevedere spazi.</string>
+    <string name="null_username">L\'Username non può essere vuoto!</string>
+    <string name="email">E-mail</string>
+    <string name="email_gia_esistente">E-mail già esistente</string>
+    <string name="insert_email">Inserisci E-mail</string>
+    <string name="info_email">L\'E-mail non può essere vuota!</string>
+    <string name="not_an_email">Non hai inserito una E-mail!</string>
+    <string name="password">Password</string>
+    <string name="insert_password">Inserisci Password</string>
+    <string name="info_password">NOTA: La Password deve contenere almeno 6 caratteri e un carattere speciale.</string>
+    <string name="null_password">La Password non può essere vuota!</string>
+    <string name="repeat_password">Ripeti Password</string>
+    <string name="passwords_not_equal">Le password non sono uguali!</string>
+    <string name="user_type">Tipo Utente</string>
+    <string name="visitatore">Visitatore</string>
+    <string name="curatore">Curatore</string>
+    <string name="infouser_type">Seleziona un tipo utente.</string>
+    <string name="confirmRegistation">Registrati</string>
+    <string name="plus">+</string>
+    <string name="msg_seleziona_regione">Seleziona la regione</string>
+    <string name="msg_seleziona_provincia">Seleziona la provincia</string>
+    <string name="msg_seleziona_zona">Seleziona la zona</string>
+    <string name="msg_seleziona_oggetto">Seleziona l\'oggetto</string>
+
+    <!-- Lista Percorsi -->
+    <string name="no_routes_msg_label">Non sono presenti percorsi di visita. Crea un percorso di visita cliccando sul tasto "+".</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Menu -->
+    <string name="scan_qr_code">Scan QR Code</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Drawable menu -->
+    <string name="user_name">Nome utente</string>
+    <string name="importa_percorsi_visita">Importa percorsi di visita</string>
+    <string name="impostazioni">Impostazioni</string>
+    <string name="recensisci">Recensisci</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Home -->
+    <string name="no_visit_zone_msg_label">Non sono presenti zone di visita. Aggiungine una cliccando sul tasto "+"</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Zona -->
+    <string name="zone">Zona</string>
+    <string name="info_zone">Immagine Zona</string>
+    <string name="view_zone">Visualizza Zona</string>
+    <string name="change_zone">Cambia Zona</string>
+    <string name="delete_zone">Elimina Zona</string>
+
+    <string name="zone_name">Nome Zona:</string>
+    <string name="zone_region">Regione:</string>
+    <string name="zone_provincia">Provincia:</string>
+    <string name="zone_zipcode">CAP:</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Oggetto -->
+    <string name="object">Oggetto</string>
+    <string name="info_object">Immagine Oggetto</string>
+    <string name="view_object">Visualizza Oggetto</string>
+    <string name="change_object">Cambia Oggetto</string>
+    <string name="delete_object">Elimina Oggetto</string>
+
+    <string name="object_name">Nome Oggetto:</string>
+    <string name="object_year">Anno:</string>
+    <string name="object_author">Autore:</string>
+    <!-- ///////////////////////////////////////////////// -->
+
+    <!-- Nomi -->
+    <string name="museo_uc">Museo</string>
+    <string name="del_museo">del museo</string>
+    <string name="il_museo">il museo</string>
+    <string name="autore_uc">Autore</string>
+    <string name="l_autore">l\'autore</string>
+    <string name="del_autore">dell\'museo</string>
+    <string name="percorso_uc">Percorso</string>
+    <string name="del_percorso">del percorso</string>
+
+    <!-- Museo -->
+    <string name="museum">Museo</string>
+    <string name="info_museum">Immagine Museo</string>
+    <string name="view_museum">Visualizza Museo</string>
+    <string name="change_museum">Cambia Museo</string>
+    <string name="delete_museum">Elimina Museo</string>
+    <string name="delete_museum_msq_question">Vuoi cancellare il museo selezionato?</string>
+
+    <string name="museum_name">Nome Museo: </string>
+    <string name="museum_phone">Numero di telefono: </string>
+    <string name="museum_address">Indirizzo: </string>
+    <string name="museum_city">Città: </string>
+    <string name="museum_region">Regione: </string>
+    <string name="museum_provincia">Provincia: </string>
+    <string name="museum_zip_code">C.A.P.: </string>
+    <string name="museum_email">E-mail: </string>
+    <string name="museum_website">Sito Web: </string>
+    <string name="museum_hours">Orari di apertura/chiusura: </string>
+    <string name="museum_image">Immagine: </string>
+    <!-- ///////////////////////////////////////////////// -->
+
+
+    <!-- Museo -->
+    <string name="delete_percorso">Elimina percorso</string>
+    <string name="delete_percorso_msq_question">Vuoi cancellare il percorso selezionato?</string>
+
+    <!--======================================= CRUD =======================================-->
+    <!-- Autori -->
+    <string name="delete_autore">Cancella autore</string>
+    <string name="delete_autore_msq_question">Vuoi cancellare l\'autore selezionato?</string>
+    <string name="crud_autori_codice">Codice autore</string>
+    <string name="crud_autori_update_titolo">Aggiornamento autore</string>
+    <string name="crud_autori_gestisci">Gestisci gli autori</string>
+    <string name="crud_autori_data_nascita">Data di nascita</string>
+    <string name="crud_autori_data_morte">Data di morte</string>
+    <string name="crud_autori_nome_obbligatorio">Il nome dell\'autore è obbligatorio</string>
+    <!-- /////////// -->
+
+    <!-- Oggetti -->
+    <string name="delete_oggetto">Cancella oggetto</string>
+    <string name="crud_oggetto_nome_obbligatorio">Il nome dell\'oggetto è obbligatorio</string>
+    <string name="crud_oggetto_update_titolo">Aggiornamento oggetto</string>
+    <string name="delete_oggetto_msq_question">Vuoi cancellare l\'oggetto selezionato?</string>
+    <!-- /////////// -->
+
+    <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
+    <string name="crud_aggiorna">Aggiornamento</string>
+    <string name="crud_cancella">Cancella</string>
+    <string name="aggiorna_zona_title">Aggiorna la zona</string>
+    <string name="aggiorna_oggetto_title">Aggiorna l\'oggetto</string>
+    <string name="oggetto_creato">Oggetto inserito con successo</string>
+    <string name="oggetto_problema_creato">Problema nell\'inserimento dell\'oggetto</string>
+    <string name="oggetto_update">Oggetto modificato con successo</string>
+    <string name="oggetto_problema_update">Problema nella modifica dell\'oggetto</string>
+    <string name="oggetto_cancellato_ok">L\'oggetto è stato cancellato con succeso</string>
+    <string name="oggetto_cancellato_no">Si è verificato un problema nella cancellazione dell\'oggetto</string>
+    <string name="zona_update_ok">Zona modificata con successo</string>
+    <string name="zona_update_no">Problema nell\'inserimento della zona</string>
+
+    <string name="crud_manage_museo">Gestisci i musei</string>
+    <string name="crud_create_museo">Crea un nuovo museo</string>
+    <string name="crud_durata_visita_museo">Durata della visita (in minuti)</string>
+    <string name="crud_update_museo">Aggiorna il museo</string>
+    <string name="crud_lista_museo">Elenco di tutti i musei</string>
+    <string name="crud_single_museo">Visualizzazione museo</string>
+    <string name="crud_show_museo">Visualizza tutti i musei</string>
+    <string name="crud_delete_museo">Cancella museo</string>
+    <string name="crud_no_found_musei_oggetti">Devi selezionare almeno un museo e/ oggetto</string>
+
+    <string name="crud_txt_nome">Nome</string>
+    <string name="crud_txt_cognome">Cognome</string>
+    <string name="crud_txt_codice_fiscale">Codice Fiscale</string>
+    <string name="crud_txt_data_di_nascita">Data di nascita</string>
+    <string name="crud_txt_telefono">Telefono</string>
+    <string name="crud_txt_indirizzo">Indirizzo</string>
+    <string name="crud_txt_citta">Città</string>
+    <string name="crud_txt_provincia">Prov.</string>
+    <string name="crud_txt_cap">C.A.P.</string>
+    <string name="crud_txt_regione">Regione</string>
+    <string name="crud_txt_email">Email</string>
+    <string name="crud_txt_sito">Sito</string>
+    <string name="crud_txt_orario_apertura">Orario \ndi apertura</string>
+    <string name="crud_txt_immagine">Immagine</string>
+    <string name="crud_txt_salva">Salva</string>
+    <string name="crud_txt_seleziona_immagine">Seleziona immagine</string>
+
+    <string name="crud_txt_anno">Anno</string>
+    <string name="crud_txt_autore">Autore</string>
+    <string name="crud_zona_id">Zona</string>
+    <string name="crud_txt_descrizione">Descr.</string>
+
+    <string name="crud_manage_percorso">Gestisci i percorsi</string>
+    <string name="crud_create_percorso">Nuovo percorso</string>
+    <string name="crud_show_percorso">Visualizza tutti i percorsi creati</string>
+    <string name="crud_nome_percorso">Nome percorso</string>
+    <string name="crud_txt_descrizione_percorso">Descrizione percorso</string>
+    <string name="crud_txt_seleziona_museo_percorso">Seleziona i musei da associare al percorso di visita</string>
+    <string name="crud_txt_seleziona_oggetti_percorso">Seleziona gli oggetti da associare al percorso di visita</string>
+    <string name="crud_txt_dati_percorso">Dati del percorso di visita</string>
+    <string name="crud_txt_durata_percorso">Durata di visita</string>
+    <string name="crud_txt_data_visita_percorso">Inserisci la data di visita</string>
+    <string name="crud_txt_percorso_update">Modifica del percorso \n %s</string>
+
+    <string name="crud_manage_oggetto">Gestisci gli oggetti</string>
+    <string name="crud_create_oggetto">Crea un nuovo oggetto</string>
+    <string name="crud_show_oggetto">Visualizza tutti gli oggetti</string>
+    <string name="crud_delete_oggetto">Cancella oggetto</string>
+
+    <string name="crud_provincia">Provincia: </string>
+    <string name="crud_province_zone">Province con delle zone attive</string>
+    <string name="crud_regioni_zone">Regioni con delle zone attive</string>
+    <string name="crud_lista_zone">Elenco delle zone disponibili</string>
+    <string name="crud_manage_zona">Gestisci le zone</string>
+    <string name="crud_manage_autori">Gestisci gli autori</string>
+    <string name="crud_create_zona">Crea una nuova zona</string>
+    <string name="crud_show_zona">Visualizza tutte le zone</string>
+    <string name="crud_delete_zona">Cancella zona</string>
+    <string name="title_activity_crud_create_zona">CrudCreateZonaActivity</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="crud_create_percorsodivisita">Creazione percorso di visita</string>
+    <string name="confirmModifica">Conferma Modifica</string>
+    <string name="gestioneprofilo">Gestione Profilo</string>
+    <string name="Modificaprofilo">Modifica</string>
+    <string name="crud_cancellaZona">Cancella Zona</string>
+    <string name="aggiorna_percorso">Aggiorna percorso</string>
+    <string name="aggiunta_zonadivisita">Aggiunta Zona di Visita</string>
+
+    <!-- ///////////////////////////////////////////////// -->
+
+</resources>

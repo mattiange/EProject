@@ -168,7 +168,10 @@ public class CrudPercorso_Create extends Fragment {
                             museiScelti,
                             oggettiScelti
                     );
+
             this.bundle.putLong("codice_percorso", codice);
+            this.bundle.putBoolean("da-accettarre", true);
+
             changeFragment(()->{
                 Fragment fragment = new CRUDVisualizzaPercorso();
                 fragment.setArguments(this.bundle);
@@ -178,9 +181,6 @@ public class CrudPercorso_Create extends Fragment {
                 fragmentTransaction.replace(R.id.fragmentContainer, fragment);
                 fragmentTransaction.addToBackStack(null).commit();
             });
-            Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
-            System.out.println("MUSEI: " + museiScelti);
-            System.out.println("OGGETTI: " + oggettiScelti);
         }
     }
 
@@ -200,9 +200,6 @@ public class CrudPercorso_Create extends Fragment {
             controlloNome = true;
         }
 
-        System.out.println("Durata totale: " + durataPercorso.getText());
-        System.out.println("Dimensione musei: " + museiScelti.size());
-        System.out.println("Dimensione oggetti: " + oggettiScelti.size());
         if(museiScelti.size() > 0 || oggettiScelti.size() > 0){
             errorMuseiPercorso.setVisibility(View.INVISIBLE);
             controlloMusei = true;

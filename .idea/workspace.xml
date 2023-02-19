@@ -10,8 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Gestione della visualizzazione e aggiunta nuovo utente">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/check.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/xmark.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_backend_drawer_guida.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_backend_drawer_guida.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CRUDVisualizzaPercorso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CRUDVisualizzaPercorso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CrudPercorso_Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/percorso/CrudPercorso_Create.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/crudpercorso_visualizza_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/crudpercorso_visualizza_fragment.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +53,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="layoutResourceFile" />
         <option value="Class" />
         <option value="resourceFile" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -80,6 +88,11 @@
         </map>
       </branch-storage>
     </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">

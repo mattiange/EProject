@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -33,9 +36,6 @@ import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBPercorso;
-import it.sms.eproject.fragment.home.crud.CrudZona_Create;
-import it.sms.eproject.fragment.home.crud.liste.ListaStati;
-import it.sms.eproject.fragment.home.crud.museo.CRUDMuseoSalvatoSuccesso;
 import it.sms.eproject.util.EseguiFragment;
 import it.sms.eproject.util.Util;
 
@@ -95,12 +95,59 @@ public class CRUDVisualizzaPercorso extends Fragment {
         WebView webView = v.findViewById(R.id.webview);
         webView.loadUrl("https://www.mattiawebdesigner.com/sms/svg_test/json_read_svg.php?circleR=10&spaceBetweenItem=60&startY=20&items="+items);
 
+        FloatingActionButton updateBtn = v.findViewById(R.id.update);
+        FloatingActionButton deleteBtn = v.findViewById(R.id.delete);
+        FloatingActionButton accettaBtn = v.findViewById(R.id.accetta);
+        FloatingActionButton rifiutaBtn = v.findViewById(R.id.rifiuta);
+        if(this.bundle.getBoolean("da-accettarre", false)){
+            updateBtn.setVisibility(View.INVISIBLE);
+            deleteBtn.setVisibility(View.INVISIBLE);
+            accettaBtn.setVisibility(View.VISIBLE);
+            rifiutaBtn.setVisibility(View.VISIBLE);
+        }else{
+            updateBtn.setVisibility(View.VISIBLE);
+            deleteBtn.setVisibility(View.VISIBLE);
+            accettaBtn.setVisibility(View.INVISIBLE);
+            rifiutaBtn.setVisibility(View.INVISIBLE);
+        }
+
         //Attivo gli eventi sui pulsanti
-        v.findViewById(R.id.update).setOnClickListener(this::getModificaPercorso);
-        v.findViewById(R.id.delete).setOnClickListener(this::getEliminaPercorso);
+        updateBtn.setOnClickListener(this::getModificaPercorso);
+        deleteBtn.setOnClickListener(this::getEliminaPercorso);
+        accettaBtn.setOnClickListener(this::getAccettaPercorso);
+        rifiutaBtn.setOnClickListener(this::getRifiutaPercorso);
         //------------------
 
         return v;
+    }
+
+    /**
+     * Accetta il percorso
+     *
+     * @param v
+     */
+    public void getAccettaPercorso(View v){
+        EseguiFragment.changeFragment(()-> {
+            this.bundle.putBoolean("da-accettarre", false);
+
+            Fragment fragment = new CRUDVisualizzaPercorso();
+            fragment.setArguments(this.bundle);
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null).commit();
+
+        });
+    }
+
+    /**
+     * Rifiuta il percorso
+     *
+     * @param v
+     */
+    public void getRifiutaPercorso(View v){
+        getEliminaPercorso(v);
     }
 
     /**
