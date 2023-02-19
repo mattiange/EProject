@@ -1,5 +1,7 @@
 package it.sms.eproject.data.classes;
 
+import androidx.annotation.NonNull;
+
 import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
@@ -106,5 +108,11 @@ public class Museo {
 
     public void setImmagine(byte[] immagine) {
         this.immagine = immagine;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "{nome: "+this.nome+", codice_citta: "+this.citta+"}";
     }
 }

@@ -4,12 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Versione applicazione 1.0">
+
+    </TextView>
+
     <Button
         android:id="@+id/btnImpostazioni"
-        android:text="Esempio Impostazione 1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClickCarica"/>
+        android:onClick="onClickCarica"
+        android:text="Esempio Impostazione 1" />
 
     <Button
         android:id="@+id/btnEsempio2"
@@ -18,10 +25,6 @@
         android:layout_height="wrap_content"
         android:onClick="onClickVisualizza"/>
 
-    <EditText
-        android:id="@+id/txtString"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnEsempio3"

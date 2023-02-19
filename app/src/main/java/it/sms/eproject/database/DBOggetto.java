@@ -97,7 +97,7 @@ public class DBOggetto extends DbManager{
      *
      * @return
      */
-    public ArrayList<Oggetto> elencoOggettiByCitta(int citta){
+    public ArrayList<Oggetto> elencoOggettiByCitta(long citta){
         String query="SELECT * FROM oggetti WHERE citta_codice=" + citta;
         SQLiteDatabase db= helper.getReadableDatabase();
 

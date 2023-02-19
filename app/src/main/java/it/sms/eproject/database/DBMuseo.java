@@ -171,7 +171,7 @@ public class DBMuseo extends DbManager{
      *
      * @return
      */
-    public ArrayList<Museo> elencoMuseiByCitta(int citta){
+    public ArrayList<Museo> elencoMuseiByCitta(long citta){
         String query="SELECT * FROM musei WHERE citta_codice=" + citta;
         SQLiteDatabase db= helper.getReadableDatabase();
 

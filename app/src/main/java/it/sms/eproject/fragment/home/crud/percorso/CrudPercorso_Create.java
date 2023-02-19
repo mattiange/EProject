@@ -89,10 +89,6 @@ public class CrudPercorso_Create extends Fragment {
 
         init();
 
-        System.out.println("ARG: " + getArguments());
-        System.out.println(Integer.parseInt(getArguments().getString("codice_citta")));
-        System.out.println(new DBCitta(getContext()).getNomeCitta(Integer.parseInt(getArguments().getString("codice_citta"))));
-
         titolo.setText(titolo.getText().toString().concat(" " +new DBCitta(getContext()).getNomeCitta(Integer.parseInt(getArguments().getString("codice_citta")))));
 
         Button btnSalva = v.findViewById(R.id.btn_salva_percorso);
@@ -106,7 +102,7 @@ public class CrudPercorso_Create extends Fragment {
         //Se non ci sono musei per la città selezionata
         //allora viene visualizzato un messaggio (invece
         //di non dare alcun responso)
-        ArrayList<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(Integer.parseInt(getArguments().getString("codice_citta")));
+        ArrayList<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(Long.parseLong(getArguments().getString("codice_citta")));
 
         ListAdapter listAdapter = new MuseoAdapter(getContext(), musei);
         if(musei != null){
@@ -118,17 +114,12 @@ public class CrudPercorso_Create extends Fragment {
         }
         //--------------------------------------------------------------------------
 
-        /*
-        AGGIUNGERE LA LISTA PER LA VISUALIZZAZIONE DEGLI OGGETTI.
-        CONTROLLARE CHE CI SIA LA TABELLA musei_has_percorsi ALTRIMENTI CREARLA
-                (E AGGIORNARE LA DOCUMENTAZIONE)
-        */
 
         //Popolo la lista con gli oggetti
         //Se non ci sono oggetti per la città selezionata
         //allora viene visualizzato un messaggio (invece
         //di non dare alcun responso)
-        ArrayList<Oggetto> oggetti = new DBOggetto(getContext()).elencoOggettiByCitta(Integer.parseInt(getArguments().getString("codice_citta")));
+        ArrayList<Oggetto> oggetti = new DBOggetto(getContext()).elencoOggettiByCitta(Long.parseLong(getArguments().getString("codice_citta")));
 
         ListAdapter listAdapterOggetti = new OggettoAdapter(getContext(), oggetti);
         if(oggetti != null){
@@ -162,7 +153,8 @@ public class CrudPercorso_Create extends Fragment {
                                     np,
                                     dp,
                                     Integer.parseInt(ddp),
-                                    Integer.parseInt(pref.getString("user_id", "-1"))
+                                    Integer.parseInt(pref.getString("user_id", "-1")),
+                                    Long.parseLong(getArguments().getString("codice_citta"))
                             ),
                             museiScelti,
                             oggettiScelti

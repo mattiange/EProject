@@ -12,6 +12,19 @@
         android:id="@+id/ll_main">
 
         <TextView
+            android:id="@+id/lblError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Questo percorso non contiene elementi"
+            android:visibility="invisible"
+            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showPercorsoTitle" />
+
+        <TextView
             android:id="@+id/showPercorsoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,10 +43,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/showPercorsoTitle"
-            app:layout_constraintVertical_bias="0.056"></WebView>
+            app:layout_constraintTop_toBottomOf="@+id/lblError"
+            app:layout_constraintVertical_bias="0.029"></WebView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/update"
