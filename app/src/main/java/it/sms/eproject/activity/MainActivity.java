@@ -26,6 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
+import it.sms.eproject.fragment.home.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.home.CuratoreHomeFragment;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
 import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
@@ -207,6 +208,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new CRUDPercorso();
 
                 break;
+            case R.id.nav_aggiorna_database:
+                fragment = new AggiornaDatabaseFragment();
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();

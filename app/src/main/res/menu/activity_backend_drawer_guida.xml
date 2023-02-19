@@ -21,6 +21,11 @@
                     android:id="@+id/nav_manage_percorso"
                     android:icon="@drawable/ic_baseline_format_list_bulleted_24_black"
                     android:title="@string/crud_manage_percorso"/>
+
+                <item
+                    android:id="@+id/nav_aggiorna_database"
+                    android:icon="@drawable/arrows_rotate"
+                    android:title="@string/update_database"/>
             </group>
         </menu>
     </item>

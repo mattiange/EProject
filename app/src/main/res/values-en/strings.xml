@@ -107,6 +107,7 @@
     <string name="importa_percorsi_visita">Importa percorsi di visita</string>
     <string name="impostazioni">Impostazioni</string>
     <string name="recensisci">Recensisci</string>
+    <string name="update_database">Download new</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
