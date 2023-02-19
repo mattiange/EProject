@@ -97,9 +97,30 @@ public class CRUDVisualizzaPercorso extends Fragment {
 
         //Attivo gli eventi sui pulsanti
         v.findViewById(R.id.update).setOnClickListener(this::getModificaPercorso);
+        v.findViewById(R.id.delete).setOnClickListener(this::getEliminaPercorso);
         //------------------
 
         return v;
+    }
+
+    /**
+     * Elimina il percorso selezionato dal database
+     *
+     * @param v
+     */
+    public void getEliminaPercorso(View v){
+        if(this.dbPercorso.eliminaPercorso(this.codice)){
+            EseguiFragment.changeFragment(()->{
+                Fragment fragment = new CRUDPercorsoEliminatoSuccesso();
+                fragment.setArguments(this.bundle);
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.addToBackStack(null).commit();
+
+            });
+        }
     }
 
     /**

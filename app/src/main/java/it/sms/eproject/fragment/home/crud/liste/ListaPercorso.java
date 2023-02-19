@@ -91,21 +91,6 @@ public class ListaPercorso extends Fragment {
     }
 
     /**
-     * Pagina di creazione nuovo museo
-     */
-    private void getNuovoMuseo() {
-        changeFragment(()->{
-            Fragment fragment = new CrudMuseo_Create();
-            fragment.setArguments(this.bundle);
-
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.commit();
-        });
-    }
-
-    /**
      * Adapter per visualizzare gli stati.
      *
      * Tiene traccia anche dei rispettivi ID

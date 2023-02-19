@@ -155,7 +155,7 @@ public class DBPercorso extends DbManager{
      * @return true se il percorso è stato cancellato, false altrimenti
      */
     @AutoreCodice(autore = "Mattia")
-    public boolean eliminaPercorso(int codice){
+    public boolean eliminaPercorso(long codice){
         String insert1 = "DELETE FROM percorsi WHERE codice = " + codice;
         SQLiteDatabase db = helper.getWritableDatabase();
 
