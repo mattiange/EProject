@@ -113,6 +113,10 @@ public class Museo {
     @NonNull
     @Override
     public String toString() {
-        return "{nome: "+this.nome+", codice_citta: "+this.citta+"}";
+
+        return "{nome: "+this.nome
+                + ", codice_citta: "+this.citta
+                + ", email: " + this.email
+                +"}";
     }
 }

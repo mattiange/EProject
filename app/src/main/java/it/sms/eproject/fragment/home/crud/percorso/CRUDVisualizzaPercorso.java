@@ -95,29 +95,10 @@ public class CRUDVisualizzaPercorso extends Fragment {
         webView.loadUrl("https://www.mattiawebdesigner.com/sms/svg_test/json_read_svg.php?circleR=10&spaceBetweenItem=60&startY=20&items="+items);
 
         //Attivo gli eventi sui pulsanti
-        v.findViewById(R.id.newEl).setOnClickListener(this::getNuovoPercorso);
         v.findViewById(R.id.update).setOnClickListener(this::getModificaPercorso);
         //------------------
 
         return v;
-    }
-
-    /**
-     * Porta alla pagina di creazione di un nuov percorso
-     *
-     * @param v
-     */
-    public void getNuovoPercorso(View v){
-        EseguiFragment.changeFragment(()-> {
-            Fragment fragment = new CrudPercorso_Aggiungi_Item();
-            fragment.setArguments(this.bundle);
-
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.addToBackStack(null).commit();
-
-        });
     }
 
     /**
@@ -127,13 +108,14 @@ public class CRUDVisualizzaPercorso extends Fragment {
      */
     public void getModificaPercorso(View v){
         EseguiFragment.changeFragment(()-> {
-            Fragment fragment = new CrudPercorso_Modifica();
+            Fragment fragment = new CrudPercorso_Aggiungi_Item();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
+
         });
     }
 

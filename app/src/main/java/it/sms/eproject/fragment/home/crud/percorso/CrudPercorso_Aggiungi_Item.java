@@ -55,6 +55,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
 
         bundle = getArguments();
         int codice_percorso = bundle.getInt("codice_percorso");
+        System.out.println("CODICE PERCORSO: " + codice_percorso);
 
         percorso = new DBPercorso(getContext()).get(codice_percorso);
         long codice_citta_percorso = new DBPercorso(getContext()).getCodiceCitta(codice_percorso);
@@ -77,8 +78,8 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
      * Visualizza i componenti del percorso
      */
     public void getComponentiPercorso(){
-        ArrayList<Museo> musei = oggettiMuseoHasPercorsi_salvati.getMusei();
-        ArrayList<Oggetto> oggetti = oggettiMuseoHasPercorsi_salvati.getOggetti();
+        ArrayList<Museo> musei      = oggettiMuseoHasPercorsi_salvati.getMusei();
+        ArrayList<Oggetto> oggetti  = oggettiMuseoHasPercorsi_salvati.getOggetti();
 
         //creo il constraint layout
         ConstraintLayout layout = (ConstraintLayout) v.findViewById(R.id.constraint);
@@ -133,7 +134,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
         getMusei(musei, tableLayout);
 
         //Visualizzo tutti gli oggetti
-        getOggetti(oggetti, tableLayout);
+        getOggetti(oggetti, tableLayout, this.codice_percorso);
     }
 
     /**
@@ -141,8 +142,11 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
      * @param oggetti oggetti da visualizzare
      * @param tableLayout TableLayout
      */
-    public void getOggetti(ArrayList<Oggetto> oggetti, TableLayout tableLayout){
-        for(Oggetto m : oggetti) {
+    public void getOggetti(ArrayList<Oggetto> oggetti, TableLayout tableLayout, int codice_percorso){
+        System.out.println(oggetti);
+        for(Oggetto m : tutti_gli_oggetti) {
+            System.out.println(m.getCodice_citta());
+
             TableRow tableRow = new TableRow(getContext());
             tableRow.setId(View.generateViewId());
             tableRow.setMinimumHeight(300);
@@ -150,12 +154,75 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
             lp.setMargins(10,10,10,20);
             tableRow.setLayoutParams(lp);
 
+            boolean trovato = false;
+
             tableRow.setBackgroundResource(R.drawable.rounded_corners_green);
+
+            final int tmp_codice_percorso = bundle.getInt("codice_percorso");
             for(Oggetto o_find : oggetti){
-                if(m.getCodice_citta() == o_find.getCodice_citta()) {
+                if(m.getId() == o_find.getId()) {
                     tableRow.setBackgroundResource(R.drawable.rounded_corners_red);
+
+                    tableRow.setOnLongClickListener(v -> {
+                        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+                        builder.setTitle("Elimina voce")
+                                .setMessage("Vuoi eliminare questa voce dal percorso?")
+                                .setPositiveButton("Si", (dialog, which) -> {
+                                    if(new DBPercorso(getContext()).deleteOggetto(m)) {
+                                        //Ricarico il fragment dopo che è stato elininato
+                                        //l'oggetto dal percorso
+                                        EseguiFragment.changeFragment(()-> {
+                                            Fragment fragment = new CrudPercorso_Aggiungi_Item();
+                                            fragment.setArguments(this.bundle);
+
+                                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                                            fragmentTransaction.addToBackStack(null).commit();
+                                        });
+                                    }else{
+                                        Toast.makeText(getContext(), "Oggetto rimosso dal percorso con successo", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton("No", (dialog, which) -> {})
+                                .show();
+
+                        return true;
+                    });
+
+                    trovato = true;
+
                     break;
                 }
+            }
+
+            if(!trovato){
+                tableRow.setOnLongClickListener(v -> {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+                    builder.setTitle("Inserisci voce")
+                            .setMessage("Vuoi inserire questa voce nel percorso?")
+                            .setPositiveButton("Si", (dialog, which) -> {
+                                if(new DBPercorso(getContext()).insertOggetto(tmp_codice_percorso, m.getId())){
+                                    //Ricarico il fragment dopo che è stato inserito
+                                    //l'oggetto dal percorso
+                                    EseguiFragment.changeFragment(()-> {
+                                        Fragment fragment = new CrudPercorso_Aggiungi_Item();
+                                        fragment.setArguments(this.bundle);
+
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                                        fragmentTransaction.addToBackStack(null).commit();
+                                    });
+                                }else{
+                                    Toast.makeText(getContext(), "NOOO", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", (dialog, which) -> {})
+                            .show();
+
+                    return true;
+                });
             }
 
             tableLayout.addView(tableRow);
@@ -204,12 +271,76 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
             lp.setMargins(10,10,10,20);
             tableRow.setLayoutParams(lp);
 
+            boolean trovato = false;
+
+            tableRow.setBackgroundResource(R.drawable.rounded_corners_green);
+
+            final int tmp_codice_percorso = bundle.getInt("codice_percorso");
+
             tableRow.setBackgroundResource(R.drawable.rounded_corners_green);
             for(Museo m_find : musei){
-                if(m.getCitta() == m_find.getCitta()) {
+                if(m.getID() == m_find.getID()) {
                     tableRow.setBackgroundResource(R.drawable.rounded_corners_red);
+                    tableRow.setOnLongClickListener(v -> {
+                        AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+                        builder.setTitle("Elimina voce")
+                                .setMessage("Vuoi eliminare questa voce dal percorso?")
+                                .setPositiveButton("Si", (dialog, which) -> {
+                                    if(new DBPercorso(getContext()).deleteMuseo(m)) {
+                                        //Ricarico il fragment dopo che è stato elininato
+                                        //l'oggetto dal percorso
+                                        EseguiFragment.changeFragment(()-> {
+                                            Fragment fragment = new CrudPercorso_Aggiungi_Item();
+                                            fragment.setArguments(this.bundle);
+
+                                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                                            fragmentTransaction.addToBackStack(null).commit();
+                                        });
+                                    }else{
+                                        Toast.makeText(getContext(), "Oggetto rimosso dal percorso con successo", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton("No", (dialog, which) -> {})
+                                .show();
+
+                        return true;
+                    });
+
+                    trovato = true;
+
                     break;
                 }
+            }
+
+            if(!trovato){
+                tableRow.setOnLongClickListener(v -> {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+                    builder.setTitle("Inserisci voce")
+                            .setMessage("Vuoi inserire questa voce nel percorso?")
+                            .setPositiveButton("Si", (dialog, which) -> {
+                                if(new DBPercorso(getContext()).insertMuseo(tmp_codice_percorso, m.getID())){
+                                    //Ricarico il fragment dopo che è stato inserito
+                                    //l'oggetto dal percorso
+                                    EseguiFragment.changeFragment(()-> {
+                                        Fragment fragment = new CrudPercorso_Aggiungi_Item();
+                                        fragment.setArguments(this.bundle);
+
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                                        fragmentTransaction.addToBackStack(null).commit();
+                                    });
+                                }else{
+                                    Toast.makeText(getContext(), "NOOO", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", (dialog, which) -> {})
+                            .show();
+
+                    return true;
+                });
             }
 
             tableLayout.addView(tableRow);

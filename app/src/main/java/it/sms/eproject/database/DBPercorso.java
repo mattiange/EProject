@@ -234,23 +234,6 @@ public class DBPercorso extends DbManager{
         }
         c.close();
 
-        /*long codice_m = -1;
-        long codice_o = -1;
-        if (c.moveToFirst()){
-            do {
-                codice_m = c.getLong(0);
-                codice_o = c.getLong(1);
-
-            } while(c.moveToNext());
-        }
-        c.close();
-
-        if(codice_m == -1 && codice_o > -1){
-            codice = codice_o;
-        }else if(codice_o == -1 && codice_m > -1){
-            codice = codice_m;
-        }*/
-
         return codice;
     }
 
@@ -323,5 +306,56 @@ public class DBPercorso extends DbManager{
 
             return false;
         }
+    }
+
+    /**
+     * Inserisce un nuovo oggetto all'interno del percorso
+     *
+     * @param codice_percorso
+     * @param codice_oggetto
+     * @return
+     */
+    public boolean insertOggetto(int codice_percorso, int codice_oggetto){
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        System.out.println("Codice percorso: " + codice_percorso + ", Codice oggetto: " + codice_oggetto);
+        String insert_oggetti_percorso = "INSERT INTO oggetti_has_percorsi (oggetto_codice, percorso_codice) " +
+                "VALUES (" +
+                codice_oggetto + ", " +
+                codice_percorso +
+                ")";
+        try {
+            db.execSQL(insert_oggetti_percorso);
+
+            return true;
+        }catch (SQLException e){
+            return false;
+        }
+
+    }
+
+    /**
+     * Inserisce un nuovo museo all'interno del percorso
+     *
+     * @param codice_percorso
+     * @param codice_percorso
+     * @return
+     */
+    public boolean insertMuseo(int codice_percorso, int codice_museo){
+        SQLiteDatabase db= helper.getWritableDatabase();
+
+        String insert_musei_percorso = "INSERT INTO musei_has_percorsi (museo_codice, percorso_codice) " +
+                "VALUES (" +
+                codice_museo + ", " +
+                codice_percorso +
+                ")";
+        try {
+            db.execSQL(insert_musei_percorso);
+
+            return true;
+        }catch (SQLException e){
+            return false;
+        }
+
     }
 }
