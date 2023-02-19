@@ -32,7 +32,7 @@ public class DBPercorso extends DbManager{
      * @param o Oggetti da legare al percorso
      * @return true|null Restituisce true se l'inserimento è andato a buon fine, false altrimenti.
      */
-    public boolean inserisciPercorso(Percorso p, List<Museo> m, List<Oggetto> o){
+    public long inserisciPercorso(Percorso p, List<Museo> m, List<Oggetto> o){
         SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
@@ -47,7 +47,7 @@ public class DBPercorso extends DbManager{
             long percorso_id = db.insert("percorsi", null, cv_percorso);
 
             //inserimento dei musei
-            if(m != null){
+            if(m.size() > 0){
                 for(Museo museo : m){
                     String insert_musei_percorso = "INSERT INTO musei_has_percorsi (museo_codice, percorso_codice) " +
                             "VALUES (" +
@@ -59,22 +59,22 @@ public class DBPercorso extends DbManager{
             }
 
             //inserimento degli oggetti
-            if(o != null){
-                for(Museo oggetto : m){
+            if(o.size() > 0){
+                for(Oggetto oggetto : o){
                     String insert_oggetti_percorso = "INSERT INTO oggetti_has_percorsi (oggetto_codice, percorso_codice) " +
                             "VALUES (" +
-                            oggetto.getID() + ", " +
+                            oggetto.getId() + ", " +
                             percorso_id +
                             ")";
                     db.execSQL(insert_oggetti_percorso);
                 }
             }
 
-            return true;
+            return percorso_id;
         }catch(SQLException ex){
             System.err.println( ex.getMessage() );
 
-            return false;
+            return -1;
         }finally {
             db.close();
         }
@@ -86,7 +86,7 @@ public class DBPercorso extends DbManager{
      * @param codice_percorso Codice del percorso da restituire
      * @return Percorso ottenuto. NULL se non c'è nessun percorso con quell'ID.
      */
-    public Percorso get(int codice_percorso){
+    public Percorso get(long codice_percorso){
         String query_oggetti="SELECT * FROM percorsi WHERE codice = " + codice_percorso;
         SQLiteDatabase db= helper.getReadableDatabase();
 
@@ -114,7 +114,7 @@ public class DBPercorso extends DbManager{
      * @param codice_percorso Codice del Percorso
      * @return Musei e oggetti del percorso
      */
-    public OggettiMuseoHasPercorsi getElementiPercorso(int codice_percorso){
+    public OggettiMuseoHasPercorsi getElementiPercorso(long codice_percorso){
         String query_oggetti="SELECT oggetto_codice FROM oggetti_has_percorsi WHERE percorso_codice = " + codice_percorso;
         SQLiteDatabase db= helper.getReadableDatabase();
 
@@ -144,8 +144,6 @@ public class DBPercorso extends DbManager{
         }
 
         c.close();
-        System.out.println(query_musei);
-        System.out.println(query_oggetti);
 
         return new OggettiMuseoHasPercorsi(pm, po);
     }
@@ -220,8 +218,6 @@ public class DBPercorso extends DbManager{
                 "from percorsi " +
                 "where codice = " + percorso_codice;
         SQLiteDatabase db= helper.getReadableDatabase();
-
-        System.out.println(query);
 
         Cursor c = db.rawQuery(query, null);
 
@@ -315,10 +311,9 @@ public class DBPercorso extends DbManager{
      * @param codice_oggetto
      * @return
      */
-    public boolean insertOggetto(int codice_percorso, int codice_oggetto){
+    public boolean insertOggetto(long codice_percorso, int codice_oggetto){
         SQLiteDatabase db= helper.getWritableDatabase();
 
-        System.out.println("Codice percorso: " + codice_percorso + ", Codice oggetto: " + codice_oggetto);
         String insert_oggetti_percorso = "INSERT INTO oggetti_has_percorsi (oggetto_codice, percorso_codice) " +
                 "VALUES (" +
                 codice_oggetto + ", " +
@@ -341,7 +336,7 @@ public class DBPercorso extends DbManager{
      * @param codice_percorso
      * @return
      */
-    public boolean insertMuseo(int codice_percorso, int codice_museo){
+    public boolean insertMuseo(long codice_percorso, int codice_museo){
         SQLiteDatabase db= helper.getWritableDatabase();
 
         String insert_musei_percorso = "INSERT INTO musei_has_percorsi (museo_codice, percorso_codice) " +

@@ -62,7 +62,7 @@ public class ListaPercorso extends Fragment {
                 TextView codiceTv = view.findViewById(R.id.listViewCodice);
                 int codice = Integer.parseInt(codiceTv.getText().toString());
 
-                this.bundle.putInt("codice_percorso", codice);
+                this.bundle.putLong("codice_percorso", codice);
 
                 getPercorso();
 

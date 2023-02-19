@@ -42,7 +42,7 @@ import it.sms.eproject.util.EseguiFragment;
 public class CrudPercorso_Aggiungi_Item extends Fragment {
     View v;
     Bundle bundle;
-    int codice_percorso;
+    long codice_percorso;
     Percorso percorso;
     OggettiMuseoHasPercorsi oggettiMuseoHasPercorsi_salvati;
     ArrayList<Museo> tutti_i_musei;
@@ -54,7 +54,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
         v = inflater.inflate(R.layout.empty_fragment, container, false);
 
         bundle = getArguments();
-        int codice_percorso = bundle.getInt("codice_percorso");
+        this.codice_percorso = bundle.getLong("codice_percorso");
         System.out.println("CODICE PERCORSO: " + codice_percorso);
 
         percorso = new DBPercorso(getContext()).get(codice_percorso);
@@ -64,9 +64,6 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
 
         tutti_i_musei       = new DBMuseo(getContext()).elencoMuseiByCitta(codice_citta_percorso);
         tutti_gli_oggetti   = new DBOggetto(getContext()).elencoOggettiByCitta(codice_citta_percorso);
-
-        System.out.println("Tutti i musei: " + tutti_i_musei.toString());
-        System.out.println("Tutti gli oggeti: " + tutti_gli_oggetti.toString());
 
         getComponentiPercorso();
 
@@ -134,7 +131,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
         getMusei(musei, tableLayout);
 
         //Visualizzo tutti gli oggetti
-        getOggetti(oggetti, tableLayout, this.codice_percorso);
+        getOggetti(oggetti, tableLayout);
     }
 
     /**
@@ -142,7 +139,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
      * @param oggetti oggetti da visualizzare
      * @param tableLayout TableLayout
      */
-    public void getOggetti(ArrayList<Oggetto> oggetti, TableLayout tableLayout, int codice_percorso){
+    public void getOggetti(ArrayList<Oggetto> oggetti, TableLayout tableLayout){
         System.out.println(oggetti);
         for(Oggetto m : tutti_gli_oggetti) {
             System.out.println(m.getCodice_citta());
@@ -158,7 +155,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
 
             tableRow.setBackgroundResource(R.drawable.rounded_corners_green);
 
-            final int tmp_codice_percorso = bundle.getInt("codice_percorso");
+            final long tmp_codice_percorso = this.codice_percorso;
             for(Oggetto o_find : oggetti){
                 if(m.getId() == o_find.getId()) {
                     tableRow.setBackgroundResource(R.drawable.rounded_corners_red);
@@ -275,7 +272,7 @@ public class CrudPercorso_Aggiungi_Item extends Fragment {
 
             tableRow.setBackgroundResource(R.drawable.rounded_corners_green);
 
-            final int tmp_codice_percorso = bundle.getInt("codice_percorso");
+            final long tmp_codice_percorso = this.codice_percorso;
 
             tableRow.setBackgroundResource(R.drawable.rounded_corners_green);
             for(Museo m_find : musei){

@@ -41,7 +41,7 @@ import it.sms.eproject.util.Util;
 
 public class CRUDVisualizzaPercorso extends Fragment {
     private Bundle bundle;
-    int codice;
+    long codice;
 
     DBPercorso dbPercorso;
 
@@ -57,13 +57,14 @@ public class CRUDVisualizzaPercorso extends Fragment {
 
         //Leggo il codice del percorso
         if (bundle != null) {
-            codice = bundle.getInt("codice_percorso", -1);
+            codice = bundle.getLong("codice_percorso", -1L);
         }
 
         //ottengo le informazioni sul percorso
         //sui musei
         //e sugli oggetti
         dbPercorso = new DBPercorso(getContext());
+        System.out.println("CODICE: " + codice);
         OggettiMuseoHasPercorsi percorsi_utente = dbPercorso.getElementiPercorso(codice);
         ArrayList<Museo> musei = percorsi_utente.getMusei();
         ArrayList<Oggetto> oggetti = percorsi_utente.getOggetti();

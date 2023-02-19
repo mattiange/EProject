@@ -186,9 +186,6 @@ public class Util {
     public static String getJsonString(ArrayList<Oggetto> oggetti, ArrayList<Museo> musei){
         boolean continue_json = false;
 
-        System.out.println(musei);
-        System.out.println(oggetti);
-
         String items = "[";
         if(musei!=null) {
             for (int i = 0; i < musei.size(); i++) {
@@ -200,7 +197,7 @@ public class Util {
             }
         }
 
-        if (continue_json){
+        if (continue_json && oggetti.size() > 0){
             items += ",";
         }
 
