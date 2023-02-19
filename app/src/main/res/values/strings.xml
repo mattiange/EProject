@@ -7,7 +7,7 @@
     <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
 
     <!-- Messaggi di errore -->
-    <string name="msg_error_no_stato">Nessuno stato trovato</string>
+    <string name="msg_error_no_stato" translatable="false">Nessuno stato trovato</string>
     <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
     <string name="msg_error_no_provincia">Nessuna provincia trovata per la regione %s</string>
     <string name="msg_error_no_citta">Nessuna città trovata per la provincia di %s</string>
@@ -107,6 +107,7 @@
     <string name="importa_percorsi_visita">Importa percorsi di visita</string>
     <string name="impostazioni">Impostazioni</string>
     <string name="recensisci">Recensisci</string>
+    <string name="update_database">Download new museums and zones</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
