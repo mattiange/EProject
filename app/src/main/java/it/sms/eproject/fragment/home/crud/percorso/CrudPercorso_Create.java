@@ -178,14 +178,16 @@ public class CrudPercorso_Create extends Fragment {
             controlloNome = true;
         }
 
-        if(museiScelti.size()>0){
+        System.out.println("Durata totale: " + durataPercorso.getText());
+        System.out.println("Dimensione musei: " + museiScelti.size());
+        System.out.println("Dimensione oggetti: " + oggettiScelti.size());
+        if(museiScelti.size()==0 || oggettiScelti.size() == 0){
+            errorMuseiPercorso.setVisibility(View.VISIBLE);
+            controlloMusei = false;
+        }else{
             errorMuseiPercorso.setVisibility(View.INVISIBLE);
 
             controlloMusei = true;
-        }else{
-            errorMuseiPercorso.setVisibility(View.VISIBLE);
-
-            controlloMusei = false;
         }
 
         return controlloNome && controlloMusei;
@@ -237,7 +239,7 @@ public class CrudPercorso_Create extends Fragment {
                 CheckBox checkBox = (CheckBox) v;
 
                 if (!checkBox.isChecked()) {
-                    museiScelti.remove(values.get(position));
+                    oggettiScelti.remove(values.get(position));
 
                     //Aggiorno la durata della visita per il percorso
                     totaleDurata -= values.get(position).getDurataVisita();
@@ -287,6 +289,7 @@ public class CrudPercorso_Create extends Fragment {
             CheckBox check = rowView.findViewById(R.id.CheckBox01);
 
             nome.setText(values.get(position).getNome());
+
             check.setOnClickListener(v->{
 
                 CheckBox checkBox = (CheckBox)v;
