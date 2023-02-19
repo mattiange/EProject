@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/menu_icon_foreground"
+            android:icon="@drawable/menu_icon_foreground_cog_fa"
             android:title="@string/crud_manage_profilo"/>
     </group>
 
@@ -15,11 +15,11 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_create_percorso"
-                    android:icon="@drawable/menu_icon_signature_foreground"
+                    android:icon="@drawable/ic_baseline_add_24"
                     android:title="@string/crud_create_percorso"/>
                 <item
                     android:id="@+id/nav_manage_percorso"
-                    android:icon="@drawable/menu_icon_signature_foreground"
+                    android:icon="@drawable/ic_baseline_format_list_bulleted_24_black"
                     android:title="@string/crud_manage_percorso"/>
             </group>
         </menu>
