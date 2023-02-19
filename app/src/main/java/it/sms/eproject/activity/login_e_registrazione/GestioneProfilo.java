@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,27 +14,39 @@ import androidx.fragment.app.Fragment;
 import it.sms.eproject.R;
 
 public class GestioneProfilo extends Fragment {
-    private Button btnModify;
-
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.gestioneprofilo_fragment, container,false);
-
-        btnModify = v.findViewById(R.id.btnModifica);
-
-        btnModify.setOnClickListener(this::modificaProfilo);
+    private EditText editTextName;
+    private EditText editTextEmail;
+    private Button buttonSave;
 
 
-        return v;
+/*    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.gestioneprofilo_fragment);
+
+        editTextName = findViewById(R.id.editTextNome);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        buttonSave = findViewById(R.id.buttonSave);
+
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
+    }
+
+    private void saveData() {
+        String name = editTextName.getText().toString();
+        String email = editTextEmail.getText().toString();
 
     }
 
-    /**
-     * Visualizzo la pagina di modifica del profilo
-     *
-     * @param e
-     */
-
-    private void modificaProfilo(View e) {
 
     }
+
+ */
 }
+
+
+
