@@ -31,7 +31,7 @@
             android:id="@+id/lblErrorNoMusei"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/crud_no_found_museo"
+            android:text="@string/crud_no_found_musei_oggetti"
             android:visibility="invisible"/>
         <ListView
             android:id="@+id/listElencoMusei"
@@ -46,12 +46,6 @@
             android:layout_height="wrap_content"
             android:text="@string/crud_txt_seleziona_oggetti_percorso"
             android:textSize="24sp" />
-        <TextView
-            android:id="@+id/lblErrorNoOggetti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_no_found_museo"
-            android:visibility="invisible"/>
         <ListView
             android:id="@+id/listElencoOggetti"
             android:layout_width="match_parent"
@@ -62,7 +56,7 @@
             android:id="@+id/errorMuseiPercorso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/msg_error_percorso_musei"
+            android:text="@string/crud_no_found_musei_oggetti"
             android:textSize="18sp"
             android:textColor="@color/red"
             android:visibility="invisible"/>

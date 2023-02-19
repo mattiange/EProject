@@ -225,7 +225,7 @@
     <string name="crud_single_museo">Visualizzazione museo</string>
     <string name="crud_show_museo">Visualizza tutti i musei</string>
     <string name="crud_delete_museo">Cancella museo</string>
-    <string name="crud_no_found_museo">Nessun museo per la città selezionata</string>
+    <string name="crud_no_found_musei_oggetti">Devi selezionare almeno un museo e/ oggetto</string>
 
     <string name="crud_txt_nome">Nome</string>
     <string name="crud_txt_cognome">Cognome</string>

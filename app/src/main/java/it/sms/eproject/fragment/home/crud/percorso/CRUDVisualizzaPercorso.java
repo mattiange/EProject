@@ -41,7 +41,7 @@ import it.sms.eproject.util.Util;
 
 public class CRUDVisualizzaPercorso extends Fragment {
     private Bundle bundle;
-    int codice;
+    long codice;
 
     DBPercorso dbPercorso;
 
@@ -57,13 +57,14 @@ public class CRUDVisualizzaPercorso extends Fragment {
 
         //Leggo il codice del percorso
         if (bundle != null) {
-            codice = bundle.getInt("codice_percorso", -1);
+            codice = bundle.getLong("codice_percorso", -1L);
         }
 
         //ottengo le informazioni sul percorso
         //sui musei
         //e sugli oggetti
         dbPercorso = new DBPercorso(getContext());
+        System.out.println("CODICE: " + codice);
         OggettiMuseoHasPercorsi percorsi_utente = dbPercorso.getElementiPercorso(codice);
         ArrayList<Museo> musei = percorsi_utente.getMusei();
         ArrayList<Oggetto> oggetti = percorsi_utente.getOggetti();
@@ -95,29 +96,31 @@ public class CRUDVisualizzaPercorso extends Fragment {
         webView.loadUrl("https://www.mattiawebdesigner.com/sms/svg_test/json_read_svg.php?circleR=10&spaceBetweenItem=60&startY=20&items="+items);
 
         //Attivo gli eventi sui pulsanti
-        v.findViewById(R.id.newEl).setOnClickListener(this::getNuovoPercorso);
         v.findViewById(R.id.update).setOnClickListener(this::getModificaPercorso);
+        v.findViewById(R.id.delete).setOnClickListener(this::getEliminaPercorso);
         //------------------
 
         return v;
     }
 
     /**
-     * Porta alla pagina di creazione di un nuov percorso
+     * Elimina il percorso selezionato dal database
      *
      * @param v
      */
-    public void getNuovoPercorso(View v){
-        EseguiFragment.changeFragment(()-> {
-            Fragment fragment = new CrudPercorso_Aggiungi_Item();
-            fragment.setArguments(this.bundle);
+    public void getEliminaPercorso(View v){
+        if(this.dbPercorso.eliminaPercorso(this.codice)){
+            EseguiFragment.changeFragment(()->{
+                Fragment fragment = new CRUDPercorsoEliminatoSuccesso();
+                fragment.setArguments(this.bundle);
 
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.addToBackStack(null).commit();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.addToBackStack(null).commit();
 
-        });
+            });
+        }
     }
 
     /**
@@ -127,13 +130,14 @@ public class CRUDVisualizzaPercorso extends Fragment {
      */
     public void getModificaPercorso(View v){
         EseguiFragment.changeFragment(()-> {
-            Fragment fragment = new CrudPercorso_Modifica();
+            Fragment fragment = new CrudPercorso_Aggiungi_Item();
             fragment.setArguments(this.bundle);
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
+
         });
     }
 

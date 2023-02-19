@@ -1,5 +1,7 @@
 package it.sms.eproject.data.classes;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
@@ -196,5 +198,16 @@ public class Oggetto {
      */
     public int getDurataVisita() {
         return durataVisita;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "{id: " + this.getId()+ ", codice_citta: "
+                        + this.getCodice_citta() + ", anno: "
+                        + this.getAnno() + ", durata_visita: "
+                        + this.getDurataVisita() + ", autore: "
+                        + this.getAutore()
+                + "}";
     }
 }

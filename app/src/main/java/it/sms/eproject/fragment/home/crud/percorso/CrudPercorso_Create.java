@@ -1,9 +1,13 @@
 package it.sms.eproject.fragment.home.crud.percorso;
 
+import static it.sms.eproject.util.EseguiFragment.changeFragment;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +23,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Percorso;
@@ -31,6 +38,7 @@ import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.database.DBPercorso;
+import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
 
 public class CrudPercorso_Create extends Fragment {
 
@@ -78,6 +86,8 @@ public class CrudPercorso_Create extends Fragment {
      * Elenco degli oggetti associati al percorso
      */
     List<Oggetto> oggettiScelti = new ArrayList<>();
+
+    Bundle bundle;
 
     @Nullable
     @Override
@@ -138,7 +148,6 @@ public class CrudPercorso_Create extends Fragment {
      */
     private void salva(){
         if(controllaCampiObbligatori()){
-            Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
 
             //Lettura dei campi
             String np = nomePercorso.getText().toString();
@@ -147,7 +156,7 @@ public class CrudPercorso_Create extends Fragment {
             SharedPreferences pref = getContext().getSharedPreferences("credenziali", 0);
 
 
-            new DBPercorso(getContext())
+            long codice = new DBPercorso(getContext())
                     .inserisciPercorso(
                             new Percorso(
                                     np,
@@ -159,6 +168,19 @@ public class CrudPercorso_Create extends Fragment {
                             museiScelti,
                             oggettiScelti
                     );
+            this.bundle.putLong("codice_percorso", codice);
+            changeFragment(()->{
+                Fragment fragment = new CRUDVisualizzaPercorso();
+                fragment.setArguments(this.bundle);
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                fragmentTransaction.addToBackStack(null).commit();
+            });
+            Toast.makeText(getContext(), "OK", Toast.LENGTH_SHORT).show();
+            System.out.println("MUSEI: " + museiScelti);
+            System.out.println("OGGETTI: " + oggettiScelti);
         }
     }
 
@@ -178,9 +200,11 @@ public class CrudPercorso_Create extends Fragment {
             controlloNome = true;
         }
 
-        if(museiScelti.size()>0){
+        System.out.println("Durata totale: " + durataPercorso.getText());
+        System.out.println("Dimensione musei: " + museiScelti.size());
+        System.out.println("Dimensione oggetti: " + oggettiScelti.size());
+        if(museiScelti.size() > 0 || oggettiScelti.size() > 0){
             errorMuseiPercorso.setVisibility(View.INVISIBLE);
-
             controlloMusei = true;
         }else{
             errorMuseiPercorso.setVisibility(View.VISIBLE);
@@ -200,6 +224,8 @@ public class CrudPercorso_Create extends Fragment {
         descrizionePercorso     = v.findViewById(R.id.etDescrizionePercorso);
         errorNomePercorso       = v.findViewById(R.id.errorNomePercorso);
         errorMuseiPercorso      = v.findViewById(R.id.errorMuseiPercorso);
+
+        this.bundle = new Bundle();
 
         durataPercorso.setText("0");
     }
@@ -237,7 +263,7 @@ public class CrudPercorso_Create extends Fragment {
                 CheckBox checkBox = (CheckBox) v;
 
                 if (!checkBox.isChecked()) {
-                    museiScelti.remove(values.get(position));
+                    oggettiScelti.remove(values.get(position));
 
                     //Aggiorno la durata della visita per il percorso
                     totaleDurata -= values.get(position).getDurataVisita();
@@ -287,6 +313,7 @@ public class CrudPercorso_Create extends Fragment {
             CheckBox check = rowView.findViewById(R.id.CheckBox01);
 
             nome.setText(values.get(position).getNome());
+
             check.setOnClickListener(v->{
 
                 CheckBox checkBox = (CheckBox)v;
@@ -313,5 +340,4 @@ public class CrudPercorso_Create extends Fragment {
             return rowView;
         }
     }
-
 }

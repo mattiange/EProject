@@ -17,4 +17,9 @@
         android:layout_alignParentRight="true" android:layout_marginRight="6sp"
         android:focusable="false" />
 
+    <TextView
+        android:id="@+id/tipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

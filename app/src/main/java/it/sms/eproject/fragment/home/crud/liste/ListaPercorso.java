@@ -62,7 +62,7 @@ public class ListaPercorso extends Fragment {
                 TextView codiceTv = view.findViewById(R.id.listViewCodice);
                 int codice = Integer.parseInt(codiceTv.getText().toString());
 
-                this.bundle.putInt("codice_percorso", codice);
+                this.bundle.putLong("codice_percorso", codice);
 
                 getPercorso();
 
@@ -87,21 +87,6 @@ public class ListaPercorso extends Fragment {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
-        });
-    }
-
-    /**
-     * Pagina di creazione nuovo museo
-     */
-    private void getNuovoMuseo() {
-        changeFragment(()->{
-            Fragment fragment = new CrudMuseo_Create();
-            fragment.setArguments(this.bundle);
-
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.commit();
         });
     }
 
