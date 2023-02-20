@@ -94,8 +94,6 @@ public class DBAutore extends DbManager{
         Autore a = null;
 
         if(c.moveToFirst()){
-            System.out.println("======================= OK =========================");
-
             LocalDate data_di_nascita = null;
             LocalDate data_di_morte     = null;
 

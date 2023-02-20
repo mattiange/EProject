@@ -296,6 +296,15 @@ public class MyHelper  extends SQLiteOpenHelper {
                 "FOREIGN KEY(valutazioni_codice) REFERENCES valutazioni(codice)" +
                 ")";
 
+        /**
+         * Tabella utile a verificare se un aggiornamento è già
+         * stato effettuato
+         */
+        String aggiornamenti = "CREATE TABLE aggiornamenti (" +
+                "codice INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "controllo_aggiornamento INTEGER NOT NULL UNIQUE" +
+                ")";
+
         try{
             db.execSQL(utenti);
             db.execSQL(permessi);
@@ -318,6 +327,7 @@ public class MyHelper  extends SQLiteOpenHelper {
             db.execSQL(attivita_has_valutazioni);
             db.execSQL(musei_has_valutazioni);
             db.execSQL(oggetti_has_valutazioni);
+            db.execSQL(aggiornamenti);
         }catch(SQLException ex){
             Toast.makeText(this.context , "onCreate() => " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
