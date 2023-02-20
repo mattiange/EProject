@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fillViewport="true">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/ll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/titolo"
@@ -17,130 +20,105 @@
             android:text="@string/crud_create_percorsodivisita"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:textSize="30sp"
-            android:textColor="@color/red"/>
+            android:textColor="@color/title_color"/>
 
-        <!-- ListView per i musei -->
-        <TextView
-            android:labelFor="@+id/listElencoMusei"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_seleziona_museo_percorso"
-            android:textSize="24sp" />
-        <TextView
-            android:id="@+id/lblErrorNoMusei"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_no_found_musei_oggetti"
-            android:visibility="invisible"/>
-        <ListView
-            android:id="@+id/listElencoMusei"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <!-- ========================================== -->
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
-        <!-- ListView per gli oggetti -->
-        <TextView
-            android:labelFor="@+id/listElencoOggetti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_seleziona_oggetti_percorso"
-            android:textSize="24sp" />
-        <ListView
-            android:id="@+id/listElencoOggetti"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <!-- ========================================== -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_salva_percorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="16dp"
+                android:src="@drawable/floppy_disk"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/errorMuseiPercorso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_no_found_musei_oggetti"
-            android:textSize="18sp"
-            android:textColor="@color/red"
-            android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/lblNomePercorso"
+                android:text="@string/crud_nome_percorso"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/errorNomePercorso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_error_percorso_nome_obbligatorio"
+                android:textColor="@color/red"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:layout_editor_absoluteX="0dp" />
+            <EditText
+                android:id="@+id/etNomePercorso"
+                android:autofillHints="name"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/errorNomePercorso"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_dati_percorso"
-            android:textSize="24sp"
-            android:layout_marginBottom="30sp"
-            android:textColor="@color/red" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/lblDurataPercorso"
+                android:text="@string/crud_txt_durata_percorso"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomePercorso" />
 
-        <TextView
-            android:labelFor="@+id/lblNomePercorso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_nome_percorso"
-            android:textSize="24sp" />
+            <EditText
+                android:id="@+id/etDurataPercorso"
+                android:autofillHints="name"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <TextView
-            android:id="@+id/errorNomePercorso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/msg_error_percorso_nome_obbligatorio"
-            android:textSize="18sp"
-            android:textColor="@color/red"
-            android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/textView6"
+                android:labelFor="@+id/lblDescrizionePercorso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/crud_txt_descrizione_percorso"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDurataPercorso" />
 
-        <EditText
-            android:id="@+id/etNomePercorso"
-            android:autofillHints="name"
-            android:inputType="text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/etDescrizionePercorso"
+                android:autofillHints="name"
+                android:lines="10"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"/>
 
-        <!--<TextView
-            android:labelFor="@+id/etNomeDataVisita"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_data_visita"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etNomeDataDiVisita"
-            android:autofillHints="name"
-            android:inputType="text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>-->
-        <TextView
-            android:labelFor="@+id/lblDurataPercorso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_durata_percorso"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/etDurataPercorso"
-            android:autofillHints="name"
-            android:inputType="text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"/>
-
-        <TextView
-            android:labelFor="@+id/lblDescrizionePercorso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crud_txt_descrizione_percorso"
-            android:textSize="24sp"/>
-
-        <EditText
-            android:id="@+id/etDescrizionePercorso"
-            android:autofillHints="name"
-            android:lines="10"
-            android:inputType="textMultiLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btn_salva_percorso"
-            android:layout_width="wrap_content"
-            android:layout_height="66dp"
-            android:text="@string/crud_create_percorsodivisita" />
+            <LinearLayout
+                android:id="@+id/containerMusei"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDescrizionePercorso"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 </ScrollView>

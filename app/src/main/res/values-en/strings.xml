@@ -6,6 +6,8 @@
 
     <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
 
+    <string name="durata_visita">Duration of visit</string>
+
     <!-- Messaggi di errore -->
     <string name="msg_error_no_stato">Nessuno stato trovato</string>
     <string name="msg_error_no_regione">Nessuna regione trovata per lo stato %s</string>
@@ -107,7 +109,7 @@
     <string name="importa_percorsi_visita">Importa percorsi di visita</string>
     <string name="impostazioni">Impostazioni</string>
     <string name="recensisci">Recensisci</string>
-    <string name="update_database">Download new</string>
+    <string name="update_database">Aggiorna dati</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

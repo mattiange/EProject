@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +25,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.motion.widget.OnSwipe;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,6 +44,7 @@ import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
+import it.sms.eproject.util.OnSwipeTouchListener;
 
 public class CrudPercorso_Create extends Fragment {
 
@@ -77,6 +83,8 @@ public class CrudPercorso_Create extends Fragment {
      */
     private int totaleDurata = 0;
 
+    private static long codice_citta;
+
     /**
      * Elenco dei musei associati al percorso
      */
@@ -94,122 +102,10 @@ public class CrudPercorso_Create extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.crudpercorso_create_fragment, container, false);
 
-        TextView titolo = v.findViewById(R.id.titolo);
-
-
         init();
-
-        titolo.setText(titolo.getText().toString().concat(" " +new DBCitta(getContext()).getNomeCitta(Integer.parseInt(getArguments().getString("codice_citta")))));
-
-        Button btnSalva = v.findViewById(R.id.btn_salva_percorso);
-
-        //Salvataggio del percorso
-        btnSalva.setOnClickListener((view)->{
-            salva();
-        });
-
-        //Popolo la lista con i musei.
-        //Se non ci sono musei per la città selezionata
-        //allora viene visualizzato un messaggio (invece
-        //di non dare alcun responso)
-        ArrayList<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(Long.parseLong(getArguments().getString("codice_citta")));
-
-        ListAdapter listAdapter = new MuseoAdapter(getContext(), musei);
-        if(musei != null){
-            ListView mainListView = (ListView) v.findViewById( R.id.listElencoMusei );
-            mainListView.setAdapter(listAdapter);
-        }else{
-            TextView tvNoMusei = v.findViewById(R.id.lblErrorNoMusei);
-            tvNoMusei.setVisibility(View.VISIBLE);
-        }
-        //--------------------------------------------------------------------------
-
-
-        //Popolo la lista con gli oggetti
-        //Se non ci sono oggetti per la città selezionata
-        //allora viene visualizzato un messaggio (invece
-        //di non dare alcun responso)
-        ArrayList<Oggetto> oggetti = new DBOggetto(getContext()).elencoOggettiByCitta(Long.parseLong(getArguments().getString("codice_citta")));
-
-        ListAdapter listAdapterOggetti = new OggettoAdapter(getContext(), oggetti);
-        if(oggetti != null){
-            ListView mainListView = (ListView) v.findViewById( R.id.listElencoOggetti );
-            mainListView.setAdapter(listAdapterOggetti);
-        }else{
-            TextView tvNoMusei = v.findViewById(R.id.lblErrorNoMusei);
-            tvNoMusei.setVisibility(View.VISIBLE);
-        }
+        getMusei();
 
         return v;
-    }
-
-    /**
-     * Salva il percorso nel database
-     */
-    private void salva(){
-        if(controllaCampiObbligatori()){
-
-            //Lettura dei campi
-            String np = nomePercorso.getText().toString();
-            String ddp = durataPercorso.getText().toString();
-            String dp = descrizionePercorso.getText().toString();
-            SharedPreferences pref = getContext().getSharedPreferences("credenziali", 0);
-
-
-            long codice = new DBPercorso(getContext())
-                    .inserisciPercorso(
-                            new Percorso(
-                                    np,
-                                    dp,
-                                    Integer.parseInt(ddp),
-                                    Integer.parseInt(pref.getString("user_id", "-1")),
-                                    Long.parseLong(getArguments().getString("codice_citta"))
-                            ),
-                            museiScelti,
-                            oggettiScelti
-                    );
-
-            this.bundle.putLong("codice_percorso", codice);
-            this.bundle.putBoolean("da-accettarre", true);
-
-            changeFragment(()->{
-                Fragment fragment = new CRUDVisualizzaPercorso();
-                fragment.setArguments(this.bundle);
-
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                fragmentTransaction.addToBackStack(null).commit();
-            });
-        }
-    }
-
-    /**
-     * Controlla se tutti i campi obbligatori sono correttamente compilati
-     */
-    private boolean controllaCampiObbligatori(){
-        boolean controlloNome, controlloMusei;
-
-        if(nomePercorso.getText().toString().trim().isEmpty()){
-            errorNomePercorso.setVisibility(View.VISIBLE);
-
-            controlloNome = false;
-        }else{
-            errorNomePercorso.setVisibility(View.INVISIBLE);
-
-            controlloNome = true;
-        }
-
-        if(museiScelti.size() > 0 || oggettiScelti.size() > 0){
-            errorMuseiPercorso.setVisibility(View.INVISIBLE);
-            controlloMusei = true;
-        }else{
-            errorMuseiPercorso.setVisibility(View.VISIBLE);
-
-            controlloMusei = false;
-        }
-
-        return controlloNome && controlloMusei;
     }
 
     /**
@@ -220,121 +116,135 @@ public class CrudPercorso_Create extends Fragment {
         nomePercorso            = v.findViewById(R.id.etNomePercorso);
         descrizionePercorso     = v.findViewById(R.id.etDescrizionePercorso);
         errorNomePercorso       = v.findViewById(R.id.errorNomePercorso);
-        errorMuseiPercorso      = v.findViewById(R.id.errorMuseiPercorso);
+        //errorMuseiPercorso      = v.findViewById(R.id.errorMuseiPercorso);
 
         this.bundle = new Bundle();
+        this.codice_citta = Long.parseLong(getArguments().getString("codice_citta"));
 
         durataPercorso.setText("0");
+
+
+        TextView titolo = v.findViewById(R.id.titolo);
+        titolo.setText(titolo.getText().toString().concat(" " +new DBCitta(getContext()).getNomeCitta(this.codice_citta)));
     }
 
-    /**
-     * Adapter per visualizzare gli oggetti della città selezionata.
-     *
-     *
-     */
-    class OggettoAdapter extends ArrayAdapter<Oggetto> {
-        private final Context context;
-        private final List<Oggetto> values;
-        private LayoutInflater inflater;
+    public void getMusei() {
+        //Popolo la lista con i musei.
+        ArrayList<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(this.codice_citta);
 
-        public OggettoAdapter(@NonNull Context context, List<Oggetto> values) {
-            super(context, R.layout.checkbox_row, R.id.nome, values);
+        if (musei == null) return;//blocco se non ci sono musei per questa città
 
-            inflater = LayoutInflater.from(context);
-            this.context = context;
-            this.values = values;
-        }
+        LinearLayout cl = v.findViewById(R.id.containerMusei);
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.checkbox_row, parent, false);
+        int posizione = -1;
+        for (Museo m : musei) {
+            posizione ++;
 
-            TextView nome = rowView.findViewById(R.id.nome);
-            CheckBox check = rowView.findViewById(R.id.CheckBox01);
+            LinearLayout ll = new LinearLayout(getContext());
+            LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            llp.topMargin       = 20;
+            llp.bottomMargin    = 20;
+            ll.setLayoutParams(llp);
+            ll.setOrientation(LinearLayout.VERTICAL);
+            ll.setPadding(50, 50, 50, 50);
+            ll.setId(View.generateViewId());
+            ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
 
-            nome.setText(values.get(position).getNome());
-            check.setOnClickListener(v -> {
+            TextView nome = new TextView(getContext());
+            nome.setId(View.generateViewId());
+            nome.setPadding(10, 10, 10, 10);
+            nome.setText(m.getNome());
+            nome.setTextSize(30);
 
-                CheckBox checkBox = (CheckBox) v;
+            TextView indirizzo = new TextView(getContext());
+            indirizzo.setId(View.generateViewId());
+            indirizzo.setPadding(10, 10, 10, 10);
+            indirizzo.setText(m.getIndirizzo());
 
-                if (!checkBox.isChecked()) {
-                    oggettiScelti.remove(values.get(position));
+            TextView durata_visita = new TextView(getContext());
+            durata_visita.setId(View.generateViewId());
+            durata_visita.setPadding(10, 10, 10, 10);
+            durata_visita.setText(getResources().getString(R.string.durata_visita) + ": " + String.valueOf(m.getDurata_visita()));
 
-                    //Aggiorno la durata della visita per il percorso
-                    totaleDurata -= values.get(position).getDurataVisita();
-                    //-----------------------------------------------------------
-                } else {
-                    oggettiScelti.add(values.get(position));
+            ll.addView(nome);
+            ll.addView(indirizzo);
+            ll.addView(durata_visita);
 
-                    //Aggiorno la durata della visita per il percorso
-                    totaleDurata += values.get(position).getDurataVisita();
-                    //-----------------------------------------------------------
+            cl.addView(ll);
+
+            ll.setOnTouchListener(new OnSwipeTouchListener(getContext(), posizione){
+                @Override
+                public void onSwipeLeft() {
+                    List<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(codice_citta);
+
+                    Toast.makeText(getContext(), "Left", Toast.LENGTH_SHORT).show();
+                    museiScelti.remove(musei.get(this.posizione));
+
+                    EditText durataVisistaEt = v.findViewById(R.id.etDurataPercorso);
+
+                    int totale_durata_visita = Integer.parseInt(durataVisistaEt.getText().toString());
+                    totale_durata_visita -= musei.get(this.posizione).getDurata_visita();
+                    durataVisistaEt.setText(String.valueOf(totale_durata_visita));
+
+                    ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                }
+                @Override
+                public void onSwipeRight() {
+                    List<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(codice_citta);
+
+                    Toast.makeText(getContext(), "Right", Toast.LENGTH_SHORT).show();
+                    museiScelti.add(musei.get(this.posizione));
+
+                    EditText durataVisistaEt = v.findViewById(R.id.etDurataPercorso);
+
+                    int totale_durata_visita = Integer.parseInt(durataVisistaEt.getText().toString());
+                    totale_durata_visita += musei.get(this.posizione).getDurata_visita();
+                    durataVisistaEt.setText(String.valueOf(totale_durata_visita));
+
+                    ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners_green));
                 }
 
-                //Aggiorno il campo per visualizzare i minuti totali della visita
-                durataPercorso.setText(String.valueOf(totaleDurata));
-
-            });
-
-            return rowView;
-        }
-    }
-
-    /**
-     * Adapter per visualizzare i musei della città selezionata.
-     *
-     *
-     */
-    class MuseoAdapter extends ArrayAdapter<Museo>{
-        private final Context context;
-        private final List<Museo> values;
-        private LayoutInflater inflater;
-
-        public MuseoAdapter(@NonNull Context context, List<Museo> values) {
-            super(context, R.layout.checkbox_row, R.id.nome, values);
-
-            inflater = LayoutInflater.from(context) ;
-            this.context = context;
-            this.values = values;
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.checkbox_row, parent, false);
-
-            TextView nome = rowView.findViewById(R.id.nome);
-            CheckBox check = rowView.findViewById(R.id.CheckBox01);
-
-            nome.setText(values.get(position).getNome());
-
-            check.setOnClickListener(v->{
-
-                CheckBox checkBox = (CheckBox)v;
-
-                if(!checkBox.isChecked()){
-                    museiScelti.remove(values.get(position));
-
-                    //Aggiorno la durata della visita per il percorso
-                    totaleDurata -= values.get(position).getDurata_visita();
-                    //-----------------------------------------------------------
-                }else{
-                    museiScelti.add(values.get(position));
-
-                    //Aggiorno la durata della visita per il percorso
-                    totaleDurata += values.get(position).getDurata_visita();
-                    //-----------------------------------------------------------
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    return gestureDetector.onTouchEvent(event);
                 }
-
-                //Aggiorno il campo per visualizzare i minuti totali della visita
-                durataPercorso.setText(String.valueOf(totaleDurata));
-
             });
 
-            return rowView;
         }
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

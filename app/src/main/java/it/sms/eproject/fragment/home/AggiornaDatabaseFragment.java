@@ -159,7 +159,7 @@ public class AggiornaDatabaseFragment extends Fragment {
                                     jo1.getString("orario"),
                                     //jo1.getString("immagine"),
                                     new byte[]{},
-                                    jo1.getInt("durata_visita")
+                                    Integer.parseInt(jo1.getString("durata_visita"))
                             );
 
                             if(new DBMuseo(getContext()).inserisciMuseo(m)){

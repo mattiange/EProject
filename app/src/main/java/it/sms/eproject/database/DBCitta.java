@@ -60,7 +60,7 @@ public class DBCitta extends DbManager{
      * @return Nome della cittò se c'è un riscontro, altrimenti
      *          restituisce una stringa vuota
      */
-    public String getNomeCitta(int codice){
+    public String getNomeCitta(long codice){
         String query="SELECT nome FROM citta WHERE codice = "+codice;
 
         SQLiteDatabase db= helper.getReadableDatabase();

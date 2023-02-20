@@ -38,6 +38,7 @@ public class DBMuseo extends DbManager{
         values.put("indirizzo", m.getIndirizzo());
         values.put("email_contatti", m.getEmail());
         values.put("immagine_museo", m.getImmagine());
+        values.put("durata_visita", m.getDurata_visita());
         values.put("citta_codice", m.getCitta());
 
 
@@ -192,7 +193,8 @@ public class DBMuseo extends DbManager{
                         c.getString(4),//Email
                         c.getString(5),//Sito web
                         c.getString(6),//Orario
-                        c.getBlob(7),//Immagine del museo
+                        //c.getBlob(7),//Immagine del museo
+                        new byte[]{},
                         c.getInt(9)//Durata della visita
                 ));
 
