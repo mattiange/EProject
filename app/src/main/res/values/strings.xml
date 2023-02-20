@@ -17,7 +17,7 @@
     <string name="msg_error_delete">Problema di eliminazione del %s</string>
     <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
     <string name="msg_error_percorso_nome_obbligatorio">Il nome del percorso è obbligatorio</string>
-    <string name="msg_error_percorso_musei">Devi selezionare almeno un museo per salvare il percorso.</string>
+    <string name="msg_error_percorso_musei">Devi aggiungere almeno un elemento per salvare il percorso.</string>
 
 
     <string name="campi_vuoti">I campi non possono essere vuoti</string>
@@ -295,6 +295,7 @@
     <string name="crud_cancellaZona">Cancella Zona</string>
     <string name="aggiorna_percorso">Aggiorna percorso</string>
     <string name="aggiunta_zonadivisita">Aggiunta Zona di Visita</string>
+
 
     <!-- ///////////////////////////////////////////////// -->
 

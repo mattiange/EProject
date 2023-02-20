@@ -4,8 +4,6 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
 
-    <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
-
     <string name="durata_visita">Duration of visit</string>
 
     <!-- Messaggi di errore -->
