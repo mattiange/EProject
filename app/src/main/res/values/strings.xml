@@ -64,7 +64,7 @@
     <string name="login">Login</string>
     <string name="registrazione">Registrazione</string>
     <string name="registrazione_successo">Registrazione avvenuta con successo</string>
-    <string name="forgot_password">Pass. dimenticata</string>
+    <string name="forgot_password">Password dimenticata</string>
     <string name="name">Nome</string>
     <string name="insert_name">Inserisci Nome</string>
     <string name="info_name">Il Nome non può essere vuoto!</string>
@@ -102,7 +102,7 @@
     <!-- ///////////////////////////////////////////////// -->
 
     <!-- Menu -->
-    <string name="scan_qr_code">Scan QR Code</string>
+    <string name="scan_qr_code">Scansiona il QR Code</string>
     <!-- ///////////////////////////////////////////////// -->
 
     <!-- Drawable menu -->
@@ -158,7 +158,7 @@
     <string name="il_museo">il museo</string>
     <string name="autore_uc">Autore</string>
     <string name="l_autore">l\'autore</string>
-    <string name="del_autore">dell\'museo</string>
+    <string name="del_autore">dell\'autore</string>
     <string name="percorso_uc">Percorso</string>
     <string name="del_percorso">del percorso</string>
 
