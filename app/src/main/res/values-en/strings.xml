@@ -4,6 +4,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
 
+    <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
+
     <string name="durata_visita">Duration of visit</string>
 
     <!-- Messaggi di errore -->
@@ -16,6 +18,7 @@
     <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
     <string name="msg_error_percorso_nome_obbligatorio">Il nome del percorso è obbligatorio</string>
     <string name="msg_error_percorso_musei">Devi selezionare almeno un museo per salvare il percorso.</string>
+    <string name="error_sincronizzazione">Error syncing data, please try again later</string>
 
 
     <string name="campi_vuoti">I campi non possono essere vuoti</string>
@@ -295,5 +298,10 @@
     <string name="aggiunta_zonadivisita">Aggiunta Zona di Visita</string>
 
     <!-- ///////////////////////////////////////////////// -->
+
+    <string name="domanda_aggiornamento_database">Want to download updates?</string>
+    <string name="descrizione_aggiornamento_database">Synchronize museums and places to visit</string>
+    <string name="aggiornamento_database_ok">Synchronization successful</string>
+    <string name="no_aggiornamenti">No updates available</string>
 
 </resources>

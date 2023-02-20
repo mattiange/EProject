@@ -1,6 +1,7 @@
 package it.sms.eproject.fragment.home;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,12 +26,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
+import it.sms.eproject.database.DBAggiornamento;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.home.crud.CrudZona;
@@ -45,13 +50,23 @@ public class AggiornaDatabaseFragment extends Fragment {
 
     CallbackFragment callbackFragment;
 
+    ArrayList<Museo> tutti_i_musei;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.empty_fragment, container, false);
+        View view= inflater.inflate(R.layout.aggiorna_database_fragment, container, false);
 
-        Update update = new Update(getActivity().getApplicationContext(), Link.UPDATE_LINK);
-        update.execute();
+        FloatingActionButton updateBtn = view.findViewById(R.id.updateBtn);
+
+        this.tutti_i_musei = new DBMuseo(getContext()).elencoMusei();
+
+        System.out.println(tutti_i_musei);
+
+        updateBtn.setOnClickListener(v->{
+            Update update = new Update(getActivity().getApplicationContext(), Link.UPDATE_LINK);
+            update.execute();
+        });
 
         return view;
     }
@@ -137,9 +152,24 @@ public class AggiornaDatabaseFragment extends Fragment {
                 JSONArray ja = new JSONArray(this.response);
                 JSONObject jo;
 
-                for (int i = 0; i < ja.length(); i++) {
+                boolean continua_ciclo = true;
+                for (int i = 0; i < ja.length() && continua_ciclo; i++) {
 
                     jo = ja.getJSONObject(i);
+
+                    try {
+                        int controllo = jo.getInt("controllo_aggiornamento");
+
+                        try {
+                            new DBAggiornamento(getContext()).inserisci(controllo);
+                        }catch (SQLiteConstraintException e){
+                            Toast.makeText(c, getResources().getString(R.string.no_aggiornamenti), Toast.LENGTH_SHORT).show();
+                            continua_ciclo = false;
+                        }
+
+                        System.out.println("Controllo: " + controllo );
+                    }catch (JSONException e){}
+
 
                     try {
                         //Inserisco i nuovi musei
@@ -162,7 +192,12 @@ public class AggiornaDatabaseFragment extends Fragment {
                                     Integer.parseInt(jo1.getString("durata_visita"))
                             );
 
+
+
                             if(new DBMuseo(getContext()).inserisciMuseo(m)){
+                                Toast.makeText(getContext(), getResources().getString(R.string.aggiornamento_database_ok), Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), getResources().getString(R.string.error_sincronizzazione), Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -189,9 +224,9 @@ public class AggiornaDatabaseFragment extends Fragment {
                             );
 
                             if (new DBOggetto(getContext()).inserisciOggetto(o)) {
-                                Toast.makeText(getContext(), "Oggetto: inserito: " + o.getNome(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getResources().getString(R.string.aggiornamento_database_ok), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "NO", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getResources().getString(R.string.error_sincronizzazione), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }catch(JSONException jse){

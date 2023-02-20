@@ -18,6 +18,7 @@
     <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
     <string name="msg_error_percorso_nome_obbligatorio">Il nome del percorso è obbligatorio</string>
     <string name="msg_error_percorso_musei">Devi aggiungere almeno un elemento per salvare il percorso.</string>
+    <string name="error_sincronizzazione">Errore nella sincronizzazione dei dati, riprova più tardi</string>
 
 
     <string name="campi_vuoti">I campi non possono essere vuoti</string>
@@ -298,5 +299,10 @@
 
 
     <!-- ///////////////////////////////////////////////// -->
+
+    <string name="domanda_aggiornamento_database">Vuoi scaricare gli aggiornamenti?</string>
+    <string name="descrizione_aggiornamento_database">Sincronizza i musei e i luoghi da visitare</string>
+    <string name="aggiornamento_database_ok">Sincronizzazione avvenuta con successo</string>
+    <string name="no_aggiornamenti">Nessun aggiornamento disponibile</string>
 
 </resources>

@@ -78,16 +78,6 @@ public class CrudPercorso_Create extends Fragment {
      */
     TextView errorMuseiPercorso;
 
-    /**
-     * Calcolo della durata totale.
-     * Viene calcolata automaticamente quando
-     * viene selezionato un museo dalla lista.
-     * Se un museo viene deselezionato allora
-     * viene rimossa dal totale anche la sua
-     * durata.
-     */
-    private int totaleDurata = 0;
-
     private static long codice_citta;
 
     /**
@@ -124,9 +114,6 @@ public class CrudPercorso_Create extends Fragment {
         nomePercorso            = v.findViewById(R.id.etNomePercorso);
         descrizionePercorso     = v.findViewById(R.id.etDescrizionePercorso);
         errorNomePercorso       = v.findViewById(R.id.errorNomePercorso);
-        //errorMuseiPercorso      = v.findViewById(R.id.errorMuseiPercorso);
-
-
 
         this.bundle = new Bundle();
         this.codice_citta = Long.parseLong(getArguments().getString("codice_citta"));
@@ -252,21 +239,16 @@ public class CrudPercorso_Create extends Fragment {
         boolean controlloNome, controlloMusei;
 
         if(nomePercorso.getText().toString().trim().isEmpty()){
-            //errorNomePercorso.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), getResources().getString(R.string.msg_error_percorso_nome_obbligatorio), Toast.LENGTH_SHORT).show();
 
             controlloNome = false;
         }else{
-            //errorNomePercorso.setVisibility(View.INVISIBLE);
-
             controlloNome = true;
         }
 ;
         if(museiScelti.size() > 0 || oggettiScelti.size() > 0){
-            //errorMuseiPercorso.setVisibility(View.INVISIBLE);
             controlloMusei = true;
         }else{
-            //errorMuseiPercorso.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), getResources().getString(R.string.msg_error_percorso_musei), Toast.LENGTH_SHORT).show();
 
             controlloMusei = false;
