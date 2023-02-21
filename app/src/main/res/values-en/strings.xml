@@ -265,6 +265,8 @@
     <string name="crud_txt_data_visita_percorso">Enter the date of the visit</string>
     <string name="crud_txt_percorso_update">Route change \n %s</string>
 
+    <string name="tieni_premuto_per_aggiungere">Press and hold to add</string>
+
     <string name="crud_manage_oggetto">Manage items</string>
     <string name="crud_create_oggetto">Create a new item</string>
     <string name="crud_show_oggetto">View all objects</string>

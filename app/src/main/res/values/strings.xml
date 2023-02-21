@@ -253,6 +253,7 @@
     <string name="crud_zona_id">Zona</string>
     <string name="crud_txt_descrizione">Descr.</string>
 
+    <!-- Percorso -->
     <string name="crud_manage_percorso">Gestisci i percorsi</string>
     <string name="crud_create_percorso">Nuovo percorso</string>
     <string name="crud_show_percorso">Visualizza tutti i percorsi creati</string>
@@ -264,6 +265,8 @@
     <string name="crud_txt_durata_percorso">Durata di visita</string>
     <string name="crud_txt_data_visita_percorso">Inserisci la data di visita</string>
     <string name="crud_txt_percorso_update">Modifica del percorso \n %s</string>
+
+    <string name="tieni_premuto_per_aggiungere">Tieni premuto per aggiungere</string>
 
     <string name="crud_manage_oggetto">Gestisci gli oggetti</string>
     <string name="crud_create_oggetto">Crea un nuovo oggetto</string>
