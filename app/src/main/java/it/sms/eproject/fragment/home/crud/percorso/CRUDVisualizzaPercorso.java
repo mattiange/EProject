@@ -17,6 +17,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -36,12 +37,15 @@ import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBPercorso;
+import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
 import it.sms.eproject.util.EseguiFragment;
 import it.sms.eproject.util.Util;
 
 public class CRUDVisualizzaPercorso extends Fragment {
     private Bundle bundle;
     long codice;
+
+    boolean backpressedlistener;
 
     DBPercorso dbPercorso;
 
@@ -118,7 +122,49 @@ public class CRUDVisualizzaPercorso extends Fragment {
         rifiutaBtn.setOnClickListener(this::getRifiutaPercorso);
         //------------------
 
+        //Torna sull'elenco dei percorsi creati
+        //evitando di ritornare alla creazione
+        //del percorso
+        requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if(backpressedlistener) {
+                    EseguiFragment.changeFragment(() -> {
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("azione-lista", "show-percorsi");
+                        editor.apply();
+
+                        Fragment fragment = new ListaPercorso();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                        fragmentTransaction.addToBackStack(null).commit();
+                    });
+                }else{
+                    getActivity().getSupportFragmentManager().popBackStack();
+                }
+            }
+        });
+
         return v;
+    }
+    @Override
+    public void onPause() {
+        // passing null value
+        // to backpressedlistener
+        backpressedlistener = false;
+        super.onPause();
+    }
+
+
+    // Overriding onResume() method
+    @Override
+    public void onResume() {
+        super.onResume();
+        // passing context of fragment
+        //  to backpressedlistener
+        backpressedlistener = true;
     }
 
     /**

@@ -113,13 +113,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"/>
 
+            <TextView
+                android:id="@+id/tieni_premuto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tieni_premuto_per_aggiungere"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/etDescrizionePercorso" />
+
             <LinearLayout
                 android:id="@+id/containerMusei"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etDescrizionePercorso"/>
+                app:layout_constraintTop_toBottomOf="@+id/tieni_premuto"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
