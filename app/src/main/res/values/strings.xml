@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="google_maps_key" translatable="false">AIzaSyASDAqsfyHhj4IssOvNKD4BVPccvdHhGQc</string>
+
     <string name="nav_header_desc">Navigation header</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
@@ -7,6 +9,9 @@
     <string name="crud_manage_profilo">Gestisci i tuoi dati</string>
 
     <string name="durata_visita">Durata visita</string>
+
+    <!-- MAPS -->
+    <string name="maps_no_rout">Nessuna strada trovata</string>
 
     <!-- Messaggi di errore -->
     <string name="msg_error_no_stato">Nessuno stato trovato</string>

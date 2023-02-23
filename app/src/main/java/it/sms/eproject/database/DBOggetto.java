@@ -144,11 +144,12 @@ public class DBOggetto extends DbManager{
             o = new Oggetto(
                     c.getInt(0),//id
                     c.getString(1),//nome
-                    c.getInt(2),//anno
-                    c.getInt(4),//autore
-                    c.getString(3),//descrizione
-                    c.getInt(5)//citta
+                    c.getInt(3),//anno
+                    c.getInt(5),//autore
+                    c.getString(4),//descrizione
+                    c.getInt(6)//citta
             );
+            o.setIndirizzo(c.getString(2));
         }
 
         c.close();

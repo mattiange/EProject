@@ -8,6 +8,9 @@
 
     <string name="durata_visita">Duration of visit</string>
 
+    <!-- MAPS -->
+    <string name="maps_no_rout">No route found</string>
+
     <!-- Messaggi di errore -->
     <string name="msg_error_no_stato">None been found</string>
     <string name="msg_error_no_regione">No region found for state %s</string>
