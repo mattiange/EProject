@@ -11,25 +11,15 @@ import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -44,7 +34,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
@@ -60,8 +49,6 @@ import java.util.List;
 import java.util.Random;
 
 import it.sms.eproject.R;
-import it.sms.eproject.activity.Maps2Activity;
-import it.sms.eproject.data.classes.Citta;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
@@ -70,7 +57,6 @@ import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
 import it.sms.eproject.maps.DirectionsJSONParser;
 import it.sms.eproject.util.EseguiFragment;
-import it.sms.eproject.util.Util;
 
 public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallback {
     private Bundle bundle;
