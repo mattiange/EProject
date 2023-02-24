@@ -39,7 +39,8 @@ public class DBProvincia extends DbManager{
                     province.add(new Provincia(
                             Integer.parseInt(c.getString(0)),
                             c.getString(1),
-                            Integer.parseInt(c.getString(2))
+                            c.getString(2),
+                            Integer.parseInt(c.getString(3))
                     ));
                 }
 

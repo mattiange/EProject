@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
@@ -129,13 +131,11 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
                                                                             .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        TextView titolo = v.findViewById(R.id.showPercorsoTitle);
+        titolo.setText(String.format(getResources().getString(R.string.percorso_titolo), dbPercorso.get(codice)==null?"":dbPercorso.get(codice).getNome()));
 
 
-
-        /*TextView titolo = v.findViewById(R.id.showPercorsoTitle);
-        titolo.setText(String.format(getResources().getString(R.string.percorso_titolo), dbPercorso.get(codice)==null?"":dbPercorso.get(codice).getNome()));*/
-
-        /*FloatingActionButton updateBtn = v.findViewById(R.id.update);
+        FloatingActionButton updateBtn = v.findViewById(R.id.update);
         FloatingActionButton deleteBtn = v.findViewById(R.id.delete);
         FloatingActionButton accettaBtn = v.findViewById(R.id.accetta);
         FloatingActionButton rifiutaBtn = v.findViewById(R.id.rifiuta);
@@ -155,7 +155,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
         updateBtn.setOnClickListener(this::getModificaPercorso);
         deleteBtn.setOnClickListener(this::getEliminaPercorso);
         accettaBtn.setOnClickListener(this::getAccettaPercorso);
-        rifiutaBtn.setOnClickListener(this::getRifiutaPercorso);*/
+        rifiutaBtn.setOnClickListener(this::getRifiutaPercorso);
         //------------------
 
         //Torna sull'elenco dei percorsi creati
@@ -274,6 +274,65 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
+        if(this.musei.size()>0) routeMusei();
+
+        mOrigin = mDestination;
+
+        if(this.oggetti.size()>0) routeOggetti();
+
+    }
+
+    private void routeOggetti(){
+        //Aggiungo i percorsi per gli oggetti
+        int i = 0;
+        String nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
+        String capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
+        String siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
+        String indirizzo        = oggetti.get(i).getCodice_citta() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+        mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+        drawRoute();
+
+        Drawable circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
+        BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+        MarkerOptions options = new MarkerOptions();
+        options.position(mOrigin).icon(markerIcon);
+
+        circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
+        markerIcon = getMarkerIconFromDrawable(circleDrawable);
+        options = new MarkerOptions();
+        options.position(mOrigin).icon(markerIcon);
+        //mMap.addMarker(options).setIcon(markerIcon);
+        mMap.addMarker(options);
+
+
+        for(i = 1; i<this.oggetti.size(); i ++){
+
+            nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
+            capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
+            siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
+            indirizzo        = oggetti.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+
+            mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+            options = new MarkerOptions();
+            options.position(mOrigin).icon(markerIcon);
+            mMap.addMarker(options);
+
+            options = new MarkerOptions();
+            options.position(mDestination).icon(markerIcon);
+            mMap.addMarker(options);
+
+            drawRoute();
+
+            mOrigin = mDestination;
+        }
+    }
+
+    /**
+     * Aggiunge i percorsi per i musei
+     */
+    private void routeMusei(){
         //Aggiungo i percorsi per i musei
         int i = 0;
         String nomeCitta        = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
@@ -312,53 +371,6 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
             capCitta         = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
             siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
             indirizzo        = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-
-            mDestination = getLocationFromAddress(getContext(), indirizzo);
-
-            options = new MarkerOptions();
-            options.position(mOrigin).icon(markerIcon);
-            mMap.addMarker(options);
-
-            options = new MarkerOptions();
-            options.position(mDestination).icon(markerIcon);
-            mMap.addMarker(options);
-
-            drawRoute();
-
-            mOrigin = mDestination;
-        }
-
-        mOrigin = mDestination;
-
-        //Aggiungo i percorsi per gli oggetti
-        i = 0;
-        nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
-        capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
-        siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
-        indirizzo        = oggetti.get(i).getCodice_citta() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-        mDestination = getLocationFromAddress(getContext(), indirizzo);
-
-        drawRoute();
-
-        circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
-        markerIcon = getMarkerIconFromDrawable(circleDrawable);
-        options = new MarkerOptions();
-        options.position(mOrigin).icon(markerIcon);
-
-        circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
-        markerIcon = getMarkerIconFromDrawable(circleDrawable);
-        options = new MarkerOptions();
-        options.position(mOrigin).icon(markerIcon);
-        //mMap.addMarker(options).setIcon(markerIcon);
-        mMap.addMarker(options);
-
-
-        for(i = 1; i<this.oggetti.size(); i ++){
-
-            nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
-            capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
-            siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
-            indirizzo        = oggetti.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
 
             mDestination = getLocationFromAddress(getContext(), indirizzo);
 
