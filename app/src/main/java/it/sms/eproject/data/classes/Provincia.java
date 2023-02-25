@@ -5,15 +5,18 @@ public class Provincia {
     private final int codice_regione;
     private String nome;
 
+    private String siglaProvincia;
+
     /**
      * Crea un nuovo stato
      *
      * @param codice Codice dello stato
      * @param nome   Nome dello stato
      */
-    public Provincia(int codice, String nome, int codice_regione){
-        this.codice = codice;
-        this.nome   = nome;
+    public Provincia(int codice, String nome, String siglaProvincia, int codice_regione){
+        this.codice         = codice;
+        this.nome           = nome;
+        this.siglaProvincia = siglaProvincia;
         this.codice_regione = codice_regione;
     }
 
@@ -24,8 +27,8 @@ public class Provincia {
      *
      * @param nome Nome
      */
-    public Provincia(String nome, int codice_regione){
-        this(-1, nome, codice_regione);
+    public Provincia(String nome, String siglaProvincia, int codice_regione){
+        this(-1, nome, siglaProvincia, codice_regione);
     }
 
     /**

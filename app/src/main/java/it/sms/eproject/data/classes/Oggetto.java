@@ -20,6 +20,7 @@ public class Oggetto {
 
     String nome;
     String descrizione;
+    String indirizzo;
 
 
     public Oggetto(String nome, int anno, int autore, String descrizione, int codice_citta, int durataVisita) {
@@ -146,6 +147,10 @@ public class Oggetto {
         this.id = id;
     }
 
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+
     /**
      * restituisce il nome
      *
@@ -198,6 +203,10 @@ public class Oggetto {
      */
     public int getDurataVisita() {
         return durataVisita;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
     }
 
     @NonNull

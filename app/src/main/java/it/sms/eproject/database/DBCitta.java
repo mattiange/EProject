@@ -79,4 +79,57 @@ public class DBCitta extends DbManager{
         return citta;
     }
 
+
+
+    /**
+     * Restituisce il CAP della città
+     * selezionandolo attraverso il
+     * suo codice
+     *
+     * @param codice Codice della cittò
+     * @return CAP della cittò se c'è un riscontro, altrimenti
+     *          restituisce una stringa vuota
+     */
+    public String getCap(long codice){
+        String query="SELECT cap FROM citta WHERE codice = "+codice;
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        String cap = "";
+        if (c.moveToFirst()){
+            do {
+
+                cap = c.getString(0);
+
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        return cap;
+    }
+
+
+    /**
+     * Restituisce la sigla della provincia
+     *
+     * @param codiceCitta
+     * @return
+     */
+    public String getSiglaProvincia(long codiceCitta){
+        String query="SELECT provincia_codice FROM citta WHERE codice = "+codiceCitta;
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        String provincia = "";
+        if (c.moveToFirst()){
+            do {
+                provincia = new DBProvincia(this.c).getSiglaProvincia(c.getLong(0));
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        return provincia;
+    }
 }
