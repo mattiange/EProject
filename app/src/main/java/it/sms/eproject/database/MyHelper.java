@@ -49,11 +49,11 @@ public class MyHelper  extends SQLiteOpenHelper {
         String insert_regioni="INSERT INTO regioni (nome, stato_codice) " +
                 "VALUES ('Puglia', 1)," +
                         "('Basilicata', 1)";
-        String insert_province="INSERT INTO province (nome, regione_codice) " +
-                "VALUES ('Bari', 1)," +
-                        "('Taranto', 1)," +
-                        "('Potenza', 2)," +
-                        "('Matera', 2)";
+        String insert_province="INSERT INTO province (nome, sigla, regione_codice) " +
+                "VALUES ('Bari', 'BA', 1)," +
+                        "('Taranto', 'TA', 1)," +
+                        "('Potenza', 'PZ', 2)," +
+                        "('Matera', 'MT', 2)";
         String insert_citta="INSERT INTO citta (nome, cap, provincia_codice) " +
                 "VALUES ('Gioia del Colle', '70023', 1), " +//1
                 "('Bari centro', '70122', 1), " +//2
@@ -72,25 +72,31 @@ public class MyHelper  extends SQLiteOpenHelper {
 
         //Inserimento musei
         String insert_musei = "INSERT INTO musei (nome, numero_telefono, indirizzo, email_contatti, sito_web, orario_apertura, citta_codice, durata_visita) " +
-                "VALUES ('Museo archeologico', ' 080 5285231', 'Piazza dei Martiri del 1799, n.1', NULL, 'https://musei.puglia.beniculturali.it/musei/museo-archeologico-nazionale-castello-di-gioia-del-colle/', '15:00', 1, 60)";
+                "VALUES ('Museo archeologico', '080 5285231', 'via Dante, 1', NULL, 'https://musei.puglia.beniculturali.it/musei/museo-archeologico-nazionale-castello-di-gioia-del-colle/', '15:00', 1, 60), " +
+                        "(\"Sergio Gatti Bottega d'Arte\", '333 297 4435', 'via Michele Petrera, 42', NULL, '', '15:00', 1, 60), " +
+                        "(\"Filippo Maria Cazzolla Bottega D'Arte\", '347 918 3227', 'Via Piottola, 12', NULL, '', '18:00', 1, 60), " +
+                        "(\"DUMEST | Museo - Museum\", '360 260 046', 'Via Giuseppe di Vittorio, 115', NULL, '', '10:00', 1, 60), " +
+                        "(\"Antonella Lozito Bottega d'arte\", '331 600 7451', 'Via Lagomagno, 22', NULL, '', '10:00', 1, 30)";
+
+        // "('Castello normanno-svevo', '080 348 1305', 'Piazza dei Martiri del 1799, 1', NULL, '', '15:00', 1, 60), " +
         //---------------------------------------------------------------------------
 
         //Inserimento oggetti
-        String insert_oggetti = "INSERT INTO oggetti (Nome, anno, descrizione, autore_codice, citta_codice, durata_visita) " +
-                "VALUES ('Monumento dei caduti', 0, 'Monumento in ricordo dei caduti di tutte le guerre', 0, 1, 10), " +
-                "('Arco Costantinopoli', '1600', 'L’arco, intitolato alla Madonna di Costantinopoli nel XVII secolo, consente l’accesso ad uno spiazzo, anticamente comunitario, con al centro un pozzo di acqua sorgiva del secolo XVI e con scala esterna in pietra per l’accesso al vano di cui molte volte l’abitazione risulta unicamente costituita.', 0, 1, 10), " +
-                "('Arco di Cimone', 0, 'L’arco con le imposte poco al di sopra del piano stradale introduce nella corte, sede in età normanna del rappresentante dell’abate della Chiesa di S.Nicola di Bari, dopo che a questa Riccardo Siniscalco aveva donato il Castello. Tracce rilevanti dell’antica residenza sono tuttora visibili nella costruzione che si erge al disopra dell’arco. Ancora visibili sono anche l’arco ogivale e la bifora che lo sormonta.', 0, 1, 10)," +
-                "('Distilleria Cassano', '1859', \"La Distilleria Cassano è annoverata fra i monumenti dell'archeologia industriale di maggior rilievo in Puglia. Di proprietà di Paolo Cassano dal 1859, si collocava tra le quattro più importanti del nostro territorio assieme a quelle di Castellana, Bari e Barletta, esportando i propri prodotti anche all’estero. L'attività dell'opificio continuò a gonfie vele fino al 1914, quando la società fu messa in liquidazione. La distilleria, passata alla famiglia Taranto e progressivamente lasciata in stato di abbandono, venne poi ceduta alla USL (oggi Azienda sanitaria locale) nel 1970 per farne un ospedale. La costruzione fu nuovamente ceduta al comune di Gioia del Colle nel 1997. L'ex distilleria rappresenta un esempio pionieristico dell'industria pugliese, in ragione di queste considerazioni il Ministero dei Beni Culturali e Ambientali ne ha sancito l'importanza storica con l'iscrizione nell'elenco dei beni monumentali e ambientali. Nel 2006 vengono avviati dei lavori di restauro ed attualmente la distilleria ospita sagre e concerti.\", 0, 1, 30);";
+        String insert_oggetti = "INSERT INTO oggetti (Nome, indirizzo, anno, descrizione, autore_codice, citta_codice, durata_visita) " +
+                "VALUES ('Monumento dei caduti', 'Piazza Cesare Battisti, 12', 0, 'Monumento in ricordo dei caduti di tutte le guerre', 0, 1, 10), " +
+                "('Arco Costantinopoli', 'Arco Costantinopoli', '1600', 'L’arco, intitolato alla Madonna di Costantinopoli nel XVII secolo, consente l’accesso ad uno spiazzo, anticamente comunitario, con al centro un pozzo di acqua sorgiva del secolo XVI e con scala esterna in pietra per l’accesso al vano di cui molte volte l’abitazione risulta unicamente costituita.', 0, 1, 10), " +
+                "('Arco di Cimone', 'Arco Cimone', 0, 'L’arco con le imposte poco al di sopra del piano stradale introduce nella corte, sede in età normanna del rappresentante dell’abate della Chiesa di S.Nicola di Bari, dopo che a questa Riccardo Siniscalco aveva donato il Castello. Tracce rilevanti dell’antica residenza sono tuttora visibili nella costruzione che si erge al disopra dell’arco. Ancora visibili sono anche l’arco ogivale e la bifora che lo sormonta.', 0, 1, 10)," +
+                "('Distilleria Cassano', 'Ex Distilleria Cassano', '1859', \"La Distilleria Cassano è annoverata fra i monumenti dell'archeologia industriale di maggior rilievo in Puglia. Di proprietà di Paolo Cassano dal 1859, si collocava tra le quattro più importanti del nostro territorio assieme a quelle di Castellana, Bari e Barletta, esportando i propri prodotti anche all’estero. L'attività dell'opificio continuò a gonfie vele fino al 1914, quando la società fu messa in liquidazione. La distilleria, passata alla famiglia Taranto e progressivamente lasciata in stato di abbandono, venne poi ceduta alla USL (oggi Azienda sanitaria locale) nel 1970 per farne un ospedale. La costruzione fu nuovamente ceduta al comune di Gioia del Colle nel 1997. L'ex distilleria rappresenta un esempio pionieristico dell'industria pugliese, in ragione di queste considerazioni il Ministero dei Beni Culturali e Ambientali ne ha sancito l'importanza storica con l'iscrizione nell'elenco dei beni monumentali e ambientali. Nel 2006 vengono avviati dei lavori di restauro ed attualmente la distilleria ospita sagre e concerti.\", 0, 1, 30);";
         //---------------------------------------------------------------------------
 
         //Inserimento percorsi
         String insert_percorsi = "INSERT INTO percorsi (Nome, descrizione, durata, codice_utente, codice_citta) " +
-                "VALUES ('Terra di peucezia', 'Visita le origini di Gioia del Colle', 90, 2, 1)";
+                "VALUES ('Terra di peucezia', 'Visita le origini di Gioia del Colle', 250, 2, 1)";
         //---------------------------------------------------------------------------
 
         //Inserimento musei has percorsi
         String insert_musei_has_percorsi = "INSERT INTO musei_has_percorsi (museo_codice, percorso_codice) " +
-                "VALUES (1, 1)";
+                                            "VALUES (1, 1), (2, 1), (3, 1), (4, 1), (5, 1)";
         //---------------------------------------------------------------------------
 
         //Inserimento oggetti has percorsi
@@ -160,6 +166,7 @@ public class MyHelper  extends SQLiteOpenHelper {
         String province = "CREATE TABLE province(" +
                 "codice INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nome VARCHAR NOT NULL," +
+                "sigla VARCHAR NOT NULL," +
                 "regione_codice INTEGER," +
                 "FOREIGN KEY(regione_codice) REFERENCES regioni(codice)" +
                 ")";
@@ -203,6 +210,7 @@ public class MyHelper  extends SQLiteOpenHelper {
         String oggetti = "CREATE TABLE oggetti (" +
                 "codice INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "Nome TEXT NOT NULL," +
+                "indirizzo TEXT NOT NULL," +
                 "anno INTEGER," +
                 "descrizione TEXT," +
                 "autore_codice INTEGER," +

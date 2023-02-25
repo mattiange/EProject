@@ -1,34 +1,53 @@
 package it.sms.eproject.fragment.home.crud.percorso;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -36,12 +55,13 @@ import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
+import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
+import it.sms.eproject.maps.DirectionsJSONParser;
 import it.sms.eproject.util.EseguiFragment;
-import it.sms.eproject.util.Util;
 
-public class CRUDVisualizzaPercorso extends Fragment {
+public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallback {
     private Bundle bundle;
     long codice;
 
@@ -49,10 +69,34 @@ public class CRUDVisualizzaPercorso extends Fragment {
 
     DBPercorso dbPercorso;
 
+    /*================= INFORMAZIONI SULLA MAPPA ==================*/
+    /**
+     * Mappa di Google
+     */
+    private GoogleMap mMap;
+    /**
+     * Punto di origine
+     */
+    private LatLng mOrigin;
+    /**
+     * Punto di fine
+     */
+    private LatLng mDestination;
+    /**
+     * Linea da tracciare
+     */
+    private Polyline mPolyline;
+
+    ArrayList<LatLng> mMarkerPoints;
+    /*=============================================================*/
+
+    ArrayList<Museo> musei;
+    ArrayList<Oggetto> oggetti;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.crudpercorso_visualizza_fragment, container,false);
+        View v = inflater.inflate(R.layout.activity_maps, container,false);
 
 
         bundle = this.getArguments();
@@ -68,36 +112,29 @@ public class CRUDVisualizzaPercorso extends Fragment {
         //sui musei
         //e sugli oggetti
         dbPercorso = new DBPercorso(getContext());
-        System.out.println("CODICE: " + codice);
         OggettiMuseoHasPercorsi percorsi_utente = dbPercorso.getElementiPercorso(codice);
-        ArrayList<Museo> musei = percorsi_utente.getMusei();
-        ArrayList<Oggetto> oggetti = percorsi_utente.getOggetti();
+        musei   = percorsi_utente.getMusei();
+        oggetti = percorsi_utente.getOggetti();
         //---------------------------------------------------------------------------------
-
-        //Se non ci sono elementi visualizzo il messaggio
-        //di avviso
-
-        TextView noElementMsg = v.findViewById(R.id.lblError);
-        if(musei.size() == 0 && oggetti.size() == 0){
-            noElementMsg.setVisibility(View.VISIBLE);
-        }else {
-            noElementMsg.setVisibility(View.INVISIBLE);
-        }
 
         this.bundle.putString("codice_citta", String.valueOf(dbPercorso.getCodiceCitta(codice)));
         this.bundle.putString("nome_citta", dbPercorso.getNomeCitta(codice));
 
         //Creo il json
-        String items = Util.getJsonString(oggetti, musei);
+        //String items = Util.getJsonString(oggetti, musei);
         //--------------------------------------------
 
 
+
+        //Ottiene un oggetto di SupportMapFragment
+        //e ricevi una notifica quando la mappa è pronta per essere utilizzata.
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
+                                                                            .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         TextView titolo = v.findViewById(R.id.showPercorsoTitle);
         titolo.setText(String.format(getResources().getString(R.string.percorso_titolo), dbPercorso.get(codice)==null?"":dbPercorso.get(codice).getNome()));
-        System.out.println(dbPercorso.get(codice)==null?"":dbPercorso.get(codice).getNome());
 
-        WebView webView = v.findViewById(R.id.webview);
-        webView.loadUrl("https://www.mattiawebdesigner.com/sms/svg_test/json_read_svg.php?circleR=10&spaceBetweenItem=60&startY=20&items="+items);
 
         FloatingActionButton updateBtn = v.findViewById(R.id.update);
         FloatingActionButton deleteBtn = v.findViewById(R.id.delete);
@@ -202,18 +239,26 @@ public class CRUDVisualizzaPercorso extends Fragment {
      * @param v
      */
     public void getEliminaPercorso(View v){
-        if(this.dbPercorso.eliminaPercorso(this.codice)){
-            EseguiFragment.changeFragment(()->{
-                Fragment fragment = new CRUDPercorsoEliminatoSuccesso();
-                fragment.setArguments(this.bundle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(getResources().getString(R.string.crud_conferma_elimina_title_percorso))
+                .setMessage(getResources().getString(R.string.crud_conferma_elimina_percorso))
+                .setPositiveButton("Si", (dialog, which) -> {
+                    if(this.dbPercorso.eliminaPercorso(this.codice)){
+                        EseguiFragment.changeFragment(()->{
+                            Fragment fragment = new CRUDPercorsoEliminatoSuccesso();
+                            fragment.setArguments(this.bundle);
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                fragmentTransaction.addToBackStack(null).commit();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                            fragmentTransaction.addToBackStack(null).commit();
 
-            });
-        }
+                        });
+                    }
+                })
+                .setNegativeButton("No", (dialog, which) -> {
+                })
+                .show();
     }
 
     /**
@@ -234,4 +279,344 @@ public class CRUDVisualizzaPercorso extends Fragment {
         });
     }
 
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
+
+        if(this.musei.size()>0) routeMusei();
+
+        mOrigin = mDestination;
+
+        if(this.oggetti.size()>0) routeOggetti();
+
+    }
+
+    private void routeOggetti(){
+        //Aggiungo i percorsi per gli oggetti
+        int i = 0;
+        String nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
+        String capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
+        String siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
+        String indirizzo        = oggetti.get(i).getCodice_citta() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+        mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+        drawRoute();
+
+        Drawable circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
+        BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+        MarkerOptions options = new MarkerOptions();
+        options.position(mOrigin).icon(markerIcon);
+
+        circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
+        markerIcon = getMarkerIconFromDrawable(circleDrawable);
+        options = new MarkerOptions();
+        options.position(mOrigin).icon(markerIcon);
+        //mMap.addMarker(options).setIcon(markerIcon);
+        mMap.addMarker(options);
+
+
+        for(i = 1; i<this.oggetti.size(); i ++){
+
+            nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
+            capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
+            siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
+            indirizzo        = oggetti.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+
+            mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+            options = new MarkerOptions();
+            options.position(mOrigin).icon(markerIcon);
+            mMap.addMarker(options);
+
+            options = new MarkerOptions();
+            options.position(mDestination).icon(markerIcon);
+            mMap.addMarker(options);
+
+            drawRoute();
+
+            mOrigin = mDestination;
+        }
+    }
+
+    /**
+     * Aggiunge i percorsi per i musei
+     */
+    private void routeMusei(){
+        //Aggiungo i percorsi per i musei
+        int i = 0;
+        String nomeCitta        = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+        String capCitta         = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+        String siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+        String indirizzo        = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+
+        mOrigin         = getLocationFromAddress(getContext(), indirizzo);
+
+        try {
+            i++;
+            nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+            capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+            siglaProvincia = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+            indirizzo = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+            mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+            drawRoute();
+        }catch (IndexOutOfBoundsException e){}
+
+
+        Drawable circleDrawable = getResources().getDrawable(R.drawable.museo_marker);
+        BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+        MarkerOptions options = new MarkerOptions();
+        options.position(mOrigin).icon(markerIcon);
+        //mMap.addMarker(options).setIcon(markerIcon);
+        mMap.addMarker(options);
+
+        try {
+            options = new MarkerOptions();
+            options.position(mDestination).icon(markerIcon);
+            mMap.addMarker(options);
+        }catch (IllegalArgumentException e){}
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 20));
+
+
+        for(i = 1; i<this.musei.size(); i ++){
+
+            nomeCitta        = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+            capCitta         = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+            siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+            indirizzo        = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+
+            mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+            options = new MarkerOptions();
+            options.position(mOrigin).icon(markerIcon);
+            mMap.addMarker(options);
+
+            options = new MarkerOptions();
+            options.position(mDestination).icon(markerIcon);
+            mMap.addMarker(options);
+
+            drawRoute();
+
+            mOrigin = mDestination;
+        }
+    }
+
+    /**
+     * Crea un'immagine BitmapDescriptor
+     *
+     * @param drawable
+     * @return
+     */
+    private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+
+            Address location = address.get(0);
+            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
+
+        return p1;
+    }
+
+    private void drawRoute(){
+
+        // Getting URL to the Google Directions API
+        String url = getDirectionsUrl(mOrigin, mDestination);
+
+        DownloadTask downloadTask = new DownloadTask();
+
+        // Start downloading json data from Google Directions API
+        downloadTask.execute(url);
+    }
+
+
+    private String getDirectionsUrl(LatLng origin,LatLng dest){
+
+        // Origin of route
+        String str_origin = "origin="+origin.latitude+","+origin.longitude;
+
+        // Destination of route
+        String str_dest = "destination="+dest.latitude+","+dest.longitude;
+
+        // Key
+        String key = "key=" + getString(R.string.google_maps_key);
+
+        // Building the parameters to the web service
+        String parameters = str_origin+"&"+str_dest+"&"+key;
+
+        // Output format
+        String output = "json";
+
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/"+output+"?"+parameters;
+
+        return url;
+    }
+
+    /** A method to download json data from url */
+    private String downloadUrl(String strUrl) throws IOException {
+        String data = "";
+        InputStream iStream = null;
+        HttpURLConnection urlConnection = null;
+        try{
+            URL url = new URL(strUrl);
+
+            // Creating an http connection to communicate with url
+            urlConnection = (HttpURLConnection) url.openConnection();
+
+            // Connecting to url
+            urlConnection.connect();
+
+            // Reading data from url
+            iStream = urlConnection.getInputStream();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
+
+            StringBuffer sb  = new StringBuffer();
+
+            String line = "";
+            while( ( line = br.readLine())  != null){
+                sb.append(line);
+            }
+
+            data = sb.toString();
+
+            br.close();
+
+        }catch(Exception e){
+            Log.d("Exception on download", e.toString());
+        }finally{
+            iStream.close();
+            urlConnection.disconnect();
+        }
+        return data;
+    }
+
+    /** A class to download data from Google Directions URL */
+    private class DownloadTask extends AsyncTask<String, Void, String> {
+
+        // Downloading data in non-ui thread
+        @Override
+        protected String doInBackground(String... url) {
+
+            // For storing data from web service
+            String data = "";
+
+            try{
+                // Fetching the data from web service
+                data = downloadUrl(url[0]);
+                Log.d("DownloadTask","DownloadTask : " + data);
+            }catch(Exception e){
+                Log.d("Background Task",e.toString());
+            }
+            return data;
+        }
+
+        // Executes in UI thread, after the execution of
+        // doInBackground()
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            ParserTask parserTask = new ParserTask();
+
+            // Invokes the thread for parsing the JSON data
+            parserTask.execute(result);
+        }
+    }
+
+    /** A class to parse the Google Directions in JSON format */
+    private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String,String>>> >{
+
+        // Parsing the data in non-ui thread
+        @Override
+        protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
+
+            JSONObject jObject;
+            List<List<HashMap<String, String>>> routes = null;
+
+            try{
+                jObject = new JSONObject(jsonData[0]);
+                DirectionsJSONParser parser = new DirectionsJSONParser();
+
+                // Starts parsing data
+                routes = parser.parse(jObject);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            return routes;
+        }
+
+        // Executes in UI thread, after the parsing process
+        @Override
+        protected void onPostExecute(List<List<HashMap<String, String>>> result) {
+            ArrayList<LatLng> points = null;
+            PolylineOptions lineOptions = null;
+
+            // Traversing through all the routes
+            for(int i=0;i<result.size();i++){
+                points = new ArrayList<LatLng>();
+                lineOptions = new PolylineOptions();
+
+                // Fetching i-th route
+                List<HashMap<String, String>> path = result.get(i);
+
+                // Fetching all the points in i-th route
+                for(int j=0;j<path.size();j++){
+                    HashMap<String,String> point = path.get(j);
+
+                    double lat = Double.parseDouble(point.get("lat"));
+                    double lng = Double.parseDouble(point.get("lng"));
+                    LatLng position = new LatLng(lat, lng);
+
+                    points.add(position);
+                }
+
+                // Adding all the points in the route to LineOptions
+                int[] color = {
+                        Color.RED,
+                        Color.GREEN,
+                        Color.YELLOW,
+                        Color.BLUE,
+                        Color.MAGENTA,
+                        Color.CYAN,
+                        Color.DKGRAY
+                };
+                Random r = new Random();
+                lineOptions.addAll(points);
+                lineOptions.width(20);
+                lineOptions.color(color[r.nextInt(color.length)]);
+            }
+
+            // Drawing polyline in the Google Map for the i-th route
+            if(lineOptions != null) {
+                mPolyline = mMap.addPolyline(lineOptions);
+
+            }else
+                Toast.makeText(getContext(), "", Toast.LENGTH_LONG).show();
+        }
+    }
 }

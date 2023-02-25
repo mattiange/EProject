@@ -39,7 +39,8 @@ public class DBProvincia extends DbManager{
                     province.add(new Provincia(
                             Integer.parseInt(c.getString(0)),
                             c.getString(1),
-                            Integer.parseInt(c.getString(2))
+                            c.getString(2),
+                            Integer.parseInt(c.getString(3))
                     ));
                 }
 
@@ -50,5 +51,27 @@ public class DBProvincia extends DbManager{
         return province;
     }
 
+    /**
+     * Restituisce la siglia di una provincia
+     *
+     * @param codice Codice della provincia
+     * @return
+     */
+    public String getSiglaProvincia(long codice){
+        String query="SELECT sigla FROM province WHERE codice = "+codice;
+        System.out.println(query);
+        SQLiteDatabase db= helper.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        String provincia = "";
+        if (c.moveToFirst()){
+            do {
+                provincia = c.getString(0);
+            } while(c.moveToNext());
+        }
+        c.close();
+
+        return provincia;
+    }
 
 }

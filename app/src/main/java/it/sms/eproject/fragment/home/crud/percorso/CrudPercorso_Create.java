@@ -101,6 +101,7 @@ public class CrudPercorso_Create extends Fragment {
 
         init();
         getMusei();
+        getOggetti();
 
         return v;
     }
@@ -132,6 +133,112 @@ public class CrudPercorso_Create extends Fragment {
         titolo.setText(titolo.getText().toString().concat(" " +new DBCitta(getContext()).getNomeCitta(this.codice_citta)));
     }
 
+    /**
+     * Restituisce tutti gli oggetti della città
+     */
+    public void getOggetti() {
+        //Popolo la lista con i musei.
+        ArrayList<Oggetto> oggetti = new DBOggetto(getContext()).elencoOggettiByCitta(this.codice_citta);
+
+        if (oggetti == null) return;//blocco se non ci sono musei per questa città
+
+        LinearLayout cl = v.findViewById(R.id.containerMusei);
+
+        int posizione = -1;
+        for (Oggetto o : oggetti) {
+            posizione ++;
+
+            LinearLayout ll = new LinearLayout(getContext());
+            LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            llp.topMargin       = 20;
+            llp.bottomMargin    = 20;
+            ll.setLayoutParams(llp);
+            ll.setOrientation(LinearLayout.VERTICAL);
+            ll.setPadding(50, 50, 50, 50);
+            ll.setId(View.generateViewId());
+            ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+
+            TextView nome = new TextView(getContext());
+            nome.setId(View.generateViewId());
+            nome.setPadding(10, 10, 10, 10);
+            nome.setText(o.getNome());
+            nome.setTextSize(30);
+
+            TextView indirizzo = new TextView(getContext());
+            indirizzo.setId(View.generateViewId());
+            indirizzo.setPadding(10, 10, 10, 10);
+            indirizzo.setText(o.getIndirizzo());
+
+            TextView durata_visita = new TextView(getContext());
+            durata_visita.setId(View.generateViewId());
+            durata_visita.setPadding(10, 10, 10, 10);
+            durata_visita.setText(getResources().getString(R.string.durata_visita) + ": " + String.valueOf(o.getDurataVisita()));
+
+            ll.addView(nome);
+            ll.addView(indirizzo);
+            ll.addView(durata_visita);
+
+            cl.addView(ll);
+
+
+            int finalPosizione = posizione;
+            ll.setOnLongClickListener(v1 -> {
+
+                boolean trovato = false;
+
+                for(Oggetto os : this.oggettiScelti){
+                    if(os.getId() == o.getId()){
+                        trovato = true;
+                    }
+                }
+
+                if(!trovato) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("Aggiungi voce")
+                            .setMessage("Vuoi aggiunger questa voce al percorso?")
+                            .setPositiveButton("Si", (dialog, which) -> {
+                                oggettiScelti.add(o);
+
+                                EditText durataVisistaEt = v.findViewById(R.id.etDurataPercorso);
+
+                                int totale_durata_visita = Integer.parseInt(durataVisistaEt.getText().toString());
+                                totale_durata_visita += oggetti.get(finalPosizione).getDurataVisita();
+                                durataVisistaEt.setText(String.valueOf(totale_durata_visita));
+
+                                ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners_green));
+                            })
+                            .setNegativeButton("No", (dialog, which) -> {
+                            })
+                            .show();
+                }else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("Elimina voce")
+                            .setMessage("Vuoi eliminare questa voce dal percorso?")
+                            .setPositiveButton("Si", (dialog, which) -> {
+                                museiScelti.remove(o);
+
+                                EditText durataVisistaEt = v.findViewById(R.id.etDurataPercorso);
+
+                                int totale_durata_visita = Integer.parseInt(durataVisistaEt.getText().toString());
+                                totale_durata_visita -= oggetti.get(finalPosizione).getDurataVisita();
+                                durataVisistaEt.setText(String.valueOf(totale_durata_visita));
+
+                                ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                            })
+                            .setNegativeButton("No", (dialog, which) -> {
+                            })
+                            .show();
+                }
+
+                return true;
+            });
+
+        }
+    }
+
+    /**
+     * Restituisce tutti i musei della città
+     */
     public void getMusei() {
         //Popolo la lista con i musei.
         ArrayList<Museo> musei = new DBMuseo(getContext()).elencoMuseiByCitta(this.codice_citta);

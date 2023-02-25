@@ -11,7 +11,7 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 public class Museo {
 
     int ID;
-    int citta;
+    long citta;
     int durata_visita;
 
     String nome;
@@ -23,10 +23,10 @@ public class Museo {
 
     byte[] immagine;
 
-    public Museo(String nome, String telefono, String indirizzo, int citta, String email, String sito_web, String orario, byte[] immagine, int durata_visita) {
+    public Museo(String nome, String telefono, String indirizzo, long citta, String email, String sito_web, String orario, byte[] immagine, int durata_visita) {
         this(0, nome, telefono, indirizzo, citta, email, sito_web, orario, immagine, durata_visita);
     }
-    public Museo(int id, String nome, String telefono, String indirizzo, int citta, String email, String sito_web, String orario, byte[] immagine, int durata_visita) {
+    public Museo(int id, String nome, String telefono, String indirizzo, long citta, String email, String sito_web, String orario, byte[] immagine, int durata_visita) {
         this.ID = id;
         this.nome = nome;
         this.telefono = telefono;
@@ -60,7 +60,7 @@ public class Museo {
         return email;
     }
 
-    public int getCitta() {
+    public long getCitta() {
         return citta;
     }
 
@@ -87,7 +87,7 @@ public class Museo {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public void setCitta(int citta) {
+    public void setCitta(long citta) {
         this.citta = citta;
     }
     public void setIndirizzo(String indirizzo) {
