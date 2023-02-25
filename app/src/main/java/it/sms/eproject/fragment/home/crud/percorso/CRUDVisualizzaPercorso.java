@@ -1,5 +1,6 @@
 package it.sms.eproject.fragment.home.crud.percorso;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -238,18 +239,26 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
      * @param v
      */
     public void getEliminaPercorso(View v){
-        if(this.dbPercorso.eliminaPercorso(this.codice)){
-            EseguiFragment.changeFragment(()->{
-                Fragment fragment = new CRUDPercorsoEliminatoSuccesso();
-                fragment.setArguments(this.bundle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(getResources().getString(R.string.crud_conferma_elimina_title_percorso))
+                .setMessage(getResources().getString(R.string.crud_conferma_elimina_percorso))
+                .setPositiveButton("Si", (dialog, which) -> {
+                    if(this.dbPercorso.eliminaPercorso(this.codice)){
+                        EseguiFragment.changeFragment(()->{
+                            Fragment fragment = new CRUDPercorsoEliminatoSuccesso();
+                            fragment.setArguments(this.bundle);
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                fragmentTransaction.addToBackStack(null).commit();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                            fragmentTransaction.addToBackStack(null).commit();
 
-            });
-        }
+                        });
+                    }
+                })
+                .setNegativeButton("No", (dialog, which) -> {
+                })
+                .show();
     }
 
     /**

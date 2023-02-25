@@ -259,6 +259,8 @@
     <string name="crud_txt_descrizione">Descr.</string>
 
     <!-- Percorso -->
+    <string name="crud_conferma_elimina_title_percorso">Elimina percorso</string>
+    <string name="crud_conferma_elimina_percorso">Vuoi eliminare il percorso?</string>
     <string name="crud_manage_percorso">Gestisci i percorsi</string>
     <string name="crud_create_percorso">Nuovo percorso</string>
     <string name="crud_show_percorso">Visualizza tutti i percorsi creati</string>

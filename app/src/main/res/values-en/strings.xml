@@ -256,6 +256,8 @@
     <string name="crud_zona_id">Zone</string>
     <string name="crud_txt_descrizione">Descr.</string>
 
+    <string name="crud_conferma_elimina_title_percorso">Delete path</string>
+    <string name="crud_conferma_elimina_percorso">Do you want to delete the path?</string>
     <string name="crud_manage_percorso">Manage routes</string>
     <string name="crud_create_percorso">New route</string>
     <string name="crud_show_percorso">View all routes created</string>
