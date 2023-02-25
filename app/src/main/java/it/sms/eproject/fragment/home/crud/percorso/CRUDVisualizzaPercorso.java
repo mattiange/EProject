@@ -342,14 +342,17 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
 
         mOrigin         = getLocationFromAddress(getContext(), indirizzo);
 
-        i ++;
-        nomeCitta        = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
-        capCitta         = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
-        siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
-        indirizzo        = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-        mDestination = getLocationFromAddress(getContext(), indirizzo);
+        try {
+            i++;
+            nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+            capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+            siglaProvincia = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+            indirizzo = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+            mDestination = getLocationFromAddress(getContext(), indirizzo);
 
-        drawRoute();
+            drawRoute();
+        }catch (IndexOutOfBoundsException e){}
+
 
         Drawable circleDrawable = getResources().getDrawable(R.drawable.museo_marker);
         BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
@@ -358,9 +361,11 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
         //mMap.addMarker(options).setIcon(markerIcon);
         mMap.addMarker(options);
 
-        options = new MarkerOptions();
-        options.position(mDestination).icon(markerIcon);
-        mMap.addMarker(options);
+        try {
+            options = new MarkerOptions();
+            options.position(mDestination).icon(markerIcon);
+            mMap.addMarker(options);
+        }catch (IllegalArgumentException e){}
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 20));
 
