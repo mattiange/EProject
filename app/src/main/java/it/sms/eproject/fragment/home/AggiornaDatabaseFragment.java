@@ -36,9 +36,6 @@ import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBAggiornamento;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
-import it.sms.eproject.fragment.home.crud.CrudZona;
-import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
-import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
 import it.sms.eproject.util.Connector;
 import it.sms.eproject.util.Link;
 

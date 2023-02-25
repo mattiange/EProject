@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,8 +21,8 @@ import it.sms.eproject.fragment.home.crud.liste.ListaMusei;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudMuseo extends Fragment {
-    private Button btnShowAll;
-    private Button btnCreate;
+    private ConstraintLayout btnShowAll;
+    private ConstraintLayout btnCreate;
 
 
     @Nullable

@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -23,8 +24,8 @@ import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 
 public class CrudOggetto extends Fragment {
 
-    private ImageButton btnShowAll;
-    private ImageButton btnCreate;
+    private ConstraintLayout btnShowAll;
+    private ConstraintLayout btnCreate;
 
 
     @Nullable

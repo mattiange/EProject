@@ -205,12 +205,15 @@
 
     <!-- Oggetti -->
     <string name="delete_oggetto">Delete object</string>
+    <string name="crud_oggetto_create">Create object</string>
+    <string name="crud_oggetto_list">Show all object</string>
     <string name="crud_oggetto_nome_obbligatorio">The object name is required</string>
     <string name="crud_oggetto_update_titolo">Object update</string>
     <string name="delete_oggetto_msq_question">Do you want to delete the selected object?</string>
     <!-- /////////// -->
 
     <string name="crud_create_content_description">Add new item button</string>
+    <string name="crud_manage">Manage all</string>
     <string name="crud_aggiorna">Update</string>
     <string name="crud_cancella">Delete</string>
     <string name="aggiorna_zona_title">Update the area</string>
@@ -281,7 +284,7 @@
     <string name="crud_province_zone">Provinces with active zones</string>
     <string name="crud_regioni_zone">Regions with active zones</string>
     <string name="crud_lista_zone">List of available zones</string>
-    <string name="crud_manage_zona">Gestisci le zone</string>
+    <string name="crud_manage_zona">Manage zones</string>
     <string name="crud_manage_autori">Manage authors</string>
     <string name="crud_create_zona">Create a new zone</string>
     <string name="crud_show_zona">View all zones</string>

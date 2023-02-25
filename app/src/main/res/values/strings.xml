@@ -207,11 +207,14 @@
 
     <!-- Oggetti -->
     <string name="delete_oggetto">Cancella oggetto</string>
+    <string name="crud_oggetto_create">Crea oggetto</string>
+    <string name="crud_oggetto_list">Visualizza gli oggetti</string>
     <string name="crud_oggetto_nome_obbligatorio">Il nome dell\'oggetto è obbligatorio</string>
     <string name="crud_oggetto_update_titolo">Aggiornamento oggetto</string>
     <string name="delete_oggetto_msq_question">Vuoi cancellare l\'oggetto selezionato?</string>
     <!-- /////////// -->
 
+    <string name="crud_manage">Gestisci tutto</string>
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
     <string name="crud_aggiorna">Aggiornamento</string>
     <string name="crud_cancella">Cancella</string>
