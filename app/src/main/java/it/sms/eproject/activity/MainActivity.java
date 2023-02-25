@@ -130,13 +130,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /**
      * Aggiunge il fragment da visualizzare
-     *
-     * TODO: differenziare la visualizzazione in base ai permessi dell'utente loggato
-     *
+     * Visualizza i fragment in base ai permessi dell'utente
      */
     public void addFragment(){
-        //CuratoreHomeFragment fragment = new CuratoreHomeFragment();
-        fragment = new CuratoreHomeFragment();
+        switch (u.getPermesso().getCodice()){
+            case Permesso.CURATORE:
+                fragment = new CuratoreHomeFragment();
+                break;
+            case Permesso.GUIDA:
+                fragment = new CRUDPercorso();
+        }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);

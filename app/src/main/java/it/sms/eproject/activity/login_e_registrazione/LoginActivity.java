@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegistrazioneActivity.class)));
 
         /*SOLO PER TEST (LOGIN DIRETTA)*/
+        //Guida
         email = "m.rossi@gmail.com";
         password = "test";
         Utente u;
