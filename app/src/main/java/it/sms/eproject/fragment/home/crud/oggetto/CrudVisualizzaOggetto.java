@@ -143,7 +143,11 @@ public class CrudVisualizzaOggetto extends Fragment {
         this.anno.setText(String.valueOf(oggetto.getAnno()==0?"":oggetto.getAnno()));
         this.descrizione.setText(oggetto.getDescrizione());
         this.codiceAutore.setText(String.valueOf(oggetto.getAutore()));
-        this.nomeAutore.setText(db.getNomeAutore(oggetto.getAutore()));
+        try {
+            this.nomeAutore.setText(db.getNomeAutore(oggetto.getAutore()));
+        }catch (NullPointerException e){
+            this.nomeAutore.setText("");
+        }
         this.codiceCitta.setText(String.valueOf(oggetto.getCodice_citta()));
         this.nomeCitta.setText(db.getNomeCitta(oggetto.getCodice_citta()));
     }
