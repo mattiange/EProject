@@ -214,11 +214,15 @@
     <string name="delete_oggetto_msq_question">Do you want to delete the selected object?</string>
     <!-- /////////// -->
 
+    <string name="cerca_musei_oggetti">Search for a museum or object</string>
+    <string name="cerca_musei_oggetti_placeholder">Type a museum or object to search for</string>
+    <string name="durata_percorso">Duration of the visit</string>
+    <string name="ore">hours</string>
+
     <string name="crud_create_content_description">Add new item button</string>
     <string name="crud_manage">Manage all</string>
     <string name="crud_aggiorna">Update</string>
     <string name="crud_cancella">Delete</string>
-    <string name="aggiorna_zona_title">Update the area</string>
     <string name="aggiorna_oggetto_title">Update the item</string>
     <string name="oggetto_creato">Object inserted successfully</string>
     <string name="oggetto_problema_creato">Problem inserting subject</string>

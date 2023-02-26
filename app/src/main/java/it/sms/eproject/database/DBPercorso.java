@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -352,5 +353,48 @@ public class DBPercorso extends DbManager{
             return false;
         }
 
+    }
+
+    /**
+     * Restituisce un percorso cercandolo atteaverso il nome di un museo
+     * o di un oggetto
+     *
+     * @param nome Nome del museo o dell'oggetto
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoFromMuseoOrOggetto(String nome){
+        String query = "SELECT p.* " +
+                        "FROM musei as m " +
+                        "INNER JOIN musei_has_percorsi as mhp ON m.codice = mhp.museo_codice " +
+                        "INNER JOIN percorsi as p ON p.codice = mhp.percorso_codice " +
+                        "INNER JOIN oggetti_has_percorsi ohp ON o.codice = ohp.percorso_codice " +
+                        "INNER JOIN oggetti as o ON o.codice = ohp.oggetto_codice " +
+                        "WHERE o.nome LIKE '%"+nome+"%' OR m.nome LIKE '%"+nome+"%' " +
+                        "GROUP BY p.codice";
+        //String query = "SELECT * FROM percorsi";
+
+        //Log.d("Query", query);
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
     }
 }

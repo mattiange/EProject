@@ -28,6 +28,7 @@ import java.time.LocalDate;
 import it.sms.eproject.R;
 import it.sms.eproject.fragment.home.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.home.CuratoreHomeFragment;
+import it.sms.eproject.fragment.home.RicercaMuseiOggettiFragment;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
@@ -202,10 +203,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_manage_percorso:
                 fragment = new CRUDPercorso();
-
                 break;
             case R.id.nav_aggiorna_database:
                 fragment = new AggiornaDatabaseFragment();
+                break;
+            case R.id.nav_cerca:
+                fragment = new RicercaMuseiOggettiFragment();
+                break;
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
