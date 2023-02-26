@@ -195,6 +195,8 @@
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->
+    <string name="crud_autori_create">Crea un nuovo autore</string>
+    <string name="crud_autori_list">Visualizza tutti gli autori</string>
     <string name="delete_autore">Cancella autore</string>
     <string name="delete_autore_msq_question">Vuoi cancellare l\'autore selezionato?</string>
     <string name="crud_autori_codice">Codice autore</string>

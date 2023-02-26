@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
 import it.sms.eproject.annotazioni.AutoreCodice;
@@ -22,8 +23,6 @@ import it.sms.eproject.annotazioni.AutoreCodice;
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CuratoreHomeFragment extends Fragment {
-
-    CallbackFragment callbackFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,9 +59,15 @@ public class CuratoreHomeFragment extends Fragment {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
-    }
 
-    public void setCallbackFragment(CallbackFragment callbackFragment){
-        this.callbackFragment = callbackFragment;
+        //Gestione degli autori
+        ConstraintLayout btnAutori = view.findViewById(R.id.btnGestisciGliAutori);
+        btnAutori.setOnClickListener(e-> {
+            Fragment fragment = new CRUDAutore();
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
     }
 }

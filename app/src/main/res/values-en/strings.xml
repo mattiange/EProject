@@ -193,6 +193,8 @@
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->
+    <string name="crud_autori_create">Create a new author</string>
+    <string name="crud_autori_list">View all authors</string>
     <string name="delete_autore">Clear author</string>
     <string name="delete_autore_msq_question">Do you want to delete the selected author?</string>
     <string name="crud_autori_codice">Author code</string>

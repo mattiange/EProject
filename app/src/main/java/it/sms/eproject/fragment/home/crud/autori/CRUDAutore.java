@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,8 +18,8 @@ import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.fragment.home.crud.liste.ListaAutori;
 
 public class CRUDAutore extends Fragment {
-    private ImageButton btnShowAll;
-    private ImageButton btnCreate;
+    private ConstraintLayout btnShowAll;
+    private ConstraintLayout btnCreate;
 
     CallbackFragment callbackFragment;
 
