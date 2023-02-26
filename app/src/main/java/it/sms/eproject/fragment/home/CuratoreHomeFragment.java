@@ -17,6 +17,7 @@ import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
 import it.sms.eproject.annotazioni.AutoreCodice;
+import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
 
 /**
  * Fragment principale del curatore
@@ -64,6 +65,16 @@ public class CuratoreHomeFragment extends Fragment {
         ConstraintLayout btnAutori = view.findViewById(R.id.btnGestisciGliAutori);
         btnAutori.setOnClickListener(e-> {
             Fragment fragment = new CRUDAutore();
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
+
+        //Gestione degli autori
+        ConstraintLayout btnPercorsi = view.findViewById(R.id.btnGestisciIPercorsi);
+        btnPercorsi.setOnClickListener(e-> {
+            Fragment fragment = new CRUDPercorso();
             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null);

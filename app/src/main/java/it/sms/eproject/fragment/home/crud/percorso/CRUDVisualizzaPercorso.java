@@ -292,114 +292,120 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
     }
 
     private void routeOggetti(){
-        //Aggiungo i percorsi per gli oggetti
-        int i = 0;
-        String nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
-        String capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
-        String siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
-        String indirizzo        = oggetti.get(i).getCodice_citta() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-        mDestination = getLocationFromAddress(getContext(), indirizzo);
-
-        drawRoute();
-
-        Drawable circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
-        BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
-        MarkerOptions options = new MarkerOptions();
-        options.position(mOrigin).icon(markerIcon);
-
-        circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
-        markerIcon = getMarkerIconFromDrawable(circleDrawable);
-        options = new MarkerOptions();
-        options.position(mOrigin).icon(markerIcon);
-        //mMap.addMarker(options).setIcon(markerIcon);
-        mMap.addMarker(options);
-
-
-        for(i = 1; i<this.oggetti.size(); i ++){
-
-            nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
-            capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
-            siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
-            indirizzo        = oggetti.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-
+        try{
+            //Aggiungo i percorsi per gli oggetti
+            int i = 0;
+            String nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
+            String capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
+            String siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
+            String indirizzo        = oggetti.get(i).getCodice_citta() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
             mDestination = getLocationFromAddress(getContext(), indirizzo);
-
-            options = new MarkerOptions();
-            options.position(mOrigin).icon(markerIcon);
-            mMap.addMarker(options);
-
-            options = new MarkerOptions();
-            options.position(mDestination).icon(markerIcon);
-            mMap.addMarker(options);
 
             drawRoute();
 
-            mOrigin = mDestination;
-        }
+            Drawable circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
+            BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+            MarkerOptions options = new MarkerOptions();
+            options.position(mOrigin).icon(markerIcon);
+
+            circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
+            markerIcon = getMarkerIconFromDrawable(circleDrawable);
+            options = new MarkerOptions();
+            options.position(mOrigin).icon(markerIcon);
+            //mMap.addMarker(options).setIcon(markerIcon);
+            mMap.addMarker(options);
+
+
+            for(i = 1; i<this.oggetti.size(); i ++){
+
+                nomeCitta        = new DBCitta(getContext()).getNomeCitta(oggetti.get(i).getCodice_citta());
+                capCitta         = new DBCitta(getContext()).getCap(oggetti.get(i).getCodice_citta());
+                siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(oggetti.get(i).getCodice_citta());
+                indirizzo        = oggetti.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+
+                mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+                options = new MarkerOptions();
+                options.position(mOrigin).icon(markerIcon);
+                mMap.addMarker(options);
+
+                options = new MarkerOptions();
+                options.position(mDestination).icon(markerIcon);
+                mMap.addMarker(options);
+
+                drawRoute();
+
+                mOrigin = mDestination;
+            }
+        }catch (NullPointerException e){}
     }
 
     /**
      * Aggiunge i percorsi per i musei
      */
     private void routeMusei(){
-        //Aggiungo i percorsi per i musei
-        int i = 0;
-        String nomeCitta        = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
-        String capCitta         = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
-        String siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
-        String indirizzo        = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-
-        mOrigin         = getLocationFromAddress(getContext(), indirizzo);
-
         try {
-            i++;
-            nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
-            capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
-            siglaProvincia = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
-            indirizzo = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-            mDestination = getLocationFromAddress(getContext(), indirizzo);
+            //Aggiungo i percorsi per i musei
+            int i = 0;
+            String nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+            String capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+            String siglaProvincia = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+            String indirizzo = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
 
-            drawRoute();
-        }catch (IndexOutOfBoundsException e){}
+            mOrigin = getLocationFromAddress(getContext(), indirizzo);
 
+            try {
+                i++;
+                nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+                capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+                siglaProvincia = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+                indirizzo = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+                mDestination = getLocationFromAddress(getContext(), indirizzo);
 
-        Drawable circleDrawable = getResources().getDrawable(R.drawable.museo_marker);
-        BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
-        MarkerOptions options = new MarkerOptions();
-        options.position(mOrigin).icon(markerIcon);
-        //mMap.addMarker(options).setIcon(markerIcon);
-        mMap.addMarker(options);
-
-        try {
-            options = new MarkerOptions();
-            options.position(mDestination).icon(markerIcon);
-            mMap.addMarker(options);
-        }catch (IllegalArgumentException e){}
-
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 20));
+                drawRoute();
+            } catch (IndexOutOfBoundsException e) {
+            }
 
 
-        for(i = 1; i<this.musei.size(); i ++){
-
-            nomeCitta        = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
-            capCitta         = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
-            siglaProvincia   = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
-            indirizzo        = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
-
-            mDestination = getLocationFromAddress(getContext(), indirizzo);
-
-            options = new MarkerOptions();
+            Drawable circleDrawable = getResources().getDrawable(R.drawable.museo_marker);
+            BitmapDescriptor markerIcon = getMarkerIconFromDrawable(circleDrawable);
+            MarkerOptions options = new MarkerOptions();
             options.position(mOrigin).icon(markerIcon);
+            //mMap.addMarker(options).setIcon(markerIcon);
             mMap.addMarker(options);
 
-            options = new MarkerOptions();
-            options.position(mDestination).icon(markerIcon);
-            mMap.addMarker(options);
+            try {
+                options = new MarkerOptions();
+                options.position(mDestination).icon(markerIcon);
+                mMap.addMarker(options);
+            } catch (IllegalArgumentException e) {
+            }
 
-            drawRoute();
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 20));
 
-            mOrigin = mDestination;
-        }
+
+            for (i = 1; i < this.musei.size(); i++) {
+
+                nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
+                capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
+                siglaProvincia = new DBCitta(getContext()).getSiglaProvincia(musei.get(i).getCitta());
+                indirizzo = musei.get(i).getIndirizzo() + ", " + capCitta + " " + nomeCitta + " " + siglaProvincia;
+
+                mDestination = getLocationFromAddress(getContext(), indirizzo);
+
+                options = new MarkerOptions();
+                options.position(mOrigin).icon(markerIcon);
+                mMap.addMarker(options);
+
+                options = new MarkerOptions();
+                options.position(mDestination).icon(markerIcon);
+                mMap.addMarker(options);
+
+                drawRoute();
+
+                mOrigin = mDestination;
+            }
+        }catch (NullPointerException e){}
     }
 
     /**
