@@ -60,7 +60,9 @@ public class LoginActivity extends AppCompatActivity {
 
         /*SOLO PER TEST (LOGIN DIRETTA)*/
         //Guida
-        email = "m.rossi@gmail.com";
+        //email = "m.rossi@gmail.com";//guida
+        email = "m.angelillo@gmail.com";//curatore
+
         password = "test";
         Utente u;
         if((u = new DbManager(this).login(email, password)) != null){

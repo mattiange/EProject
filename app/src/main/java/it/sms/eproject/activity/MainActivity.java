@@ -28,17 +28,15 @@ import java.time.LocalDate;
 import it.sms.eproject.R;
 import it.sms.eproject.fragment.home.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.home.CuratoreHomeFragment;
+import it.sms.eproject.fragment.home.RicercaMuseiOggettiFragment;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
-import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
-import it.sms.eproject.fragment.home.crud.CrudZona;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
-import it.sms.eproject.fragment.home.crud.percorso.CrudPercorso_Create;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -76,18 +74,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         nv = findViewById(R.id.nav_view);
-        /*if(u.getPermesso().getCodice() == Permesso.CURATORE) {
-            nv.inflateMenu(R.menu.activity_backend_drawer);
-        }else if (u.getPermesso().getCodice() == Permesso.GUIDA){
-            nv.inflateMenu(R.menu.activity_backend_drawer_guida);
-        }else{
-            nv.inflateMenu(R.menu.activity_main_drawer);
-        }*/
-        //usato per test curatore
-        //nv.inflateMenu(R.menu.activity_backend_drawer);
-
-        //usato per il test della guida
-        nv.inflateMenu(R.menu.activity_backend_drawer_guida);
+        switch (u.getPermesso().getCodice()){
+            case Permesso.CURATORE:
+                nv.inflateMenu(R.menu.activity_backend_drawer);
+                break;
+            case Permesso.GUIDA:
+                nv.inflateMenu(R.menu.activity_backend_drawer_guida);
+                break;
+            default:
+                nv.inflateMenu(R.menu.activity_main_drawer);
+        }
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -139,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case Permesso.GUIDA:
                 fragment = new CRUDPercorso();
+                break;
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -189,9 +186,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_manage_museo:
                 fragment = new CrudMuseo();
                 break;
-            case R.id.nav_manage_zona:
-                fragment = new CrudZona();
-                break;
             case R.id.nav_manage_oggetto:
                 fragment = new CrudOggetto();
                 break;
@@ -209,10 +203,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_manage_percorso:
                 fragment = new CRUDPercorso();
-
                 break;
             case R.id.nav_aggiorna_database:
                 fragment = new AggiornaDatabaseFragment();
+                break;
+            case R.id.nav_cerca:
+                fragment = new RicercaMuseiOggettiFragment();
+                break;
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();

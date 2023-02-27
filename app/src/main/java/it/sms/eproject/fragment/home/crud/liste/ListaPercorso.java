@@ -80,7 +80,7 @@ public class ListaPercorso extends Fragment {
         this.bundle = new Bundle();
 
         //Torno indietro nella gestione dei percorsi
-        requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+        /*requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 if(backpressedlistener) {
@@ -95,7 +95,7 @@ public class ListaPercorso extends Fragment {
                     getActivity().getSupportFragmentManager().popBackStack();
                 }
             }
-        });
+        });*/
 
         return v;
     }

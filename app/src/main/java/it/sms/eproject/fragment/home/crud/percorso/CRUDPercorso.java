@@ -39,11 +39,11 @@ public class CRUDPercorso extends Fragment {
         btnShow.setOnClickListener(this::visualizzaPercorsi);
 
         //Evito che torni indietro in precedenti fragment
-        requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+       /*requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
             }
-        });
+        });*/
 
         return v;
     }

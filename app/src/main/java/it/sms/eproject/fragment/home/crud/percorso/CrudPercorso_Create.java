@@ -39,7 +39,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.sms.eproject.R;
-import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Percorso;
@@ -47,9 +46,6 @@ import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.database.DBPercorso;
-import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
-import it.sms.eproject.util.EseguiFragment;
-import it.sms.eproject.util.OnSwipeTouchListener;
 
 public class CrudPercorso_Create extends Fragment {
 

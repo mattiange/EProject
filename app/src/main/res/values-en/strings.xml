@@ -193,6 +193,8 @@
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->
+    <string name="crud_autori_create">Create a new author</string>
+    <string name="crud_autori_list">View all authors</string>
     <string name="delete_autore">Clear author</string>
     <string name="delete_autore_msq_question">Do you want to delete the selected author?</string>
     <string name="crud_autori_codice">Author code</string>
@@ -205,15 +207,22 @@
 
     <!-- Oggetti -->
     <string name="delete_oggetto">Delete object</string>
+    <string name="crud_oggetto_create">Create object</string>
+    <string name="crud_oggetto_list">Show all object</string>
     <string name="crud_oggetto_nome_obbligatorio">The object name is required</string>
     <string name="crud_oggetto_update_titolo">Object update</string>
     <string name="delete_oggetto_msq_question">Do you want to delete the selected object?</string>
     <!-- /////////// -->
 
+    <string name="cerca_musei_oggetti">Search for a museum or object</string>
+    <string name="cerca_musei_oggetti_placeholder">Type a museum or object to search for</string>
+    <string name="durata_percorso">Duration of the visit</string>
+    <string name="ore">hours</string>
+
     <string name="crud_create_content_description">Add new item button</string>
+    <string name="crud_manage">Manage all</string>
     <string name="crud_aggiorna">Update</string>
     <string name="crud_cancella">Delete</string>
-    <string name="aggiorna_zona_title">Update the area</string>
     <string name="aggiorna_oggetto_title">Update the item</string>
     <string name="oggetto_creato">Object inserted successfully</string>
     <string name="oggetto_problema_creato">Problem inserting subject</string>
@@ -281,7 +290,7 @@
     <string name="crud_province_zone">Provinces with active zones</string>
     <string name="crud_regioni_zone">Regions with active zones</string>
     <string name="crud_lista_zone">List of available zones</string>
-    <string name="crud_manage_zona">Gestisci le zone</string>
+    <string name="crud_manage_zona">Manage zones</string>
     <string name="crud_manage_autori">Manage authors</string>
     <string name="crud_create_zona">Create a new zone</string>
     <string name="crud_show_zona">View all zones</string>

@@ -61,7 +61,7 @@ public class DBMuseo extends DbManager{
      * @param codice Codice del museo da cercare
      * @return Museo trovato o null se non ci sono musei con quel codice
      */
-    public Museo getMuseo(int codice){
+    public Museo getMuseo(long codice){
         String query="SELECT * FROM musei WHERE codice = " + codice;
         SQLiteDatabase db= helper.getReadableDatabase();
 

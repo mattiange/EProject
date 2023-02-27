@@ -1,6 +1,8 @@
 package it.sms.eproject.fragment.home;
 
 import android.os.Bundle;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -11,18 +13,17 @@ import android.widget.ImageButton;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
-import it.sms.eproject.fragment.home.crud.CrudZona;
 import it.sms.eproject.annotazioni.AutoreCodice;
+import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
 
 /**
  * Fragment principale del curatore
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CuratoreHomeFragment extends Fragment {
-
-    CallbackFragment callbackFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +42,7 @@ public class CuratoreHomeFragment extends Fragment {
      */
     public void aggiuntaEventiClickBottoni(View view){
         //Gestione dei musei
-        ImageButton btnMusei = view.findViewById(R.id.btnGestisciMusei);
+        ConstraintLayout btnMusei = view.findViewById(R.id.btnGestisciMusei);
         btnMusei.setOnClickListener(e-> {
             Fragment fragment = new CrudMuseo();
             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -50,18 +51,8 @@ public class CuratoreHomeFragment extends Fragment {
             fragmentTransaction.commit();
         });
 
-        //Gestione delle zone
-        ImageButton btnZone = view.findViewById(R.id.btnGestisciZone);
-        btnZone.setOnClickListener(e-> {
-            Fragment fragment = new CrudZona();
-            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        });
-
         //Gestione degli oggetti
-        ImageButton btnOggetti = view.findViewById(R.id.btnGestisciGliOggetti);
+        ConstraintLayout btnOggetti = view.findViewById(R.id.btnGestisciGliOggetti);
         btnOggetti.setOnClickListener(e-> {
             Fragment fragment = new CrudOggetto();
             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -69,9 +60,25 @@ public class CuratoreHomeFragment extends Fragment {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
-    }
 
-    public void setCallbackFragment(CallbackFragment callbackFragment){
-        this.callbackFragment = callbackFragment;
+        //Gestione degli autori
+        ConstraintLayout btnAutori = view.findViewById(R.id.btnGestisciGliAutori);
+        btnAutori.setOnClickListener(e-> {
+            Fragment fragment = new CRUDAutore();
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
+
+        //Gestione degli autori
+        ConstraintLayout btnPercorsi = view.findViewById(R.id.btnGestisciIPercorsi);
+        btnPercorsi.setOnClickListener(e-> {
+            Fragment fragment = new CRUDPercorso();
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
     }
 }
