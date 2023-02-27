@@ -33,7 +33,6 @@
             android:layout_marginRight="4dp"
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
-            android:text="PROVA"
             android:textColor="#ff000000"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -47,7 +46,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:gravity="center_horizontal"
-        android:text="@string/crud_manage_percorso"
         android:textColor="#ff000000"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"

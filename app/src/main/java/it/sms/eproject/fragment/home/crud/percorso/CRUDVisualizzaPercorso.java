@@ -494,15 +494,6 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
 
             dialog.show();
         }
-
-        /*@NonNull
-        @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle(titolo);
-
-            return builder.create();
-        }*/
     }
 
     /**
