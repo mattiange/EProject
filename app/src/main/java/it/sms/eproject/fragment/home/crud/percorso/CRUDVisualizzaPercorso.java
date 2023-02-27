@@ -1,6 +1,5 @@
 package it.sms.eproject.fragment.home.crud.percorso;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,14 +18,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -54,7 +51,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 import it.sms.eproject.R;
@@ -316,12 +312,15 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
             MarkerOptions options = new MarkerOptions();
             options.position(mOrigin).icon(markerIcon);
 
+
             circleDrawable = getResources().getDrawable(R.drawable.object_marjer);
             markerIcon = getMarkerIconFromDrawable(circleDrawable);
             options = new MarkerOptions();
             options.position(mOrigin).icon(markerIcon);
             //mMap.addMarker(options).setIcon(markerIcon);
-            mMap.addMarker(options).setTag("O"+oggetti.get(i).getId());
+            try {
+                mMap.addMarker(options).setTag("O" + oggetti.get(i).getId());
+            }catch (IndexOutOfBoundsException e){}
 
 
             for(i = 1; i<this.oggetti.size(); i ++){
@@ -345,6 +344,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
 
                 mOrigin = mDestination;
             }
+
         }catch (NullPointerException e){}
     }
 
@@ -363,6 +363,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
             mOrigin = getLocationFromAddress(getContext(), indirizzo);
 
             try {
+
                 i++;
                 nomeCitta = new DBCitta(getContext()).getNomeCitta(musei.get(i).getCitta());
                 capCitta = new DBCitta(getContext()).getCap(musei.get(i).getCitta());
@@ -371,8 +372,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
                 mDestination = getLocationFromAddress(getContext(), indirizzo);
 
                 drawRoute();
-            } catch (IndexOutOfBoundsException e) {
-            }
+            } catch (IndexOutOfBoundsException e) {}
 
 
             Drawable circleDrawable = getResources().getDrawable(R.drawable.museo_marker);
@@ -380,7 +380,9 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
             MarkerOptions options = new MarkerOptions();
             options.position(mOrigin).icon(markerIcon);
             //mMap.addMarker(options).setIcon(markerIcon);
-            mMap.addMarker(options).setTag("M"+musei.get(i).getID());
+            try {
+                mMap.addMarker(options).setTag("M" + musei.get(i).getID());
+            }catch (IndexOutOfBoundsException e){}
 
 
             try {
