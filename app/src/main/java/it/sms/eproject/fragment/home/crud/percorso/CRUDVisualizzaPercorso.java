@@ -1,6 +1,8 @@
 package it.sms.eproject.fragment.home.crud.percorso;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -16,12 +18,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -49,6 +54,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import it.sms.eproject.R;
@@ -56,6 +62,8 @@ import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBCitta;
+import it.sms.eproject.database.DBMuseo;
+import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.home.crud.liste.ListaPercorso;
 import it.sms.eproject.maps.DirectionsJSONParser;
@@ -313,7 +321,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
             options = new MarkerOptions();
             options.position(mOrigin).icon(markerIcon);
             //mMap.addMarker(options).setIcon(markerIcon);
-            mMap.addMarker(options);
+            mMap.addMarker(options).setTag("O"+oggetti.get(i).getId());
 
 
             for(i = 1; i<this.oggetti.size(); i ++){
@@ -327,11 +335,11 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
 
                 options = new MarkerOptions();
                 options.position(mOrigin).icon(markerIcon);
-                mMap.addMarker(options);
+                mMap.addMarker(options).setTag("O"+oggetti.get(i).getId());
 
                 options = new MarkerOptions();
                 options.position(mDestination).icon(markerIcon);
-                mMap.addMarker(options);
+                mMap.addMarker(options).setTag("O"+oggetti.get(i).getId());
 
                 drawRoute();
 
@@ -372,12 +380,13 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
             MarkerOptions options = new MarkerOptions();
             options.position(mOrigin).icon(markerIcon);
             //mMap.addMarker(options).setIcon(markerIcon);
-            mMap.addMarker(options);
+            mMap.addMarker(options).setTag("M"+musei.get(i).getID());
+
 
             try {
                 options = new MarkerOptions();
                 options.position(mDestination).icon(markerIcon);
-                mMap.addMarker(options);
+                mMap.addMarker(options).setTag("M"+musei.get(i).getID());
             } catch (IllegalArgumentException e) {
             }
 
@@ -395,17 +404,105 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
 
                 options = new MarkerOptions();
                 options.position(mOrigin).icon(markerIcon);
-                mMap.addMarker(options);
+                mMap.addMarker(options).setTag("M"+musei.get(i).getID());
 
                 options = new MarkerOptions();
                 options.position(mDestination).icon(markerIcon);
-                mMap.addMarker(options);
+                mMap.addMarker(options).setTag("M"+musei.get(i).getID());
 
                 drawRoute();
 
                 mOrigin = mDestination;
             }
+
+            mMap.setOnMarkerClickListener(e->{
+
+                getMarkerInfo(e.getTag());
+
+                return true;
+            });
         }catch (NullPointerException e){}
+    }
+
+    /**
+     * Visualizza le informazioni in
+     * base al marker cliccato
+     *
+     * @param tag
+     */
+    private void getMarkerInfo(Object tag){
+        String t = (String)tag;
+        long id = Long.valueOf(t.substring(1));
+        String type = t.substring(0, 1);
+
+        Log.d("TAG Marker", t);
+
+        if(type.equals("M")){
+            getMarkerInfoMuseo(id);
+        }else{
+            getMarkerInfoOggetto(id);
+        }
+
+
+    }
+
+    /**
+     * Restituisce le informazioni sul museo selezionato
+     * @param id
+     */
+    private void getMarkerInfoMuseo(long id){
+        Museo m = new DBMuseo(getContext()).getMuseo(id);
+
+        DialogInfo info = new DialogInfo(m.getNome(), m.getIndirizzo());
+        info.show();
+    }
+
+    /**
+     * Restituisce le informazioni sull'oggetto selezionato
+     * @param id
+     */
+    private void getMarkerInfoOggetto(long id){
+        Oggetto m = new DBOggetto(getContext()).getOggetto(id);
+
+        DialogInfo info = new DialogInfo(m.getNome(), m.getIndirizzo());
+        info.show();
+    }
+
+    /**
+     * Visualizza il Dialog con le informazioni
+     * del luogo selezionato
+     */
+    private class DialogInfo{
+        String titolo;
+        String indirizzo;
+
+        public DialogInfo(String titolo, String indirizzo){
+            this.titolo     = titolo;
+            this.indirizzo  = indirizzo;
+        }
+
+        public void show(){
+            final Dialog dialog = new Dialog(getActivity());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_marker);
+
+            TextView title = dialog.findViewById(R.id.title_dialog);
+            TextView indirizzo = dialog.findViewById(R.id.address_dialog);
+            title.setText(this.titolo);
+            indirizzo.setText(this.indirizzo);
+
+            dialog.show();
+        }
+
+        /*@NonNull
+        @Override
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(titolo);
+
+            return builder.create();
+        }*/
     }
 
     /**

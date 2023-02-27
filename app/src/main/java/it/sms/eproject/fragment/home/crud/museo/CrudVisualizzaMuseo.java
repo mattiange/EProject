@@ -154,7 +154,7 @@ public class CrudVisualizzaMuseo extends Fragment {
         DBMuseo db = new DBMuseo(getContext());
         DBCitta dbCitta = new DBCitta(getContext());
 
-        Museo museo = db.getMuseo(Integer.parseInt(getArguments().getString("codice_museo")));
+        Museo museo = db.getMuseo(Long.parseLong(getArguments().getString("codice_museo")));
 
         this.codice.setText(String.valueOf(museo.getID()));
         this.nome.setText(museo.getNome());

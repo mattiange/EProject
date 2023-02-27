@@ -125,7 +125,7 @@ public class DBPercorso extends DbManager{
 
         if (c.moveToFirst()){
             do {
-                po.add(new DBOggetto(this.c).getOggetto(c.getInt(0)));
+                po.add(new DBOggetto(this.c).getOggetto(c.getLong(0)));
             } while(c.moveToNext());
         }
 
@@ -140,7 +140,7 @@ public class DBPercorso extends DbManager{
 
         if (c.moveToFirst()){
             do {
-                pm.add(new DBMuseo(this.c).getMuseo(c.getInt(0)));
+                pm.add(new DBMuseo(this.c).getMuseo(c.getLong(0)));
             } while(c.moveToNext());
         }
 

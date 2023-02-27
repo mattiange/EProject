@@ -114,7 +114,7 @@ public class CrudVisualizzaOggetto extends Fragment {
     @AutoreCodice(autore = "Mattia Leonardo Angelillo")
     public void init(View v, LayoutInflater inflater){
         db = new DBOggetto(getContext());
-        oggetto = db.getOggetto(Integer.parseInt(getArguments().getString("codice_oggetto")));
+        oggetto = db.getOggetto(Long.parseLong(getArguments().getString("codice_oggetto")));
 
         ((TextView)v.findViewById(R.id.autoreValue)).setOnClickListener(e->getDialogAutori(v, inflater));
 
