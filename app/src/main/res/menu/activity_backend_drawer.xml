@@ -27,6 +27,11 @@
                     android:id="@+id/nav_manage_autori"
                     android:icon="@drawable/users"
                     android:title="@string/crud_manage_autori"/>
+                
+                <item
+                    android:id="@+id/nav_manage_percorso"
+                    android:icon="@drawable/route"
+                    android:title="@string/crud_manage_percorso"/>
 
                 <item
                     android:id="@+id/nav_cerca"
