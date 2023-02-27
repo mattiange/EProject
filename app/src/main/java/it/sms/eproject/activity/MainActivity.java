@@ -37,6 +37,7 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
+import it.sms.eproject.fragment.home.utente.UtenteHomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -135,6 +136,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case Permesso.GUIDA:
                 fragment = new CRUDPercorso();
+                break;
+            default://utente semplice
+                fragment = new UtenteHomeFragment();
                 break;
         }
         fragmentManager = getSupportFragmentManager();

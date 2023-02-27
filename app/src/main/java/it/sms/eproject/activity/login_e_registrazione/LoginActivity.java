@@ -59,9 +59,9 @@ public class LoginActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegistrazioneActivity.class)));
 
         /*SOLO PER TEST (LOGIN DIRETTA)*/
-        //Guida
         //email = "m.rossi@gmail.com";//guida
-        email = "m.angelillo@gmail.com";//curatore
+        //email = "m.angelillo@gmail.com";//curatore
+        email = "a.manzoni@gmail.com";//utente semplice
 
         password = "test";
         Utente u;
