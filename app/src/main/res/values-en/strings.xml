@@ -214,6 +214,11 @@
     <string name="delete_oggetto_msq_question">Do you want to delete the selected object?</string>
     <!-- /////////// -->
 
+    <!-- TAB -->
+    <string name="tab_i_miei_percorsi">My routes</string>
+    <string name="tab_altri_percorsi">Other routes</string>
+    <!-- ////////////// -->
+
     <string name="cerca_musei_oggetti">Search for a museum or object</string>
     <string name="cerca_musei_oggetti_placeholder">Type a museum or object to search for</string>
     <string name="durata_percorso">Duration of the visit</string>

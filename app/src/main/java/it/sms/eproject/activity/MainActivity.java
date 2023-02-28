@@ -19,25 +19,24 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
-import it.sms.eproject.fragment.home.AggiornaDatabaseFragment;
-import it.sms.eproject.fragment.home.CuratoreHomeFragment;
-import it.sms.eproject.fragment.home.RicercaMuseiOggettiFragment;
-import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
-import it.sms.eproject.fragment.home.crud.liste.ListaStati;
-import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
-import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
+import it.sms.eproject.fragment.backend.AggiornaDatabaseFragment;
+import it.sms.eproject.fragment.backend.CuratoreHomeFragment;
+import it.sms.eproject.fragment.backend.RicercaMuseiOggettiFragment;
+import it.sms.eproject.fragment.backend.crud.autori.CRUDAutore;
+import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
+import it.sms.eproject.fragment.backend.crud.museo.CrudMuseo;
+import it.sms.eproject.fragment.backend.crud.oggetto.CrudOggetto;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
-import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
-import it.sms.eproject.fragment.home.utente.UtenteHomeFragment;
+import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
+import it.sms.eproject.fragment.backend.utente.UtenteHomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
