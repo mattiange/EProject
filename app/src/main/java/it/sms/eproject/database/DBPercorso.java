@@ -397,4 +397,194 @@ public class DBPercorso extends DbManager{
 
         return null;
     }
+
+    /**
+     * Restituisce tutti i percorsi creati da una guida
+     * o da un curatore
+     *
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByGuidaOrCuratore(){
+        /*String query = "SELECT * " +
+                "FROM (" +
+                        "SELECT * " +
+                        "FROM percorsi " +
+                        "WHERE percorsi.codice_utente IN ( " +
+                                                            "SELECT utenti.codice " +
+                                                            "FROM utenti, permesso_has_utente, permessi " +
+                                                            "WHERE utenti.codice=permesso_has_utente.codice_utente " +
+                                                                    "AND permessi.codice=permesso_has_utente.codice_permesso " +
+                                                                    "AND permessi.codice IN (1, 2)" +
+                                                        ") " +
+                    ") pgc, " +
+                "musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi " +
+                "WHERE ((musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice) " +
+                        "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice)) " +
+                        "AND (pgc.codice =  musei_has_percorsi.percorso_codice AND pgc.codice = oggetti_has_percorsi.percorso_codice)" +
+                "GROUP BY pgc.codice";*/
+        String query = "SELECT * FROM percorsi WHERE percorsi.codice_utente IN ( SELECT utenti.codice FROM utenti, permesso_has_utente, permessi WHERE utenti.codice=permesso_has_utente.codice_utente AND permessi.codice=permesso_has_utente.codice_permesso AND permessi.codice IN (1, 2)) ";
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Log.d("QUERY", query);
+
+        Cursor c = db.rawQuery(query, null);
+        Log.d("COUNT_CURSOR", String.valueOf(c.getCount()));
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
+
+    /**
+     * Restituisce tutti i percorsi creati da una guida
+     * o da un curatore
+     *
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByGuidaOrCuratore(String cerca){
+        String query = "SELECT * " +
+                "FROM (" +
+                        "SELECT * " +
+                        "FROM percorsi " +
+                        "WHERE percorsi.codice_utente IN ( " +
+                                                        "SELECT utenti.codice " +
+                                                        "FROM utenti, permesso_has_utente, permessi " +
+                                                        "WHERE utenti.codice=permesso_has_utente.codice_utente " +
+                                                                "AND permessi.codice=permesso_has_utente.codice_permesso " +
+                                                                "AND permessi.codice IN (1, 2)" +
+                                                        ") " +
+                ") pgc, " +
+                "musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi, citta " +
+                "WHERE (" +
+                            "(" +
+                                "(musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice AND musei.nome LIKE \"%"+cerca+"%\") " +
+                                "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice AND oggetti.Nome LIKE \"%"+cerca+"%\") " +
+                                " OR (citta.nome LIKE \"%"+cerca+"%\" AND citta.codice = pgc.codice_citta ) " +
+                                ") " +
+                            " AND (pgc.codice =  musei_has_percorsi.percorso_codice AND pgc.codice = oggetti_has_percorsi.percorso_codice) " +
+                        ") " +
+                        " OR (pgc.nome LIKE \"%" + cerca + "%\") " +
+                "GROUP BY pgc.codice";
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        Log.d("QUERY_CERCA", query);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                Percorso p = new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                );
+                arr.add(p);
+            } while(c.moveToNext());
+
+            return arr;
+        }
+        return null;
+    }
+
+    /**
+     * Restituisce tutti i percorsi creati dall'utente
+     *
+     * @param codice Codice dell'utente
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByUtente(long codice){
+        String query = "SELECT * " +
+                "FROM (SELECT * FROM percorsi WHERE percorsi.codice_utente = " + codice + " ) pgc, " +
+                "musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi, citta " +
+                "WHERE (musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice) " +
+                        "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice) " +
+                "GROUP BY pgc.codice;";
+
+        Log.d("QUERY", query);
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
+
+
+    /**
+     * Restituisce tutti i percorsi creati dall'utente
+     *
+     * @param codice Codice dell'utente
+     * @param cerca Stringa da cercare
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByUtente(long codice, String cerca){
+        String query = "SELECT * " +
+                "FROM (SELECT * FROM percorsi WHERE percorsi.codice_utente = " + codice + " ) pgc, " +
+                        " musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi, citta " +
+                "WHERE (musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice AND musei.nome LIKE \"%" + cerca + "%\") " +
+                        "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice AND oggetti.Nome LIKE \"%" + cerca + "%\") " +
+                        "OR (citta.nome LIKE \"%" + cerca + "%\" AND citta.codice = pgc.codice_citta ) " +
+                        "OR (pgc.nome LIKE \"%" + cerca + "%\") " +
+                "GROUP BY pgc.codice";
+
+        Log.d("QUERY", query);
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
 }
