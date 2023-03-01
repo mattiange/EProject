@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,6 +35,7 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Percorso;
 import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBPercorso;
+import it.sms.eproject.database.DBValutazione;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDVisualizzaPercorso;
 import it.sms.eproject.util.EseguiFragment;
@@ -163,7 +164,7 @@ public class ListaPercorsiFragment extends Fragment {
 
             final LinearLayout llc = view.findViewById(R.id.ll_my_percorsi_route);
 
-            if(percorsi[0].size()>0) {
+            if(percorsi[0] != null && percorsi[0].size()>0) {
                 createItems(llc, percorsi[0]);
             }
 
@@ -208,7 +209,7 @@ public class ListaPercorsiFragment extends Fragment {
 
             final LinearLayout llPercorsi = view.findViewById(R.id.llPercorsi);
 
-            if(percorsi[0].size()>0) {
+            if(percorsi[0] != null && percorsi[0].size()>0) {
                 createItems(llPercorsi, percorsi[0]);
             }
 
@@ -225,7 +226,7 @@ public class ListaPercorsiFragment extends Fragment {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    Toast.makeText(getContext(), s.toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), s.toString(), Toast.LENGTH_SHORT).show();
                     percorsi[0] = new DBPercorso(mContext).getPercorsoByGuidaOrCuratore(s.toString());
 
                     llPercorsi.removeAllViews();
@@ -277,6 +278,35 @@ public class ListaPercorsiFragment extends Fragment {
                         new DBCitta(mContext).getNomeCitta(p.getCodice_citta())
                         + " (" + new DBCitta(mContext).getSiglaProvincia(p.getCodice_citta()) + ")");
 
+
+                LinearLayout l_rating = new LinearLayout(getContext());
+                l_rating.setId(View.generateViewId());
+                l_rating.setOrientation(LinearLayout.HORIZONTAL);
+
+                RatingBar rating = new RatingBar(getContext());
+                LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                rlp.leftMargin = 0;
+                rating.setLayoutParams(rlp);
+                rating.setId(View.generateViewId());
+                rating.setNumStars(0);
+                rating.setRating(new DBValutazione(getContext()).calcolaMediaValutazionePercorso(p.getID()));//imposto la media delle votazioni
+                rating.setOnRatingBarChangeListener((ratingBar, rating1, fromUser)->{
+                    SharedPreferences preferences = getActivity().getSharedPreferences("credenziali", Context.MODE_PRIVATE);
+                    final long user_id = Long.valueOf(preferences.getString("user_id", "-1"));
+
+                    new DBValutazione(getContext()).inserisciValutazionePercorso(user_id, rating1, p.getID());
+                });
+
+                /*
+                TextView tv_media_rating = new TextView(getContext());
+                tv_media_rating.setId(View.generateViewId());
+                tv_media_rating.setText("("+new DBValutazione(getContext()).calcolaMediaValutazionePercorso(p.getID())+")");
+                 */
+
+                l_rating.addView(rating);
+                //l_rating.addView(tv_media_rating);
+
+
                 LinearLayout ll = new LinearLayout(mContext);
                 LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 llp.leftMargin = llp.rightMargin = llp.topMargin = llp.bottomMargin = 20;
@@ -289,6 +319,7 @@ public class ListaPercorsiFragment extends Fragment {
                 ll.addView(nomePercorso);
                 ll.addView(tvDurata);
                 ll.addView(tvCitta);
+                ll.addView(l_rating);
 
                 llc.addView(ll);
 
