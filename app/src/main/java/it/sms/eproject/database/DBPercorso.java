@@ -405,16 +405,31 @@ public class DBPercorso extends DbManager{
      * @return Percorsi trovati, null altrimenti
      */
     public ArrayList<Percorso> getPercorsoByGuidaOrCuratore(){
-        String query = "SELECT pc.* " +
-                "FROM utenti as u " +
-                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
-                "INNER JOIN permessi p ON p.codice = phu.codice_permesso AND (p.codice = 2 OR p.codice = 1) " +  /* guida o curatore */
-                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
-                "GROUP BY pc.codice ";
+        /*String query = "SELECT * " +
+                "FROM (" +
+                        "SELECT * " +
+                        "FROM percorsi " +
+                        "WHERE percorsi.codice_utente IN ( " +
+                                                            "SELECT utenti.codice " +
+                                                            "FROM utenti, permesso_has_utente, permessi " +
+                                                            "WHERE utenti.codice=permesso_has_utente.codice_utente " +
+                                                                    "AND permessi.codice=permesso_has_utente.codice_permesso " +
+                                                                    "AND permessi.codice IN (1, 2)" +
+                                                        ") " +
+                    ") pgc, " +
+                "musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi " +
+                "WHERE ((musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice) " +
+                        "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice)) " +
+                        "AND (pgc.codice =  musei_has_percorsi.percorso_codice AND pgc.codice = oggetti_has_percorsi.percorso_codice)" +
+                "GROUP BY pgc.codice";*/
+        String query = "SELECT * FROM percorsi WHERE percorsi.codice_utente IN ( SELECT utenti.codice FROM utenti, permesso_has_utente, permessi WHERE utenti.codice=permesso_has_utente.codice_utente AND permessi.codice=permesso_has_utente.codice_permesso AND permessi.codice IN (1, 2)) ";
 
         SQLiteDatabase db= helper.getReadableDatabase();
 
+        Log.d("QUERY", query);
+
         Cursor c = db.rawQuery(query, null);
+        Log.d("COUNT_CURSOR", String.valueOf(c.getCount()));
 
         ArrayList<Percorso> arr = new ArrayList<>();
         if (c.moveToFirst()){
@@ -442,41 +457,52 @@ public class DBPercorso extends DbManager{
      * @return Percorsi trovati, null altrimenti
      */
     public ArrayList<Percorso> getPercorsoByGuidaOrCuratore(String cerca){
-        String query = "SELECT pc.* " +
-                "FROM utenti as u " +
-                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
-                "INNER JOIN permessi p ON p.codice = phu.codice_permesso AND (p.codice = 2 OR p.codice = 1) " +  /* guida o curatore */
-                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
-                "INNER JOIN musei_has_percorsi mhp ON mhp.museo_codice = pc.codice " +
-                "INNER JOIN musei as m ON m.codice = mhp.museo_codice " +
-                "INNER JOIN oggetti_has_percorsi ohp ON ohp.oggetto_codice = pc.codice " +
-                "INNER JOIN oggetti as o ON o.codice = ohp.oggetto_codice " +
-                "WHERE o.nome LIKE '%"+cerca+"%' OR m.nome LIKE '%"+cerca+"%' OR pc.Nome LIKE '%"+cerca+"%' " +
-                        "OR pc.codice_citta IN (SELECT citta.codice FROM citta WHERE citta.nome LIKE '%"+cerca+"%')" +
-                "GROUP BY pc.codice ";
-
-        Log.d("QUERY", query);
+        String query = "SELECT * " +
+                "FROM (" +
+                        "SELECT * " +
+                        "FROM percorsi " +
+                        "WHERE percorsi.codice_utente IN ( " +
+                                                        "SELECT utenti.codice " +
+                                                        "FROM utenti, permesso_has_utente, permessi " +
+                                                        "WHERE utenti.codice=permesso_has_utente.codice_utente " +
+                                                                "AND permessi.codice=permesso_has_utente.codice_permesso " +
+                                                                "AND permessi.codice IN (1, 2)" +
+                                                        ") " +
+                ") pgc, " +
+                "musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi, citta " +
+                "WHERE (" +
+                            "(" +
+                                "(musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice AND musei.nome LIKE \"%"+cerca+"%\") " +
+                                "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice AND oggetti.Nome LIKE \"%"+cerca+"%\") " +
+                                " OR (citta.nome LIKE \"%"+cerca+"%\" AND citta.codice = pgc.codice_citta ) " +
+                                ") " +
+                            " AND (pgc.codice =  musei_has_percorsi.percorso_codice AND pgc.codice = oggetti_has_percorsi.percorso_codice) " +
+                        ") " +
+                        " OR (pgc.nome LIKE \"%" + cerca + "%\") " +
+                "GROUP BY pgc.codice";
 
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
 
+        Log.d("QUERY_CERCA", query);
+
         ArrayList<Percorso> arr = new ArrayList<>();
         if (c.moveToFirst()){
             do {
-                arr.add(new Percorso(
+                Percorso p = new Percorso(
                         c.getInt(0),//Codice
                         c.getString(1),//Nome
                         c.getString(2),//Descrizione
                         c.getInt(3),//Durata
                         c.getInt(4),//Codice utente
                         c.getInt(5)//Codice citta
-                ));
+                );
+                arr.add(p);
             } while(c.moveToNext());
 
             return arr;
         }
-
         return null;
     }
 
@@ -487,13 +513,12 @@ public class DBPercorso extends DbManager{
      * @return Percorsi trovati, null altrimenti
      */
     public ArrayList<Percorso> getPercorsoByUtente(long codice){
-        String query = "SELECT pc.* " +
-                "FROM utenti as u " +
-                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
-                "INNER JOIN permessi p ON p.codice = phu.codice_permesso " +
-                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
-                "WHERE u.codice = " + codice + " " +
-                "GROUP BY pc.codice ";
+        String query = "SELECT * " +
+                "FROM (SELECT * FROM percorsi WHERE percorsi.codice_utente = " + codice + " ) pgc, " +
+                "musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi, citta " +
+                "WHERE (musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice) " +
+                        "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice) " +
+                "GROUP BY pgc.codice;";
 
         Log.d("QUERY", query);
 
@@ -529,17 +554,14 @@ public class DBPercorso extends DbManager{
      * @return Percorsi trovati, null altrimenti
      */
     public ArrayList<Percorso> getPercorsoByUtente(long codice, String cerca){
-        String query = "SELECT pc.* " +
-                "FROM utenti as u " +
-                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
-                "INNER JOIN permessi p ON p.codice = phu.codice_permesso " +
-                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
-                "INNER JOIN musei_has_percorsi mhp ON mhp.museo_codice = pc.codice " +
-                "INNER JOIN musei as m ON m.codice = mhp.museo_codice " +
-                "INNER JOIN oggetti_has_percorsi ohp ON ohp.oggetto_codice = pc.codice " +
-                "INNER JOIN oggetti as o ON o.codice = ohp.oggetto_codice " +
-                "WHERE u.codice = " + codice + " AND (o.nome LIKE '%"+cerca+"%' OR m.nome LIKE '%"+cerca+"%') " +
-                "GROUP BY pc.codice ";
+        String query = "SELECT * " +
+                "FROM (SELECT * FROM percorsi WHERE percorsi.codice_utente = " + codice + " ) pgc, " +
+                        " musei,  musei_has_percorsi, oggetti, oggetti_has_percorsi, citta " +
+                "WHERE (musei.codice = musei_has_percorsi.museo_codice AND pgc.codice = musei_has_percorsi.museo_codice AND musei.nome LIKE \"%" + cerca + "%\") " +
+                        "OR (oggetti.codice = oggetti_has_percorsi.oggetto_codice AND pgc.codice = oggetti_has_percorsi.oggetto_codice AND oggetti.Nome LIKE \"%" + cerca + "%\") " +
+                        "OR (citta.nome LIKE \"%" + cerca + "%\" AND citta.codice = pgc.codice_citta ) " +
+                        "OR (pgc.nome LIKE \"%" + cerca + "%\") " +
+                "GROUP BY pgc.codice";
 
         Log.d("QUERY", query);
 

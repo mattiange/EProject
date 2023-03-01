@@ -163,8 +163,9 @@ public class ListaPercorsiFragment extends Fragment {
 
             final LinearLayout llc = view.findViewById(R.id.ll_my_percorsi_route);
 
-            createItems(llc, percorsi[0]);
-
+            if(percorsi[0].size()>0) {
+                createItems(llc, percorsi[0]);
+            }
 
             //Ricerca del percorso
             EditText etRicercaMieiPermessi = view.findViewById(R.id.cerca_my_percorsi);
@@ -207,7 +208,9 @@ public class ListaPercorsiFragment extends Fragment {
 
             final LinearLayout llPercorsi = view.findViewById(R.id.llPercorsi);
 
-            createItems(llPercorsi, percorsi[0]);
+            if(percorsi[0].size()>0) {
+                createItems(llPercorsi, percorsi[0]);
+            }
 
             EditText etRicercaPercorsi = view.findViewById(R.id.cerca);
             etRicercaPercorsi.addTextChangedListener(new TextWatcher() {
@@ -218,7 +221,12 @@ public class ListaPercorsiFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    percorsi[0] = new DBPercorso(mContext).getPercorsoByGuidaOrCuratore(new StringBuilder(s).toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    Toast.makeText(getContext(), s.toString(), Toast.LENGTH_SHORT).show();
+                    percorsi[0] = new DBPercorso(mContext).getPercorsoByGuidaOrCuratore(s.toString());
 
                     llPercorsi.removeAllViews();
                     if(percorsi[0] != null && percorsi[0].size() > 0){
@@ -226,15 +234,11 @@ public class ListaPercorsiFragment extends Fragment {
                     }
 
                     if(s==null || new StringBuilder(s).toString().trim().isEmpty()){
+                        llPercorsi.removeAllViews();
                         percorsi[0] = new DBPercorso(mContext).getPercorsoByGuidaOrCuratore();
 
                         createItems(llPercorsi, percorsi[0]);
                     }
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
                 }
             });
         }
