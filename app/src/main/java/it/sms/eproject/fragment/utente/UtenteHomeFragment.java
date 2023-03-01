@@ -1,4 +1,4 @@
-package it.sms.eproject.fragment.backend.utente;
+package it.sms.eproject.fragment.utente;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.annotazioni.AutoreCodice;
-import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
 
 /**
  * Fragment principale del curatore
@@ -35,10 +34,10 @@ public class UtenteHomeFragment extends Fragment {
      * @param view Vista sulla quale cambiare il fragment
      */
     public void aggiuntaEventiClickBottoni(View view){
-        //Gestione degli autori
+        //Gestione dei percorsi
         ConstraintLayout btnPercorsi = view.findViewById(R.id.btnGestisciIPercorsi);
         btnPercorsi.setOnClickListener(e-> {
-            Fragment fragment = new CRUDPercorso();
+            Fragment fragment = new ListaPercorsiFragment();
             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null);

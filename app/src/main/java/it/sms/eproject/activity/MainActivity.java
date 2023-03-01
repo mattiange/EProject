@@ -36,7 +36,8 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
-import it.sms.eproject.fragment.backend.utente.UtenteHomeFragment;
+import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
+import it.sms.eproject.fragment.utente.UtenteHomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -212,6 +213,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_cerca:
                 fragment = new RicercaMuseiOggettiFragment();
+                break;
+            case R.id.nav_manage_percorso_utente:
+                fragment = new ListaPercorsiFragment();
                 break;
         }
         fragmentManager = getSupportFragmentManager();

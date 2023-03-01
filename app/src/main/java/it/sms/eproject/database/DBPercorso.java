@@ -397,4 +397,172 @@ public class DBPercorso extends DbManager{
 
         return null;
     }
+
+    /**
+     * Restituisce tutti i percorsi creati da una guida
+     * o da un curatore
+     *
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByGuidaOrCuratore(){
+        String query = "SELECT pc.* " +
+                "FROM utenti as u " +
+                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
+                "INNER JOIN permessi p ON p.codice = phu.codice_permesso AND (p.codice = 2 OR p.codice = 1) " +  /* guida o curatore */
+                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
+                "GROUP BY pc.codice ";
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
+
+    /**
+     * Restituisce tutti i percorsi creati da una guida
+     * o da un curatore
+     *
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByGuidaOrCuratore(String cerca){
+        String query = "SELECT pc.* " +
+                "FROM utenti as u " +
+                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
+                "INNER JOIN permessi p ON p.codice = phu.codice_permesso AND (p.codice = 2 OR p.codice = 1) " +  /* guida o curatore */
+                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
+                "INNER JOIN musei_has_percorsi mhp ON mhp.museo_codice = pc.codice " +
+                "INNER JOIN musei as m ON m.codice = mhp.museo_codice " +
+                "INNER JOIN oggetti_has_percorsi ohp ON ohp.oggetto_codice = pc.codice " +
+                "INNER JOIN oggetti as o ON o.codice = ohp.oggetto_codice " +
+                "WHERE o.nome LIKE '%"+cerca+"%' OR m.nome LIKE '%"+cerca+"%' OR pc.Nome LIKE '%"+cerca+"%' " +
+                        "OR pc.codice_citta IN (SELECT citta.codice FROM citta WHERE citta.nome LIKE '%"+cerca+"%')" +
+                "GROUP BY pc.codice ";
+
+        Log.d("QUERY", query);
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
+
+    /**
+     * Restituisce tutti i percorsi creati dall'utente
+     *
+     * @param codice Codice dell'utente
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByUtente(long codice){
+        String query = "SELECT pc.* " +
+                "FROM utenti as u " +
+                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
+                "INNER JOIN permessi p ON p.codice = phu.codice_permesso " +
+                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
+                "WHERE u.codice = " + codice + " " +
+                "GROUP BY pc.codice ";
+
+        Log.d("QUERY", query);
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
+
+
+    /**
+     * Restituisce tutti i percorsi creati dall'utente
+     *
+     * @param codice Codice dell'utente
+     * @param cerca Stringa da cercare
+     * @return Percorsi trovati, null altrimenti
+     */
+    public ArrayList<Percorso> getPercorsoByUtente(long codice, String cerca){
+        String query = "SELECT pc.* " +
+                "FROM utenti as u " +
+                "INNER JOIN permesso_has_utente as phu ON u.codice = phu.codice_utente " +
+                "INNER JOIN permessi p ON p.codice = phu.codice_permesso " +
+                "INNER JOIN percorsi pc ON pc.codice_utente = u.codice " +
+                "INNER JOIN musei_has_percorsi mhp ON mhp.museo_codice = pc.codice " +
+                "INNER JOIN musei as m ON m.codice = mhp.museo_codice " +
+                "INNER JOIN oggetti_has_percorsi ohp ON ohp.oggetto_codice = pc.codice " +
+                "INNER JOIN oggetti as o ON o.codice = ohp.oggetto_codice " +
+                "WHERE u.codice = " + codice + " AND (o.nome LIKE '%"+cerca+"%' OR m.nome LIKE '%"+cerca+"%') " +
+                "GROUP BY pc.codice ";
+
+        Log.d("QUERY", query);
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Percorso> arr = new ArrayList<>();
+        if (c.moveToFirst()){
+            do {
+                arr.add(new Percorso(
+                        c.getInt(0),//Codice
+                        c.getString(1),//Nome
+                        c.getString(2),//Descrizione
+                        c.getInt(3),//Durata
+                        c.getInt(4),//Codice utente
+                        c.getInt(5)//Codice citta
+                ));
+            } while(c.moveToNext());
+
+            return arr;
+        }
+
+        return null;
+    }
 }

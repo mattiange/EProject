@@ -10,22 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Gestione della visualizzazione e aggiunta nuovo utente">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_utente_lista_percorsi.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/utente/ListaPercorsiFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_miei_percorsi.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab_percorsi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/CuratoreHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/CuratoreHomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/RicercaMuseiOggettiFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/RicercaMuseiOggettiFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CRUDAutore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CRUDAutore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CRUDAutoreSalvatoSuccesso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CRUDAutoreSalvatoSuccesso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CRUDCreateAutori.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CRUDCreateAutori.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CrudVisualizzaAutore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/autori/CrudVisualizzaAutore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaAutori.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaAutori.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaOggetti.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/liste/ListaOggetti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudOggetto_Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudOggetto_Create.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudVisualizzaOggetto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/crud/oggetto/CrudVisualizzaOggetto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/utente/UtenteHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/home/utente/UtenteHomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBPercorso.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBPercorso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/utente/UtenteHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/utente/UtenteHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/util/HTTPCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/util/OnSwipeTouchListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_curatore_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_curatore_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_utente_lista_percorsi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_utente_lista_percorsi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_backend_drawer_guida.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_backend_drawer_guida.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +61,8 @@
         <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -119,14 +118,16 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Users/matti/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
     &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
     &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/AdapterView.java_SELECTED&quot;: &quot;AdapterView&quot;,
     &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
     &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/ScrollView.java_SELECTED&quot;: &quot;ScrollView&quot;,
     &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TableLayout.java_SELECTED&quot;: &quot;TableLayout&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Uniba/3 anno/4_Sviluppo di mobile software/EProject/app/src/main/res/layout&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/matti/Desktop&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -140,11 +141,11 @@
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="it.sms.eproject.fragment.utente" />
       <recent name="it.sms.eproject.fragment.home.utente" />
       <recent name="it.sms.eproject.fragment.home" />
       <recent name="it.sms.eproject.database" />
       <recent name="it.sms.eproject.fragment.home.crud.percorso" />
-      <recent name="it.sms.eproject.fragment.home.crud.liste" />
     </key>
   </component>
   <component name="RunManager">
