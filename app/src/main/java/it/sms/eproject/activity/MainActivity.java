@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,10 +27,12 @@ import com.google.android.material.navigation.NavigationView;
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.login_e_registrazione.GestioneProfiloActivity;
+import it.sms.eproject.activity.login_e_registrazione.ImpostazioniActivity;
+import it.sms.eproject.activity.login_e_registrazione.LoginActivity;
 import it.sms.eproject.fragment.home.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.home.CuratoreHomeFragment;
 import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
-import it.sms.eproject.fragment.home.crud.autori.CRUDCreateAutori;
 import it.sms.eproject.fragment.home.crud.liste.ListaStati;
 import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
@@ -38,7 +41,6 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
-import it.sms.eproject.fragment.home.crud.percorso.CrudPercorso_Create;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public AppBarConfiguration mAppBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,16 +133,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /**
      * Aggiunge il fragment da visualizzare
-     * Visualizza i fragment in base ai permessi dell'utente
+     *
+     * TODO: differenziare la visualizzazione in base ai permessi dell'utente loggato
+     *
      */
     public void addFragment(){
-        switch (u.getPermesso().getCodice()){
-            case Permesso.CURATORE:
-                fragment = new CuratoreHomeFragment();
-                break;
-            case Permesso.GUIDA:
-                fragment = new CRUDPercorso();
-        }
+        //CuratoreHomeFragment fragment = new CuratoreHomeFragment();
+        fragment = new CuratoreHomeFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);
@@ -160,11 +160,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * @return
      */
     @Override
+    @AutoreCodice(autore = "Giandomenico")
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.qrscan:
+                startActivity(new Intent(this, QRscannerActivity.class));
+
+                return true;
+            case R.id.versione:
+                Toast.makeText(this, "Versione 1.0", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.gestioneProfilo:
+                startActivity(new Intent(this, GestioneProfiloActivity.class));
+
+                return true;
+
+            case R.id.logout:
+                startActivity(new Intent(this, LoginActivity.class));
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

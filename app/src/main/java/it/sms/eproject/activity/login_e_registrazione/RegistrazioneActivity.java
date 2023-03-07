@@ -116,7 +116,6 @@ public class RegistrazioneActivity extends AppCompatActivity {
                             password,
                             new Permesso(Permesso.VISITATORE)
                     ))){
-                        startActivity(new Intent(this, ConfermaRegistrazioneActivity.class));
                     }
                 }catch (EmailGiaEsistenteException ex){
                     lblError.setText(R.string.email_gia_esistente);
