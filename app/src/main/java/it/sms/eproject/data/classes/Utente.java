@@ -70,6 +70,14 @@ public class Utente {
         this.password = password;
     }
 
+    public Utente(String nome, String cognome, String password) {
+        this(nome, cognome);
+        this.password = password;
+    }
+
+    public Utente(String nome, String cognome) {
+    }
+
 
     /**
      *

@@ -329,5 +329,7 @@
     <string name="descrizione_aggiornamento_database">Sincronizza i musei e i luoghi da visitare</string>
     <string name="aggiornamento_database_ok">Sincronizzazione avvenuta con successo</string>
     <string name="no_aggiornamenti">Nessun aggiornamento disponibile</string>
+    <string name="crud_txt_password" translatable="false">Password</string>
+    <string name="crud_txt_ripeti_password" translatable="false">Ripeti Password</string>
 
 </resources>

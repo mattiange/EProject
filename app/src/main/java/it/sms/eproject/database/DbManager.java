@@ -1,5 +1,6 @@
 package it.sms.eproject.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -26,7 +27,7 @@ import it.sms.eproject.data.classes.Zona;
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DbManager {
-    MyHelper helper=null;
+    static MyHelper helper=null;
     private final static String DATABASE="ProgettoSMS.db";
     private final static int VERSIONE_DATABASE=1;
     Context c;
@@ -174,8 +175,32 @@ public class DbManager {
         return utente;
     }
 
-    //////////////////////////// GESTIONE ZONE
 
+    /**
+     * AGGIORNA DATI UTENTE
+     */
+    public boolean aggiornaProfilo(Utente utente){
+
+        String insert1 = "UPDATE Utente" + "SET" + "Nome = '"+utente.getNome()+"', " +
+                "Cognome ='"+utente.getCognome()+"', Password = '"+utente.getPassword()+"'" +
+                "WHERE id ='"+utente.getCodice()+"';";
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        try{
+            db.execSQL(insert1);
+
+            return true;
+        }catch(SQLException ex){
+            System.err.println( ex.getMessage() );
+
+            return false;
+        }
+
+    }
+
+
+    //////////////////////////// GESTIONE ZONE
 
     /**
      * Restituisce una singola zona in base al suo ID

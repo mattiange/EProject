@@ -1,39 +1,33 @@
 package it.sms.eproject.activity.login_e_registrazione;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.MainActivity;
 import it.sms.eproject.annotazioni.AutoreCodice;
 
-public class ImpostazioniActivity extends PreferenceActivity {
+public class ImpostazioniActivity extends AppCompatActivity {
 
-    private Button btnImpostazioni;
-
-
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.impostazioni, container, false);
-
-
-        btnImpostazioni = v.findViewById(R.id.btnImpostazioni);
-        btnImpostazioni.setOnClickListener(this::Impostazione1);
-
-
-        return v;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.impostazioni);
 
     }
 
-    private void Impostazione1(View e) {
-        /** DA IMPLEMENTARE LE IMPOSTAZIONI
-       /* Intent i = new Intent("com.example.testdati.ImpostazioniActivity");
-        startActivity(i);*/
-    }
+
 }
