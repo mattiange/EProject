@@ -9,50 +9,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Implementazione Gestione Profilo, Impostazioni e aggiunta di Scanner QR COde con libreria Zxing">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/CaptureAct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/QRscannerActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/GestioneProfiloActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/gestioneprofilo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/qrscanner.xml" afterDir="false" />
+    <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Gestione della visualizzazione e aggiunta nuovo utente">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DBValutazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/GestioneProfilo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/ImpostazioniActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/ImpostazioniActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/QRScannerActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/RegistrazioneActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/activity/login_e_registrazione/RegistrazioneActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/data/classes/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/DbManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/gestioneprofilo_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/MyHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/database/MyHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/utente/ListaPercorsiFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/it/sms/eproject/fragment/utente/ListaPercorsiFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/giandobc/.android/avd/Pixel_4_API_TiramisuPrivacySandbox.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\matti\.android\avd\Pixel_XL_API_29_1.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -122,9 +91,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/app/src/main/res/layout/impostazioni.xml" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -136,22 +102,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
-    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/AdapterView.java_SELECTED&quot;: &quot;AdapterView&quot;,
-    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
-    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/ScrollView.java_SELECTED&quot;: &quot;ScrollView&quot;,
-    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TableLayout.java_SELECTED&quot;: &quot;TableLayout&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/matti/Desktop&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "PROJECT_TRUSTED_KEY": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "android-custom-viewC:/Users/matti/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED": "View",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/AdapterView.java_SELECTED": "AdapterView",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/RatingBar.java_SELECTED": "RatingBar",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/ScrollView.java_SELECTED": "ScrollView",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TableLayout.java_SELECTED": "TableLayout",
+    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TextView.java_SELECTED": "TextView",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "last_opened_file_path": "C:/Users/matti/Desktop"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res\layout" />
@@ -164,10 +133,10 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="it.sms.eproject.database" />
+      <recent name="it.sms.eproject.fragment.utente" />
+      <recent name="it.sms.eproject.fragment.home.utente" />
       <recent name="it.sms.eproject.fragment.home" />
       <recent name="it.sms.eproject.fragment.home.crud.percorso" />
-      <recent name="it.sms.eproject.fragment.home.crud.liste" />
-      <recent name="it.sms.eproject.fragment.home.crud.autori" />
     </key>
   </component>
   <component name="RunManager">
@@ -274,7 +243,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gestione della visualizzazione e aggiunta nuovo utente" />
-    <MESSAGE value="Implementazione Gestione Profilo, Impostazioni e aggiunta di Scanner QR COde con libreria Zxing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione Gestione Profilo, Impostazioni e aggiunta di Scanner QR COde con libreria Zxing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestione della visualizzazione e aggiunta nuovo utente" />
   </component>
 </project>
