@@ -59,10 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegistrazioneActivity.class)));
 
         /*SOLO PER TEST (LOGIN DIRETTA)*/
-        //email = "m.rossi@gmail.com";//guida
-        //email = "m.angelillo@gmail.com";//curatore
-        email = "a.manzoni@gmail.com";//utente semplice
-
+        //Guida
+        email = "m.rossi@gmail.com";
         password = "test";
         Utente u;
         if((u = new DbManager(this).login(email, password)) != null){
@@ -112,13 +110,13 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
                 SharedPreferences.Editor editor = pref.edit();
 
-                editor.putLong("user_id", u1.getCodice());
+                editor.putString("user_id", String.valueOf(u1.getCodice()));
                 editor.putString("user_nome", u1.getNome());
                 editor.putString("user_cognome", u1.getCognome());
                 editor.putString("user_codice_fiscale", u1.getCodice_fiscale());
                 editor.putString("user_email", u1.getEmail());
                 editor.putString("user_data_di_nascita", String.valueOf(u1.getData_di_nascita()));
-                editor.putInt("user_permesso_codice", u1.getPermesso().getCodice());
+                editor.putString("user_permesso_codice", String.valueOf(u1.getPermesso().getCodice()));
                 editor.putString("user_permesso_nome", String.valueOf(u1.getPermesso().getPermesso()));
                 editor.apply();
                 //-------------------------------

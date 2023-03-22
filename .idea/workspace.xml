@@ -9,18 +9,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="183301d6-5c9f-4fb0-a93e-a80f1ced324f" name="Changes" comment="Implementazione Gestione Profilo, Impostazioni e aggiunta di Scanner QR COde con libreria Zxing" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\matti\.android\avd\Pixel_6_Pro_API_29.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\matti\.android\avd\Pixel_XL_API_29_1.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -107,26 +102,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android-custom-viewC:/Users/matti/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED": "TabLayout",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED": "View",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/AdapterView.java_SELECTED": "AdapterView",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/LinearLayout.java_SELECTED": "LinearLayout",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/RatingBar.java_SELECTED": "RatingBar",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/ScrollView.java_SELECTED": "ScrollView",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TableLayout.java_SELECTED": "TableLayout",
-    "android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TextView.java_SELECTED": "TextView",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "last_opened_file_path": "C:/Users/matti/Desktop"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Users/matti/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.6.1/d4d703885d24c61bc0ec39a9a705969e41d773ef/material-1.6.1-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED&quot;: &quot;TabLayout&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/view/View.java_SELECTED&quot;: &quot;View&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/AdapterView.java_SELECTED&quot;: &quot;AdapterView&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/LinearLayout.java_SELECTED&quot;: &quot;LinearLayout&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/RatingBar.java_SELECTED&quot;: &quot;RatingBar&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/ScrollView.java_SELECTED&quot;: &quot;ScrollView&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TableLayout.java_SELECTED&quot;: &quot;TableLayout&quot;,
+    &quot;android-custom-viewC:/Users/matti/AppData/Local/Android/Sdk/sources/android-32/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/matti/Desktop&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Uniba\3 anno\4_Sviluppo di mobile software\EProject\app\src\main\res\layout" />
