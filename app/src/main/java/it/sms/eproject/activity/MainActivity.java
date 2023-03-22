@@ -42,6 +42,7 @@ import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
 import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
 import it.sms.eproject.fragment.utente.UtenteHomeFragment;
+import it.sms.eproject.menu.MyMenu;
 import it.sms.eproject.util.Constants;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        //getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -171,28 +172,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
 
-        switch (item.getItemId()) {
-            case R.id.qrscan:
-                startActivity(new Intent(this, QRscannerActivity.class));
+        return super.onOptionsItemSelected(item);
+    }
 
-                return true;
-            case R.id.versione:
-                Toast.makeText(this, Constants.VERSION, Toast.LENGTH_SHORT).show();
-                return true;
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        new MyMenu(getApplicationContext(), menu, this)
+                .aggiungiVociMenu(MyMenu.VociMenu.QR_SCAN)
+                .aggiungiVociMenu(MyMenu.VociMenu.GESTIONE_PROFILO)
+                .aggiungiVociMenu(MyMenu.VociMenu.VERSION)
+                .aggiungiVociMenu(MyMenu.VociMenu.LOGOUT);
 
-            case R.id.gestioneProfilo:
-                startActivity(new Intent(this, GestioneProfiloActivity.class));
-
-                return true;
-
-            case R.id.logout:
-                startActivity(new Intent(this, LoginActivity.class));
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menu_version" type="id" />
+    <item name="menu_qr_scam" type="id" />
+    <item name="menu_logout" type="id" />
+    <item name="menu_gestione_profilo" type="id" />
+</resources>

@@ -67,6 +67,7 @@
     <string name="app_name">E-Culture Tool</string>
     <string name="welcome">Benvenuto su E-Culture Tool</string>
     <string name="login">Login</string>
+    <string name="logout" translatable="false">Logout</string>
     <string name="registrazione">Registrazione</string>
     <string name="registrazione_successo">Registrazione avvenuta con successo</string>
     <string name="forgot_password">Password dimenticata</string>
@@ -331,5 +332,8 @@
     <string name="no_aggiornamenti">Nessun aggiornamento disponibile</string>
     <string name="crud_txt_password" translatable="false">Password</string>
     <string name="crud_txt_ripeti_password" translatable="false">Ripeti Password</string>
+    <string name="version">Versione</string>
+    <string name="gestione_progilo">Profilo</string>
+    <string name="qr_scan" translatable="false">Qr Scan</string>
 
 </resources>
