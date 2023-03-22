@@ -324,5 +324,7 @@
     <string name="descrizione_aggiornamento_database">Synchronize museums and places to visit</string>
     <string name="aggiornamento_database_ok">Synchronization successful</string>
     <string name="no_aggiornamenti">No updates available</string>
+    <string name="version">Version</string>
+    <string name="gestione_progilo">Profile management</string>
 
 </resources>
