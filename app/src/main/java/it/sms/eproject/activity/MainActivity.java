@@ -13,34 +13,31 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
-import it.sms.eproject.activity.login_e_registrazione.GestioneProfiloActivity;
-import it.sms.eproject.activity.login_e_registrazione.ImpostazioniActivity;
-import it.sms.eproject.activity.login_e_registrazione.LoginActivity;
-import it.sms.eproject.fragment.home.AggiornaDatabaseFragment;
-import it.sms.eproject.fragment.home.CuratoreHomeFragment;
-import it.sms.eproject.fragment.home.crud.autori.CRUDAutore;
-import it.sms.eproject.fragment.home.crud.liste.ListaStati;
-import it.sms.eproject.fragment.home.crud.museo.CrudMuseo;
-import it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto;
-import it.sms.eproject.fragment.home.crud.CrudZona;
+import it.sms.eproject.fragment.backend.AggiornaDatabaseFragment;
+import it.sms.eproject.fragment.backend.CuratoreHomeFragment;
+import it.sms.eproject.fragment.backend.RicercaMuseiOggettiFragment;
+import it.sms.eproject.fragment.backend.crud.autori.CRUDAutore;
+import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
+import it.sms.eproject.fragment.backend.crud.museo.CrudMuseo;
+import it.sms.eproject.fragment.backend.crud.oggetto.CrudOggetto;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
-import it.sms.eproject.fragment.home.crud.percorso.CRUDPercorso;
+import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
+import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
+import it.sms.eproject.fragment.utente.UtenteHomeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -62,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public AppBarConfiguration mAppBarConfiguration;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,18 +75,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         nv = findViewById(R.id.nav_view);
-        /*if(u.getPermesso().getCodice() == Permesso.CURATORE) {
-            nv.inflateMenu(R.menu.activity_backend_drawer);
-        }else if (u.getPermesso().getCodice() == Permesso.GUIDA){
-            nv.inflateMenu(R.menu.activity_backend_drawer_guida);
-        }else{
-            nv.inflateMenu(R.menu.activity_main_drawer);
-        }*/
-        //usato per test curatore
-        //nv.inflateMenu(R.menu.activity_backend_drawer);
-
-        //usato per il test della guida
-        nv.inflateMenu(R.menu.activity_backend_drawer_guida);
+        switch (u.getPermesso().getCodice()){
+            case Permesso.CURATORE:
+                nv.inflateMenu(R.menu.activity_backend_drawer);
+                break;
+            case Permesso.GUIDA:
+                nv.inflateMenu(R.menu.activity_backend_drawer_guida);
+                break;
+            default:
+                nv.inflateMenu(R.menu.activity_main_drawer);
+        }
 
         //Passo il pulsante per aprire e chiudere al listener del DrawerMenu
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -133,13 +127,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /**
      * Aggiunge il fragment da visualizzare
-     *
-     * TODO: differenziare la visualizzazione in base ai permessi dell'utente loggato
-     *
+     * Visualizza i fragment in base ai permessi dell'utente
      */
     public void addFragment(){
-        //CuratoreHomeFragment fragment = new CuratoreHomeFragment();
-        fragment = new CuratoreHomeFragment();
+        switch (u.getPermesso().getCodice()){
+            case Permesso.CURATORE:
+                fragment = new CuratoreHomeFragment();
+                break;
+            case Permesso.GUIDA:
+                fragment = new CRUDPercorso();
+                break;
+            default://utente semplice
+                fragment = new UtenteHomeFragment();
+                break;
+        }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);
@@ -160,33 +161,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * @return
      */
     @Override
-    @AutoreCodice(autore = "Giandomenico")
-
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        switch (item.getItemId()) {
-            case R.id.qrscan:
-                startActivity(new Intent(this, QRscannerActivity.class));
-
-                return true;
-            case R.id.versione:
-                Toast.makeText(this, "Versione 1.0", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.gestioneProfilo:
-                startActivity(new Intent(this, GestioneProfiloActivity.class));
-
-                return true;
-
-            case R.id.logout:
-                startActivity(new Intent(this, LoginActivity.class));
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -211,9 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_manage_museo:
                 fragment = new CrudMuseo();
                 break;
-            case R.id.nav_manage_zona:
-                fragment = new CrudZona();
-                break;
             case R.id.nav_manage_oggetto:
                 fragment = new CrudOggetto();
                 break;
@@ -231,10 +207,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_manage_percorso:
                 fragment = new CRUDPercorso();
-
                 break;
             case R.id.nav_aggiorna_database:
                 fragment = new AggiornaDatabaseFragment();
+                break;
+            case R.id.nav_cerca:
+                fragment = new RicercaMuseiOggettiFragment();
+                break;
+            case R.id.nav_manage_percorso_utente:
+                fragment = new ListaPercorsiFragment();
+                break;
         }
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();

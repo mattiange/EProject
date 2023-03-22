@@ -132,7 +132,7 @@ public class DBOggetto extends DbManager{
      * @param codice Codice dell'oggetto da cercare
      * @return Oggetto trovato o null se non ce ne sono con quel codice
      */
-    public Oggetto getOggetto(int codice){
+    public Oggetto getOggetto(long codice){
         String query="SELECT * FROM oggetti WHERE codice = " + codice;
         SQLiteDatabase db= helper.getReadableDatabase();
 
