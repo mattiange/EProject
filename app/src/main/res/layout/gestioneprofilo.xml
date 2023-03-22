@@ -8,124 +8,236 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity"
     android:id="@+id/drawer_layout">
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main" />
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="@string/gestioneprofilo"
+        android:textSize="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp" />
 
-        <TextView
-            android:id="@+id/lblNome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="120dp"
-            android:text="@string/crud_txt_nome"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/etNomeUtente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:layout_weight="1"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.721"
-            app:layout_constraintStart_toEndOf="@+id/lblNome"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints="name"
-            android:inputType="text" />
+            <TextView
+                android:id="@+id/lblNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="108dp"
+                android:layout_marginTop="128dp"
+                android:text="@string/crud_txt_nome"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/lblCognome"
-            android:layout_width="94dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/crud_txt_cognome"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblNome" />
+            <EditText
+                android:id="@+id/etNomeUtente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:layout_weight="1"
+                android:autofillHints="name"
+                android:ems="10"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.632"
+                app:layout_constraintStart_toEndOf="@+id/lblNome"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/etCognomeUtente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.607"
-            app:layout_constraintStart_toEndOf="@+id/lblCognome"
-            app:layout_constraintTop_toBottomOf="@+id/etNomeUtente"
-            android:autofillHints="name"
-            android:inputType="text" />
+            <TextView
+                android:id="@+id/lblCognome"
+                android:layout_width="94dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/crud_txt_cognome"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblNome" />
 
-        <TextView
-            android:id="@+id/lblPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/crud_txt_password"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCognome" />
+            <EditText
+                android:id="@+id/etCognomeUtente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:ems="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.607"
+                app:layout_constraintStart_toEndOf="@+id/lblCognome"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeUtente"
+                android:autofillHints="name"
+                android:inputType="text" />
 
-        <EditText
-            android:id="@+id/etPasswordUtente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.642"
-            app:layout_constraintStart_toEndOf="@+id/lblPassword"
-            app:layout_constraintTop_toBottomOf="@+id/etCognomeUtente"
-            android:autofillHints="password"
-            android:inputType="textPassword" />
 
-        <TextView
-            android:id="@+id/lblRipetiPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/crud_txt_ripeti_password"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnModify"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPassword"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/lblDataDiNascita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/crud_txt_data_di_nascita"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCognome" />
 
-        <EditText
-            android:id="@+id/etRipetiPasswordUtente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:ems="10"
-            app:layout_constraintBottom_toTopOf="@+id/btnModify"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.225"
-            app:layout_constraintStart_toEndOf="@+id/lblRipetiPassword"
-            app:layout_constraintTop_toBottomOf="@+id/etPasswordUtente"
-            app:layout_constraintVertical_bias="0.139"
-            android:autofillHints="password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/etDataDiNascita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:autofillHints="name"
+                android:ems="10"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/lblDataDiNascita"
+                app:layout_constraintTop_toBottomOf="@+id/etCognomeUtente" />
 
-        <Button
-            android:id="@+id/btnModify"
-            android:layout_width="226dp"
-            android:layout_height="64dp"
-            android:layout_marginBottom="164dp"
-            android:text="@string/confirmModifica"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/lblCodiceFiscale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/crud_txt_codice_fiscale"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblDataDiNascita" />
+
+            <EditText
+                android:id="@+id/etCodiceFiscale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:autofillHints="name"
+                android:ems="10"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/lblDataDiNascita"
+                app:layout_constraintTop_toBottomOf="@+id/etDataDiNascita" />
+
+            <TextView
+                android:id="@+id/lblEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="36dp"
+                android:text="@string/email"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCodiceFiscale" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:autofillHints="name"
+                android:ems="10"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/lblCodiceFiscale"
+                app:layout_constraintTop_toBottomOf="@+id/etCodiceFiscale" />
+
+            <TextView
+                android:id="@+id/lblPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/crud_txt_password"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
+
+            <EditText
+                android:id="@+id/etPasswordUtente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:autofillHints="password"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.883"
+                app:layout_constraintStart_toStartOf="@+id/lblPassword"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+            <TextView
+                android:id="@+id/lblRipetiPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:text="@string/crud_txt_ripeti_password"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblPassword" />
+
+            <EditText
+                android:id="@+id/etRipetiPasswordUtente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="password"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toTopOf="@+id/btnModify"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toEndOf="@+id/lblRipetiPassword"
+                app:layout_constraintTop_toBottomOf="@+id/etPasswordUtente"
+                app:layout_constraintVertical_bias="0.283" />
+
+            <TextView
+                android:id="@+id/lblError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="PIPPO"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblRipetiPassword" />
+
+            <Button
+                android:id="@+id/btnModify"
+                android:layout_width="226dp"
+                android:layout_height="64dp"
+                android:text="@string/confirmModifica"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblError"
+                app:layout_constraintVertical_bias="0.492" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -20,6 +20,11 @@
     <string name="msg_error_delete">Problem deleting %s</string>
     <string name="msg_error_autori_no_trovati">No author found</string>
     <string name="msg_error_percorso_nome_obbligatorio">The path name is required</string>
+    <string name="msg_error_nome_obbligatorio">The name is required</string>
+    <string name="msg_error_cognome_obbligatorio">The surname is required</string>
+    <string name="msg_error_data_di_nascita_obbligatorio">The date of birth is required</string>
+    <string name="msg_error_email_obbligatorio">Email is required</string>
+    <string name="msg_error_codice_fiscale_obbligatorio">The tax code is required</string>
     <string name="msg_error_percorso_musei">You must select at least one museum to save the route.</string>
     <string name="error_sincronizzazione">Error syncing data, please try again later</string>
 

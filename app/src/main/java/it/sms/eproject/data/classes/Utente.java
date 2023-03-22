@@ -43,13 +43,45 @@ public class Utente {
 
     /**
      *
+     * @param codice  Codice dell'utente
      * @param nome      Nome  dell'utente
      * @param cognome Cognome dell'utente
      * @param codice_fiscale Codice fiscale dell'utente
      * @param data_di_nascita Data di nascita dell'utente
      * @param email Email dell'utente
-     * @param permesso Permesso associato all'utente
      */
+    public Utente(int codice, String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email){
+        this.codice             = codice;
+        this.nome               = nome;
+        this.cognome            = cognome;
+        this.codice_fiscale     = codice_fiscale;
+        this.email              = email;
+        this.data_di_nascita    = data_di_nascita;
+    }
+
+    /**
+     *
+     * @param nome      Nome  dell'utente
+     * @param cognome Cognome dell'utente
+     * @param codice_fiscale Codice fiscale dell'utente
+     * @param data_di_nascita Data di nascita dell'utente
+     * @param email Email dell'utente
+     * @param password Password dell'utente
+     */
+    public Utente(int codice, String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email, String password){
+        this(codice, nome, cognome, codice_fiscale, data_di_nascita, email);
+        this.password = password;
+    }
+
+    /**
+    *
+    * @param nome      Nome  dell'utente
+    * @param cognome Cognome dell'utente
+    * @param codice_fiscale Codice fiscale dell'utente
+    * @param data_di_nascita Data di nascita dell'utente
+    * @param email Email dell'utente
+    * @param permesso Permesso associato all'utente
+    */
     public Utente(String nome, String cognome, String codice_fiscale, LocalDate data_di_nascita, String email, Permesso permesso){
         this(-1, nome, cognome, codice_fiscale, data_di_nascita, email, permesso);
     }

@@ -1,5 +1,6 @@
 package it.sms.eproject.activity.login_e_registrazione;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,9 +27,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.time.LocalDate;
+
 import it.sms.eproject.R;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Utente;
+import it.sms.eproject.database.DBUtente;
 import it.sms.eproject.database.DbManager;
 import it.sms.eproject.fragment.backend.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.backend.RicercaMuseiOggettiFragment;
@@ -56,10 +60,17 @@ public class GestioneProfiloActivity  extends AppCompatActivity implements Navig
     public AppBarConfiguration mAppBarConfiguration;
 
     Button btnModify;
+    int codiceUtente;
     String nome;
     String cognome;
     String password, ripetiPassword;
-    EditText etNome, etCognome, etPassword, etRipetiPassword;
+    String dataDiNascita;
+    String codiceFiscale;
+    String email;
+    EditText etNome, etCognome, etPassword, etRipetiPassword, etCodiceFiscale, etDataDiNascita, etEmail;
+
+    Utente utente;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,10 +103,26 @@ public class GestioneProfiloActivity  extends AppCompatActivity implements Navig
     }
 
     public void registraElementi(){
-        etNome    = findViewById(R.id.etNomeUtente);
-        etCognome = findViewById(R.id.etCognomeUtente);
-        etPassword  = findViewById(R.id.etPasswordUtente);
-        etRipetiPassword = findViewById(R.id.etRipetiPasswordUtente);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
+        codiceUtente = Integer.parseInt(pref.getString("user_id", "-1"));
+
+        this.utente = new DBUtente(getApplicationContext()).getUtente(codiceUtente);
+
+        etNome              = findViewById(R.id.etNomeUtente);
+        etCognome           = findViewById(R.id.etCognomeUtente);
+        etDataDiNascita     = findViewById(R.id.etDataDiNascita);
+        etEmail             = findViewById(R.id.etEmail);
+        etCodiceFiscale     = findViewById(R.id.etCodiceFiscale);
+        etPassword          = findViewById(R.id.etPasswordUtente);
+        etRipetiPassword    = findViewById(R.id.etRipetiPasswordUtente);
+
+        if(this.utente != null) {
+            etNome.setText(this.utente.getNome());
+            etCognome.setText(this.utente.getCognome());
+            etCodiceFiscale.setText(this.utente.getCodice_fiscale());
+            etDataDiNascita.setText(this.utente.getData_di_nascita().toString());
+            etEmail.setText(this.utente.getEmail());
+        }
 
         btnModify  = findViewById(R.id.btnModify);
     }
@@ -104,39 +131,80 @@ public class GestioneProfiloActivity  extends AppCompatActivity implements Navig
 
 
         btnModify.setOnClickListener(v -> {
-                    nome = etNome.getText().toString();
-                    cognome = etCognome.getText().toString();
-                    password = etPassword.getText().toString();
-                    ripetiPassword = etRipetiPassword.getText().toString();
+            nome            = etNome.getText().toString();
+            cognome         = etCognome.getText().toString();
+            dataDiNascita   = etDataDiNascita.getText().toString();
+            codiceFiscale   = etCodiceFiscale.getText().toString();
+            email           = etEmail.getText().toString();
+            password        = etPassword.getText().toString();
+            ripetiPassword  = etRipetiPassword.getText().toString();
 
-                    TextView lblError = findViewById(R.id.lblError);
-                    lblError.setVisibility(View.INVISIBLE);
+            TextView lblError = findViewById(R.id.lblError);
+            lblError.setVisibility(View.INVISIBLE);
 
-                    if (!Util.campoCompilato(nome) && !Util.campoCompilato(cognome) && !Util.campoCompilato(password)
-                            && !Util.campoCompilato(ripetiPassword)) {
-                        lblError.setVisibility(View.VISIBLE);
-                        lblError.setText(R.string.campi_vuoti);
+            if (!Util.campoCompilato(nome)) {
+                lblError.setText(getResources().getString(R.string.msg_error_nome_obbligatorio));
+                lblError.setVisibility(View.VISIBLE);
+                //lblError.setText(R.string.campi_vuoti);
 
-                        return;
-                    }
+                return;
+            }
 
-                    if (Util.confermaPassword(password, ripetiPassword)) {
-                        //Toast.makeText(getContext(), "UGUALI", Toast.LENGTH_SHORT).show();
+            if (!Util.campoCompilato(cognome)) {
+                lblError.setText(getResources().getString(R.string.msg_error_cognome_obbligatorio));
+                lblError.setVisibility(View.VISIBLE);
+                //lblError.setText(R.string.campi_vuoti);
 
-                    } else {
-                        lblError.setVisibility(View.VISIBLE);
-                        lblError.setText(R.string.passwords_not_equal);
+                return;
+            }
 
-                        return;
-                    }
+            if (!Util.campoCompilato(dataDiNascita)) {
+                lblError.setText(getResources().getString(R.string.msg_error_data_di_nascita_obbligatorio));
+                lblError.setVisibility(View.VISIBLE);
+                //lblError.setText(R.string.campi_vuoti);
 
+                return;
+            }
+
+
+            if (!Util.campoCompilato(codiceFiscale)) {
+                lblError.setText(getResources().getString(R.string.msg_error_codice_fiscale_obbligatorio));
+                lblError.setVisibility(View.VISIBLE);
+                //lblError.setText(R.string.campi_vuoti);
+
+                return;
+            }
+
+
+            if (!Util.campoCompilato(email)) {
+                lblError.setText(getResources().getString(R.string.msg_error_email_obbligatorio));
+                lblError.setVisibility(View.VISIBLE);
+                //lblError.setText(R.string.campi_vuoti);
+
+                return;
+            }
+
+            if(Util.campoCompilato(password)) {
+                if (ripetiPassword.isEmpty() || !Util.confermaPassword(password, ripetiPassword)) {
+                    lblError.setVisibility(View.VISIBLE);
+                    lblError.setText(R.string.passwords_not_equal);
+
+                    return;
+                }else{
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-                        if (new DbManager(this).aggiornaProfilo(new Utente(nome, cognome, password))) {
+                        if (new DbManager(this).aggiornaProfilo(new Utente(codiceUtente, nome, cognome, codiceFiscale, LocalDate.parse(dataDiNascita), email, password))) {
+                            startActivity(new Intent(this, GestioneProfiloActivity.class));
                         }
                     }
                 }
-        );
+            }else{
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (new DbManager(this).aggiornaProfilo(new Utente(codiceUtente, nome, cognome, codiceFiscale, LocalDate.parse(dataDiNascita), email))) {
+                        startActivity(new Intent(this, GestioneProfiloActivity.class));
+                    }
+                }
+            }
+        });
     }
 
     @Override
