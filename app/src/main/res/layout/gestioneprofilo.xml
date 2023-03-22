@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.MainActivity"
+    tools:context=".activity.login_e_registrazione.GestioneProfiloActivity"
     android:id="@+id/drawer_layout">
 
     <com.google.android.material.navigation.NavigationView

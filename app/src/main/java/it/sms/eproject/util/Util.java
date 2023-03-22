@@ -1,5 +1,6 @@
 package it.sms.eproject.util;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -20,6 +21,8 @@ import it.sms.eproject.activity.CallbackFragment;
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
+import it.sms.eproject.data.classes.Permesso;
+import it.sms.eproject.data.classes.Utente;
 
 
 /**
@@ -211,6 +214,28 @@ public class Util {
         items += "]";
 
         return items;
+    }
+
+    /**
+     * Recupera le informazioni sull'utente che si è loggato all'app
+     */
+    public static Utente registraUtenteLoggato(SharedPreferences pref){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return Utente.of(
+                    Integer.parseInt(pref.getString("user_id", "-1")),
+                    pref.getString("user_nome", ""),
+                    pref.getString("user_cognome", ""),
+                    pref.getString("user_codice_fiscaale", ""),
+                    pref.getString("user_email", ""),
+                    LocalDate.parse(pref.getString("user_data_di_nascita", "1993-01-25")),
+                    Permesso.of(
+                            Integer.parseInt(pref.getString("user_permesso_codice", "")),
+                            pref.getString("user_permesso_nome", "")
+                    )
+            );
+        }
+
+        return null;
     }
 }
 

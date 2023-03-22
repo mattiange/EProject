@@ -44,6 +44,7 @@ import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
 import it.sms.eproject.fragment.utente.UtenteHomeFragment;
 import it.sms.eproject.menu.MyMenu;
 import it.sms.eproject.util.Constants;
+import it.sms.eproject.util.Util;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -115,20 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * Recupera le informazioni sull'utente che si è loggato all'app
      */
     public void registraUtenteLoggato(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            u = Utente.of(
-                    Integer.parseInt(pref.getString("user_id", "-1")),
-                    pref.getString("user_nome", ""),
-                    pref.getString("user_cognome", ""),
-                    pref.getString("user_codice_fiscaale", ""),
-                    pref.getString("user_email", ""),
-                    LocalDate.parse(pref.getString("user_data_di_nascita", "1993-01-25")),
-                    Permesso.of(
-                            Integer.parseInt(pref.getString("user_permesso_codice", "")),
-                            pref.getString("user_permesso_nome", "")
-                    )
-            );
-        }
+        u = Util.registraUtenteLoggato(this.pref);
     }
 
     /**
