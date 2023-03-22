@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="it.sms.eproject.fragment.home.crud.museo.CrudMuseo"
+        android:name="it.sms.eproject.fragment.backend.crud.museo.CrudMuseo"
         android:label="@string/menu_home"
         tools:layout="@layout/crudmuseo_fragment" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="it.sms.eproject.fragment.home.crud.oggetto.CrudOggetto"
+        android:name="it.sms.eproject.fragment.backend.crud.oggetto.CrudOggetto"
         android:label="@string/menu_gallery"
         tools:layout="@layout/crudoggetto_fragment" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="it.sms.eproject.fragment.home.crud.CrudZona"
+        android:name="it.sms.eproject.fragment.backend.crud.CrudZona"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/crudzona_fragment" />
 </navigation>

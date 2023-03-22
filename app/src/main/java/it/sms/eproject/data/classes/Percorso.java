@@ -1,5 +1,7 @@
 package it.sms.eproject.data.classes;
 
+import androidx.annotation.NonNull;
+
 import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
@@ -80,5 +82,16 @@ public class Percorso {
 
     public int getCodiceUtente() {
         return codiceUtente;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "{id="+getID()+
+                ", nome="+getNome()+
+                ", descrizione="+getDescrizione()+
+                ", durata="+getDurata()+
+                ", codice_citta="+getCodice_citta()+
+                ", codice_utente="+getCodiceUtente()+"}";
     }
 }

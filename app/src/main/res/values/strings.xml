@@ -195,6 +195,8 @@
 
     <!--======================================= CRUD =======================================-->
     <!-- Autori -->
+    <string name="crud_autori_create">Crea un nuovo autore</string>
+    <string name="crud_autori_list">Visualizza tutti gli autori</string>
     <string name="delete_autore">Cancella autore</string>
     <string name="delete_autore_msq_question">Vuoi cancellare l\'autore selezionato?</string>
     <string name="crud_autori_codice">Codice autore</string>
@@ -207,15 +209,28 @@
 
     <!-- Oggetti -->
     <string name="delete_oggetto">Cancella oggetto</string>
+    <string name="crud_oggetto_create">Crea oggetto</string>
+    <string name="crud_oggetto_list">Visualizza gli oggetti</string>
     <string name="crud_oggetto_nome_obbligatorio">Il nome dell\'oggetto è obbligatorio</string>
     <string name="crud_oggetto_update_titolo">Aggiornamento oggetto</string>
     <string name="delete_oggetto_msq_question">Vuoi cancellare l\'oggetto selezionato?</string>
     <!-- /////////// -->
 
+    <!-- TAB -->
+    <string name="tab_i_miei_percorsi">I miei percorsi</string>
+    <string name="tab_altri_percorsi">Altri percorsi</string>
+    <!-- ////////////// -->
+
+    <string name="cerca_musei_oggetti">Cerca un museo o un oggetto</string>
+    <string name="cerca_musei_oggetti_placeholder">Digita un museo o un oggetto da cercare</string>
+    <string name="durata_percorso">Durata della visita</string>
+    <string name="ore">ore</string>
+
+
+    <string name="crud_manage">Gestisci tutto</string>
     <string name="crud_create_content_description">Pulsante di aggiunta nuovo elemento</string>
     <string name="crud_aggiorna">Aggiornamento</string>
     <string name="crud_cancella">Cancella</string>
-    <string name="aggiorna_zona_title">Aggiorna la zona</string>
     <string name="aggiorna_oggetto_title">Aggiorna l\'oggetto</string>
     <string name="oggetto_creato">Oggetto inserito con successo</string>
     <string name="oggetto_problema_creato">Problema nell\'inserimento dell\'oggetto</string>
