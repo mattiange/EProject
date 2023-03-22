@@ -13,16 +13,6 @@
     <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/menu_icon_foreground_cog_fa"
-                android:title="@string/impostazioni"/>
-
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/menu_icon_signature_foreground"
-                android:title="@string/recensisci"/>
-
-            <item
                 android:id="@+id/nav_manage_percorso_utente"
                 android:icon="@drawable/route"
                 android:title="@string/crud_manage_percorso"/>
