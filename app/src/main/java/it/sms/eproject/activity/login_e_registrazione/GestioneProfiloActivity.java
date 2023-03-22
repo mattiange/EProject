@@ -31,6 +31,7 @@ import java.time.LocalDate;
 
 import it.sms.eproject.R;
 import it.sms.eproject.annotazioni.AutoreCodice;
+import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.database.DBUtente;
 import it.sms.eproject.database.DbManager;
@@ -70,6 +71,7 @@ public class GestioneProfiloActivity  extends AppCompatActivity implements Navig
     EditText etNome, etCognome, etPassword, etRipetiPassword, etCodiceFiscale, etDataDiNascita, etEmail;
 
     Utente utente;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +100,32 @@ public class GestioneProfiloActivity  extends AppCompatActivity implements Navig
         nv.bringToFront();
 
         registraElementi();
+        registraUtenteLoggato();
+
+        switch (utente.getPermesso().getCodice()){
+            case Permesso.CURATORE:
+                nv.inflateMenu(R.menu.activity_backend_drawer);
+                break;
+            case Permesso.GUIDA:
+                nv.inflateMenu(R.menu.activity_backend_drawer_guida);
+                break;
+            default:
+                nv.inflateMenu(R.menu.activity_main_drawer);
+        }
+
         impostAzioni();
 
     }
 
+    /**
+     * Recupera le informazioni sull'utente che si è loggato all'app
+     */
+    public void registraUtenteLoggato(){
+        utente = Util.registraUtenteLoggato(this.pref);
+    }
+
     public void registraElementi(){
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("credenziali", 0);
+        pref = getApplicationContext().getSharedPreferences("credenziali", 0);
         codiceUtente = Integer.parseInt(pref.getString("user_id", "-1"));
 
         this.utente = new DBUtente(getApplicationContext()).getUtente(codiceUtente);
