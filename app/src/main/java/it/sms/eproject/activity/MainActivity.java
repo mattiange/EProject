@@ -42,6 +42,7 @@ import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
 import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
 import it.sms.eproject.fragment.utente.UtenteHomeFragment;
+import it.sms.eproject.util.Constants;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 return true;
             case R.id.versione:
-                Toast.makeText(this, "Versione 1.0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, Constants.VERSION, Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.gestioneProfilo:
