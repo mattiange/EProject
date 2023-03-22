@@ -1,6 +1,5 @@
 package it.sms.eproject.database;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -8,19 +7,12 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import it.sms.eproject.eccezioni.EmailGiaEsistenteException;
 import it.sms.eproject.annotazioni.AutoreCodice;
-import it.sms.eproject.data.classes.Museo;
-import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
-import it.sms.eproject.data.classes.Zona;
 
 /**
  * Tabella di gestione del database
@@ -39,12 +31,12 @@ public class DbManager {
 
 
 
-    /**
+    /*
      * Visualizza tutti gli utenti registrati e i permessi a loro associati
      *
-     * @return
+     * @return Restituisce tutti gli utenti registrato con i relativi permessi
      */
-    @AutoreCodice(autore = "Mattia, Giandomenico")
+    /*@AutoreCodice(autore = "Mattia, Giandomenico")
     public ArrayList<Utente> elencoUtenti()      {
         String query="SELECT * FROM utenti AS u, permessi AS p, permesso_has_utente AS pu WHERE u.codice = pu.codice_utente AND p.codice = pu.codice_permesso";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -72,15 +64,16 @@ public class DbManager {
 
             } while(c.moveToNext());
         }
+        c.close();
 
         return utenti;
-    }
+    }*/
 
     /**
      * Registra un nuovo utente
      *
      * @param u Utente da registrare
-     * @return
+     * @return Restituisce l'esito della registrazione
      */
     @AutoreCodice(autore = "Mattia, Giandomenico")
     public boolean registrazione(Utente u) throws EmailGiaEsistenteException{
@@ -93,28 +86,26 @@ public class DbManager {
             db.execSQL(insert1);
 
             //Leggo l'id inserito e aggiungo il permesso all'utente
-                String last_id_query = "SELECT last_insert_rowid() as last_id FROM utenti;";
-                db= helper.getReadableDatabase();
-                Cursor c = db.rawQuery(last_id_query, null);
-                if(c.moveToFirst()){
-                    int last_id = Integer.parseInt(c.getString(0));
+            String last_id_query = "SELECT last_insert_rowid() as last_id FROM utenti;";
+            db= helper.getReadableDatabase();
+            Cursor c = db.rawQuery(last_id_query, null);
+            if(c.moveToFirst()){
+                int last_id = Integer.parseInt(c.getString(0));
 
-                    //inserisco il permesso dell'utente
-                    String insertPermessoUtente = "INSERT INTO permesso_has_utente(codice_utente, codice_permesso)" +
-                            "VALUES ("+last_id+","+u.getPermesso().getCodice()+");";
+                //inserisco il permesso dell'utente
+                String insertPermessoUtente = "INSERT INTO permesso_has_utente(codice_utente, codice_permesso)" +
+                        "VALUES ("+last_id+","+u.getPermesso().getCodice()+");";
 
-                    db= helper.getWritableDatabase();
-                    db.execSQL(insertPermessoUtente);
-                    //------------
-                }
+                db= helper.getWritableDatabase();
+                db.execSQL(insertPermessoUtente);
+                //------------
+            }
             //----------------------------------------------------
 
-
+            c.close();
 
             return true;
         }catch(SQLException ex){
-            /*System.out.println("))))))))))) EX => " + ex.getMessage() );
-            ex.getStackTrace();*/
             if(ex instanceof SQLiteConstraintException){
                 throw new EmailGiaEsistenteException(this.c);
             }
@@ -142,10 +133,10 @@ public class DbManager {
     @AutoreCodice(autore = "Mattia, Giandomenico")
     public Utente login(String email, String password){
         String query="SELECT * FROM utenti AS u, permessi AS p, permesso_has_utente AS pu " +
-                                "WHERE email = '"+email+"' " +
-                                    "AND password = '"+password+"' " +
-                                    "AND u.codice = pu.codice_utente " +
-                                    "AND p.codice = pu.codice_permesso;";
+                "WHERE email = '"+email+"' " +
+                "AND password = '"+password+"' " +
+                "AND u.codice = pu.codice_utente " +
+                "AND p.codice = pu.codice_permesso;";
         SQLiteDatabase db= helper.getReadableDatabase();
 
         Cursor c = db.rawQuery(query, null);
@@ -202,14 +193,14 @@ public class DbManager {
 
     //////////////////////////// GESTIONE ZONE
 
-    /**
+    /*
      * Restituisce una singola zona in base al suo ID
      *
      * @param id ID della zona
      * @return Restituisce la zona ottenuta. Restituisce <strong>null</strong> se non
      *         trova nessuna zona.
      */
-    public Zona getZona(int id){
+    /*public Zona getZona(int id){
         Zona ogg = null;
 
         String query="SELECT * FROM Zone WHERE id = " + id + "";
@@ -233,44 +224,15 @@ public class DbManager {
         c.close();
 
         return ogg;
-    }
+    }*/
 
-    /**
-     * Inserisce una nuova zona all'interno del database
-     *
-     * @param z Zona da inserire
-     * @return
-     */
-    @AutoreCodice(autore = "Mattia")
-    public boolean inserisciZona(Zona z){
-        String insert1="INSERT INTO Zone (ID, Nome, Provincia, Regione, CAP) "
-                + "VALUES (NULL," +
-                "'"+z.getNome()+"','"+
-                z.getProvincia()+"', '"+
-                z.getRegione()+"', '"+
-                z.getCAP()+"'"+
-                ");";
-
-        SQLiteDatabase db= helper.getWritableDatabase();
-
-        try{
-            db.execSQL(insert1);
-
-            return true;
-        }catch(SQLException ex){
-            System.err.println( ex.getMessage() );
-
-            return false;
-        }
-    }
-
-    /**
+    /*
      * Elimina un oggetto dal database selezionandolo in base al suo ID.
      *
      * @param id ID dell'oggetto
      * @return <strong>true</strong> se l'oggetto viene cancellato, <strong>false</strong> altrimenti
      */
-    public boolean deleteZona(int id){
+    /*public boolean deleteZona(int id){
         String query = "DELETE FROM Zone WHERE id = " + id;
 
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -284,9 +246,9 @@ public class DbManager {
 
             return false;
         }
-    }
+    }*/
 
-    /**
+    /*
      * Aggiorna una zona esistente.
      * La zona da modificare viene identificato mediante
      * il campo ID.
@@ -296,7 +258,7 @@ public class DbManager {
      * @return Restituisce <string>true</string> se la modifica ha successo
      *          <string>false</string> altrimenti.
      */
-    public boolean updateZona(int id, @NonNull Zona z){
+    /*public boolean updateZona(int id, @NonNull Zona z){
         String query = "UPDATE Zone "
                 + "SET " +
                 "Nome = '"+z.getNome()+"', Provincia = '"+
@@ -316,9 +278,9 @@ public class DbManager {
 
             return false;
         }
-    }
+    }*/
 
-    /**
+    /*
      *
      * Seleziona tutte le zone presenti nel database, per una specifica provincia
      *
@@ -331,7 +293,7 @@ public class DbManager {
      * @param provincia
      * @return
      */
-    @AutoreCodice(autore = "Mattia")
+    /*@AutoreCodice(autore = "Mattia")
     public ArrayList<Zona> visualizzaTutteLeZoneByProvincia(String provincia){
         String query="SELECT * FROM Zone WHERE Provincia = '" + provincia + "'";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -360,14 +322,14 @@ public class DbManager {
         c.close();
 
         return al;
-    }
+    }*/
 
-    /**
+    /*
      * Recupera tutte le regioni presenti all'interno delle zone
      *
      * @return
      */
-    @AutoreCodice(autore = "Mattia")
+    /*@AutoreCodice(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeRegioniDelleZone(){
         String query="SELECT Regione FROM Zone GROUP BY Regione";
         SQLiteDatabase db= helper.getReadableDatabase();
@@ -392,14 +354,14 @@ public class DbManager {
         c.close();
 
         return al;
-    }
+    }*/
 
-    /**
+    /*
      * Recupera tutte le regioni presenti all'interno delle zone
      *
      * @return
      */
-    @AutoreCodice(autore = "Mattia")
+    /*@AutoreCodice(autore = "Mattia")
     public ArrayList<HashMap<String, String>> visualizzaTutteLeProvinceDiUnaRegione(String regione){
         String query="SELECT provincia FROM Zone WHERE regione = '"+regione+"' GROUP BY provincia";
 
@@ -425,17 +387,17 @@ public class DbManager {
         c.close();
 
         return al;
-    }
+    }*/
 
     /////////////////////////////// GESTIONE OGGETTO
 
-    /**
+    /*
      * Elimina un oggetto dal database selezionandolo in base al suo ID.
      *
      * @param id ID dell'oggetto
      * @return <strong>true</strong> se l'oggetto viene cancellato, <strong>false</strong> altrimenti
      */
-    public boolean deleteOggetto(int id){
+    /*public boolean deleteOggetto(int id){
         String query = "DELETE FROM Oggetto WHERE id = " + id;
 
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -449,9 +411,9 @@ public class DbManager {
 
             return false;
         }
-    }
+    }*/
 
-    /**
+    /*
      * Aggiorna un oggetto esistente.
      * L'oggetto da modificare viene identificato mediante
      * il campo ID.
@@ -461,7 +423,7 @@ public class DbManager {
      * @return Restituisce <string>true</string> se la modifica ha successo
      *          <string>false</string> altrimenti.
      */
-    public boolean updateOggetto(int id, @NonNull Oggetto o){
+    /*public boolean updateOggetto(int id, @NonNull Oggetto o){
         String insert1="UPDATE Oggetto "
                 + "SET " +
                 "Nome = '"+o.getNome()+"', Anno = '"+
@@ -481,6 +443,6 @@ public class DbManager {
 
             return false;
         }
-    }
+    }*/
 
 }

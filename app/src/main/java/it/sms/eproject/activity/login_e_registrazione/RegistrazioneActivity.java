@@ -1,6 +1,5 @@
 package it.sms.eproject.activity.login_e_registrazione;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;

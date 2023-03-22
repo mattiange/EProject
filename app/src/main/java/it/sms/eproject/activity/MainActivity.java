@@ -13,18 +13,22 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
 
 import it.sms.eproject.R;
+import it.sms.eproject.activity.login_e_registrazione.GestioneProfiloActivity;
+import it.sms.eproject.activity.login_e_registrazione.LoginActivity;
 import it.sms.eproject.fragment.backend.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.backend.CuratoreHomeFragment;
 import it.sms.eproject.fragment.backend.RicercaMuseiOggettiFragment;
@@ -165,7 +169,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case R.id.qrscan:
+                startActivity(new Intent(this, QRscannerActivity.class));
+
+                return true;
+            case R.id.versione:
+                Toast.makeText(this, "Versione 1.0", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.gestioneProfilo:
+                startActivity(new Intent(this, GestioneProfiloActivity.class));
+
+                return true;
+
+            case R.id.logout:
+                startActivity(new Intent(this, LoginActivity.class));
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     @Override

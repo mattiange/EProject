@@ -55,6 +55,9 @@
         <activity
             android:name=".activity.login_e_registrazione.ConfermaRegistrazioneActivity"
             android:exported="true" />
+        <activity
+            android:name=".activity.login_e_registrazione.GestioneProfiloActivity"
+            android:exported="true" />
 
         <activity
             android:name=".activity.login_e_registrazione.LoginActivity"
