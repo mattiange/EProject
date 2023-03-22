@@ -172,11 +172,26 @@ public class DbManager {
      */
     public boolean aggiornaProfilo(Utente utente){
 
-        String insert1 = "UPDATE Utente" + "SET" + "Nome = '"+utente.getNome()+"', " +
-                "Cognome ='"+utente.getCognome()+"', Password = '"+utente.getPassword()+"'" +
-                "WHERE id ='"+utente.getCodice()+"';";
+        String insert1;
 
-        SQLiteDatabase db= helper.getReadableDatabase();
+        if(utente.getPassword() == null || utente.getPassword().trim().isEmpty()){
+            insert1 = "UPDATE utenti SET " + "nome = '"+utente.getNome()+"', " +
+                    "cognome ='"+utente.getCognome()+"', " +
+                    "codice_fiscale = '"+utente.getCodice_fiscale()+"', " +
+                    "data_di_nascita = '"+utente.getData_di_nascita()+"', " +
+                    "email = '"+utente.getEmail()+"'" +
+                    "WHERE codice ='"+utente.getCodice()+"'";
+        }else{
+            insert1 = "UPDATE utenti SET " + "nome = '"+utente.getNome()+"', " +
+                    "cognome ='"+utente.getCognome()+"', " +
+                    "codice_fiscale = '"+utente.getCodice_fiscale()+"', " +
+                    "data_di_nascita = '"+utente.getData_di_nascita()+"', " +
+                    "email = '"+utente.getEmail()+"', " +
+                    "password = '" + utente.getPassword() + "'" +
+                    "WHERE codice ='"+utente.getCodice()+"'";
+        }
+
+        SQLiteDatabase db= helper.getWritableDatabase();
 
         try{
             db.execSQL(insert1);

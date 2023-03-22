@@ -22,6 +22,11 @@
     <string name="msg_error_delete">Problema di eliminazione del %s</string>
     <string name="msg_error_autori_no_trovati">Nessun autore trovato</string>
     <string name="msg_error_percorso_nome_obbligatorio">Il nome del percorso è obbligatorio</string>
+    <string name="msg_error_nome_obbligatorio">Il nome è obbligatorio</string>
+    <string name="msg_error_cognome_obbligatorio">Il cognome è obbligatorio</string>
+    <string name="msg_error_data_di_nascita_obbligatorio">La data di nascita è obbligatoria</string>
+    <string name="msg_error_email_obbligatorio">L\'email è obbligatorio</string>
+    <string name="msg_error_codice_fiscale_obbligatorio">Il codice fiscale è obbligatorio</string>
     <string name="msg_error_percorso_musei">Devi aggiungere almeno un elemento per salvare il percorso.</string>
     <string name="error_sincronizzazione">Errore nella sincronizzazione dei dati, riprova più tardi</string>
 
