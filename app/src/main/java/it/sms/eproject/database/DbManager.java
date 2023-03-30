@@ -19,7 +19,7 @@ import it.sms.eproject.data.classes.Utente;
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DbManager {
-    static MyHelper helper=null;
+    public static MyHelper helper=null;
     private final static String DATABASE="ProgettoSMS.db";
     private final static int VERSIONE_DATABASE=1;
     Context c;
