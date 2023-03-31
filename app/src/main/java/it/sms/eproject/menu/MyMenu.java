@@ -1,5 +1,7 @@
 package it.sms.eproject.menu;
 
+import static com.google.zxing.client.result.ParsedResultType.WIFI;
+
 import it.sms.eproject.R;
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import it.sms.eproject.activity.QRscannerActivity;
 import it.sms.eproject.activity.login_e_registrazione.GestioneProfiloActivity;
 import it.sms.eproject.activity.login_e_registrazione.LoginActivity;
+import it.sms.eproject.json.MyWifiActivity;
 import it.sms.eproject.util.Constants;
 
 /**
@@ -57,6 +60,7 @@ public class MyMenu {
             case LOGOUT:
                 aggiungiMenuLogout();
                 break;
+
         }
 
         return this;
@@ -75,7 +79,19 @@ public class MyMenu {
 
         menuPos ++;
     }
+    /**
+     * Aggiunge la voce di menu per il logout
+     */
+    private void aggiungiMenuWifi(){
+        this.menu.add(menuPos, R.id.menu_logout, Menu.NONE, R.string.wifi);
+        this.menu.getItem(menuPos).setOnMenuItemClickListener(i->{
+            this.activity.startActivity(new Intent(this.activity, MyWifiActivity.class));
 
+            return true;
+        });
+
+        menuPos ++;
+    }
     /**
      * Aggiunge la gestione del profilo al menu
      */

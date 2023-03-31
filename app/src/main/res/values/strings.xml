@@ -340,5 +340,6 @@
     <string name="version">Versione</string>
     <string name="gestione_progilo">Profilo</string>
     <string name="qr_scan" translatable="false">Qr Scan</string>
+    <string name="wifi" translatable="false">Wifi</string>
 
 </resources>
