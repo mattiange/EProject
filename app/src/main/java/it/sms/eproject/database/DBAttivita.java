@@ -124,4 +124,10 @@ public class DBAttivita extends DbManager{
 
         return a;
     }
+
+    public boolean cancellaAttivita(long codice){
+        helper.getWritableDatabase().delete(TABLE_NAME," codice = ? ", new String[]{String.valueOf(codice)});
+
+        return true;
+    }
 }

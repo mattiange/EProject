@@ -265,6 +265,7 @@
     <string name="choise_place_event">Scegli il luogo su cui creare un evento</string>
     <string name="crud_update_event">Aggiorna evento</string>
     <string name="crud_list_event">Elenco degli eventi</string>
+    <string name="delete_attivita_msq_question">Vuoi cancellare l\'attività selezionata?</string>
 
     <string name="crud_txt_nome">Nome</string>
     <string name="crud_txt_cognome">Cognome</string>
