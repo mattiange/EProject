@@ -14,22 +14,15 @@
             android:id="@+id/titolo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/choise_place_event"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/cercaLuogo"
-            android:hint="@string/cerca_musei_oggetti_placeholder"
+        <TextView
+            android:id="@+id/descrizione"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/llContainer"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="24sp" />
 
     </LinearLayout>
 </ScrollView>

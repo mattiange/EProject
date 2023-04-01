@@ -51,17 +51,14 @@ public class CrudEventi extends Fragment {
      * @param e
      */
     private void visualizzaEvento(View e) {
-
-
-
-        /*visualizzaFragment(() -> {
-            Fragment fragment = new ListaMusei();
+        visualizzaFragment(() -> {
+            Fragment fragment = new CrudElencoEventi();
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
-        });*/
+        });
     }
 
     /**

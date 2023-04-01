@@ -260,6 +260,7 @@
     <string name="crud_show_event">View events</string>
     <string name="choise_place_event">Choose the place on which to create an event</string>
     <string name="crud_update_event">Update event</string>
+    <string name="crud_list_event">List of events</string>
 
     <string name="crud_txt_nome">Name</string>
     <string name="crud_txt_cognome">Surname</string>

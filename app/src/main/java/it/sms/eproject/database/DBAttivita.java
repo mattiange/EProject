@@ -103,4 +103,25 @@ public class DBAttivita extends DbManager{
 
         return a;
     }
+    public ArrayList<Attivita> getAttivita(String cerca){
+        String query="SELECT * FROM attivita WHERE attivita LIKE \"%"+cerca+"%\"";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+        ArrayList<Attivita> a = null;
+
+        if(c.moveToFirst()){
+            a = new ArrayList<>();
+
+            a.add(new Attivita(
+                    c.getInt(0),//Codice
+                    c.getInt(5),//Codice utente
+                    c.getLong(6),//Città codice
+                    c.getString(1),//Nome attività
+                    c.getString(4)//Descrizione attività
+            ));
+        }
+
+        return a;
+    }
 }
