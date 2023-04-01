@@ -29,9 +29,6 @@ import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDVisualizzaPercorso;
 import it.sms.eproject.util.EseguiFragment;
 
-/**
- * Fragment principale del curatore
- */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class RicercaMuseiOggettiFragment extends Fragment {
 
