@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -15,6 +18,7 @@ import it.sms.eproject.data.classes.Autore;
 /**
  * Gestisce le operazioni per gli stati nel database
  */
+@RequiresApi(api = Build.VERSION_CODES.O)
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBAutore extends DbManager{
     public DBAutore(Context context) {
