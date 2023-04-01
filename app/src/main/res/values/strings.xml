@@ -257,6 +257,10 @@
     <string name="crud_delete_museo">Cancella museo</string>
     <string name="crud_no_found_musei_oggetti">Devi selezionare almeno un museo e/ oggetto</string>
 
+    <!-- Attività -->
+    <string name="crud_event">Eventi</string>
+    <string name="crud_manage_event">Gestisci le attività di un museo</string>
+
     <string name="crud_txt_nome">Nome</string>
     <string name="crud_txt_cognome">Cognome</string>
     <string name="crud_txt_codice_fiscale">Codice Fiscale</string>

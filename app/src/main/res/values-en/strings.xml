@@ -253,6 +253,10 @@
     <string name="crud_delete_museo">Delete museum</string>
     <string name="crud_no_found_musei_oggetti">You must select at least one museum and/object</string>
 
+    <!-- Attività -->
+    <string name="crud_event">Events</string>
+    <string name="crud_manage_event">Manage the activities of a museum</string>
+
     <string name="crud_txt_nome">Name</string>
     <string name="crud_txt_cognome">Surname</string>
     <string name="crud_txt_codice_fiscale">Fiscal Code</string>
