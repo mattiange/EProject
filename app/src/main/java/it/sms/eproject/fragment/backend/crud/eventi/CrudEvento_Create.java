@@ -123,18 +123,6 @@ public class CrudEvento_Create extends Fragment {
         }else{
             update(a);
         }
-    }
-
-    private void update(Attivita a){
-        new DBAttivita(getContext()).aggiornaAttivita(a);
-    }
-
-    private void create(Attivita a){
-        if(this.tipoLuogo.trim().equals("museo")){
-            new DBAttivita(getContext()).inserisciMuseoAttivita(a.getCodice(), this.codiceLuogo);
-        }else if(this.tipoLuogo.trim().equals("oggetto")){
-            new DBAttivita(getContext()).inserisciOggettoAttivita(a.getCodice(), this.codiceLuogo);
-        }
 
         visualizzaFragment(() -> {
             Bundle bundle1 = new Bundle();
@@ -150,6 +138,18 @@ public class CrudEvento_Create extends Fragment {
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null).commit();
         });
+    }
+
+    private void update(Attivita a){
+        new DBAttivita(getContext()).aggiornaAttivita(a);
+    }
+
+    private void create(Attivita a){
+        if(this.tipoLuogo.trim().equals("museo")){
+            new DBAttivita(getContext()).inserisciMuseoAttivita(a.getCodice(), this.codiceLuogo);
+        }else if(this.tipoLuogo.trim().equals("oggetto")){
+            new DBAttivita(getContext()).inserisciOggettoAttivita(a.getCodice(), this.codiceLuogo);
+        }
     }
 
     public void visualizzaFragment(CallbackFragment callbackFragment){
