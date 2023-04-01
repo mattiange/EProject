@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import it.sms.eproject.R;
 import it.sms.eproject.fragment.backend.crud.autori.CRUDAutore;
+import it.sms.eproject.fragment.backend.crud.eventi.CrudElencoLuoghi;
+import it.sms.eproject.fragment.backend.crud.eventi.CrudEventi;
 import it.sms.eproject.fragment.backend.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.backend.crud.oggetto.CrudOggetto;
 import it.sms.eproject.annotazioni.AutoreCodice;
@@ -73,6 +75,17 @@ public class CuratoreHomeFragment extends Fragment {
         ConstraintLayout btnPercorsi = view.findViewById(R.id.btnGestisciIPercorsi);
         btnPercorsi.setOnClickListener(e-> {
             Fragment fragment = new CRUDPercorso();
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        });
+
+
+        //Gestione degli eventi
+        ConstraintLayout btnEventi = view.findViewById(R.id.btnGestisciGliEventi);
+        btnEventi.setOnClickListener(e-> {
+            Fragment fragment = new CrudEventi();
             FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragmentContainer, fragment);
             fragmentTransaction.addToBackStack(null);
