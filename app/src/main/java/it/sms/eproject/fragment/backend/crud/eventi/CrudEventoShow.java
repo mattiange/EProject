@@ -3,6 +3,7 @@ package it.sms.eproject.fragment.backend.crud.eventi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,16 @@ public class CrudEventoShow extends Fragment {
         ((TextView)v.findViewById(R.id.titolo)).setText(a.getNome());
         ((TextView)v.findViewById(R.id.descrizione)).setText(a.getDescrizione());
 
-        ((FloatingActionButton)v.findViewById(R.id.delete)).setOnClickListener(v1 -> {
+        FloatingActionButton deleteBtn = ((FloatingActionButton)v.findViewById(R.id.delete));
+
+        //Nascondo il pulsante per eliminare l'evento
+        //usato se qui arriva il visitatore
+        //sarà visualizzato per il curatore
+        if(getArguments().getString("hidden_trash", "false").trim().equals("true")){
+            deleteBtn.setVisibility(View.INVISIBLE);
+        }
+
+        deleteBtn.setOnClickListener(v1 -> {
             new AlertDialog.Builder(getContext())
                     .setTitle(getResources().getString(R.string.cancella))
                     .setMessage(getResources().getString(R.string.delete_attivita_msq_question))

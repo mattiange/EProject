@@ -3,6 +3,7 @@ package it.sms.eproject.fragment.utente;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -254,7 +255,9 @@ public class ListaPercorsiFragment extends Fragment {
         public void createItems(LinearLayout llc, ArrayList<Percorso> percorsi){
             for(Percorso p : percorsi){
                 TextView nomePercorso = new TextView(getContext());
-                nomePercorso.setId(View.generateViewId());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    nomePercorso.setId(View.generateViewId());
+                }
                 nomePercorso.setText(p.getNome());
                 nomePercorso.setTypeface(nomePercorso.getTypeface(), Typeface.BOLD);
 
@@ -267,27 +270,35 @@ public class ListaPercorsiFragment extends Fragment {
                     durata = sdf.format(dt);
                 } catch (ParseException e) {}
                 TextView tvDurata = new TextView(getContext());
-                tvDurata.setId(View.generateViewId());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    tvDurata.setId(View.generateViewId());
+                }
                 tvDurata.setText(getResources().getString(R.string.durata_visita) + ": " +durata + " " + getResources().getString(R.string.ore));
                 //-------------
 
                 //Città
                 TextView tvCitta = new TextView(getContext());
-                tvCitta.setId(View.generateViewId());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    tvCitta.setId(View.generateViewId());
+                }
                 tvCitta.setText(new DBCitta(mContext).getCap(p.getCodice_citta()) + " - " +
                         new DBCitta(mContext).getNomeCitta(p.getCodice_citta())
                         + " (" + new DBCitta(mContext).getSiglaProvincia(p.getCodice_citta()) + ")");
 
 
                 LinearLayout l_rating = new LinearLayout(getContext());
-                l_rating.setId(View.generateViewId());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    l_rating.setId(View.generateViewId());
+                }
                 l_rating.setOrientation(LinearLayout.HORIZONTAL);
 
                 RatingBar rating = new RatingBar(getContext());
                 LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 rlp.leftMargin = 0;
                 rating.setLayoutParams(rlp);
-                rating.setId(View.generateViewId());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    rating.setId(View.generateViewId());
+                }
                 rating.setNumStars(0);
                 rating.setRating(new DBValutazione(getContext()).calcolaMediaValutazionePercorso(p.getID()));//imposto la media delle votazioni
                 rating.setOnRatingBarChangeListener((ratingBar, rating1, fromUser)->{
@@ -311,8 +322,14 @@ public class ListaPercorsiFragment extends Fragment {
                 LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 llp.leftMargin = llp.rightMargin = llp.topMargin = llp.bottomMargin = 20;
                 ll.setLayoutParams(llp);
-                ll.setId(View.generateViewId());
-                ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    ll.setId(View.generateViewId());
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    ll.setBackground(getResources().getDrawable(R.drawable.rounded_corners));
+                }else{
+                    ll.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_corners));
+                }
                 ll.setPadding(50,50,50,50);
                 ll.setOrientation(LinearLayout.VERTICAL);
 

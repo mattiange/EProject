@@ -13,7 +13,11 @@ import java.util.Date;
 
 import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Attivita;
+import it.sms.eproject.data.classes.AttivitaMuseo;
+import it.sms.eproject.data.classes.AttivitaOggetto;
 import it.sms.eproject.data.classes.Autore;
+import it.sms.eproject.data.classes.Museo;
+import it.sms.eproject.data.classes.Oggetto;
 
 /**
  * Gestisce le operazioni per gli stati nel database
@@ -129,5 +133,77 @@ public class DBAttivita extends DbManager{
         helper.getWritableDatabase().delete(TABLE_NAME," codice = ? ", new String[]{String.valueOf(codice)});
 
         return true;
+    }
+
+    public AttivitaMuseo getAttivitaMuseo(int codiceMuseo){
+        String query="SELECT * " +
+                "FROM attivita as a, attivita_has_musei as am, musei as m " +
+                "WHERE am.musei_codice = m.codice AND a.codice = am.attivita_codice AND m.codice = " + codiceMuseo;
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+        AttivitaMuseo a = null;
+
+        if(c.moveToFirst()){
+            a = new AttivitaMuseo(
+                    new Attivita(
+                            c.getInt(0),//Codice
+                            c.getInt(5),//Codice utente
+                            c.getLong(6),//Città codice
+                            c.getString(1),//Nome attività
+                            c.getString(4)//Descrizione attività
+                    ),
+                    new Museo(
+                            c.getInt(8),//Codice
+                            c.getString(10),//Nome museo
+                            c.getString(11),//Numero telefono
+                            c.getString(12),//Indirizzo
+                            c.getLong(17),//Codice città
+                            c.getString(13),//Email
+                            c.getString(14),//Sito internet
+                            c.getString(15),//Orario
+                            new byte[]{},//immagine museo
+                            c.getInt(18)//Durata visita
+                    )
+            );
+        }
+
+
+        return a;
+    }
+
+    public AttivitaOggetto getAttivitaOggetto(int codiceOggetto){
+        String query="SELECT * " +
+                "FROM attivita as a, oggetti_has_attivita as am, oggetti as m " +
+                "WHERE am.oggetti_codice = m.codice AND a.codice = am.attivita_codice AND m.codice = " + codiceOggetto;
+
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+        AttivitaOggetto a = null;
+
+        if(c.moveToFirst()){
+            a = new AttivitaOggetto(
+                    new Attivita(
+                            c.getInt(0),//Codice
+                            c.getInt(5),//Codice utente
+                            c.getLong(6),//Città codice
+                            c.getString(1),//Nome attività
+                            c.getString(4)//Descrizione attività
+                    ),
+                    new Oggetto(
+                            c.getInt(8),//Codice
+                            c.getString(10),//Nome
+                            c.getInt(12),//Anno
+                            c.getInt(14),//Autore
+                            c.getString(13),//Descrizione
+                            c.getInt(15),//Citta
+                            c.getInt(16)//Durata
+                    )
+            );
+        }
+
+
+        return a;
     }
 }

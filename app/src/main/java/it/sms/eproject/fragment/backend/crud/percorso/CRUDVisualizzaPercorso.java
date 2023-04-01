@@ -61,12 +61,17 @@ import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.database.DBPercorso;
+import it.sms.eproject.fragment.backend.crud.eventi.CrudElencoEventi;
+import it.sms.eproject.fragment.backend.crud.eventi.CrudElencoEventiByLuogo;
 import it.sms.eproject.fragment.backend.crud.liste.ListaPercorso;
 import it.sms.eproject.maps.DirectionsJSONParser;
 import it.sms.eproject.util.EseguiFragment;
 
 public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallback {
     private Bundle bundle;
+    /**
+     * Codice del percorso
+     */
     long codice;
 
     boolean backpressedlistener;
@@ -144,6 +149,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
         FloatingActionButton deleteBtn = v.findViewById(R.id.delete);
         FloatingActionButton accettaBtn = v.findViewById(R.id.accetta);
         FloatingActionButton rifiutaBtn = v.findViewById(R.id.rifiuta);
+        FloatingActionButton attivitaBtn = v.findViewById(R.id.eventi);
         if(this.bundle.getBoolean("da-accettarre", false)){
             updateBtn.setVisibility(View.INVISIBLE);
             deleteBtn.setVisibility(View.INVISIBLE);
@@ -157,6 +163,7 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
         }
 
         //Attivo gli eventi sui pulsanti
+        attivitaBtn.setOnClickListener(this::getAttivita);
         updateBtn.setOnClickListener(this::getModificaPercorso);
         deleteBtn.setOnClickListener(this::getEliminaPercorso);
         accettaBtn.setOnClickListener(this::getAccettaPercorso);
@@ -206,6 +213,19 @@ public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallba
         // passing context of fragment
         //  to backpressedlistener
         backpressedlistener = true;
+    }
+
+    public void getAttivita(View v){
+        Bundle bundle1 = new Bundle();
+        bundle1.putLong("codice_percorso", this.codice);
+
+        Fragment fragment = new CrudElencoEventiByLuogo();
+        fragment.setArguments(bundle1);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     /**
