@@ -42,6 +42,7 @@ import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDPercorso;
 import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
 import it.sms.eproject.fragment.utente.UtenteHomeFragment;
+import it.sms.eproject.json.CondivisioneJson;
 import it.sms.eproject.menu.MyMenu;
 import it.sms.eproject.util.Constants;
 import it.sms.eproject.util.Util;
@@ -222,6 +223,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_manage_percorso_utente:
                 fragment = new ListaPercorsiFragment();
+                break;
+            case R.id.nav_esporta_percorso_utente:
+                Intent myIntent = new Intent(this, CondivisioneJson.class);
+                startActivity(myIntent);
                 break;
         }
         fragmentManager = getSupportFragmentManager();

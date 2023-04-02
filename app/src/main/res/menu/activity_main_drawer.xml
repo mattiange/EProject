@@ -16,6 +16,10 @@
                 android:id="@+id/nav_manage_percorso_utente"
                 android:icon="@drawable/route"
                 android:title="@string/crud_manage_percorso"/>
+            <item
+                android:id="@+id/nav_esporta_percorso_utente"
+                android:icon="@drawable/route"
+                android:title="@string/crud_esporta_percorso"/>
 
         </menu>
     </item>

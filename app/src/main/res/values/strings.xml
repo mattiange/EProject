@@ -341,5 +341,6 @@
     <string name="gestione_progilo">Profilo</string>
     <string name="qr_scan" translatable="false">Qr Scan</string>
     <string name="wifi" translatable="false">Wifi</string>
+    <string name="crud_esporta_percorso" translatable="false">Invia percorso di visita</string>
 
 </resources>
