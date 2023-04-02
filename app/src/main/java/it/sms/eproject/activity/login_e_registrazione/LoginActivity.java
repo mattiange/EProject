@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         //email = "m.rossi@gmail.com";//Guida
         //email = "a.manzoni@gmail.com";//Visitatore
         //password = "test";
+
         Utente u;
         if((u = new DbManager(this).login(email, password)) != null){
             //Dati dell'utente da passare tra le varie sezioni del sito

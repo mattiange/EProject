@@ -43,11 +43,21 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
         android:src="@drawable/trash_can"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/update" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/eventi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:src="@drawable/calendar_check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/accetta" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/accetta"

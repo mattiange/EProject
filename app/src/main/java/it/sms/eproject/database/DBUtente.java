@@ -7,10 +7,8 @@ import android.os.Build;
 import android.util.Log;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import it.sms.eproject.data.classes.Permesso;
-import it.sms.eproject.data.classes.Stato;
 import it.sms.eproject.data.classes.Utente;
 
 public class DBUtente extends DbManager{

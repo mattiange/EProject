@@ -252,10 +252,10 @@ public class CreateTable {
                 "ultima_modifica INTEGER," +
                 "data_creazione INTEGER," +
                 "descrizione TEXT," +
-                "autore_codice INTEGER," +
-                "zona_codice INTEGER," +
-                "FOREIGN KEY(autore_codice) REFERENCES autori(codice)," +
-                "FOREIGN KEY(zona_codice) REFERENCES zone(codice)" +
+                "utente_codice INTEGER," +
+                "citta_codice INTEGER," +
+                "FOREIGN KEY(utente_codice) REFERENCES utenti(codice)," +
+                "FOREIGN KEY(citta_codice) REFERENCES citta(codice)" +
                 ")";
 
         String oggetti_has_attivita = "CREATE TABLE oggetti_has_attivita (" +

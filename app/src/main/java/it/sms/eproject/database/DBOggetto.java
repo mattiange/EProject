@@ -86,6 +86,44 @@ public class DBOggetto extends DbManager{
 
         return al;
     }
+
+    /**
+     * Visualizza un elenco con tutti gli oggetti presenti nel database
+     * cercati attraverso il loro nome
+     *
+     * @param cerca Nome dell'oggetto
+     * @return ArrayList contenente tutti gli oggetti
+     */
+    public ArrayList<Oggetto> elencoOggetti(String cerca){
+        String query="SELECT * FROM oggetti as o WHERE o.nome LIKE \"%"+cerca+"%\"";
+        SQLiteDatabase db= helper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        ArrayList<Oggetto> al = null;
+
+        if (c.moveToFirst()){
+            al = new ArrayList<>();
+
+            do {
+
+                al.add(new Oggetto(
+                        c.getInt(0),//id
+                        c.getString(1),//nome
+                        c.getInt(2),//anno
+                        c.getInt(4),//id autore
+                        c.getString(3),//descrizione
+                        c.getInt(5)//id città
+                ));
+
+            } while(c.moveToNext());
+        }
+
+        c.close();
+
+        return al;
+    }
+
     /**
      * Seleziona tutti gli oggetti presenti nel database per una data città
      *

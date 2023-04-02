@@ -257,6 +257,16 @@
     <string name="crud_delete_museo">Cancella museo</string>
     <string name="crud_no_found_musei_oggetti">Devi selezionare almeno un museo e/ oggetto</string>
 
+    <!-- Attività -->
+    <string name="crud_event">Eventi</string>
+    <string name="crud_manage_event">Gestisci le attività di un museo</string>
+    <string name="crud_create_event">Aggiungi un evento</string>
+    <string name="crud_show_event">Visualizza gli eventi</string>
+    <string name="choise_place_event">Scegli il luogo su cui creare un evento</string>
+    <string name="crud_update_event">Aggiorna evento</string>
+    <string name="crud_list_event">Elenco degli eventi</string>
+    <string name="delete_attivita_msq_question">Vuoi cancellare l\'attività selezionata?</string>
+
     <string name="crud_txt_nome">Nome</string>
     <string name="crud_txt_cognome">Cognome</string>
     <string name="crud_txt_codice_fiscale">Codice Fiscale</string>
@@ -331,6 +341,7 @@
 
     <!-- ///////////////////////////////////////////////// -->
 
+    <string name="crud_" translatable="false">Password</string>
     <string name="domanda_aggiornamento_database">Vuoi scaricare gli aggiornamenti?</string>
     <string name="descrizione_aggiornamento_database">Sincronizza i musei e i luoghi da visitare</string>
     <string name="aggiornamento_database_ok">Sincronizzazione avvenuta con successo</string>

@@ -33,6 +33,7 @@ import it.sms.eproject.fragment.backend.AggiornaDatabaseFragment;
 import it.sms.eproject.fragment.backend.CuratoreHomeFragment;
 import it.sms.eproject.fragment.backend.RicercaMuseiOggettiFragment;
 import it.sms.eproject.fragment.backend.crud.autori.CRUDAutore;
+import it.sms.eproject.fragment.backend.crud.eventi.CrudEventi;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 import it.sms.eproject.fragment.backend.crud.museo.CrudMuseo;
 import it.sms.eproject.fragment.backend.crud.oggetto.CrudOggetto;
@@ -222,6 +223,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_manage_percorso_utente:
                 fragment = new ListaPercorsiFragment();
+                break;
+            case R.id.nav_manage_event:
+                fragment = new CrudEventi();
                 break;
         }
         fragmentManager = getSupportFragmentManager();
