@@ -64,6 +64,11 @@
             android:exported="true">
         </activity>
 
+        <activity
+            android:name=".json.CondivisioneJson"
+            android:exported="true">
+        </activity>
+
 
 
 

@@ -342,4 +342,5 @@
     <string name="version">Version</string>
     <string name="gestione_progilo">Profile management</string>
 
+    <string name="crud_esporta_percorso">Send tour itinerary</string>
 </resources>
