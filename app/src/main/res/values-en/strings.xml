@@ -89,6 +89,10 @@
     <string name="info_email">Email cannot be empty!</string>
     <string name="not_an_email">You have not entered an e-mail!</string>
     <string name="password">Password</string>
+    <string name="accesso_diretto">Direct access</string>
+    <string name="login_visitatore">Visitors</string>
+    <string name="login_guida">Guide</string>
+    <string name="login_curatore">Curator</string>
     <string name="insert_password">Enter Password</string>
     <string name="info_password">NOTE: Password must contain at least 6 characters and one special character.</string>
     <string name="null_password">Password cannot be empty!</string>
