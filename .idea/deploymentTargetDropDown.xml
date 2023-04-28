@@ -30,15 +30,6 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="SERIAL_NUMBER" />
-            <value value="RFCW300T84Y" />
-          </Key>
-        </deviceKey>
-      </Target>
-      <Target>
-        <type value="RUNNING_DEVICE_TARGET" />
-        <deviceKey>
-          <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
             <value value="C:\Users\matti\.android\avd\Pixel_XL_API_29_1.avd" />
           </Key>
