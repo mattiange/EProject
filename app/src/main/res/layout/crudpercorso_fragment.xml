@@ -24,13 +24,15 @@
             android:id="@+id/btnCreaPercorso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
             android:background="@drawable/border_with_shadow"
             android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnVisualizzaPercorsi"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -59,7 +61,6 @@
             android:id="@+id/btnVisualizzaPercorsi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:background="@drawable/border_with_shadow"
             android:orientation="vertical"
             android:paddingLeft="10dp"
@@ -67,7 +68,7 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.337"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnCreaPercorso"
             app:layout_constraintTop_toTopOf="parent">
 
