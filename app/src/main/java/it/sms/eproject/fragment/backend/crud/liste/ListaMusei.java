@@ -50,15 +50,6 @@ public class ListaMusei extends Fragment {
             listView = v.findViewById(R.id.listView);
             listView.setAdapter(adapter);
 
-
-        /*listView.setOnItemClickListener((parent, view, position, id) -> {
-            TextView codice = ((TextView)view.findViewById(R.id.listViewCodice));
-
-            this.bundle.putString("codice_museo", codice.getText().toString());
-
-            getMuseo();
-        });*/
-
             listView.setOnItemLongClickListener((parent, view, position, id) -> {
 
                 //Toast.makeText(getContext(), "OK LONG CLICK", Toast.LENGTH_SHORT).show();
