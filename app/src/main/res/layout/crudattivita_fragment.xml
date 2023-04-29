@@ -34,7 +34,6 @@
             android:id="@+id/btnCreaEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
             android:layout_marginTop="44dp"
             android:background="@drawable/border_with_shadow"
             android:orientation="vertical"
@@ -42,6 +41,9 @@
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnVisualizzaEvento"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -74,7 +76,6 @@
             android:id="@+id/btnVisualizzaEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="44dp"
             android:background="@drawable/border_with_shadow"
             android:orientation="vertical"
@@ -83,7 +84,7 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnCreaEvento"
             app:layout_constraintTop_toTopOf="parent">
 
