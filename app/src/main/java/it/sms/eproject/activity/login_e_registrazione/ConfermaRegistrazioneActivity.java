@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import it.sms.eproject.R;
 
+/**
+ * Activity utilizzata per confermare
+ * la registrazione di un utente
+ */
 public class ConfermaRegistrazioneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

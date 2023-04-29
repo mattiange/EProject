@@ -46,7 +46,10 @@ import it.sms.eproject.fragment.utente.ListaPercorsiFragment;
 import it.sms.eproject.menu.MyMenu;
 import it.sms.eproject.util.Util;
 
-
+/**
+ * Activity per la gestione del profilo utente
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class GestioneProfiloActivity  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     NavigationView nv;
@@ -149,6 +152,9 @@ public class GestioneProfiloActivity  extends AppCompatActivity implements Navig
         btnModify  = findViewById(R.id.btnModify);
     }
 
+    /**
+     * Imposta le azione che si possono compiere con l'activity
+     */
     public void impostAzioni(){
 
 
