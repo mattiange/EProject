@@ -48,6 +48,12 @@ import it.sms.eproject.menu.MyMenu;
 import it.sms.eproject.util.Constants;
 import it.sms.eproject.util.Util;
 
+/**
+ * Activity principale del sistema.
+ * Si accede dopo la login e si visualizza il contenuto
+ * tenendo conto dei permessi associati ad un utente (Visitatore, guida, curatore)
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView nv;
 

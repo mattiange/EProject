@@ -14,10 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.MainActivity;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.database.DbManager;
 import it.sms.eproject.util.Util;
 
+/**
+ * Activity della login
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class LoginActivity extends AppCompatActivity {
     Button buttonLogin,
             buttonRegister,

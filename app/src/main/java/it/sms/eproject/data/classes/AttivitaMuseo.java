@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Struttura delle attivitò di un museo
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class AttivitaMuseo {
     private Attivita attivita;
     private Museo museo;

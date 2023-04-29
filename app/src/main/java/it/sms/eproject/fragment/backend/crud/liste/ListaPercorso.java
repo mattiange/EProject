@@ -24,6 +24,9 @@ import it.sms.eproject.data.classes.Percorso;
 import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.fragment.backend.crud.percorso.CRUDVisualizzaPercorso;
 
+/**
+ * Elenco dei percorsi
+ */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaPercorso extends Fragment {
     ListView listView;

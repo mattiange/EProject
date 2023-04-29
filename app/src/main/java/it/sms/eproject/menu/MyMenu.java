@@ -13,12 +13,14 @@ import android.widget.Toast;
 import it.sms.eproject.activity.QRscannerActivity;
 import it.sms.eproject.activity.login_e_registrazione.GestioneProfiloActivity;
 import it.sms.eproject.activity.login_e_registrazione.LoginActivity;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.json.MyWifiActivity;
 import it.sms.eproject.util.Constants;
 
 /**
  * Gestione delle voci del menu
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class MyMenu {
     private Context c;
 

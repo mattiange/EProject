@@ -14,8 +14,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaAutori;
 
+/**
+ * CRUD per gli autori.
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDAutore extends Fragment {
     private ConstraintLayout btnShowAll;
     private ConstraintLayout btnCreate;

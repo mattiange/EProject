@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Struttura delle attività
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Attivita {
     private long codice;
     private int utenteCodice;

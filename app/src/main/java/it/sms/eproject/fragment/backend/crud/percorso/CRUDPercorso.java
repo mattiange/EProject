@@ -16,9 +16,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaPercorso;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 
+/**
+ * Home per i percorsi
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDPercorso extends Fragment {
 
     ConstraintLayout btnCreate;

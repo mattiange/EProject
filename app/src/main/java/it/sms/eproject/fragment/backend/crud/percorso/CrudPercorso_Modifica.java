@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
@@ -32,6 +33,10 @@ import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.database.DBPercorso;
 import it.sms.eproject.util.EseguiFragment;
 
+/**
+ * Pagina di modifica di un percorso
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudPercorso_Modifica extends Fragment {
     View v;
     Bundle bundle;

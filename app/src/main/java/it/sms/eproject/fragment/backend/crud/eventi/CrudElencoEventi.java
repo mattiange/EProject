@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Attivita;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
@@ -28,6 +29,10 @@ import it.sms.eproject.database.DBAttivita;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 
+/**
+ * Elenco degli eventi presenti per un percorso
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudElencoEventi extends Fragment {
 
     EditText cerca;

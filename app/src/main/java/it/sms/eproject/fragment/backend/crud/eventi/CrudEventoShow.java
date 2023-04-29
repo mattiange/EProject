@@ -1,9 +1,7 @@
 package it.sms.eproject.fragment.backend.crud.eventi;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,10 +16,14 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
-import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Attivita;
 import it.sms.eproject.database.DBAttivita;
 
+/**
+ * Visualizzazione di un evento
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudEventoShow extends Fragment {
 
     @Nullable

@@ -15,7 +15,7 @@ import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
 
 /**
- * Gestisce le operazioni per gli stati nel database
+ * Gestisce le operazioni per le valutazioni
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBValutazione extends DbManager{

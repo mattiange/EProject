@@ -18,9 +18,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaOggetti;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 
+/**
+ * Pagina di avviso inserimento avvenuto con successo per un oggetto
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDOggettoSalvatoSuccesso extends Fragment {
     @Nullable
     @Override

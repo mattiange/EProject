@@ -3,10 +3,13 @@ package it.sms.eproject.database.helper.insert;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
 /**
  * Inserisce nel database i valori
  * di default per gli Utenti e i Permessi
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class InsertUtentiPermessi {
     private SQLiteDatabase db;
 

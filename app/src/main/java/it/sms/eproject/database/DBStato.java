@@ -7,11 +7,13 @@ import android.os.Build;
 
 import java.util.ArrayList;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Stato;
 
 /**
  * Gestisce le operazioni per gli stati nel database
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBStato extends DbManager{
     public DBStato(Context context) {
         super(context);

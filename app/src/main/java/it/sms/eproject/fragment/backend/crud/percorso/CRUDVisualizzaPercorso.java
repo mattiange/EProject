@@ -54,6 +54,7 @@ import java.util.List;
 import java.util.Random;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
@@ -67,6 +68,10 @@ import it.sms.eproject.fragment.backend.crud.liste.ListaPercorso;
 import it.sms.eproject.maps.DirectionsJSONParser;
 import it.sms.eproject.util.EseguiFragment;
 
+/**
+ * Visualizza un percorso
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDVisualizzaPercorso extends Fragment implements OnMapReadyCallback {
     private Bundle bundle;
     /**

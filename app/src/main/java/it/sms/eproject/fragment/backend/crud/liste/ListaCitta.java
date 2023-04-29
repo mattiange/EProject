@@ -21,12 +21,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.data.classes.Citta;
 import it.sms.eproject.database.DBCitta;
 import it.sms.eproject.fragment.backend.crud.oggetto.CrudOggetto_Create;
 import it.sms.eproject.fragment.backend.crud.percorso.CrudPercorso_Create;
 
+/**
+ * Elenco delle città
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaCitta extends Fragment {
     ListView listView;
     Bundle bundle;

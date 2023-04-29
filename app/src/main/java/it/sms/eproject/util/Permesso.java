@@ -1,5 +1,8 @@
 package it.sms.eproject.util;
 
+/**
+ * Classe indicante i permessi presenti nel database
+ */
 public final class Permesso
 {
     public static final int CURATORE = 1;

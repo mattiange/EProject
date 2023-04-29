@@ -15,10 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaAutori;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 import it.sms.eproject.util.Util;
 
+/**
+ * Fragment di risposta per un autore eliminato
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDAutoreEliminatoSuccesso extends Fragment {
     @Nullable
     @Override

@@ -16,8 +16,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaAutori;
 
+/**
+ * Fragment di risposta per un autore inserito
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDAutoreSalvatoSuccesso extends Fragment {
     @Nullable
     @Override

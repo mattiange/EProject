@@ -23,9 +23,14 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.database.DBAutore;
 
+/**
+ * Fragment per creare un nuovo autore
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDCreateAutori extends Fragment {
     EditText dataNascita;
     EditText dataMorte;

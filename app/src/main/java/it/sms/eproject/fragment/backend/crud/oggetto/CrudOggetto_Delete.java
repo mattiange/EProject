@@ -11,7 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
+/**
+ * Eliminazione di un oggetto
+ */
+@AutoreCodice(autore = "Giandomenico Bucci")
 public class CrudOggetto_Delete extends Fragment {
     private Button btnDelete;
     private Button btnCancel;

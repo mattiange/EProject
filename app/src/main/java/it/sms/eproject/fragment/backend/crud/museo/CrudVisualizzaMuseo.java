@@ -37,6 +37,9 @@ import it.sms.eproject.database.DbManager;
 import it.sms.eproject.util.EseguiFragment;
 import it.sms.eproject.util.Util;
 
+/**
+ * Visualizza un museo
+ */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudVisualizzaMuseo extends Fragment {
     private Button btnShowAll;

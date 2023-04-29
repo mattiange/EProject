@@ -38,7 +38,7 @@ import it.sms.eproject.util.Connector;
 import it.sms.eproject.util.Link;
 
 /**
- * Fragment principale del curatore
+ * Fragment utilizzato per aggrionare il database
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class AggiornaDatabaseFragment extends Fragment {

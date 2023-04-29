@@ -7,12 +7,14 @@ import android.os.Build;
 
 import java.util.ArrayList;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Citta;
 import it.sms.eproject.data.classes.Provincia;
 
 /**
  * Gestisce le operazioni per gli stati nel database
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBProvincia extends DbManager{
     public DBProvincia(Context context) {
         super(context);

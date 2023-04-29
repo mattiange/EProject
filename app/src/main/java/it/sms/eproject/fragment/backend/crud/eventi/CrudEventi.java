@@ -1,12 +1,9 @@
 package it.sms.eproject.fragment.backend.crud.eventi;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +14,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
-import it.sms.eproject.fragment.backend.crud.liste.ListaMusei;
-import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
+/**
+ * Home degli eventi
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudEventi extends Fragment {
     private ConstraintLayout btnShowAll;
     private ConstraintLayout btnCreate;

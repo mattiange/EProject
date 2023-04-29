@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Struttura dello stato
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Stato {
     private final int codice;
     private String nome;

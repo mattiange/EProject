@@ -42,7 +42,7 @@ import it.sms.eproject.fragment.backend.crud.percorso.CRUDVisualizzaPercorso;
 import it.sms.eproject.util.EseguiFragment;
 
 /**
- * Fragment principale del curatore
+ * Fragment che recupera i percorsi di un utente specifico (quello loggato)
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaPercorsiFragment extends Fragment {

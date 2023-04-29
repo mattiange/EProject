@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBAutore;
@@ -27,6 +28,10 @@ import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.backend.crud.liste.ListaAutori;
 import it.sms.eproject.util.EseguiFragment;
 
+/**
+ * Nuovo oggetto
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudOggetto_Create extends Fragment {
 
     EditText anno;

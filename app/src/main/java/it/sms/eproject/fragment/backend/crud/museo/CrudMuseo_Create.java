@@ -26,6 +26,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DbManager;
@@ -36,6 +37,10 @@ import it.sms.eproject.util.Util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Pagina di creazione di un nuovo museo
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudMuseo_Create extends Fragment {
     ActivityResultLauncher<Intent> launchSomeActivity;
     Bitmap selectedImageBitmap;

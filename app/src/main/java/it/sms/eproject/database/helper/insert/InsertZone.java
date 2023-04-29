@@ -3,6 +3,8 @@ package it.sms.eproject.database.helper.insert;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
 /**
  * Inserisce:
  * - Stati
@@ -10,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
  * - Province
  * - Città
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class InsertZone {
     private SQLiteDatabase db;
 

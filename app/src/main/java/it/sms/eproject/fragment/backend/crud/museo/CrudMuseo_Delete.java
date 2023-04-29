@@ -11,7 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
+/**
+ * Pagina di cancellazione di un museo
+ */
+@AutoreCodice(autore = "Giandomenico Bucci")
 public class CrudMuseo_Delete extends Fragment {
 
     private Button btnDelete;

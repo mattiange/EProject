@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Struttura della regione
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Regione {
     private final int codice;
     private final int codice_stato;

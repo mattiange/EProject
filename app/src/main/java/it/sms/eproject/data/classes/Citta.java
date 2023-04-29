@@ -1,5 +1,11 @@
 package it.sms.eproject.data.classes;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Struttura della città
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Citta {
     private final int codice;
     private final int codice_provincia;

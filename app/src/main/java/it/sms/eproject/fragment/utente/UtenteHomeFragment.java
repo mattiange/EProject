@@ -13,7 +13,7 @@ import it.sms.eproject.R;
 import it.sms.eproject.annotazioni.AutoreCodice;
 
 /**
- * Fragment principale del curatore
+ * Fragment principale dell'utente
  */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class UtenteHomeFragment extends Fragment {

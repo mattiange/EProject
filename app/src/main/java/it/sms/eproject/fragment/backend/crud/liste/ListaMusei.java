@@ -30,6 +30,9 @@ import it.sms.eproject.fragment.backend.crud.museo.CrudMuseo_Create;
 import it.sms.eproject.fragment.backend.crud.museo.CrudVisualizzaMuseo;
 import it.sms.eproject.util.Util;
 
+/**
+ * Elenco dei musei
+ */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaMusei extends Fragment {
     ListView listView;

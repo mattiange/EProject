@@ -19,9 +19,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Regione;
 import it.sms.eproject.database.DBRegione;
 
+/**
+ * Elenco delle regioni
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaRegioni extends Fragment {
     ListView listView;
     Bundle bundle;

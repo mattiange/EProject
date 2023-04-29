@@ -9,7 +9,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 
+/**
+ * Serve a condividere un file con JSON
+ */
+@AutoreCodice(autore = "Giandomenico Bucci")
 public class CondivisioneJson extends AppCompatActivity {
 
     Button btnInvia;

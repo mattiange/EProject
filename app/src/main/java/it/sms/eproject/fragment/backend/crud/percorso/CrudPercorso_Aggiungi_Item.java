@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.OggettiMuseoHasPercorsi;
 import it.sms.eproject.data.classes.Oggetto;
@@ -38,6 +39,7 @@ import it.sms.eproject.util.EseguiFragment;
  * Permette di aggiungere un nuovo item al percorso
  * selezionato
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudPercorso_Aggiungi_Item extends Fragment {
     View v;
     Bundle bundle;

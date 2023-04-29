@@ -1,5 +1,6 @@
 package it.sms.eproject.fragment.backend.crud.autori;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,9 @@ import it.sms.eproject.database.DBAutore;
 import it.sms.eproject.util.EseguiFragment;
 import it.sms.eproject.util.Util;
 
+/**
+ * Fragment utilizzato per visualizzare un autore
+ */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudVisualizzaAutore extends Fragment {
     View v;
@@ -55,18 +59,20 @@ public class CrudVisualizzaAutore extends Fragment {
             autore.setDataDiNascita(Util.parseDate(dataNascita.getText().toString()));
             autore.setDataDiMorte(Util.parseDate(dataMorte.getText().toString()));
             autore.setDescrizione(descrizione.getText().toString());
-            if(db.aggiornaAutore(autore)){
-                EseguiFragment.changeFragment(()->{
-                    Fragment fragment = new CRUDAutoreSalvatoSuccesso();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if(db.aggiornaAutore(autore)){
+                    EseguiFragment.changeFragment(()->{
+                        Fragment fragment = new CRUDAutoreSalvatoSuccesso();
 
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-                    fragmentTransaction.commit();
-                });
-            }else {
-                error.setVisibility(View.VISIBLE);
-                error.setText(R.string.msg_error_update);
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+                        fragmentTransaction.commit();
+                    });
+                }else {
+                    error.setVisibility(View.VISIBLE);
+                    error.setText(R.string.msg_error_update);
+                }
             }
 
 
@@ -81,8 +87,10 @@ public class CrudVisualizzaAutore extends Fragment {
      */
     @AutoreCodice(autore = "Mattia Leonardo Angelillo")
     public void init(){
-        db = new DBAutore(getContext());
-        autore = db.getAutore(Integer.parseInt(getArguments().getString("codice_autore")));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            db = new DBAutore(getContext());
+            autore = db.getAutore(Integer.parseInt(getArguments().getString("codice_autore")));
+        }
 
         titolo      = v.findViewById(R.id.titolo);
         nome        = v.findViewById(R.id.etNome);

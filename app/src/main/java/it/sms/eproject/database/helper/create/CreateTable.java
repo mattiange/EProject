@@ -3,6 +3,12 @@ package it.sms.eproject.database.helper.create;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Crea le tabelle nel database
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CreateTable {
     private SQLiteDatabase db;
 

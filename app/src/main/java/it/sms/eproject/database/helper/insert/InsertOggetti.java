@@ -3,6 +3,12 @@ package it.sms.eproject.database.helper.insert;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Inserisce i valori di default per gli oggeti
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class InsertOggetti {
     private SQLiteDatabase db;
 

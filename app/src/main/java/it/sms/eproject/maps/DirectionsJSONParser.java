@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
 /**
  * Questa classe viene utilizzata per recuperare latitudine e longitudine
  * attraverso l'API Directions.
  *
  */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DirectionsJSONParser {
     /** Receives a JSONObject and returns a list of lists containing latitude and longitude */
     /**

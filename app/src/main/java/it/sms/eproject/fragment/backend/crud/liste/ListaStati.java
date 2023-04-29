@@ -17,11 +17,16 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Stato;
 import it.sms.eproject.database.DBStato;
 
 import static it.sms.eproject.util.EseguiFragment.changeFragment;
 
+/**
+ * Elenco degli stati
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaStati extends Fragment {
     ListView listView;
     Bundle bundle;

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.eccezioni.EmailGiaEsistenteException;
 import it.sms.eproject.R;
 import it.sms.eproject.data.classes.Permesso;
@@ -20,6 +21,10 @@ import it.sms.eproject.data.classes.Utente;
 import it.sms.eproject.database.DbManager;
 import it.sms.eproject.util.Util;
 
+/**
+ * Activity per la registrazione di un nuovo utente
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class RegistrazioneActivity extends AppCompatActivity {
 
     Button btnRegistrazione;

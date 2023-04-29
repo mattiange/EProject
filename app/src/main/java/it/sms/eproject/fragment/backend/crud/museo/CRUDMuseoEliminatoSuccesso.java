@@ -15,10 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaMusei;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 import it.sms.eproject.util.Util;
 
+/**
+ * Pagina di avviso per l'eliminazione riuscita di un musei
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDMuseoEliminatoSuccesso extends Fragment {
     @Nullable
     @Override

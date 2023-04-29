@@ -3,6 +3,12 @@ package it.sms.eproject.database.helper.insert;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Inserisce i valori di default per i percorsi
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class InsertPercorsi {
     private SQLiteDatabase db;
 

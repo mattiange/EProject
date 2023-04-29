@@ -23,12 +23,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.backend.crud.oggetto.CRUDOggettoEliminatoSuccesso;
 import it.sms.eproject.fragment.backend.crud.oggetto.CrudVisualizzaOggetto;
 import it.sms.eproject.util.Util;
 
+/**
+ * Elenco dei punti di interesse
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaOggetti extends Fragment {
     ListView listView;
     Bundle bundle;

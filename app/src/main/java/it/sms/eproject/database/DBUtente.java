@@ -8,9 +8,14 @@ import android.util.Log;
 
 import java.time.LocalDate;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Permesso;
 import it.sms.eproject.data.classes.Utente;
 
+/**
+ * Gestisce le operazioni per gli utenti
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class DBUtente extends DbManager{
 
     public DBUtente(Context context) {

@@ -1,48 +1,34 @@
 package it.sms.eproject.fragment.backend.crud.eventi;
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
 import it.sms.eproject.R;
 import it.sms.eproject.activity.CallbackFragment;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Attivita;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.database.DBAttivita;
 import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
-import it.sms.eproject.database.DbManager;
-import it.sms.eproject.fragment.backend.crud.museo.CRUDMuseoSalvatoSuccesso;
-import it.sms.eproject.util.EseguiFragment;
-import it.sms.eproject.util.Util;
 
+/**
+ * Pagina di creazione di un nuovo evento
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudEvento_Create extends Fragment {
     View v;
 
@@ -73,6 +59,9 @@ public class CrudEvento_Create extends Fragment {
         return v;
     }
 
+    /**
+     * Inizializza i dati e i campi
+     */
     private void init(){
         this.luogo                  = this.v.findViewById(R.id.tvNomeLuogo);
         this.nomeAttivita           = this.v.findViewById(R.id.etNomeAttivita);
@@ -107,6 +96,10 @@ public class CrudEvento_Create extends Fragment {
         this.btnSalva.setOnClickListener(this::salva);
     }
 
+    /**
+     * Salva l'evento nel db
+     * @param v
+     */
     private void salva(View v) {
         SharedPreferences pref = getContext().getSharedPreferences("credenziali", 0);
         SharedPreferences.Editor editor = pref.edit();
@@ -140,10 +133,20 @@ public class CrudEvento_Create extends Fragment {
         });
     }
 
+    /**
+     * Aggiorna l'evento nel db
+     *
+     * @param a Attività da aggiornare
+     */
     private void update(Attivita a){
         new DBAttivita(getContext()).aggiornaAttivita(a);
     }
 
+    /**
+     * Inserisce l'evento nel db
+     *
+     * @param a Attivitò da inserire
+     */
     private void create(Attivita a){
         if(this.tipoLuogo.trim().equals("museo")){
             new DBAttivita(getContext()).inserisciMuseoAttivita(a.getCodice(), this.codiceLuogo);

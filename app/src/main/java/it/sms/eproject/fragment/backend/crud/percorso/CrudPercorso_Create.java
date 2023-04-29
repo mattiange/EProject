@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Museo;
 import it.sms.eproject.data.classes.Oggetto;
 import it.sms.eproject.data.classes.Percorso;
@@ -34,6 +35,10 @@ import it.sms.eproject.database.DBMuseo;
 import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.database.DBPercorso;
 
+/**
+ * Pagina di creazione di un percorso
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudPercorso_Create extends Fragment {
 
     View v;

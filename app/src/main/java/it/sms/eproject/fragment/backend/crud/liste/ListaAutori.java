@@ -23,12 +23,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.data.classes.Autore;
 import it.sms.eproject.database.DBAutore;
 import it.sms.eproject.fragment.backend.crud.autori.CRUDAutoreEliminatoSuccesso;
 import it.sms.eproject.fragment.backend.crud.autori.CrudVisualizzaAutore;
 import it.sms.eproject.util.Util;
 
+/**
+ * Elenco degli autori
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class ListaAutori extends Fragment {
     ListView listView;
     Bundle bundle;

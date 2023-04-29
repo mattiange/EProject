@@ -17,10 +17,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import it.sms.eproject.R;
+import it.sms.eproject.annotazioni.AutoreCodice;
 import it.sms.eproject.fragment.backend.crud.liste.ListaOggetti;
 import it.sms.eproject.fragment.backend.crud.liste.ListaStati;
 import it.sms.eproject.util.Util;
 
+/**
+ * Pagina di avviso eliminazione avvenuta con successo per un oggetto
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CRUDOggettoEliminatoSuccesso extends Fragment {
     @Nullable
     @Override

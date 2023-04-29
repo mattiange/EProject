@@ -5,6 +5,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Classe utilizzata per connettersi ad un server mediante URL
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Connector {
 
     public static HttpURLConnection connect(String urlAddress) {

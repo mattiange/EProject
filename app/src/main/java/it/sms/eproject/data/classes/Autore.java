@@ -2,6 +2,12 @@ package it.sms.eproject.data.classes;
 
 import java.time.LocalDate;
 
+import it.sms.eproject.annotazioni.AutoreCodice;
+
+/**
+ * Struttura degli autori
+ */
+@AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class Autore {
     int codice;
     String nome;

@@ -27,6 +27,9 @@ import it.sms.eproject.database.DBOggetto;
 import it.sms.eproject.fragment.backend.crud.liste.ListaAutori;
 import it.sms.eproject.util.EseguiFragment;
 
+/**
+ * Visualizza un oggetto
+ */
 @AutoreCodice(autore = "Mattia Leonardo Angelillo")
 public class CrudVisualizzaOggetto extends Fragment {
     View v;
